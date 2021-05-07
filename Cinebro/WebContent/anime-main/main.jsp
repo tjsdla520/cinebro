@@ -462,7 +462,7 @@
 										data-setbg="img/recent/recent-4.jpg">
 										<div class="ep">18 / 18</div>
 										<div class="comment">
-											<i class="fa fa-comments"></i> 11
+											<i class="fa fa-comments"></i> 111
 										</div>
 										<div class="view">
 											<i class="fa fa-eye"></i> 9141
