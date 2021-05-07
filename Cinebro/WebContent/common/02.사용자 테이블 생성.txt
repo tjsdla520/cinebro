@@ -1,0 +1,468 @@
+-- 2조 
+-- 데이터베이스 계정 이름 : cinebro
+-- 데이터베이스 계정 비밀번호 : oracle
+
+----------sql 구문 --------------
+-- films Table Create SQL
+CREATE TABLE films
+(
+    id            NUMBER           PRIMARY KEY NOT NULL, 
+    film_title    VARCHAR2(50)     NOT NULL, 
+    director      VARCHAR2(20)     NOT NULL, 
+    year          NUMBER           NOT NULL, 
+    plot          VARCHAR2(200)    NOT NULL, 
+    time          NUMBER           NOT NULL
+   
+);
+/
+
+CREATE SEQUENCE films_SEQ
+START WITH 1
+INCREMENT BY 1;
+/
+
+--drop table films
+--DROP SEQUENCE films_SEQ;
+
+
+
+-- films Table Create SQL
+CREATE TABLE genres
+(
+    id      NUMBER          PRIMARY KEY NOT NULL, 
+    name    VARCHAR2(20)    NOT NULL
+);
+/
+
+CREATE SEQUENCE genres_SEQ
+START WITH 1
+INCREMENT BY 1;
+/
+
+
+--DROP SEQUENCE genres_SEQ;
+
+
+
+-- films Table Create SQL
+CREATE TABLE members
+(
+    email         VARCHAR2(50)    PRIMARY KEY NOT NULL, 
+    password      VARCHAR2(50)    NOT NULL, 
+    nickname      VARCHAR2(20)    NOT NULL, 
+    cardnumber    VARCHAR2(50)    NOT NULL, 
+    film_id       NUMBER          NULL, 
+    genre_id      NUMBER          NULL, 
+    subscribe     NUMBER          DEFAULT 0 NULL, 
+    enddate       NUMBER          NULL, 
+    name          VARCHAR2(20)    NULL 
+   
+);
+/
+alter table members modify (cardnumber varchar2(50) null);
+
+alter table members drop constraint FK_members_film_id_films_id;
+alter table members drop constraint FK_members_genre_id_genres_id;
+
+ALTER TABLE members
+    ADD CONSTRAINT FK_members_film_id_films_id FOREIGN KEY (film_id)
+        REFERENCES films (id) on delete set null;
+/
+
+ALTER TABLE members
+    ADD CONSTRAINT FK_members_genre_id_genres_id FOREIGN KEY (genre_id)
+        REFERENCES genres (id) on delete set null ;
+/
+
+
+-- films Table Create SQL
+CREATE TABLE lists
+(
+    id            NUMBER           PRIMARY KEY NOT NULL, 
+    email         VARCHAR2(50)     NOT NULL, 
+    list_title    VARCHAR2(100)    NOT NULL, 
+    comments       VARCHAR2(200)    NULL
+);
+/
+
+CREATE SEQUENCE lists_SEQ
+START WITH 1
+INCREMENT BY 1;
+/
+
+
+
+--DROP SEQUENCE lists_SEQ;
+
+
+ALTER TABLE lists
+    ADD CONSTRAINT FK_lists_email_members_email FOREIGN KEY (email)
+        REFERENCES members (email);
+/
+
+
+-- films Table Create SQL
+CREATE TABLE reviews
+(
+    id            NUMBER           PRIMARY KEY NOT NULL, 
+    email         VARCHAR2(50)     NOT NULL, 
+    film_id       NUMBER           NOT NULL, 
+    content       VARCHAR2(200)    NULL, 
+    rating        NUMBER           NULL, 
+    liked          INT             DEFAULT 0 NULL, 
+    watched       INT              NOT NULL, 
+    watch_date    DATE             NULL, 
+    write_date    DATE             DEFAULT sysdate NOT NULL
+);
+/
+
+alter table reviews modify(rating number check(rating in(1, 2, 3, 4, 5)));
+
+
+
+CREATE SEQUENCE reviews_SEQ
+START WITH 1
+INCREMENT BY 1;
+/
+
+
+--DROP SEQUENCE reviews_SEQ;
+
+
+ALTER TABLE reviews
+    ADD CONSTRAINT FK_reviews_email_members_email FOREIGN KEY (email)
+        REFERENCES members (email);
+/
+
+ALTER TABLE reviews
+    ADD CONSTRAINT FK_reviews_film_id_films_id FOREIGN KEY (film_id)
+        REFERENCES films (id);
+/
+
+
+-- films Table Create SQL
+CREATE TABLE actors
+(
+    id      NUMBER          PRIMARY KEY NOT NULL, 
+    name    VARCHAR2(50)    NOT NULL
+);
+/
+
+CREATE SEQUENCE actors_SEQ
+START WITH 1
+INCREMENT BY 1;
+/
+
+
+--DROP SEQUENCE actors_SEQ;
+
+
+
+-- films Table Create SQL
+CREATE TABLE makelist
+(
+    list_id    NUMBER    NOT NULL, 
+    film_id    NUMBER    NOT NULL
+);
+/
+
+ALTER TABLE makelist
+    ADD CONSTRAINT FK_makelist_list_id_lists_id FOREIGN KEY (list_id)
+        REFERENCES lists (id);
+/
+
+ALTER TABLE makelist
+    ADD CONSTRAINT FK_makelist_film_id_films_id FOREIGN KEY (film_id)
+        REFERENCES films (id);
+/
+
+
+-- films Table Create SQL
+CREATE TABLE wishfilms
+(
+    email      VARCHAR2(50)    NOT NULL, 
+    film_id    NUMBER          NOT NULL
+);
+/
+
+ALTER TABLE wishfilms
+    ADD CONSTRAINT FK_wishfilms_email_members_ema FOREIGN KEY (email)
+        REFERENCES members (email);
+/
+
+ALTER TABLE wishfilms
+    ADD CONSTRAINT FK_wishfilms_film_id_films_id FOREIGN KEY (film_id)
+        REFERENCES films (id);
+/
+
+
+-- films Table Create SQL
+CREATE TABLE nowplay
+(
+    email         VARCHAR2(50)    NOT NULL, 
+    film_id       NUMBER          NOT NULL, 
+    pause_time    VARCHAR2(20)    NOT NULL
+);
+/
+
+ALTER TABLE nowplay
+    ADD CONSTRAINT FK_nowplay_email_members_email FOREIGN KEY (email)
+        REFERENCES members (email);
+/
+
+ALTER TABLE nowplay
+    ADD CONSTRAINT FK_nowplay_film_id_films_id FOREIGN KEY (film_id)
+        REFERENCES films (id);
+/
+
+
+-- films Table Create SQL
+CREATE TABLE likereviews
+(
+    email        VARCHAR2(50)    NOT NULL, 
+    review_id    NUMBER          NOT NULL
+);
+/
+
+ALTER TABLE likereviews
+    ADD CONSTRAINT FK_likereviews_email_members_e FOREIGN KEY (email)
+        REFERENCES members (email);
+/
+
+ALTER TABLE likereviews
+    ADD CONSTRAINT FK_likereviews_review_id_revie FOREIGN KEY (review_id)
+        REFERENCES reviews (id);
+/
+
+
+-- films Table Create SQL
+CREATE TABLE myfollowing
+(
+    my_email        VARCHAR2(50)    NOT NULL, 
+    follow_email    VARCHAR2(50)    NOT NULL
+);
+/
+
+ALTER TABLE myfollowing
+    ADD CONSTRAINT FK_myfollowing_my_email_member FOREIGN KEY (my_email)
+        REFERENCES members (email);
+/
+
+ALTER TABLE myfollowing
+    ADD CONSTRAINT FK_myfollowing_follow_email_me FOREIGN KEY (follow_email)
+        REFERENCES members (email);
+/
+
+
+-- films Table Create SQL
+CREATE TABLE likefilmlists
+(
+    email       VARCHAR2(50)    NOT NULL, 
+    lklistno    NUMBER          NOT NULL
+);
+/
+
+ALTER TABLE likefilmlists
+    ADD CONSTRAINT FK_likefilmlists_email_members FOREIGN KEY (email)
+        REFERENCES members (email);
+/
+
+ALTER TABLE likefilmlists
+    ADD CONSTRAINT FK_likefilmlists_lklistno_list FOREIGN KEY (lklistno)
+        REFERENCES lists (id);
+/
+
+
+-- films Table Create SQL
+CREATE TABLE filmnactor
+(
+    film_id     NUMBER    NOT NULL, 
+    actor_id    NUMBER    NOT NULL
+);
+/
+
+ALTER TABLE filmnactor
+    ADD CONSTRAINT FK_filmnactor_actor_id_actors_ FOREIGN KEY (actor_id)
+        REFERENCES actors (id);
+/
+
+ALTER TABLE filmnactor
+    ADD CONSTRAINT FK_filmnactor_film_id_films_id FOREIGN KEY (film_id)
+        REFERENCES films (id);
+/
+
+
+-- films Table Create SQL
+CREATE TABLE filmngenre
+(
+    film_id     NUMBER    NOT NULL, 
+    genre_id    NUMBER    NOT NULL
+);
+/
+
+ALTER TABLE filmngenre
+    ADD CONSTRAINT FK_filmngenre_film_id_films_id FOREIGN KEY (film_id)
+        REFERENCES films (id);
+/
+
+ALTER TABLE filmngenre
+    ADD CONSTRAINT FK_filmngenre_genre_id_genres_ FOREIGN KEY (genre_id)
+        REFERENCES genres (id);
+/
+
+--films 값 
+insert into films values(films_SEQ.nextval, '살인의 추억', '봉준호', 2006, '밥은 먹ㅇ었냐', 160);
+insert into films values(films_SEQ.nextval, '타이타닉', '외국인', 2008, '배가침몰해요 살아남으세요', 120) ; 
+insert into films values(films_SEQ.nextval, '올드보이', '박찬욱', 2005, '군만두만 먹었다', 113);
+
+select * from films;
+
+--genres 값
+insert into genres values(genres_SEQ.nextval, '스릴러');
+insert into genres values(genres_SEQ.nextval, '로맨스');
+select * from genres;
+
+--members 값
+insert into members(email, password, nickname, cardnumber, film_id, genre_id, subscribe, enddate,  name)
+values('www@www.www', 'aaa123', '영화광', '1234-1234-1234', 1, 1, 0, 20210501, '홍길동') ; 
+insert into members(email, password, nickname, cardnumber, film_id, genre_id, subscribe, enddate,  name)
+values('yyy@yyy.yyy', 'bbb123', '무비광', '4321-4321-4321', 2, 2, 1, 20210603, '박길동') ; 
+insert into members(email, password, nickname, cardnumber, film_id, genre_id, subscribe, enddate,  name)
+values('zzz@zzz.zzz', 'ccc123', '나무나무', '1232-4321-4321', 3, 2, 1, 20220890, '남우식') ; 
+select * from members;
+
+--lists 값
+insert into lists(id, email, list_title, comments)
+values(lists_SEQ.nextval, 'www@www.www', '홍길동이리스트', '홍길동이가좋아하는 영화리스트') ; 
+insert into lists(id, email, list_title, comments)
+values(lists_SEQ.nextval, 'yyy@yyy.yyy', '박길동이리스트', '박길동이가좋아하는 영화리스트') ; 
+select * from lists;
+
+--reviews 값
+insert into reviews(id, email, film_id, content, rating, liked, watched, watch_date, write_date)
+values(reviews_SEQ.nextval, 'yyy@yyy.yyy', 2, '최고에요', 5, 1, 1, '2020/01/01', default) ; 
+insert into reviews(id, email, film_id, content, rating, liked, watched, watch_date, write_date)
+values(reviews_SEQ.nextval, 'www@www.www', 1, '노잼핵노잼', 1, 0, 1, '2020/01/05', default) ; 
+insert into reviews(id, email, film_id, content, rating, liked, watched, watch_date, write_date)
+values(reviews_SEQ.nextval, 'www@www.www', 1, '노잼핵노잼', 6, 0, 1, '2020/01/05', default) ; 
+
+select * from reviews;
+
+--actors 값
+insert into actors(id, name)
+values(actors_SEQ.nextval, '디카프리오') ; 
+insert into actors(id, name)
+values(actors_SEQ.nextval, '윈슬렛') ; 
+insert into actors(id, name)
+values(actors_SEQ.nextval, '송강호') ;
+insert into actors(id, name)
+values(actors_SEQ.nextval, '배두나') ;
+
+select * from actors;
+
+--filmnactor 값
+insert into filmnactor values(1,3);
+insert into filmnactor values(1,4);
+insert into filmnactor values(2,1);
+insert into filmnactor values(2,2);
+select * from filmnactor;
+
+--각 영화 등장 배우 보기
+select f.film_title, a.name
+from films f inner join filmnactor fa on f.id = fa.film_id 
+inner join actors a on fa.actor_id = a.id;
+
+--filmngenre 값
+insert into filmngenre values(1,1);
+insert into filmngenre values(2,2);
+select * from filmngenre;
+
+commit;
+
+--각 영화별 장르 보기
+select f.film_title, g.name
+from films f inner join filmngenre fg on f.id = fg.film_id
+inner join genres g on fg.genre_id = g.id;
+
+--likefilmlists 값 
+insert into likefilmlists values('www@www.www', 1);
+insert into likefilmlists values('yyy@yyy.yyy', 2);
+select * from likefilmlists;
+
+--각 회원이 좋아요 누른 영화 리스트 보기
+select m.nickname, l.list_title 
+from members m inner join likefilmlists lfl on m.email = lfl.email
+inner join lists l on lfl.lklistno = l.id;
+
+--likereviews 값
+insert into likereviews values('www@www.www', 1);
+insert into likereviews values('yyy@yyy.yyy', 2);
+select * from likereviews;
+
+--각회원이 좋아요 누른 리뷰들
+create or replace view view01 as
+select m.nickname, r.email as writer, f.film_title, r.content
+from members m inner join likereviews lr on m.email = lr.email
+inner join reviews r on lr.review_id = r.id
+inner join films f on r.film_id = f.id;
+
+select * from view01;
+
+select v.nickname, m.nickname as writer, v.film_title, v.content
+from view01 v inner join members m on v.writer = m.email;
+
+--makelist 값 넣기
+insert into makelist values(1,1);
+insert into makelist values(1,2);
+insert into makelist values(1,3);
+insert into makelist values(2,1);
+insert into makelist values(2,3);
+select * from makelist;
+
+--각 영화리스트에 소속된 영화 목록 보기
+select l.list_title, f.film_title 
+from lists l inner join makelist ml on l.id = ml.list_id
+inner join films f on ml.film_id = f.id;
+
+--myfollowing 값 넣기
+insert into myfollowing values('www@www.www', 'yyy@yyy.yyy');
+insert into myfollowing values('yyy@yyy.yyy', 'www@www.www');
+insert into myfollowing values('zzz@zzz.zzz', 'www@www.www');
+
+select * from myfollowing;
+
+--각 회원이 팔로우 하는 회원 보기
+create or replace view view02 as
+select m.nickname, mf.follow_email as following
+from members m inner join myfollowing mf on m.email = mf.my_email;
+
+select * from view02;
+
+select v2.nickname, m.nickname 
+from view02 v2 inner join members m on v2.following = m.email;
+
+--nowplay 값 넣기
+insert into nowplay values('www@www.www', 1, '01:03:34');
+insert into nowplay values('yyy@yyy.yyy', 2, '01:34:12');
+
+select * from nowplay;
+
+--각 회원이 보던 중인 영화 목록 
+select m.nickname, f.film_title, np.pause_time
+from members m inner join nowplay np on m.email = np.email
+inner join films f on np.film_id = f.id;
+
+--wishfilms 값 넣기 
+insert into wishfilms values('www@www.www', 1);
+insert into wishfilms values('www@www.www', 2);
+insert into wishfilms values('www@www.www', 3);
+insert into wishfilms values('yyy@yyy.yyy', 1);
+insert into wishfilms values('yyy@yyy.yyy', 2);
+insert into wishfilms values('zzz@zzz.zzz', 3);
+
+select * from wishfilms;
+
+--각회원이 보고싶어요 한 영화들 
+select m.nickname, f.film_title
+from members m inner join wishfilms wf on m.email = wf.email 
+inner join films f on wf.film_id = f.id;

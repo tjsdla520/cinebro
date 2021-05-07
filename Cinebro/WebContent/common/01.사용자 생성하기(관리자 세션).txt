@@ -1,0 +1,10 @@
+-- 사용자 삭제
+-- drop user cinebro cascade ;
+
+-- 사용자 생성
+create user cinebro identified by oracle account unlock ;
+
+alter user cinebro default tablespace users ;
+
+-- 권한 부여하기
+grant connect, resource to cinebro ;
