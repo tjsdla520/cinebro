@@ -9,5 +9,6 @@
 	<br><br><br>
 	<a href="<%=imsi%>world">월드</a>
 	로그인기능 추가
+	로그아웃기능추가 
 </body>
 </html>
