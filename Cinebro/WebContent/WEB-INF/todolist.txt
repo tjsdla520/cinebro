@@ -1,10 +1,11 @@
 ##main Section
-main=cinebro.common.controller.MainController 
+main=cinebro.common.controller.MainController
+## 
 ##member Section
 ##meInsert=cinebro.members.controller.MemberInsertController
 ##meEmailCheck=cinebro.members.controller.MemberEmailCheckController
 ##meNicknameCheck=cinebro.members.controller.MemberNicknameCheckController
-##meInsert=cinebro.members.controller.MemberInsertController	
+##meInsert=cinebro.members.controller.MemberInsertController
 ##meLogin=cinebro.members.controller.MemberLogInController
 ##meLogout=cinebro.members.controller.MemberLogOutController
 ##meDelete=cinebro.members.controller.MemberDeleteController
@@ -28,11 +29,11 @@ main=cinebro.common.controller.MainController
 ##filmlist Section
 ##filmList=cinebro.lists.controller.FilmListController
 ##filmListDetail=cinebro.lists.controller.FilmListDetailController
-##likefilmList=cinebro.lists.controller.LikeFilmListController	
+##likefilmList=cinebro.lists.controller.LikeFilmListController
 ##member Section
 ##memberList=cinebro.following.controller.MemberListController
 ##memberDetail=cinebro.following.controller.MemberDetailController
-##memberFollow=cinebro.following.controller.MemberFollowController	
+##memberFollow=cinebro.following.controller.MemberFollowController
 ##search Section
 ##search=cinebro.search.controller.SearchController
 ##profile Section
