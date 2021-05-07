@@ -10,7 +10,7 @@ public class MainController extends SuperClass {
 	@Override
 	public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		super.doGet(request, response);
-		String gotopage = "/common/main.jsp" ;
+		String gotopage = "/anime-main/main.jsp" ;
 		super.GotoPage(gotopage);
 	}
 }
