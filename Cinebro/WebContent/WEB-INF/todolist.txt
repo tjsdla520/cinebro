@@ -1,3 +1,66 @@
-#hello=cinebro.common.controller.HelloController
-#world=cinebro.common.controller.WorldController
-main=cinebro.common.controller.MainController
+##main Section
+main=cinebro.common.controller.MainController 
+##member Section
+meInsert=cinebro.common.controller.MemberInsertController
+meEmailCheck=MemberEmailCheckController
+meNicknameCheck=MemberNicknameCheckController
+meInsert=MemberInsertController	
+meLogin=MemberLoginController
+meLogin=MemberLoginController
+meLogin=MemberLoginController
+meLogout=MemberLogoutController
+meDelete=MemberDeleteController
+##pay Section
+bridge=BridgeController
+pay=PayController
+pay=PayController
+##film Section
+filmPlay=FilmPlayController
+genrePlay=GenrePlayController
+filmPlay=FilmPlayController	
+##review Section
+reviewList=ReviewListController
+reviewEdit=ReviewEditController
+reviewEdit=ReviewEditController
+reviewDelete=ReviewDeleteController
+reviewDetail=ReviewDetailController	
+likereView=LikeReviewController
+##detail Section
+filmDetail=FilmDetailController
+watchedFilm=WatchedFilmController
+wishFilm=WishFilmController
+reviewWrite=ReviewWriteController	
+filmList=FilmlistController
+filmListDetail=FilmListDetailController
+likefilmList  LikeFilmListController	
+##member Section
+memberList=MemberListController
+memberDetail=MemberDetailController
+memberFollow=MemberFollowController	
+##search Section
+search=SearchController
+search=SearchController
+search=SearchController
+search=SearchController
+##command Section
+command=Method	Controller	
+##profile Section
+myproFile=MyproFileController
+##nickname Section
+editNickname=EditNicknameController
+##film Section
+myFilms=MyfilmsController
+##review Section
+myReviews=MyReviewsController
+##wish Section
+myWish=MyWishController
+##following Section
+myFollowing=MyFollowingController
+##insert Section
+inSertfilm=InsertfilmController
+inSertfilm=InsertfilmController
+##search Section	 
+search=SearchController
+search=SearchController
+##detail Section
+deleteFilm=DeleteFilmController
