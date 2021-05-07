@@ -8,5 +8,6 @@
 	<a href="<%=imsi%>hello">헬로우</a>
 	<br><br><br>
 	<a href="<%=imsi%>world">월드</a>
+	로그인기능 추가
 </body>
 </html>
