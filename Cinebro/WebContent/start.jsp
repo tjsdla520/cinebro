@@ -6,6 +6,6 @@
 	//response.sendRedirect( imsi ) ;
 %>
 	<a href="<%=imsi%>main">메인</a>
-	
+	2차
 </body>
 </html>
