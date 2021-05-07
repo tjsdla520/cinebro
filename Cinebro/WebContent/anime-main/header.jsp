@@ -24,7 +24,7 @@
 					<div class="header__nav">
 						<nav class="header__menu mobile-menu">
 							<ul>
-								<li class="arrow_carrot-down"><a href="./main.jsp">영화보러가기</a></li>
+								<li class="arrow_carrot-down"><a href="./main.jsp">영화보러가기d</a></li>
 								<li class="arrow_carrot-down"><a href="./main.jsp">영화n리뷰</a></li>
 								<li class="arrow_carrot-down"><a href="./main.jsp">영화리스트</a></li>
 								<li class="arrow_carrot-down"><a href="./main.jsp">멤버</a></li>
