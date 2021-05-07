@@ -1,66 +1,47 @@
 ##main Section
 main=cinebro.common.controller.MainController 
 ##member Section
-meInsert=cinebro.common.controller.MemberInsertController
-meEmailCheck=MemberEmailCheckController
-meNicknameCheck=MemberNicknameCheckController
-meInsert=MemberInsertController	
-meLogin=MemberLoginController
-meLogin=MemberLoginController
-meLogin=MemberLoginController
-meLogout=MemberLogoutController
-meDelete=MemberDeleteController
+meInsert=cinebro.members.controller.MemberInsertController
+meEmailCheck=cinebro.members.controller.MemberEmailCheckController
+meNicknameCheck=cinebro.members.controller.MemberNicknameCheckController
+meInsert=cinebro.members.controller.MemberInsertController	
+meLogin=cinebro.members.controller.MemberLogInController
+meLogout=cinebro.members.controller.MemberLogOutController
+meDelete=cinebro.members.controller.MemberDeleteController
 ##pay Section
-bridge=BridgeController
-pay=PayController
-pay=PayController
+bridge=cinebro.pay.controller.BridgeController
+pay=cinebro.pay.controller.PayController
 ##film Section
-filmPlay=FilmPlayController
-genrePlay=GenrePlayController
-filmPlay=FilmPlayController	
+filmPlay=cinebro.filmplay.controller.FilmPlayController
+genrePlay=cinebro.filmplay.controller.GenrePlayController
 ##review Section
-reviewList=ReviewListController
-reviewEdit=ReviewEditController
-reviewEdit=ReviewEditController
-reviewDelete=ReviewDeleteController
-reviewDetail=ReviewDetailController	
-likereView=LikeReviewController
-##detail Section
-filmDetail=FilmDetailController
-watchedFilm=WatchedFilmController
-wishFilm=WishFilmController
-reviewWrite=ReviewWriteController	
-filmList=FilmlistController
-filmListDetail=FilmListDetailController
-likefilmList  LikeFilmListController	
+reviewList=cinebro.reviews.controller.ReviewListController
+reviewEdit=cinebro.reviews.controller.ReviewEditController
+reviewDelete=cinebro.reviews.controller.ReviewDeleteController
+reviewDetail=cinebro.reviews.controller.ReviewDetailController	
+likereView=cinebro.reviews.controller.LikeReviewController
+watchedFilm=cinebro.reviews.controller.WatchedFilmController
+wishFilm=cinebro.reviews.controller.WishFilmController
+reviewWrite=cinebro.reviews.controller.ReviewWriteController
+##film Section
+filmDetail=cinebro.films.controller.FilmDetailController
+##filmlist Section
+filmList=cinebro.lists.controller.FilmListController
+filmListDetail=cinebro.lists.controller.FilmListDetailController
+likefilmList=cinebro.lists.controller.LikeFilmListController	
 ##member Section
-memberList=MemberListController
-memberDetail=MemberDetailController
-memberFollow=MemberFollowController	
+memberList=cinebro.following.controller.MemberListController
+memberDetail=cinebro.following.controller.MemberDetailController
+memberFollow=cinebro.following.controller.MemberFollowController	
 ##search Section
-search=SearchController
-search=SearchController
-search=SearchController
-search=SearchController
-##command Section
-command=Method	Controller	
+search=cinebro.search.controller.SearchController
 ##profile Section
-myproFile=MyproFileController
-##nickname Section
-editNickname=EditNicknameController
-##film Section
-myFilms=MyfilmsController
-##review Section
-myReviews=MyReviewsController
-##wish Section
-myWish=MyWishController
-##following Section
-myFollowing=MyFollowingController
-##insert Section
-inSertfilm=InsertfilmController
-inSertfilm=InsertfilmController
-##search Section	 
-search=SearchController
-search=SearchController
-##detail Section
-deleteFilm=DeleteFilmController
+myproFile=cinebro.profile.controller.MyproFileController
+editNickname=cinebro.profile.controller.EditNicknameController
+myFilms=cinebro.profile.controller.MyFilmsController
+myReviews=cinebro.profile.controller.MyReviewsController
+myWish=cinebro.profile.controller.MyWishController
+myFollowing=cinebro.profile.controller.MyFollowingController
+##admin section
+inSertfilm=cinebro.admin.controller.InsertFilmController
+deleteFilm=cinebro.admin.controller.DeleteFilmController
