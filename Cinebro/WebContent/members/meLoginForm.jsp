@@ -4,6 +4,11 @@
 <!DOCTYPE html>
 <html lang="zxx">
 <head>
+	<script>
+		$(document).ready(function(){
+			$('[data-toggle="tooltip"]').tooltip();	
+		});
+	</script>
 </head>
 <body>
 	<%-- <%@ include file="header.jsp" %> --%>
@@ -32,24 +37,29 @@
                 <div class="col-lg-6">
                     <div class="login__form">
                         <h3>Login</h3>
-                        <form action="#">
+                        <form class="form-horizontal" action="<%=YesForm%>" method="post">
+                        	<input type="hidden" name="command" value="meLogin">
                             <div class="input__item">
-                                <input type="text" placeholder="Email address">
-                                <span class="icon_mail"></span>
+                                <input type="text" class="form-control" id="email" placeholder="Email address" 
+				        		name="email" data-toggle="tooltip" title="이메일은 @를 포함하여 끝까지 적어주세요"
+				        		value="${email}">
+				        	<span class="icon_mail">${erremail}</span>
                             </div>
                             <div class="input__item">
-                                <input type="text" placeholder="Password">
-                                <span class="icon_lock"></span>
+                                <input type="password" class="form-control" placeholder="Passwo
+                                name="password"	value="${password}">
+                                
+                                <span class="icon_lock">${errpassword}</span>
                             </div>
                             <button type="submit" class="site-btn">Login Now</button>
                         </form>
-                        <a href="#" class="forget_pass">Forgot Your Password?</a>
+                        
                     </div>
                 </div>
                 <div class="col-lg-6">
                     <div class="login__register">
                         <h3>Dontât Have An Account?</h3>
-                        <a href="#" class="primary-btn">Register Now</a>
+                        <a href="<%=NoForm%>meInsert" class="primary-btn">Register Now</a>
                     </div>
                 </div>
             </div>
