@@ -16,8 +16,9 @@ public class PayController extends SuperClass {
 	@Override
 	public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		super.doGet(request, response);
-		MemberDao dao = new MemberDao();
-		List<Film> lists = dao.InsertPayInfo;
+		String gotopage = "/filmwatch/payForm.jsp";
+		super.GotoPage(gotopage);
+		
 	}
 
 	@Override

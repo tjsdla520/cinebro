@@ -31,7 +31,7 @@
 		<div class="container">
 			<div class="text-center">
 				<div class="anime__details__btn" align="center">
-					<a href="#" class="follow-btn"> <i
+					<a href="<%=NoForm%>pay" class="follow-btn"> <i
 						style="font-size: 48px; color: black;"> <b>cinebro 구독하러가기</b>
 					</i>
 					</a>

@@ -10,8 +10,8 @@ meLogin=cinebro.members.controller.MemberLogInController
 meLogout=cinebro.members.controller.MemberLogOutController
 ##meDelete=cinebro.members.controller.MemberDeleteController
 ##pay Section
-##bridge=cinebro.pay.controller.BridgeController
-##pay=cinebro.pay.controller.PayController
+bridge=cinebro.pay.controller.BridgeController
+pay=cinebro.pay.controller.PayController
 ##film Section
 ##filmPlay=cinebro.filmplay.controller.FilmPlayController
 ##genrePlay=cinebro.filmplay.controller.GenrePlayController
