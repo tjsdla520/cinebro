@@ -37,7 +37,7 @@
 					<div class="header__nav">
 						<nav class="header__menu mobile-menu">
 							<ul> 
-								<li class="arrow_carrot-down"><a href="<%=contextPath%>/filmwatch/bridge.jsp">영화n보러가기</a></li>
+								<li class="arrow_carrot-down"><a href="<%=NoForm%>bridge">영화n보러가기</a></li>
 								<li class="arrow_carrot-down"><a href="./main.jsp">영화&리뷰</a></li>
 								<li class="arrow_carrot-down"><a href="./main.jsp">영화리스트</a></li>
 								<li class="arrow_carrot-down"><a href="./main.jsp">멤버</a></li>
@@ -45,7 +45,6 @@
 								<c:if test="${whologin != 0}">
 									<li style="color: white"> ${sessionScope.loginfo.nickname}님 </li>
 								</c:if>
-
 							</ul>
 						</nav>
 					</div>
