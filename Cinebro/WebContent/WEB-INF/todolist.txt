@@ -1,8 +1,7 @@
 ##main Section
 main=cinebro.common.controller.MainController
-## 
 ##member Section
-##meInsert=cinebro.members.controller.MemberInsertController
+meInsert=cinebro.members.controller.MemberInsertController
 ##meEmailCheck=cinebro.members.controller.MemberEmailCheckController
 ##meNicknameCheck=cinebro.members.controller.MemberNicknameCheckController
 ##meInsert=cinebro.members.controller.MemberInsertController

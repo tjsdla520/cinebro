@@ -17,12 +17,10 @@ public class MemberInsertController<PopularMember> extends SuperClass {
 	@Override
 	public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		super.doGet(request, response);
-		
-		
-		
+			
 		request.setAttribute("lists", lists);
 		
-		String gotopage = "/member/meInsert.jsp" ;
+		String gotopage = "/members/meInsertForm.jsp" ;
 		super.GotoPage(gotopage);
 	}	
 

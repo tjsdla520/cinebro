@@ -3,7 +3,7 @@
 <!DOCTYPE><html><head></head>
 <body> 	
 <%
-	String imsi = NoForm + "main" ; 	
+	String imsi = noForm + "main" ; 	
 	response.sendRedirect( imsi ) ;
 %>
 </body>
