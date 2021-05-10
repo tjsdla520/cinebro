@@ -25,7 +25,7 @@ public class MemberNicknameCheckController extends SuperClass {
 			request.setAttribute("message", nickname+"은(는) <font color = 'blue'><b>사용 가능</b></font>합니다.");
 			request.setAttribute("isCheck", true);
 		}else { //아이디기 있어서 객체를 생성해줌.
-			if(bean.get().equals("admin")) {//for 관리자
+			if(bean.getNickname().equals("admin")) {//for 관리자
 				request.setAttribute("message", "admin은 <font color = 'red'><b>사용 불가능</b></font>한 아이디입니다.");
 				request.setAttribute("isCheck", false);
 			}else { //일반사용자ㄴㄴ
@@ -33,7 +33,7 @@ public class MemberNicknameCheckController extends SuperClass {
 				request.setAttribute("isCheck", false);
 			}
 		}
-		String gotopage = "/member/nicknameCheck.jsp" ;
+		String gotopage = "/members/nicknameCheck.jsp" ;
 		super.GotoPage(gotopage);
 	}
 

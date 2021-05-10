@@ -15,7 +15,7 @@ import cinebro.members.model.Member;
 import cinebro.members.model.MemberDao;
 
 
-public class MemberLogInController<cinebro> extends SuperClass {
+public class MemberLogInController extends SuperClass {
 	private String email ;
 	private String password  ;
 	
@@ -47,22 +47,36 @@ public class MemberLogInController<cinebro> extends SuperClass {
 		
 		String gotopage = "" ;
 		
-		if (this.validate(request) == true) {
-			System.out.println("유효성 검사에 문제 없슴");
-			
-			MemberDao dao = new MemberDao();
-			Member bean = dao.SelectData(email, password) ;
-			
-			if (bean == null) { 
-				System.out.println("로그인 실패");
-				String message = "이메일 혹은 비밀 번호가 잘못되었습니다." ;
-				super.setErrorMessage(message);
-				gotopage = "/members/meLoginForm.jsp" ;
-				super.GotoPage(gotopage); 				
-			} else { 
-				System.out.println("로그인 성공");
-				super.session.setAttribute("loginfo", bean);
-				
+		MemberDao dao = new MemberDao();
+		Member bean = dao.SelectData(email, password) ;
+		if(bean==null) {
+			System.out.println("로그인 실패");
+			String message = "이메일 혹은 비밀 번호가 잘못되었습니다." ;
+			super.setErrorMessage(message);
+			gotopage = "/members/meLoginForm.jsp" ;
+			super.GotoPage(gotopage); 	
+		}else { 
+			System.out.println("로그인 성공");
+			super.session.setAttribute("loginfo", bean);
+		
+			// 메인 페이지로 이동합니다.
+			new MainController().doGet(request, response); 
+		}
+//		if (this.validate(request) == true) {
+//			System.out.println("유효성 검사에 문제 없슴");
+//			
+//			
+//			
+//			if (bean == null) { 
+//				System.out.println("로그인 실패");
+//				String message = "이메일 혹은 비밀 번호가 잘못되었습니다." ;
+//				super.setErrorMessage(message);
+//				gotopage = "/members/meLoginForm.jsp" ;
+//				super.GotoPage(gotopage); 				
+//			} else { 
+//				System.out.println("로그인 성공");
+//				super.session.setAttribute("loginfo", bean);
+//				
 				
 //				MemberDao mdao = new MemberDao() ;
 //				// 쇼핑에 장바구니가 있듯이 재생중인 영화를 바인딩
@@ -74,19 +88,18 @@ public class MemberLogInController<cinebro> extends SuperClass {
 //					}
 //					super.session.setAttribute("mycart", mycart);
 //				}
-				
-				// 메인 페이지로 이동합니다.
-				new MainController().doGet(request, response); 
-			}
-			
-			
-		} else { // 문제가 있슴
-			// 이전에 입력했던 정보를 다시 바인딩해줍니다.
-			request.setAttribute("email", this.email);
-			request.setAttribute("password", this.password);
-			
-			gotopage = "/members/meLoginForm.jsp" ;
-			super.GotoPage(gotopage); 
-		}
+//				
+//			
+//			}
+//			
+//			
+//		} else { // 문제가 있슴
+//			// 이전에 입력했던 정보를 다시 바인딩해줍니다.
+//			request.setAttribute("email", this.email);
+//			request.setAttribute("password", this.password);
+//			
+//			gotopage = "/members/meLoginForm.jsp" ;
+//			super.GotoPage(gotopage); 
+//		}
 	}
 }
