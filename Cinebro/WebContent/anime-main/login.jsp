@@ -21,7 +21,7 @@
                                 <input type="text" placeholder="Password">
                                 <span class="icon_lock"></span>
                             </div>
-                            <button type="submit" class="site-btn">Login Now</button>
+                            <button type="submit" class="site-btn">Login  Now</button>
                         </form>
                         <a href="#" class="forget_pass">Forgot Your Password? </a>
                     </div>
