@@ -7,12 +7,15 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import cinebro.common.controller.SuperClass;
+import cinebro.reviews.model.ReviewDao;
 
 public class ReviewListController extends SuperClass {
 	
 	@Override
 	public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		super.doGet(request, response);
+		ReviewDao dao = new ReviewDao();
+		dao.selectAllReview();
 	}
 
 	@Override
