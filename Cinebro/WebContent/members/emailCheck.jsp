@@ -26,8 +26,8 @@
 		<p align="center">${message}</p>
 		<div class="row" align="center">
 			<button class="btn btn-primary" type="button" 
-				onclick="meClose('${isCheck}');">
-				닫&nbsp;&nbsp;기
+				onclick="meClose(${isCheck});">
+				닫기
 			</button>
 		</div>
 	</div>
