@@ -13,6 +13,8 @@ public class MemberFollowController extends SuperClass {
 	@Override
 	public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		super.doGet(request, response);
+		
+		dao.followMember(email, email);
 	}
 
 	@Override

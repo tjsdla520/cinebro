@@ -18,5 +18,7 @@ public class EditNicknameController extends SuperClass {
 	@Override
 	public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		super.doPost(request, response);
+		
+		dao.editNickname(email,nickname);
 	}	
 }
