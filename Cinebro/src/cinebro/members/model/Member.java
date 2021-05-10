@@ -10,7 +10,7 @@ public class Member {
 	private String favoriteFilm;    //내가 가장좋아하는 영화 제목
 	private String favoriteGenre;   //내가 가장 좋아하는 장르
 	private int follower;           //나를 팔로우하는 사람 수 
-	private int allreviews;         //내가 쓴 총 리뷰수
+
 	public String getEmail() {
 		return email;
 	}
@@ -77,7 +77,7 @@ public class Member {
 				+ cardnumber + ", enddate=" + enddate + ", name=" + name + ", favoriteFilm=" + favoriteFilm
 				+ ", favoriteGenre=" + favoriteGenre + ", follower=" + follower + ", allreviews=" + allreviews + "]";
 	}
-	
+
 	
 }
 

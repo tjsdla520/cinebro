@@ -13,9 +13,51 @@
 <!DOCTYPE html>
 <html lang="zxx">
 <head>
-<style type="text/css">
-.panel h4{color: navy}
-</style>
+<script type="text/javascript">
+
+	//이메일 중복 검사에 실패해서 다시 이메일을 치면 ischeck 변수를 false로 바꿔주는 함수
+	function isCheckFalse(){
+		document.myform.isCheck.value = false;
+	}
+	
+	//이메일 중복체크
+	function emailCheck(){
+		var email = document.myform.email.value;
+		
+		<%-- 이메일관련 정규식표현생각. @가 필수로 들어가야 한다 등등
+		if(id.length < 4){
+			alert('아이디 최소 4자리 이상');
+			document.myform.id.focus();
+			return false;
+		} --%>
+		
+		var url = "<%=NoForm%>meEmailCheck&email="+email;
+		window.open(url,'mywin','height=150, width=300');
+	}
+	
+	//닉네임 중복체크
+	function nicknameCheck(){
+		var nickname = document.myform.nickname.value;
+		
+		<%-- 이메일관련 정규식표현생각. @가 필수로 들어가야 한다 등등
+		if(id.length < 4){
+			alert('아이디 최소 4자리 이상');
+			document.myform.id.focus();
+			return false;
+		} --%>
+		
+		var url = "<%=NoForm%>meNicknameCheck&id="+ id;
+		window.open(url,'mywin','height=150, width=300');
+	}
+	
+	function checkForm(){
+		var isCheck = document.myform.isCheck.value;
+		if(isCheck=="false"){
+			alert('이메일 중복 체크를 하시오');
+			return false;
+		}
+	}
+</script>
 </head>
 <body>
 	<%-- <%@ include file="header.jsp" %> --%>
@@ -46,7 +88,7 @@
 				      	</div>
 				      	<div class="col-sm-<%=rightButton%>">
 				        	<input type="button" value="중복 체크" 
-				        		class="btn btn-info" onclick="idCheck();"> 
+				        		class="btn btn-info" onclick="emailCheck();"> 
 				      	</div>
 				    </div>
 					<div class="form-group">
@@ -57,7 +99,7 @@
 				      	</div>
 				      	   	<div class="col-sm-<%=rightButton%>">
 				        	<input type="button" value="중복 체크" 
-				        		class="btn btn-info" onclick="idCheck();"> 
+				        		class="btn btn-info" onclick="nicknameCheck();"> 
 				      	</div>
 				    </div>				    
 				    <div class="form-group">
