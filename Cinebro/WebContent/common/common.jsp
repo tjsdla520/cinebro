@@ -45,14 +45,14 @@ String NoForm = contextPath + mappingName + "?command=";
 	rel="stylesheet">
 
 <!-- Css Styles -->
-<link rel="stylesheet" href="css/bootstrap.min.css" type="text/css">
-<link rel="stylesheet" href="css/font-awesome.min.css" type="text/css">
-<link rel="stylesheet" href="css/elegant-icons.css" type="text/css">
-<link rel="stylesheet" href="css/plyr.css" type="text/css">
-<link rel="stylesheet" href="css/nice-select.css" type="text/css">
-<link rel="stylesheet" href="css/owl.carousel.min.css" type="text/css">
-<link rel="stylesheet" href="css/slicknav.min.css" type="text/css">
-<link rel="stylesheet" href="css/style.css" type="text/css">
+<link rel="stylesheet" href="<%=contextPath%>/css/bootstrap.min.css" type="text/css">
+<link rel="stylesheet" href="<%=contextPath%>/css/font-awesome.min.css" type="text/css">
+<link rel="stylesheet" href="<%=contextPath%>/css/elegant-icons.css" type="text/css">
+<link rel="stylesheet" href="<%=contextPath%>/css/plyr.css" type="text/css">
+<link rel="stylesheet" href="<%=contextPath%>/css/nice-select.css" type="text/css">
+<link rel="stylesheet" href="<%=contextPath%>/css/owl.carousel.min.css" type="text/css">
+<link rel="stylesheet" href="<%=contextPath%>/css/slicknav.min.css" type="text/css">
+<link rel="stylesheet" href="<%=contextPath%>/css/style.css" type="text/css">
 </head>
 <body>
 	
