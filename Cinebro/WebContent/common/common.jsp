@@ -8,8 +8,8 @@
 String contextPath = request.getContextPath();
 int twelve = 12;
 String mappingName = "/Cinebro";
-String yesForm = contextPath + mappingName;
-String noForm = contextPath + mappingName + "?command=";
+String YesForm = contextPath + mappingName;
+String NoForm = contextPath + mappingName + "?command=";
 %>
 <!DOCTYPE>
 <html lang="zxx">

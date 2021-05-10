@@ -6,8 +6,8 @@
 <head>
 </head>
 <body>
-	<%-- <%@ include file="header.jsp" %>  --%>
-	<%-- <jsp:include page="<%=contextPath%>/anime-main/header.jsp"/> --%> 
+	<%-- <%@ include file="header.jsp" %> --%>
+	<%-- <jsp:include page="<%=contextPath%>/anime-main/header.jsp"/> --%>
 	<jsp:include page="./../anime-main/header.jsp"/>
 	bridge.jsp
 	
