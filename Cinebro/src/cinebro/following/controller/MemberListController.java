@@ -13,6 +13,10 @@ public class MemberListController extends SuperClass {
 	@Override
 	public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		super.doGet(request, response);
+		
+		dao.popularMember();
+		dao.followingMember(email,email);
+		dao.manyReviewMember();
 	}
 
 	@Override

@@ -1,5 +1,8 @@
 package cinebro.members.model;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
 public class Member {
 	private String email;           //나의 이메일
 	private String password;        //나의 비밀번호
@@ -12,3 +15,4 @@ public class Member {
 	private int follower;           //나를 팔로우하는 사람 수 
 	private int allreviews;         //내가 쓴 총 리뷰수
 }
+
