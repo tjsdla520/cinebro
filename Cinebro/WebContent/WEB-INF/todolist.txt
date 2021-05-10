@@ -7,7 +7,7 @@ meEmailCheck=cinebro.members.controller.MemberEmailCheckController
 meNicknameCheck=cinebro.members.controller.MemberNicknameCheckController
 meInsert=cinebro.members.controller.MemberInsertController
 meLogin=cinebro.members.controller.MemberLogInController
-##meLogout=cinebro.members.controller.MemberLogOutController
+meLogout=cinebro.members.controller.MemberLogOutController
 ##meDelete=cinebro.members.controller.MemberDeleteController
 ##pay Section
 ##bridge=cinebro.pay.controller.BridgeController

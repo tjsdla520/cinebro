@@ -10,7 +10,7 @@ public class Member {
 	private String favoriteFilm;    //내가 가장좋아하는 영화 제목
 	private String favoriteGenre;   //내가 가장 좋아하는 장르
 	private int follower;           //나를 팔로우하는 사람 수 
-
+	private int allReviews;         //내가 쓴 총 리뷰수
 	public String getEmail() {
 		return email;
 	}
@@ -65,19 +65,16 @@ public class Member {
 	public void setFollower(int follower) {
 		this.follower = follower;
 	}
-	public int getAllreviews() {
-		return allreviews;
+	public int getAllReviews() {
+		return allReviews;
 	}
-	public void setAllreviews(int allreviews) {
-		this.allreviews = allreviews;
+	public void setAllReviews(int allReviews) {
+		this.allReviews = allReviews;
 	}
-	@Override
-	public String toString() {
-		return "Member [email=" + email + ", password=" + password + ", nickname=" + nickname + ", cardnumber="
-				+ cardnumber + ", enddate=" + enddate + ", name=" + name + ", favoriteFilm=" + favoriteFilm
-				+ ", favoriteGenre=" + favoriteGenre + ", follower=" + follower + ", allreviews=" + allreviews + "]";
-	}
-
 	
+	public Member() {
+		// TODO Auto-generated constructor stub
+	}
+		
 }
 

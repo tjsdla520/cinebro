@@ -46,7 +46,7 @@
 			return false;
 		} --%>
 		
-		var url = "<%=NoForm%>meNicknameCheck&id="+ id;
+		var url = "<%=NoForm%>meNicknameCheck&nickname="+ nickname;
 		window.open(url,'mywin','height=150, width=300');
 	}
 	

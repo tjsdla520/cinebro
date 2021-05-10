@@ -8,10 +8,10 @@
 	<c:set var="whologin" value="0" />
 </c:if>
 <c:if test="${ not empty sessionScope.loginfo}">
-	<c:if test="${ sessionScope.loginfo.id == 'admin'}">
+	<c:if test="${ sessionScope.loginfo.email == 'admin'}">
 		<c:set var="whologin" value="2" />
 	</c:if>
-	<c:if test="${ sessionScope.loginfo.id != 'admin'}">
+	<c:if test="${ sessionScope.loginfo.email != 'admin'}">
 		<c:set var="whologin" value="1" />
 	</c:if>
 </c:if>s
@@ -27,21 +27,24 @@
 	<header class="header">
 		<div class="container">
 			<div class="row">
-				<div class="col-lg-2">
+				<div class="col-lg-1">
 					<div class="header__logo">
 						<a href="<%=contextPath%>/anime-main/main.jsp"> <img src="<%=contextPath%>/img/logo.png" alt="">
 						</a>
 					</div>
 				</div>
-				<div class="col-lg-7">
+				<div class="col-lg-8">
 					<div class="header__nav">
 						<nav class="header__menu mobile-menu">
-							<ul>
+							<ul> 
 								<li class="arrow_carrot-down"><a href="<%=contextPath%>/filmwatch/bridge.jsp">영화n보러가기</a></li>
 								<li class="arrow_carrot-down"><a href="./main.jsp">영화&리뷰</a></li>
 								<li class="arrow_carrot-down"><a href="./main.jsp">영화리스트</a></li>
 								<li class="arrow_carrot-down"><a href="./main.jsp">멤버</a></li>
 								<li class="arrow_carrot-down"><a href="./main.jsp">검색</a></li>
+								<c:if test="${whologin != 0}">
+									<li style="color: white"> ${sessionScope.loginfo.nickname}님 </li>
+								</c:if>
 
 							</ul>
 						</nav>
@@ -49,11 +52,13 @@
 				</div>
 				<div class="col-lg-3">
 					<div class="header__right">
-						<a href="#" class="search-switch"><span class="icon_search"></span></a>
 						<c:choose>
 							<c:when test="${whologin==0 }">
 								<a href="<%=NoForm%>meLogin">로그인</a>
 								<a href="<%=NoForm%>meInsert">회원가입</a>				
+							</c:when>
+							<c:when test="${whologin !=0 }">
+								<a href="<%=NoForm%>meLogout">로그아웃</a>
 							</c:when>
 							<c:when test="">
 								<li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">닉네임<b class="caret"></b></a>

@@ -46,7 +46,7 @@
 				        	<span class="icon_mail">${erremail}</span>
                             </div>
                             <div class="input__item">
-                                <input type="password" class="form-control" placeholder="Passwo
+                                <input type="password" class="form-control" placeholder="Password"
                                 name="password"	value="${password}">
                                 
                                 <span class="icon_lock">${errpassword}</span>
