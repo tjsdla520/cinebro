@@ -2,9 +2,9 @@
 main=cinebro.common.controller.MainController
 ## 
 ##member Section
-##meInsert=cinebro.members.controller.MemberInsertController
-##meEmailCheck=cinebro.members.controller.MemberEmailCheckController
-##meNicknameCheck=cinebro.members.controller.MemberNicknameCheckController
+meInsert=cinebro.members.controller.MemberInsertController
+meEmailCheck=cinebro.members.controller.MemberEmailCheckController
+meNicknameCheck=cinebro.members.controller.MemberNicknameCheckController
 meInsert=cinebro.members.controller.MemberInsertController
 meLogin=cinebro.members.controller.MemberLogInController
 ##meLogout=cinebro.members.controller.MemberLogOutController

@@ -44,4 +44,9 @@ public class MemberDao<cinebro> extends SuperDao {
 		}
 		return cnt ;
 	}
+
+	public Member selectDataByEmail(String email) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 }	
