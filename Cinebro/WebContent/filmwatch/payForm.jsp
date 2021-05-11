@@ -48,36 +48,28 @@
                 <tr>
                     <td id="title">이름</td>
                     <td>
-                        <input type="text" name="id" maxlength="100" style="color: grey" placeholder="이름 입력"  >
-                       
-				        	
-				       		
-                      
+                        <input type="text" name="id" maxlength="100" style="color: grey" placeholder="이름 입력"  >                
                     </td>
-                </tr>
-                        
+                </tr>                       
                 <tr>
                     <td id="title">카드번호</td>
                     <td>
                         <input type="text" name="cardnumber" maxlength="100" style="color: grey" placeholder="카드번호 -제외하고 입력">
                     </td>
                 </tr>
-                
+               
                 <tr>
                     <td id="title">카드 만료날짜</td>
                     <td>
-                        <input type="text" name="enddate" maxlength="100" style="color: grey" placeholder="만료 날짜 입력">
+                        <input type="text" name="enddate" maxlength="100" style="color: grey" placeholder="월/년도 입력">
                     </td>
-                </tr>
-                    
+                </tr>                  
                 <tr>
                     <td id="title">비밀번호</td>
                     <td>
                         <input type="password" name="password" maxlength="100" style="color: grey" placeholder="비밀번호 입력">
                     </td>
-                </tr>
-                    
-               
+                </tr>              
             </table>
             <br>
             <input type="submit" value="결제"/>  <input type="button" value="취소">

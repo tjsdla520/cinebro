@@ -23,16 +23,16 @@
         table{
             margin-left:auto; 
             margin-right:auto;
-            border:3px #0D0D4C;
+            border:3px #080837;
         }
         
         td{
-            border:1px #0D0D4C;
-            color: Snow;
+            border:1px #080837;
+            color: White;
         }
         
         #title{
-            background-color:#0D0D4C;
+            background-color:#080837;
         }
     </style>
 </head>
@@ -65,22 +65,22 @@
         
         <table>
             <tr>
-                <td id="title" >아이디</td>
+                <td >아이디</td>
                 <td><%=id %></td>
             </tr>
                         
             <tr>
-                <td id="title">카드번호</td>
+                <td >카드번호</td>
                 <td><%=cardnumber %></td>
             </tr>
                     
             <tr>
-                <td id="title">카드 만료날짜</td>
+                <td>카드 만료날짜</td>
                 <td><%=enddate %></td>
             </tr>
                     
             <tr>
-                <td id="title">비밀번호</td>
+                <td>비밀번호</td>
                 <td><%=password %></td>
             </tr>
                     
