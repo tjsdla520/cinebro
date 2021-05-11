@@ -9,6 +9,10 @@ import javax.servlet.http.HttpServletResponse;
 
 import cinebro.common.controller.SuperClass;
 import cinebro.search.model.SearchDao;
+import shopping.board.model.Board;
+import shopping.board.model.BoardDao;
+import shopping.utility.FlowParameters;
+import shopping.utility.Paging;
 import cinebro.common.utility.*;
 import cinebro.films.model.Film;
 import cinebro.lists.model.FilmList;
@@ -19,90 +23,34 @@ public class SearchController extends SuperClass {
 	@Override
 	public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		super.doGet(request, response);
-		
-		FlowParameters parameters = new FlowParameters(
-				request.getParameter("pageNumber"), 
-				request.getParameter("mode"),
-				request.getParameter("keyword"));
-
-		System.out.println("parameter list ");
-		System.out.println(parameters.toString());
+					
+		//request로 넘어온 페이징 정보들을 가지고 객체 생성해줌. 이제 아래서 tostring 하면 문자열이 만들어짐.
+		FlowParameters prm = new FlowParameters(request.getParameter("pageNumber"), request.getParameter("mode"), request.getParameter("keyword"));
 
 		String contextPath = request.getContextPath();
 		String url = contextPath + "/Cinebro?command=search";
 
 		SearchDao dao = new SearchDao();
+		//행 row 총 개수 
+		int totalCount = dao.SelectTotalCount(prm.getMode(), prm.getKeyword());
 		
-		// 행(row) 총 개수
-		int totalCount = dao.SelectTotalCount(parameters.getMode(), parameters.getKeyword()) ; 
-		System.out.println("total data size : " + totalCount); 
+		System.out.println("total data size : "+ totalCount);
 		
-		Paging pageInfo = new Paging(
-								parameters.getPageNumber(), 
-								totalCount, 
-								url, 
-								parameters.getMode(), 
-								parameters.getKeyword()) ;	
+		Paging pageInfo = new Paging(prm.getPageNumber(), totalCount, url, prm.getMode(), prm.getKeyword());
 		
-		if(request.getParameter("mode").equals("film") || request.getParameter("mode").equals("") || request.getParameter("mode").equals(null)) {
-			List<Film> lists = dao.SearchFilm(
-					pageInfo.getBeginRow(), 
-					pageInfo.getEndRow(), 
-					parameters.getMode(), 
-					parameters.getKeyword() ) ;
+		List<Film> lists = dao.SearchFilm(pageInfo.getBeginRow(),pageInfo.getEndRow(),prm.getMode(),prm.getKeyword());
+		System.out.println("board list count : " + lists.size());
 		
-			System.out.println("search film count : " + lists.size()); 
-			
-			request.setAttribute("lists", lists);
-			request.setAttribute("pageInfo", pageInfo);
-			
-			// 자주 사용되는 파라미터를 속성으로 정의합니다. 
-			request.setAttribute("parameters", parameters.toString());
-			
-			String gotopage = "/lists/Searchlist.jsp" ;
-			super.GotoPage(gotopage);		
-		}
+		request.setAttribute("lists", lists);
+		request.setAttribute("pageInfo", pageInfo);
 		
-		if (request.getParameter("mode").equals("filmlist") ) {
-			List<FilmList> lists = dao.SearchFilmList(
-					pageInfo.getBeginRow(), 
-					pageInfo.getEndRow(), 
-					parameters.getMode(), 
-					parameters.getKeyword() ) ;
+		//자주 사용되는 파라미터를 속성으로 정의. 게시물 클릭하고 다시 돌아왔을 때 보던 페이지의 정보를 남기기 위해 페이지 관련 정보들을 데이터로 넘겨준다. shopping.utility.flowparameters에서 구체적인 처리를 한다.
+		request.setAttribute("parameters", prm.toString());
 		
-			System.out.println("search filmlist count : " + lists.size()); 
-			
-			request.setAttribute("lists", lists);
-			request.setAttribute("pageInfo", pageInfo);
-			
-			// 자주 사용되는 파라미터를 속성으로 정의합니다. 
-			request.setAttribute("parameters", parameters.toString());
-			
-			String gotopage = "/lists/Searchlist.jsp" ;
-			super.GotoPage(gotopage);		
-		}
-		
-		if(request.getParameter("mode").equals("member") ) {
-			List<Member> lists = dao.SearchMember(
-					pageInfo.getBeginRow(), 
-					pageInfo.getEndRow(), 
-					parameters.getMode(), 
-					parameters.getKeyword() ) ;
-		
-			System.out.println("search member count : " + lists.size()); 
-			
-			request.setAttribute("lists", lists);
-			request.setAttribute("pageInfo", pageInfo);
-			
-			// 자주 사용되는 파라미터를 속성으로 정의합니다. 
-			request.setAttribute("parameters", parameters.toString());
-			
-			String gotopage = "/lists/Searchlist.jsp" ;
-			super.GotoPage(gotopage);		
-		}
-		
-	}
 
+		String gotopage = "/lists/SearchList.jsp" ;
+		super.GotoPage(gotopage);
+	}	
 	@Override
 	public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		super.doPost(request, response);
