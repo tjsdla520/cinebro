@@ -43,7 +43,17 @@
 								<li class="arrow_carrot-down"><a href="./main.jsp">멤버</a></li>
 								<li class="arrow_carrot-down"><a href="./main.jsp">검색</a></li>
 								<c:if test="${whologin != 0}">
-									<li style="color: white"> ${sessionScope.loginfo.nickname}님 </li>
+									<li style="color: white"> ${sessionScope.loginfo.nickname}님
+										 <span class="arrow_carrot-down"></span></a>
+                                        <ul class="dropdown">
+                                        <li><a href="./myProfileForm.jsp">myProfile</a></li>
+                                        <li><a href="./amyFilms.jsp">Films</a></li>
+                                        <li><a href="./myReviews.jsp">Reviews</a></li>
+                                        <li><a href="./myWish.jsp">myWish</a></li>
+                                        <li><a href="./myFollowing.jsp">myFollowing</a></li>
+                                        <li><a href="<%=NoForm%>meDelete&email=${sessionScope.loginfo.email}">회원탈퇴</a></li>
+									  </ul>
+									</li>                             
 								</c:if>
 							</ul>
 						</nav>
