@@ -14,7 +14,7 @@ public class FlowParameters {
 		this.pageNumber = pageNumber;
 		
 		if(mode == null || mode.equals("null") || mode.equals("")) {
-			mode = "all" ;
+			mode = "films" ;
 		}		
 		this.mode = mode;
 		
