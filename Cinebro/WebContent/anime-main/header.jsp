@@ -38,20 +38,25 @@
 						<nav class="header__menu mobile-menu">
 							<ul> 
 								<li class="arrow_carrot-down"><a href="<%=NoForm%>bridge">영화n보러가기</a></li>
-								<li class="arrow_carrot-down"><a href="./main.jsp">영화&리뷰</a></li>
-								<li class="arrow_carrot-down"><a href="./main.jsp">영화리스트</a></li>
-								<li class="arrow_carrot-down"><a href="./main.jsp">멤버</a></li>
-								<li class="arrow_carrot-down"><a href="./main.jsp">검색</a></li>
+								<li class="arrow_carrot-down"><a href="<%=NoForm%>reviewList">영화&리뷰</a></li>
+								<li class="arrow_carrot-down"><a href="<%=NoForm%>filmList">영화리스트</a></li>
+								<li class="arrow_carrot-down"><a href="<%=NoForm%>memberList">멤버</a></li>
+								<li class="arrow_carrot-down"><a href="<%=NoForm%>search">검색</a></li>
 								<c:if test="${whologin != 0}">
-									<li style="color: white"> ${sessionScope.loginfo.nickname}님
-										 <span class="arrow_carrot-down"></span></a>
+								 	
+									<li class="btn" style="color: white"> ${sessionScope.loginfo.nickname}님										 
+										 <span class="arrow_carrot-down"></span>
                                         <ul class="dropdown">
-                                        <li><a href="./myProfileForm.jsp">myProfile</a></li>
-                                        <li><a href="./amyFilms.jsp">Films</a></li>
-                                        <li><a href="./myReviews.jsp">Reviews</a></li>
-                                        <li><a href="./myWish.jsp">myWish</a></li>
-                                        <li><a href="./myFollowing.jsp">myFollowing</a></li>
+                                        <li><a href="<%=NoForm%>myproFile">myProfile</a></li>
+                                        <li><a href="<%=NoForm%>myFilms">Films</a></li>
+                                        <li><a href="<%=NoForm%>myReviews">Reviews</a></li>
+                                        <li><a href="<%=NoForm%>myWish">myWish</a></li>
+                                        <li><a href="<%=NoForm%>myFollowing">myFollowing</a></li>
                                         <li><a href="<%=NoForm%>meDelete&email=${sessionScope.loginfo.email}">회원탈퇴</a></li>
+                                        <c:if test="${whologin == 2}">
+										 <li><a href="<%=NoForm%>inSertfilm">영화 등록</a></li>
+								    
+								       </c:if>	
 									  </ul>
 									</li>                             
 								</c:if>
@@ -68,18 +73,7 @@
 							</c:when>
 							<c:when test="${whologin !=0 }">
 								<a href="<%=NoForm%>meLogout">로그아웃</a>
-							</c:when>
-							<c:when test="">
-								<li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">닉네임<b class="caret"></b></a>
-									<ul class="dropdown-menu">
-										<li><a href="<%=NoForm%>viewExam01">회원과 게시물</a></li>
-										<li><a href="<%=NoForm%>viewExam02">회원별 게시물 건수</a></li>
-										<li><a href="<%=NoForm%>viewExam03">주문 정보</a></li>
-										<li><a href="<%=NoForm%>viewExam04">고객별 매출 총액</a></li>
-										<li><a href="<%=NoForm%>viewExam05">회원별 주문 건수</a></li>
-									</ul>
-								</li>
-							</c:when>
+							</c:when>							
 						</c:choose>
 							
 					</div>
