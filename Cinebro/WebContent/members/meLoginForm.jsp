@@ -40,13 +40,13 @@
                         <form class="form-horizontal" action="<%=YesForm%>" method="post">
                         	<input type="hidden" name="command" value="meLogin">
                             <div class="input__item">
-                                <input type="text" class="form-control" id="email" placeholder="Email address" 
+                                <input type="text" class="text-body" id="email" placeholder="Email address" 
 				        		name="email" data-toggle="tooltip" title="이메일은 @를 포함하여 끝까지 적어주세요"
 				        		value="${email}">
 				        	<span class="icon_mail">${erremail}</span>
                             </div>
                             <div class="input__item">
-                                <input type="password" class="form-control" placeholder="Password"
+                                <input type="password" class="text-body" placeholder="Password"
                                 name="password"	value="${password}">
                                 
                                 <span class="icon_lock">${errpassword}</span>
