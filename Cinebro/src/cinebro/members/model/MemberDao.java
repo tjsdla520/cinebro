@@ -183,6 +183,7 @@ public class MemberDao extends SuperDao {
 				bean.setPassword(rs.getString("password"));				
 				bean.setEmail(rs.getString("email"));
 				bean.setNickname(rs.getString("nickname"));
+				bean.setSubscribe(rs.getInt("subscribe"));
 			}
 		} catch (Exception e) {			
 			e.printStackTrace();
