@@ -41,7 +41,7 @@
 	<div class="container col-sm-offset-<%=offset%> col-sm-<%=mywidth%>">
 		<div class="panel panel-primary">
 			<div class="panel-heading">
-				<h4>게시물 목록 보기</h4>
+				<h4>상세검색</h4>
 			</div>
 			<div class="panel-body">
 				<table class="table table-hover">
@@ -59,8 +59,8 @@
 								<form action="" class="form-inline" role="form" name="myform" method="get"> 
 									<div class="form-group">
 										<select id="mode" name="mode" class="form-control">
-											<option value="films" selected="selected">-- 선택하세요.
-											<option value="films">영화
+											<option value="film_title" selected="selected">-- 선택하세요.
+											<option value="film_title">영화
 											<option value="lists">리스트
 											<option value="members">회원명
 										</select>
@@ -79,8 +79,9 @@
 							<tr>
 								
 								<td>
+									${bean.film_title}
 									<%--글제목 하이퍼링크 만들기 일반적으로 넘겨줘야 할 파라미터 목록은 다음과 같다. primarykey, pagenumber, mode, keyword--%>
-									<a href="<%=NoForm%>boDetailView&no=${bean.no}&${requestScope.parameters}">${bean.title}</a>
+									<%-- <a href="<%=NoForm%>boDetailView&no=${bean.no}&${requestScope.parameters}">${bean.title}</a>--%>
 								</td>
 								<td>${bean.director}</td>	
 								<td>${bean.year}</td>
@@ -95,7 +96,7 @@
 			</div>
 		</div>		
 	</div>
-	<br><br>
+	<br><br><br><br>
 	<script type="text/javascript">
 		//필드 검색 상태 보존하기 위해
 		$('#mode option').each(function(){
@@ -106,8 +107,6 @@
 		
 		$('#keyword').val('${pageInfo.keyword}');
 	</script>
-	
-	
 	<jsp:include page="./../anime-main/footer.jsp"/>
 </body>
 </html>

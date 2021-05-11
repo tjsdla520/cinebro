@@ -15,12 +15,8 @@ public class SearchDao extends SuperDao {
 	public List<Film> SearchFilm(int beginRow, int endRow, String mode, String keyword) {
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
-
-		String sql = " select ranking, id, film_title, director, year, country ";
-		sql += " from(select id, film_title, director, year, country ";
-		sql += " rank()over(order by film_title asc) as ranking from films ";
-		sql += " where " + mode + " like '%" + keyword + "%'";
-		sql += " ) where ranking between ? and ?";
+		
+		String sql = "select id, film_title, director, year, country from films where " + mode + " like '%" + keyword + "%'" ;
 
 		List<Film> lists = new ArrayList<Film>();
 		try {
@@ -28,9 +24,6 @@ public class SearchDao extends SuperDao {
 				this.conn = this.getConnection();
 			}
 			pstmt = this.conn.prepareStatement(sql);
-
-			pstmt.setInt(1, beginRow);
-			pstmt.setInt(2, endRow);
 
 			rs = pstmt.executeQuery();
 			while (rs.next()) {
