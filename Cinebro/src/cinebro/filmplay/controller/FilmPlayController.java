@@ -13,6 +13,9 @@ public class FilmPlayController extends SuperClass {
 	@Override
 	public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		super.doGet(request, response);
+		
+		String gotopage = "/filmwatch/filmPlay.jsp" ;
+		super.GotoPage(gotopage);
 	}
 
 	@Override

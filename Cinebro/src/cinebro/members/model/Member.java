@@ -11,7 +11,14 @@ public class Member {
 	private String favoriteGenre;   //내가 가장 좋아하는 장르
 	private int follower;           //나를 팔로우하는 사람 수 
 	private int allReviews;         //내가 쓴 총 리뷰수
+	private int subscribe;
 	
+	public int getSubscribe() {
+		return subscribe;
+	}
+	public void setSubscribe(int subscribe) {
+		this.subscribe = subscribe;
+	}
 	public String getEmail() {
 		return email;
 	}
@@ -76,6 +83,15 @@ public class Member {
 	public Member() {
 		// TODO Auto-generated constructor stub
 	}
-		
+	
+	@Override
+	public String toString() {
+		return "Member [email=" + email + ", password=" + password + ", nickname=" + nickname + ", cardnumber="
+				+ cardnumber + ", enddate=" + enddate + ", name=" + name + ", favoriteFilm=" + favoriteFilm
+				+ ", favoriteGenre=" + favoriteGenre + ", follower=" + follower + ", allReviews=" + allReviews
+				+ ", subscribe=" + subscribe + "]";
+	}
+	
+	
 }
 

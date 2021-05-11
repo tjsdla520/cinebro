@@ -13,7 +13,7 @@ meDelete=cinebro.members.controller.MemberDeleteController
 bridge=cinebro.pay.controller.BridgeController
 pay=cinebro.pay.controller.PayController
 ##film Section
-##filmPlay=cinebro.filmplay.controller.FilmPlayController
+filmPlay=cinebro.filmplay.controller.FilmPlayController
 ##genrePlay=cinebro.filmplay.controller.GenrePlayController
 ##review Section
 ##reviewList=cinebro.reviews.controller.ReviewListController

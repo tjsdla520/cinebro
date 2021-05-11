@@ -14,7 +14,7 @@
 	<c:if test="${ sessionScope.loginfo.email != 'admin'}">
 		<c:set var="whologin" value="1" />
 	</c:if>
-</c:if>s
+</c:if>
 <head>
 </head>
 <body>
@@ -29,36 +29,58 @@
 			<div class="row">
 				<div class="col-lg-1">
 					<div class="header__logo">
-						<a href="<%=contextPath%>/anime-main/main.jsp"> <img src="<%=contextPath%>/img/logo.png" alt="">
+						<a href="<%=contextPath%>/anime-main/main.jsp"> <img
+							src="<%=contextPath%>/img/logo.png" alt="">
 						</a>
 					</div>
 				</div>
 				<div class="col-lg-8">
 					<div class="header__nav">
 						<nav class="header__menu mobile-menu">
-							<ul> 
-								<li class="arrow_carrot-down"><a href="<%=NoForm%>bridge">영화n보러가기</a></li>
-								<li class="arrow_carrot-down"><a href="<%=NoForm%>reviewList">영화&리뷰</a></li>
+							<ul>
+								
+									<li class="arrow_carrot-down">
+									<c:choose>
+										<c:when
+											test="${whologin == 0}">
+											<a href="<%=NoForm%>meLogin"> 영화n보러가기</a>
+										</c:when> 
+										<c:when test="${whologin != 0}">
+											<c:if test="${sessionScope.loginfo.subscribe == 0}"> 
+												<a href="<%=NoForm%>bridge"> 영화n보러가기</a>
+											</c:if>
+									${sessionScope.loginfo.subscribe}		
+											<c:if test="${sessionScope.loginfo.subscribe == 1}">
+												<a href="<%=NoForm%>filmPlay"> 영화n보러가기</a>
+											</c:if>
+										</c:when>
+									</c:choose>
+									</li>
+								
+								<li class="arrow_carrot-down"><a
+									href="<%=NoForm%>reviewList">영화&리뷰</a></li>
 								<li class="arrow_carrot-down"><a href="<%=NoForm%>filmList">영화리스트</a></li>
-								<li class="arrow_carrot-down"><a href="<%=NoForm%>memberList">멤버</a></li>
+								<li class="arrow_carrot-down"><a
+									href="<%=NoForm%>memberList">멤버</a></li>
 								<li class="arrow_carrot-down"><a href="<%=NoForm%>search">검색</a></li>
 								<c:if test="${whologin != 0}">
-								 	
-									<li class="btn" style="color: white"> ${sessionScope.loginfo.nickname}님										 
-										 <span class="arrow_carrot-down"></span>
-                                        <ul class="dropdown">
-                                        <li><a href="<%=NoForm%>myproFile">myProfile</a></li>
-                                        <li><a href="<%=NoForm%>myFilms">Films</a></li>
-                                        <li><a href="<%=NoForm%>myReviews">Reviews</a></li>
-                                        <li><a href="<%=NoForm%>myWish">myWish</a></li>
-                                        <li><a href="<%=NoForm%>myFollowing">myFollowing</a></li>
-                                        <li><a href="<%=NoForm%>meDelete&email=${sessionScope.loginfo.email}">회원탈퇴</a></li>
-                                        <c:if test="${whologin == 2}">
-										 <li><a href="<%=NoForm%>inSertfilm">영화 등록</a></li>
-								    
-								       </c:if>	
-									  </ul>
-									</li>                             
+
+									<li class="btn" style="color: white">
+										${sessionScope.loginfo.nickname}님 <span
+										class="arrow_carrot-down"></span>
+										<ul class="dropdown">
+											<li><a href="<%=NoForm%>myproFile">myProfile</a></li>
+											<li><a href="<%=NoForm%>myFilms">Films</a></li>
+											<li><a href="<%=NoForm%>myReviews">Reviews</a></li>
+											<li><a href="<%=NoForm%>myWish">myWish</a></li>
+											<li><a href="<%=NoForm%>myFollowing">myFollowing</a></li>
+											<li><a
+												href="<%=NoForm%>meDelete&email=${sessionScope.loginfo.email}">회원탈퇴</a></li>
+											<c:if test="${whologin == 2}">
+												<li><a href="<%=NoForm%>inSertfilm">영화 등록</a></li>
+											</c:if>
+										</ul>
+									</li>
 								</c:if>
 							</ul>
 						</nav>
@@ -69,13 +91,13 @@
 						<c:choose>
 							<c:when test="${whologin==0 }">
 								<a href="<%=NoForm%>meLogin">로그인</a>
-								<a href="<%=NoForm%>meInsert">회원가입</a>				
+								<a href="<%=NoForm%>meInsert">회원가입</a>
 							</c:when>
 							<c:when test="${whologin !=0 }">
 								<a href="<%=NoForm%>meLogout">로그아웃</a>
-							</c:when>							
+							</c:when>
 						</c:choose>
-							
+
 					</div>
 				</div>
 			</div>

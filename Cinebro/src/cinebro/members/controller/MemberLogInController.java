@@ -58,7 +58,6 @@ public class MemberLogInController extends SuperClass {
 		}else { 
 			System.out.println("로그인 성공");
 			super.session.setAttribute("loginfo", bean);
-		
 			// 메인 페이지로 이동합니다.
 			new MainController().doGet(request, response); 
 		}
