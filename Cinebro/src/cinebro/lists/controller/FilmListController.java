@@ -8,8 +8,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import cinebro.common.controller.SuperClass;
-import cinebro.films.model.Film;
-import cinebro.lists.model.FilmListDao;
+
+import cinebro.lists.model.*;
 
 public class FilmListController extends SuperClass {
 	private static final String email = null;
@@ -19,17 +19,22 @@ public class FilmListController extends SuperClass {
 	public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		super.doGet(request, response);
 		
-		FilmListDao dao = new FilmListDao();
-		List<Film> lists = dao.SelectDataList(0, 0);
-		
 		FilmListDao dao1 = new FilmListDao();
-		List<Film> lists1 = dao1.SelectByLike(email);
+		List<FilmList> lists1 = dao1.SelectDataList();
+		
+		request.setAttribute("lists1", lists1);
+		
+		
+		//////////////////////////일단 전체선택만 가능하도록 처리
 		
 		FilmListDao dao2 = new FilmListDao();
-		List<Film> lists2 = dao2.SelectByPopular();
+		List<FilmList> lists2 = dao2.SelectByLike(email);
 		
 		FilmListDao dao3 = new FilmListDao();
-		List<Film> lists3 = dao3.SelectByAdmin();
+		List<FilmList> lists3 = dao3.SelectByPopular();
+		
+		FilmListDao dao4 = new FilmListDao();
+		List<FilmList> lists4 = dao4.SelectByAdmin();
 		
 		request.setAttribute("lists", lists1);
 		
