@@ -5,9 +5,14 @@ public class FilmList {
 	private String email ;
 	private String list_title ;
 	private String comments ;
+	private String nickname ;
 	
-	public FilmList() {
-		// TODO Auto-generated constructor stub
+	public String getNickname() {
+		return nickname;
+	}
+
+	public void setNickname(String nickname) {
+		this.nickname = nickname;
 	}
 
 	public int getId() {
@@ -43,6 +48,8 @@ public class FilmList {
 	}
 	
 	
-	
+	public FilmList() {
+		// TODO Auto-generated constructor stub
+	}
 
 }

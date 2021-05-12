@@ -34,17 +34,19 @@ int rightButton = 2;
 						</tr>
 					</thead>
 					<tbody>
+					<c:forEach var="bean1" items="${requestScope.lists1}">
 						<tr>
-							<td><a href="<%=NoForm%>filmListDetail&list_title=${bean.list_title}&${requestScope.parameters}">${bean.list_title}</a></td>
-							<td>${bean.company}</td>
-							<td>${bean.image}</td>
+							<td> <a href="<%=NoForm%>filmListDetail&id=${bean1.id}&${requestScope.parameters}">${bean1.list_title}</a> </td>
+							<td>${bean1.nickname}</td>
+							<td>${bean1.comments}</td>
 						</tr>
+					</c:forEach>
 					</tbody>
 				</table>
 				</table>
 			</div>
 			
-			<br><br><br>
+			<%-- <br><br><br>
 			
 			<div class="panel-heading">
 				<h1>
@@ -62,9 +64,9 @@ int rightButton = 2;
 					</thead>
 					<tbody>
 						<tr>
-							<td><a href="<%=NoForm%>filmListDetail&list_title=${bean.list_title}&${requestScope.parameters}">${bean.list_title}</a></td>
-							<td>${bean.company}</td>
-							<td>${bean.image}</td>
+							<td><a href="<%=NoForm%>filmListDetail&id=${bean.id}&${requestScope.parameters}">${bean.list_title}</a></td>
+							<td>${bean.nickname}</td>
+							<td>${bean.comments}</td>
 						</tr>
 					</tbody>
 				</table>
@@ -89,9 +91,9 @@ int rightButton = 2;
 					</thead>
 					<tbody>
 						<tr>
-							<td><a href="<%=NoForm%>filmListDetail&list_title=${bean.list_title}&${requestScope.parameters}">${bean.list_title}</a></td>
-							<td>${bean.company}</td>
-							<td>${bean.image}</td>
+							<td><a href="<%=NoForm%>filmListDetail&id=${bean.id}&${requestScope.parameters}">${bean.list_title}</a></td>
+							<td>${bean.nickname}</td>
+							<td>${bean.comments}</td>
 						</tr>
 					</tbody>
 				</table>
@@ -116,14 +118,14 @@ int rightButton = 2;
 					</thead>
 					<tbody>
 						<tr>
-							<td><a href="<%=NoForm%>filmListDetail&list_title=${bean.list_title}&${requestScope.parameters}">${bean.list_title}</a></td>
-							<td>${bean.company}</td>
-							<td>${bean.image}</td>
+							<td><a href="<%=NoForm%>filmListDetail&id=${bean.id}&${requestScope.parameters}">${bean.list_title}</a></td>
+							<td>${bean.nickname}</td>
+							<td>${bean.comments}</td>
 						</tr>
 					</tbody>
 				</table>
 				</table>
-			</div>
+			</div> --%>
 	
 	<jsp:include page="./../anime-main/footer.jsp" />
 </body>
