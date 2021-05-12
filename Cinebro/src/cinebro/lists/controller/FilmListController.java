@@ -21,16 +21,19 @@ public class FilmListController extends SuperClass {
 		
 		FilmListDao dao = new FilmListDao();
 		List<Film> lists = dao.SelectDataList(0, 0);
+		
 		FilmListDao dao1 = new FilmListDao();
 		List<Film> lists1 = dao1.SelectByLike(email);
+		
 		FilmListDao dao2 = new FilmListDao();
 		List<Film> lists2 = dao2.SelectByPopular();
+		
 		FilmListDao dao3 = new FilmListDao();
 		List<Film> lists3 = dao3.SelectByAdmin();
 		
 		request.setAttribute("lists", lists1);
 		
-		String gotopage = "/film/filmList.jsp" ;
+		String gotopage = "/lists/filmList.jsp" ;
 		super.GotoPage(gotopage);
 	}	
 

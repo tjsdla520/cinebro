@@ -27,8 +27,8 @@ reviewList=cinebro.reviews.controller.ReviewListController
 ##film Section
 ##filmDetail=cinebro.films.controller.FilmDetailController
 ##filmlist Section
-##filmList=cinebro.lists.controller.FilmListController
-##filmListDetail=cinebro.lists.controller.FilmListDetailController
+filmList=cinebro.lists.controller.FilmListController
+filmListDetail=cinebro.lists.controller.FilmListDetailController
 ##likefilmList=cinebro.lists.controller.LikeFilmListController
 ##member Section
 memberList=cinebro.following.controller.MemberListController

@@ -49,7 +49,6 @@
 											<c:if test="${sessionScope.loginfo.subscribe == 0}"> 
 												<a href="<%=NoForm%>bridge"> 영화n보러가기</a>
 											</c:if>
-									${sessionScope.loginfo.subscribe}		
 											<c:if test="${sessionScope.loginfo.subscribe == 1}">
 												<a href="<%=NoForm%>filmPlay"> 영화n보러가기</a>
 											</c:if>
