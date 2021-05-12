@@ -14,7 +14,7 @@ bridge=cinebro.pay.controller.BridgeController
 pay=cinebro.pay.controller.PayController
 ##film Section
 filmPlay=cinebro.filmplay.controller.FilmPlayController
-##genrePlay=cinebro.filmplay.controller.GenrePlayController
+genrePlay=cinebro.filmplay.controller.GenrePlayController
 ##review Section
 reviewList=cinebro.reviews.controller.ReviewListController
 reviewEdit=cinebro.reviews.controller.ReviewEditController
@@ -37,7 +37,7 @@ memberList=cinebro.following.controller.MemberListController
 ##search Section
 search=cinebro.search.controller.SearchController
 ##profile Section
-##myproFile=cinebro.profile.controller.MyproFileController
+myproFile=cinebro.profile.controller.MyproFileController
 ##editNickname=cinebro.profile.controller.EditNicknameController
 ##myFilms=cinebro.profile.controller.MyFilmsController
 ##myReviews=cinebro.profile.controller.MyReviewsController
