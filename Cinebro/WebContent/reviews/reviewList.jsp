@@ -23,7 +23,7 @@
 
 					<c:forEach var="bean" items="${requestScope.reviewlists}">
 						<section>
-							<h3><a href="<%=NoForm%>filmListDetail&id=${bean.id}">${bean.filmTitle}</a> </h3>
+							<h3><a href="<%=NoForm%>reviewDetail&id=${bean.id}">${bean.filmTitle}</a> </h3>
 							<p >${bean.writer}</p>
 							<p>${bean.content}</p>
 							<p>${bean.rating}</p>

@@ -52,4 +52,11 @@ public class FilmList {
 		// TODO Auto-generated constructor stub
 	}
 
+	@Override
+	public String toString() {
+		return "FilmList [id=" + id + ", email=" + email + ", list_title=" + list_title + ", comments=" + comments
+				+ ", nickname=" + nickname + "]";
+	}
+	
+	
 }
