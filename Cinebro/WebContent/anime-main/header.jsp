@@ -58,7 +58,7 @@
 								
 								<li class="arrow_carrot-down"><a
 									href="<%=NoForm%>reviewList">영화&리뷰</a></li>
-								<li class="arrow_carrot-down"><a href="<%=NoForm%>filmList">영화리스트</a></li>
+								<li class="arrow_carrot-down"><a href="<%=NoForm%>filmList&email=${sessionScope.loginfo.email}">영화리스트</a></li>
 								<li class="arrow_carrot-down"><a
 									href="<%=NoForm%>memberList">멤버</a></li>
 								<li class="arrow_carrot-down"><a href="<%=NoForm%>search">검색</a></li>
