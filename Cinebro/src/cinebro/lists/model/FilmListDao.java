@@ -96,8 +96,8 @@ public class FilmListDao extends SuperDao {
 		PreparedStatement pstmt = null ;
 		ResultSet rs = null ;
 		
-		String sql = "  " ;
-		
+		String sql = " select l.id, l.email, l.comments, l.list_title, m.nickname, count(*) as cnt from lists l inner join likefilmlists lkf on l.id = lkf.lklistno inner join members m on l.email = m.email group by l.id, l.email, l.comments, l.list_title, m.nickname order by cnt desc " ;
+			
 		List<FilmList> lists3 = new ArrayList<FilmList>();
 		
 		try {
