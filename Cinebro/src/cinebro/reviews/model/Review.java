@@ -1,3 +1,5 @@
+
+
 package cinebro.reviews.model;
 
 import java.util.Date;
@@ -74,6 +76,12 @@ public class Review {
 	}
 	public void setRating(int rating) {
 		this.rating = rating;
+	}
+	@Override
+	public String toString() {
+		return "Review [id=" + id + ", writer=" + writer + ", filmTitle=" + filmTitle + ", content=" + content
+				+ ", liked=" + liked + ", watched=" + watched + ", watchDate=" + watchDate + ", writeDate=" + writeDate
+				+ ", getlike=" + getlike + ", rating=" + rating + "]";
 	}
 	
 	
