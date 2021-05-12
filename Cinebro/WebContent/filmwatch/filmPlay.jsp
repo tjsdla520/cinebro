@@ -4,14 +4,78 @@
 <!DOCTYPE html>
 <html lang="zxx">
 <head>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+.dropbtn {
+  background-color: red;
+  color: white;
+  padding: 10px;
+  font-size:20px;
+  border: none;
+}
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f1f1f1;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+.dropdown-content a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+.dropdown-content a:hover {background-color: #ddd;}
+
+.dropdown:hover .dropdown-content {display: block;}
+
+.dropdown:hover .dropbtn {background-color: red;}
+</style>
 </head>
 <body>
 	<%-- <%@ include file="header.jsp" %> --%>
 	<%-- <jsp:include page="<%=contextPath%>/anime-main/header.jsp"/> --%>
 	<jsp:include page="./../anime-main/header.jsp"/>
-	<!-- Product Section Begin -->
-	<section class="product spad">
+
+
+	
 		<div class="container">
+ <div class="dropdown">
+  <button class="dropbtn"><b>장르별 보러가기</b></button>
+  <div class="dropdown-content">
+    <a href="<%=NoForm%>genrePlay">가족</a>
+    <a href="#">공연</a>
+    <a href="#">공포(호러)</a>
+    <a href="#">다큐멘터리</a>
+    <a href="#">드라마</a>
+    <a href="#">멜로/로멘스</a>
+    <a href="#">뮤지컬</a>
+    <a href="#">미스터리</a>
+    <a href="#">범죄</a>
+    <a href="#">사극</a>
+    <a href="#">서부극(웨스턴)</a>
+    <a href="#">스릴러</a>
+    <a href="#">애니메이션</a>
+    <a href="#">액션</a>
+    <a href="#">어드벤처</a>
+    <a href="#">전쟁</a>
+    <a href="#">코미디</a>
+    <a href="#">판타지</a>
+    <a href="#">SF</a> 
+  </div>
+</div>
+<br><br>
 			<div class="row">
 				<div class="col-lg-8">
 					<div class="trending__product">
