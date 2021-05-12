@@ -65,7 +65,7 @@
         
         <table>
             <tr>
-                <td >아이디</td>
+                <td >이름</td>
                 <td><%=id %></td>
             </tr>
                         
@@ -75,7 +75,7 @@
             </tr>
                     
             <tr>
-                <td>카드 만료날짜</td>
+                <td>카드 만료일</td>
                 <td><%=enddate %></td>
             </tr>
                     
@@ -88,7 +88,8 @@
         </table>
         
         <br>
-        <input type="button" value="확인">
+        <button onclick="location.href='<%=NoForm%>filmPlay'">영화보러가기</button >
+        <input type="button" value="뒤로가기" onclick="history.back(-1);">
     </div>
     <jsp:include page="./../anime-main/footer.jsp"/>
 </body>
