@@ -43,10 +43,9 @@ int rightButton = 2;
 					</c:forEach>
 					</tbody>
 				</table>
-				</table>
 			</div>
 			
-			<%-- <br><br><br>
+			 <br><br><br>
 			
 			<div class="panel-heading">
 				<h1>
@@ -63,13 +62,14 @@ int rightButton = 2;
 						</tr>
 					</thead>
 					<tbody>
+					<c:forEach var="bean3" items="${requestScope.lists3}">
 						<tr>
-							<td><a href="<%=NoForm%>filmListDetail&id=${bean.id}&${requestScope.parameters}">${bean.list_title}</a></td>
-							<td>${bean.nickname}</td>
-							<td>${bean.comments}</td>
+							<td><a href="<%=NoForm%>filmListDetail&id=${bean3.id}&${requestScope.parameters}">${bean3.list_title}</a></td>
+							<td>${bean3.nickname}</td>
+							<td>${bean3.comments}</td>
 						</tr>
+					</c:forEach>
 					</tbody>
-				</table>
 				</table>
 			</div>
 			
@@ -90,42 +90,20 @@ int rightButton = 2;
 						</tr>
 					</thead>
 					<tbody>
+					<c:forEach var="bean2" items="${requestScope.lists2}">
 						<tr>
-							<td><a href="<%=NoForm%>filmListDetail&id=${bean.id}&${requestScope.parameters}">${bean.list_title}</a></td>
-							<td>${bean.nickname}</td>
-							<td>${bean.comments}</td>
+							<td><a href="<%=NoForm%>filmListDetail&id=${bean2.id}&${requestScope.parameters}">${bean2.list_title}</a></td>
+							<td>${bean2.nickname}</td>
+							<td>${bean2.comments}</td>
 						</tr>
+					</c:forEach>
 					</tbody>
 				</table>
 				</table>
 			</div>
 			
 			<br><br><br>
-			
-			<div class="panel-heading">
-				<h1>
-				<p class="text-white">운영자가 만든 영화 리스트</p>	
-				</h1>
-			</div>
-			<div class="panel-body">
-				<table class="table table-hover">
-					<thead>
-						<tr>
-							<th><p class="text-white">FILMLIST Subject</p></th>
-							<th><p class="text-white">WRITER</p></th>
-							<th><p class="text-white">FILMLIST COMMEND</p></th>
-						</tr>
-					</thead>
-					<tbody>
-						<tr>
-							<td><a href="<%=NoForm%>filmListDetail&id=${bean.id}&${requestScope.parameters}">${bean.list_title}</a></td>
-							<td>${bean.nickname}</td>
-							<td>${bean.comments}</td>
-						</tr>
-					</tbody>
-				</table>
-				</table>
-			</div> --%>
+		
 	
 	<jsp:include page="./../anime-main/footer.jsp" />
 </body>

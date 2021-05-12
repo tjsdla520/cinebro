@@ -14,7 +14,7 @@ public class ReviewDao extends SuperDao {
 		PreparedStatement pstmt = null ;
 		ResultSet rs = null ;
 
-		String sql = "select r.id, m.nickname, f.film_title, r.content, r.rating, r.watch_date, r.write_date, v.getlike from reviews r inner join members m on r.email = m.email inner join films f on r.film_id = f.id inner join view05 v on r.id=v.id order by getlike desc" ; 	
+		String sql = " select r.id, m.nickname, f.film_title, r.content, r.rating, r.watch_date, r.write_date, v.getlike from reviews r inner join members m on r.email = m.email inner join films f on r.film_id = f.id inner join view05 v on r.id=v.id order by getlike desc " ; 	
 		
 		
 		List<Review> lists = new ArrayList<Review>();
