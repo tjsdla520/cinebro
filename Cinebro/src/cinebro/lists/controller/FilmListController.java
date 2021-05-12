@@ -22,7 +22,6 @@ public class FilmListController extends SuperClass {
 		List<FilmList> lists1 = dao1.SelectDataList();
 		
 		request.setAttribute("lists1", lists1);
-		
 //////////////////////////내가 좋아요한	 필름리스트 조회	
 		String email = request.getParameter("email") ;
 		System.out.println(email);
@@ -32,7 +31,6 @@ public class FilmListController extends SuperClass {
 		List<FilmList> lists2 = dao2.SelectByLike(email);
 		
 		request.setAttribute("lists2", lists2);
-		
 		
 //////////////////////////인기많은	 필름리스트 조회		
 		FilmListDao dao3 = new FilmListDao();
