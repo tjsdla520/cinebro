@@ -38,10 +38,11 @@
 	<%-- <%@ include file="header.jsp" %> --%>
 	<%-- <jsp:include page="<%=contextPath%>/anime-main/header.jsp"/> --%>
 	<jsp:include page="./../anime-main/header.jsp"/>
-	<div class="container col-sm-offset-<%=offset%> col-sm-<%=mywidth%>">
-		<div class="panel panel-primary">
+	<div class="container">
+		<div class="panel panel-white">
+		 <p class="bg-danger text-white"><b>상세검색</b><p>
 			<div class="panel-heading">
-				<h4>상세검색</h4>
+				 
 			</div>
 			<div class="panel-body">
 				<table class="table table-hover">
