@@ -9,10 +9,6 @@ import javax.servlet.http.HttpServletResponse;
 
 import cinebro.common.controller.SuperClass;
 import cinebro.search.model.SearchDao;
-import shopping.board.model.Board;
-import shopping.board.model.BoardDao;
-import shopping.utility.FlowParameters;
-import shopping.utility.Paging;
 import cinebro.common.utility.*;
 import cinebro.films.model.Film;
 import cinebro.lists.model.FilmList;
@@ -25,7 +21,10 @@ public class SearchController extends SuperClass {
 		super.doGet(request, response);
 					
 		//request로 넘어온 페이징 정보들을 가지고 객체 생성해줌. 이제 아래서 tostring 하면 문자열이 만들어짐.
-		FlowParameters prm = new FlowParameters(request.getParameter("pageNumber"), request.getParameter("mode"), request.getParameter("keyword"));
+		FlowParameters prm = new FlowParameters(
+				request.getParameter("pageNumber"), 
+				request.getParameter("mode"), 
+				request.getParameter("keyword"));
 
 		String contextPath = request.getContextPath();
 		String url = contextPath + "/Cinebro?command=search";
@@ -36,7 +35,10 @@ public class SearchController extends SuperClass {
 		
 		System.out.println("total data size : "+ totalCount);
 		
-		Paging pageInfo = new Paging(prm.getPageNumber(), totalCount, url, prm.getMode(), prm.getKeyword());
+		Paging pageInfo = new Paging(prm.getPageNumber(), 
+				totalCount, url, 
+				prm.getMode(), 
+				prm.getKeyword());
 		
 		List<Film> lists = dao.SearchFilm(pageInfo.getBeginRow(),pageInfo.getEndRow(),prm.getMode(),prm.getKeyword());
 		System.out.println("board list count : " + lists.size());
