@@ -1,39 +1,36 @@
 package cinebro.lists.controller;
 
 import java.io.IOException;
+import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import cinebro.common.controller.SuperClass;
+import cinebro.films.model.Film;
 import cinebro.films.model.FilmDetailDao;
+import cinebro.lists.model.FilmList;
 import cinebro.lists.model.FilmListDao;
 import cinebro.lists.model.FilmListDetailDao;
 
 
 public class FilmListDetailController extends SuperClass {
 	
-	private Object id;
 
 	@Override
 	public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		super.doGet(request, response);
 		
-		int num = Integer.parseInt(request.getParameter("num")) ;
+		FilmListDetailDao dao = new FilmListDetailDao();
+		String id = request.getParameter("id");
 		
-		FilmListDao dao = new FilmListDao();
+		List<FilmList> lists = dao.SelectByOne(id);
 		
-		FilmListDetailDao bean = dao.SelectByOne(id) ; 
+		request.setAttribute("lists", lists);
 		
-		if (bean == null) {
-			new FilmListController().doGet(request, response);
-			
-		} else {
-			request.setAttribute("bean", bean);
-			String gotopage = "/product/prDetailView.jsp" ;
-			super.GotoPage(gotopage);
-		}
+		String gotopage = "lists/filmListDetail.jsp";
+		super.GotoPage(gotopage);
 	}
 
 	@Override

@@ -25,7 +25,7 @@ likereView=cinebro.reviews.controller.LikeReviewController
 ##wishFilm=cinebro.reviews.controller.WishFilmController
 ##reviewWrite=cinebro.reviews.controller.ReviewWriteController
 ##film Section
-##filmDetail=cinebro.films.controller.FilmDetailController
+filmDetail=cinebro.films.controller.FilmDetailController
 ##filmlist Section
 filmList=cinebro.lists.controller.FilmListController
 filmListDetail=cinebro.lists.controller.FilmListDetailController
