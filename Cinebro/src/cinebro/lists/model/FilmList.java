@@ -6,7 +6,16 @@ public class FilmList {
 	private String list_title ;
 	private String comments ;
 	private String nickname ;
+	private String film_title;
 	
+	public String getFilm_title() {
+		return film_title;
+	}
+
+	public void setFilm_title(String film_title) {
+		this.film_title = film_title;
+	}
+
 	public String getNickname() {
 		return nickname;
 	}
