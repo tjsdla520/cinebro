@@ -5,34 +5,30 @@
 <!DOCTYPE html>
 <html lang="zxx">
 <head>
-<style type="text/css">
-	p{ color: white;}
-</style>
+
 </head>
 <body>
 	<%-- <%@ include file="header.jsp" %> --%>
 	<%-- <jsp:include page="<%=contextPath%>/anime-main/header.jsp"/> --%>
 	<jsp:include page="./../anime-main/header.jsp"/>
-	 
-			<div class="panel-heading">
-				<h3 style="color: white;">
-				인기있는 영화리뷰
-				</h3>
+	<h3 style="color: white;">인기있는 영화리뷰</h3>
+	<c:forEach var="bean" items="${requestScope.reviewlists}">
+	
+		<div class="media">
+			<div class="media-left media-top">
+				<img src="img/${bean.filmTitle}.jpg" class="media-object" style="width: 180px">
 			</div>
-			<div class="panel-body">
-
-					<c:forEach var="bean" items="${requestScope.reviewlists}">
-						<section>
-							<h3><a href="<%=NoForm%>reviewDetail&id=${bean.id}">${bean.filmTitle}</a> </h3>
-							<p >${bean.writer}</p>
-							<p>${bean.content}</p>
-							<p>${bean.rating}</p>
-							<p>${bean.getlike}</p>
-							<p>${bean.writeDate}</p>
-						</section>>
-					</c:forEach>
-
+			<div class="media-body">
+				<h4 class="media-heading"><a href="<%=NoForm%>reviewDetail&id=${bean.id}">${bean.filmTitle}</a> </h4>
+				<p></p>
+				<p style="color: white; margin-left: 30px" >작성자 : ${bean.writer}</p>
+				<p style="color: white; margin-left: 30px">리뷰 내용 : ${bean.content}</p>
+				<p style="color: white; margin-left: 30px">별점 : ${bean.rating}</p>
+				<p style="color: white; margin-left: 30px">좋아요 수 : ${bean.getlike}</p>
+				<p style="color: white; margin-left: 30px">작성일 : ${bean.writeDate}</p>
 			</div>
+		</div>
+	</c:forEach>
 	<jsp:include page="./../anime-main/footer.jsp"/>
 </body>
 </html>

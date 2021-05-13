@@ -38,53 +38,29 @@
 </head>
 
 <body>
-	<%-- <%@ include file="header.jsp" %> --%>
-	<%-- <jsp:include page="<%=contextPath%>/anime-main/header.jsp"/> --%>
 	<jsp:include page="./../anime-main/header.jsp"/>
 
-
-    <% 
-        
-        request.setCharacterEncoding("UTF-8");  
-    
-        String id = request.getParameter("id");
-        String cardnumber = request.getParameter("cardnumber");
-        String enddate = request.getParameter("enddate");
-        String password = request.getParameter("password");
-
-
-        
-      
-    %>
     
     <div id="wrap">
         <br><br>
         <b><font size="5" color="white">카드 정보를 확인하세요.</font></b>
         <br><br>
-    
-        
+
         <table>
             <tr>
                 <td >이름</td>
-                <td><%=id %></td>
+                <td>${bean.name }</td>
             </tr>
                         
             <tr>
                 <td >카드번호</td>
-                <td><%=cardnumber %></td>
+                <td>${bean.cardnumber }</td>
             </tr>
                     
             <tr>
                 <td>카드 만료일</td>
-                <td><%=enddate %></td>
-            </tr>
-                    
-            <tr>
-                <td>비밀번호</td>
-                <td><%=password %></td>
-            </tr>
-                    
-            
+                <td>${bean.enddate}</td>
+            </tr>    
         </table>
         
         <br>

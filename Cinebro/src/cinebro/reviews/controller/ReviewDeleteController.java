@@ -15,7 +15,10 @@ public class ReviewDeleteController extends SuperClass {
 	public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		super.doGet(request, response);
 		ReviewDao dao = new ReviewDao();
-		dao.selectReview(id);
+		String id = request.getParameter("id");
+		int cnt = dao.deleteReview(id);
+		
+		new ReviewListController().doGet(request, response);
 	}
 
 	@Override
