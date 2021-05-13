@@ -8,7 +8,6 @@ public class Review {
 	
 	private int id;               //리뷰 아이디
 	private String writer;        //리뷰어
-	private int filmId;            //영화아이디
 	private String filmTitle;     //영화제목
 	private String content;       //리뷰내용
 	private int liked;            //좋아요 여부
@@ -20,18 +19,6 @@ public class Review {
 	
 	
 	
-	public int getFilmId() {
-		return filmId;
-	}
-
-
-
-	public void setFilmId(int filmId) {
-		this.filmId = filmId;
-	}
-
-
-
 	public int getId() {
 		return id;
 	}
