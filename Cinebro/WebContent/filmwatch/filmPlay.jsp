@@ -55,24 +55,24 @@
   <button class="dropbtn"><b>장르별 보러가기</b></button>
   <div class="dropdown-content">
     <a href="<%=NoForm%>genrePlay">가족</a>
-    <a href="#">공연</a>
-    <a href="#">공포(호러)</a>
-    <a href="#">다큐멘터리</a>
-    <a href="#">드라마</a>
-    <a href="#">멜로/로멘스</a>
-    <a href="#">뮤지컬</a>
-    <a href="#">미스터리</a>
-    <a href="#">범죄</a>
-    <a href="#">사극</a>
-    <a href="#">서부극(웨스턴)</a>
-    <a href="#">스릴러</a>
-    <a href="#">애니메이션</a>
-    <a href="#">액션</a>
-    <a href="#">어드벤처</a>
-    <a href="#">전쟁</a>
-    <a href="#">코미디</a>
-    <a href="#">판타지</a>
-    <a href="#">SF</a> 
+    <a href="<%=NoForm%>performance">공연</a>
+    <a href="<%=NoForm%>horror">공포(호러)</a>
+    <a href="<%=NoForm%>documentary">다큐멘터리</a>
+    <a href="<%=NoForm%>drama">드라마</a>
+    <a href="<%=NoForm%>romance">멜로/로멘스</a>
+    <a href="<%=NoForm%>musical">뮤지컬</a>
+    <a href="<%=NoForm%>mystery">미스터리</a>
+    <a href="<%=NoForm%>crime">범죄</a>
+    <a href="<%=NoForm%>historical">사극</a>
+    <a href="<%=NoForm%>western">서부극(웨스턴)</a>
+    <a href="<%=NoForm%>thriller">스릴러</a>
+    <a href="<%=NoForm%>animation">애니메이션</a>
+    <a href="<%=NoForm%>action">액션</a>
+    <a href="<%=NoForm%>adventure">어드벤처</a>
+    <a href="<%=NoForm%>war">전쟁</a>
+    <a href="<%=NoForm%>comedy">코미디</a>
+    <a href="<%=NoForm%>fantasy">판타지</a>
+    <a href="<%=NoForm%>science">SF</a> 
   </div>
 </div>
 <br><br>
