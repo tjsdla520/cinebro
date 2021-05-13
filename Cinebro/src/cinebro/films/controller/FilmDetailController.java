@@ -33,7 +33,7 @@ public class FilmDetailController extends SuperClass {
 			System.out.println("배우는" +actor);
 		}
 		session.setAttribute("fbean", fbean);
-		String gotopage = "/films/filmDetail.jsp";
+		String gotopage = "/reviews/filmDetail.jsp";
 		super.GotoPage(gotopage);
 	}
 
