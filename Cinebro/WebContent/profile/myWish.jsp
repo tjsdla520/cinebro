@@ -9,7 +9,7 @@
 	<%-- <%@ include file="header.jsp" %> --%>
 	<%-- <jsp:include page="<%=contextPath%>/anime-main/header.jsp"/> --%>
 	<jsp:include page="./../anime-main/header.jsp"/>
-	내가 보고싶어요한 목록
+	내가 보고싶어요한 목록dkkkkkkkkkkkkk
 	
 	<jsp:include page="./../anime-main/footer.jsp"/>
 </body>

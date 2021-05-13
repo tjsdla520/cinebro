@@ -12,15 +12,15 @@ int rightButton = 2;
 <!DOCTYPE html>
 <html lang="zxx">
 <head>
+<style type="text/css">
+	tr{color: white}
+</style>
 </head>
 <body>
 	<%-- <%@ include file="header.jsp" %> --%>
 	<%-- <jsp:include page="<%=contextPath%>/anime-main/header.jsp"/> --%>
 	<jsp:include page="./../anime-main/header.jsp" />
 
-	<a href="<%=NoForm%>filmList&mode=all"><button>전체영화리스트</button></a>
-	<a href="<%=NoForm%>filmList&mode=like"><button>내가좋아요한영화리스트</button></a>
-	<a href="<%=NoForm%>filmList&mode=popular"><button>인기영화리스트</button></a>
 			<div class="panel-heading">
 				<h1>
 				<p class="text-white">전체 영화 리스트</p>	
@@ -36,7 +36,7 @@ int rightButton = 2;
 						</tr>
 					</thead>
 					<tbody>
-					<c:forEach var="bean1" items="${requestScope.lists}">
+					<c:forEach var="bean1" items="${requestScope.lists1}">
 						<tr>
 							<td> <a href="<%=NoForm%>filmListDetail&id=${bean1.id}&${requestScope.parameters}">${bean1.list_title}</a> </td>
 							<td>${bean1.nickname}</td>
@@ -64,7 +64,7 @@ int rightButton = 2;
 						</tr>
 					</thead>
 					<tbody>
-					<c:forEach var="bean3" items="${requestScope.list3}">
+					<c:forEach var="bean3" items="${requestScope.lists3}">
 						<tr>
 							<td><a href="<%=NoForm%>filmListDetail&id=${bean3.id}&${requestScope.parameters}">${bean3.list_title}</a></td>
 							<td>${bean3.nickname}</td>
@@ -92,7 +92,7 @@ int rightButton = 2;
 						</tr>
 					</thead>
 					<tbody>
-					<c:forEach var="bean2" items="${requestScope.list2}">
+					<c:forEach var="bean2" items="${requestScope.lists2}">
 						<tr>
 							<td><a href="<%=NoForm%>filmListDetail&id=${bean2.id}&${requestScope.parameters}">${bean2.list_title}</a></td>
 							<td>${bean2.nickname}</td>
