@@ -10,7 +10,7 @@
 	<%-- <jsp:include page="<%=contextPath%>/anime-main/header.jsp"/> --%>
 	<jsp:include page="./../anime-main/header.jsp"/>
 	<div class="container">
-		<div class="row">
+<%-- 		<div class="row">
 				<div class="col-lg-8">
 					<div class="trending__product">
 						<div class="row">
@@ -91,11 +91,60 @@
 									</div>
 								</div>
 							</div>
-					   </div>
+					   </div> --%>
+					   
+					   <!-- 새로운 로직 -->
+					   <div class="panel-body">
+				<table class="table table-hover" >
+					<thead>
+						<tr>
+							<th><p class="text-white">전체 영화 목록</p></th>
+						</tr>
+					</thead>
+					<tbody>
+					<class="text-body">
+					<c:forEach var="bean1" items="${requestScope.films}">
+						<tr>
+							<td>${bean1.film_title}</a> </td>
+							<td>${bean1.country}</td>
+							<td>${bean1.director}</td>
+							<td>${bean1.id}</td>
+							<td>${bean1.year}</td>
+						</tr>
+					</c:forEach>
+					</tbody>
+				</table>
+			</div>
+			 <br><br><br>
+			
+			<div class="panel-heading" class="text-body">
+				<h1>
+				<p class="text-white">흠..가족장르..</p>	
+				</h1>
+			</div>
+			<div class="panel-body">
+				<table class="table table-hover">
+					<thead>
+						<tr>
+							<th><p class="text-white">가족 장르</p></th>					
+						</tr>
+					</thead>
+					<tbody>
+					<c:forEach var="bean2" items="${requestScope.films}">
+						<tr>
+							<td>${bean2.film_title}</a> </td>
+							<td>${bean2.country}</td>
+							<td>${bean2.director}</td>
+							<td>${bean2.id}</td>
+							<td>${bean2.year}</td>
+						</tr>
+					</c:forEach>
+					</tbody>
+				</table>
+			</div>
+					   
 					</div>
-				</div>
-		   </div>
-		</div>
+	
 	<jsp:include page="./../anime-main/footer.jsp"/>
 </body>
 </html>
