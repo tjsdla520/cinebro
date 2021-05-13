@@ -1,4 +1,7 @@
+
 package cinebro.films.model;
+
+import java.util.List;
 
 public class Film {
 	private int id;
@@ -6,10 +9,38 @@ public class Film {
 	private String director;
 	private int year;
 	private String country;
+	private List<String> genres;
+	private List<String> actors;
 	
 	public Film() {
 		// TODO Auto-generated constructor stub
 	}
+	
+	
+	
+	public List<String> getGenres() {
+		return genres;
+	}
+
+
+
+	public void setGenres(List<String> genres) {
+		this.genres = genres;
+	}
+
+
+
+	public List<String> getActors() {
+		return actors;
+	}
+
+
+
+	public void setActors(List<String> actors) {
+		this.actors = actors;
+	}
+
+
 
 	public int getId() {
 		return id;
