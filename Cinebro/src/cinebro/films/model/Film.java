@@ -9,6 +9,7 @@ public class Film {
 	private String director;
 	private int year;
 	private String country;
+	private String name;
 	private List<String> genres;
 	private List<String> actors;
 	
@@ -84,11 +85,26 @@ public class Film {
 
 	
 
+	public String getName() {
+		return name;
+	}
+
+
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+
+
 	@Override
 	public String toString() {
 		return "Film [id=" + id + ", film_title=" + film_title + ", director=" + director + ", year=" + year
-				+ ", country=" + country  +  "]";
+				+ ", country=" + country + ", name=" + name + ", genres=" + genres + ", actors=" + actors + "]";
 	}
+
+
+
 	
 	
 }

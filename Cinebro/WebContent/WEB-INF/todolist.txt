@@ -41,7 +41,7 @@ reviewDetail=cinebro.reviews.controller.ReviewDetailController
 likereView=cinebro.reviews.controller.LikeReviewController
 ##watchedFilm=cinebro.reviews.controller.WatchedFilmController
 ##wishFilm=cinebro.reviews.controller.WishFilmController
-##reviewWrite=cinebro.reviews.controller.ReviewWriteController
+reviewWrite=cinebro.reviews.controller.ReviewWriteController
 ##film Section
 filmDetail=cinebro.films.controller.FilmDetailController
 ##filmlist Section
@@ -56,11 +56,11 @@ memberList=cinebro.following.controller.MemberListController
 search=cinebro.search.controller.SearchController
 ##profile Section
 myproFile=cinebro.profile.controller.MyproFileController
-##editNickname=cinebro.profile.controller.EditNicknameController
+editNickname=cinebro.profile.controller.EditNicknameController
 ##myFilms=cinebro.profile.controller.MyFilmsController
 ##myReviews=cinebro.profile.controller.MyReviewsController
-##myWish=cinebro.profile.controller.MyWishController
-##myFollowing=cinebro.profile.controller.MyFollowingController
+myWish=cinebro.profile.controller.MyWishController
+myFollowing=cinebro.profile.controller.MyFollowingController
 ##admin section
 ##inSertfilm=cinebro.admin.controller.InsertFilmController
 ##deleteFilm=cinebro.admin.controller.DeleteFilmController
