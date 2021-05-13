@@ -1,3 +1,4 @@
+
 package cinebro.reviews.controller;
 
 import java.io.IOException;
@@ -14,7 +15,8 @@ public class ReviewWriteController extends SuperClass {
 	@Override
 	public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		super.doGet(request, response);
-		String gotopage = "/reviews/reviewWriteForm.jsp";
+		String filmid = request.getParameter("id");
+		String gotopage = "/reviews/reviewWriteForm.jsp?id="+filmid;
 		super.GotoPage(gotopage);
 	}
 
@@ -23,6 +25,14 @@ public class ReviewWriteController extends SuperClass {
 		super.doPost(request, response);
 		
 		ReviewDao dao = new ReviewDao();
-		dao.insertReview(email,id);
+		
+		int id = Integer.parseInt(request.getParameter("filmid"));
+		String email = request.getParameter("email");
+		String content = request.getParameter("content");
+		int rating = Integer.parseInt(request.getParameter("rating"));
+		
+		int cnt = dao.insertReview(email, id, content, rating);
+		
+		new ReviewListController().doGet(request, response);
 	}	
 }

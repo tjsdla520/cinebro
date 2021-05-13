@@ -1,3 +1,4 @@
+
 package cinebro.reviews.controller;
 
 import java.io.IOException;
@@ -15,7 +16,11 @@ public class LikeReviewController extends SuperClass {
 	public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		super.doGet(request, response);
 		LikeReviewDao dao = new LikeReviewDao();
-		dao.insertLikeReview(email,id);
+		String id = request.getParameter("id");
+		String email = request.getParameter("email");
+		int cnt = dao.insertLikeReview(email,id);
+		
+		new ReviewDetailController().doGet(request, response);
 	}
 
 	@Override
