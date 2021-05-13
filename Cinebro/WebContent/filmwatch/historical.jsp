@@ -24,7 +24,7 @@
 					
 					<c:forEach var="bean1" items="${requestScope.films}">
 						<tr>
-							<td><span style="color:white">${bean1.film_title}</span> </td>
+							<td><span style="color:white">${bean1.film_title}'</span> </td>
 							<td><span style="color:white">${bean1.name}</span> </td>
 				
 						</tr>
@@ -32,8 +32,7 @@
 					</tbody>
 				</table>
 			</div>
-			 <br><br><br>
-				   
+			 <br><br><br>				   
 					</div>
 	
 	<jsp:include page="./../anime-main/footer.jsp"/>

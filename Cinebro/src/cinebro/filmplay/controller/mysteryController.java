@@ -13,7 +13,7 @@ import cinebro.films.model.FilmDao;
 
 
 
-public class GenrePlayController extends SuperClass {
+public class mysteryController extends SuperClass {
 	
 	@Override
 	public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -29,7 +29,7 @@ public class GenrePlayController extends SuperClass {
 		
 		
 		if(mode==null||mode.equals("")||mode.equals("all")) {
-			List<Film> films = dao.SelectDataByPk(genre);
+			List<Film> films = dao.SelectDataMystery(genre);
 		
 			request.setAttribute("films", films);
 			
