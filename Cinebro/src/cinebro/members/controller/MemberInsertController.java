@@ -21,7 +21,7 @@ public class MemberInsertController<PopularMember> extends SuperClass {
 		super.doGet(request, response);
 			
 		request.setAttribute("lists", lists);
-		
+	
 		String gotopage = "/members/meInsertForm.jsp" ;
 		super.GotoPage(gotopage);
 	}	

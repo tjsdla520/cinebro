@@ -19,7 +19,7 @@ public class ReviewDetailController extends SuperClass {
 		ReviewDao dao = new ReviewDao();
 		bean = dao.selectReview(request.getParameter("id"));
 		
-		request.setAttribute("bean", bean);
+		session.setAttribute("bean", bean);
 		String gotopage = "/reviews/reviewDetail.jsp";
 		super.GotoPage(gotopage);
 		

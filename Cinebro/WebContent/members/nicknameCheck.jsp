@@ -27,7 +27,7 @@
 		<div class="row" align="center">
 			<button class="btn btn-primary" type="button" 
 				onclick="meClose(${isCheck});">
-				닫s기
+				닫기
 			</button>
 		</div>
 	</div>

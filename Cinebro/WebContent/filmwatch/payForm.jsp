@@ -1,7 +1,14 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ include file="./../common/common.jsp"%>
-
+<%
+	/* position for grid system */	
+	int offset = 2 ;
+	int mywidth = twelve - 2 * offset ;
+	int formleft = 5 ;
+	int formright = twelve - formleft ;
+	int rightButton = 1 ;
+%> 
 <!DOCTYPE html>
 <html lang="zxx">
 <head>
@@ -32,49 +39,55 @@
 
 </head>
 <body>
-	<%-- <%@ include file="header.jsp" %> --%>
-	<%-- <jsp:include page="<%=contextPath%>/anime-main/header.jsp"/> --%>
-	<jsp:include page="./../anime-main/header.jsp"/>
-	 <div id="wrap">
-        <br><br>
-        <b><font size="6" color="white">카드결제</font></b>
-        <br><br><br>
-        
+	<jsp:include page="./../anime-main/header.jsp"/><div class="container" align="center">
+		<div>
+			<div style="margin-top: 50px">
+				<h3 align="center" style="color: white">결제 정보 입력</h3>
+			</div>
+			<br><br><br>
+			<div >
+				<form name="myform" class="form-horizontal" action="<%=YesForm%>" method="post">
 
-        
-        <form method="post" action="<%=YesForm%>">
-           <input type="hidden" name="command" value="pay">
-            <table>
-                <tr>
-                    <td id="title">이름</td>
-                    <td>
-                        <input type="text" name="id" maxlength="100" style="color: grey" placeholder="이름 입력"  >                
-                    </td>
-                </tr>                       
-                <tr>
-                    <td id="title">카드번호</td>
-                    <td>
-                        <input type="text" name="cardnumber" maxlength="100" style="color: grey" placeholder="카드번호 -제외하고 입력">
-                    </td>
-                </tr>
-               
-                <tr>
-                    <td id="title">카드 만료날짜</td>
-                    <td>
-                        <input type="text" name="enddate" maxlength="100" style="color: grey" placeholder="월/년도 입력">
-                    </td>
-                </tr>                  
-                <tr>
-                    <td id="title">비밀번호</td>
-                    <td>
-                        <input type="password" name="password" maxlength="100" style="color: grey" placeholder="비밀번호 입력">
-                    </td>
-                </tr>              
-            </table>
-            <br>
-            <input type="submit" value="결제"/>  <input type="button" value="취소">
-        </form>
-    </div>
+					<%--command 값 지정--%>
+					<input type="hidden" name="command" value="pay">
+					<input type="hidden" name="email" value="${sessionScope.loginfo.email }">
+					
+				    <div class="form-group">
+				      	<label class="control-label col-sm-<%=formleft%>" for="name" style="color: white">이름</label>
+				      	<div class="col-xs-3">
+				        	<input type="text" class="form-control" id="name" placeholder="카드에 명시된 이름 입력" 
+				        		name="name" value="${bean.name}">
+				      	</div>
+				    </div>
+					<div class="form-group" style="margin-top: 20px">
+				      	<label class="control-label col-sm-<%=formleft%>" for="cardnumber" style="color: white">카드번호</label>
+				      	<div class="col-xs-3">
+				        	<input type="text" class="form-control" id="cardnumber" name="cardnumber" value="${bean.cardnumber }" placeholder="카드번호 -제외하고 16자리 입력">
+				      	</div>
+				    </div>				    
+				    <div class="form-group" style="margin-top: 20px">
+						<label class="control-label col-sm-<%=formleft%>" for="cardpassword" style="color: white">카드비밀번호</label>
+				      	<div class="col-xs-3">          
+				        	<input type="password" class="form-control" id="cardpassword" placeholder="월년도 숫자만 입력" name="cardpassword" >
+				      	</div>
+				    </div>	
+				    <div class="form-group" style="margin-top: 20px">
+						<label class="control-label col-sm-<%=formleft%>" for="enddate" style="color: white">카드만료일</label>
+				      	<div class="col-xs-3">          
+				        	<input type="password" class="form-control" id="enddate" placeholder="카드비밀번호 입력" name="enddate" >
+				      	</div>
+				    </div>				    		    
+				    <div class="form-group" style="margin-top: 40px">        
+				      	<div class="col-sm-offset-<%=offset%> col-sm-<%=mywidth%>">
+				        	<button type="submit" class="btn btn-info btn-lg" >결제하기</button>
+				        	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				        	<button type="reset" class="btn btn-info btn-lg" >초기화</button>				        	
+				      	</div>
+				    </div>
+				</form>
+			</div>
+		</div>
+	</div>	
 <jsp:include page="./../anime-main/footer.jsp"/>
 </body>
 </html>

@@ -5,9 +5,9 @@
 	/* position for grid system */	
 	int offset = 2 ;
 	int mywidth = twelve - 2 * offset ;
-	int formleft = 3 ;
+	int formleft = 5 ;
 	int formright = twelve - formleft ;
-	int rightButton = 2 ;
+	int rightButton = 1 ;
 %> 
 
 <!DOCTYPE html>
@@ -37,7 +37,7 @@
 	
 	//닉네임 중복체크
 	function nicknameCheck(){
-		var nickname = document.myform.nickname.value;
+		var nickname = encodeURI(document.myform.nickname.value);
 		
 		<%-- 이메일관련 정규식표현생각. @가 필수로 들어가야 한다 등등
 		if(id.length < 4){
@@ -65,8 +65,8 @@
 	<jsp:include page="./../anime-main/header.jsp"/>
 
 	<div class="container" align="center">
-		<div >
-			<div >
+		<div>
+			<div style="margin-top: 50px">
 				<h4 align="center" style="color: white">회원 가입</h4>
 			</div>
 			<br><br><br>
@@ -81,19 +81,18 @@
 					
 				    <div class="form-group">
 				      	<label class="control-label col-sm-<%=formleft%>" for="email" style="color: white">이메일</label>
-				      	<div class="col-sm-<%=formright-rightButton%>">
+				      	<div class="col-xs-3">
 				        	<input type="text" class="form-control" id="email" placeholder="이메일 입력" 
 				        		name="email" onkeyup="isCheckFalse();" value="${bean.email}">
 				      		<span class="err">${erremail}</span>
 				      	</div>
 				      	<div class="col-sm-<%=rightButton%>">
-				        	<input type="button" value="중복 체크" 
-				        		class="btn btn-info" onclick="emailCheck();"> 
+				        	<input type="button" value="중복 체크" class="btn btn-info" onclick="emailCheck();"> 
 				      	</div>
 				    </div>
-					<div class="form-group">
+					<div class="form-group" style="margin-top: 20px">
 				      	<label class="control-label col-sm-<%=formleft%>" for="name" style="color: white">닉네임</label>
-				      	<div class="col-sm-<%=formright-rightButton%>">
+				      	<div class="col-xs-3">
 				        	<input type="text" class="form-control" id="nickname" name="nickname" value="${bean.nickname }" placeholder="닉네임을 넣어 주세요.">
 				        	<span class="err">${errnickname }</span>
 				      	</div>
@@ -102,18 +101,18 @@
 				        		class="btn btn-info" onclick="nicknameCheck();"> 
 				      	</div>
 				    </div>				    
-				    <div class="form-group">
+				    <div class="form-group" style="margin-top: 20px">
 						<label class="control-label col-sm-<%=formleft%>" for="password" style="color: white">비밀 번호</label>
-				      	<div class="col-sm-<%=formright-rightButton%>">          
+				      	<div class="col-xs-3">          
 				        	<input type="password" class="form-control" id="password" placeholder="비밀 번호를 넣어 주세요." name="password" >
 				        	<span class="err">${errpassword }</span>
 				      	</div>
 				    </div>				    		    
-				    <div class="form-group">        
+				    <div class="form-group" style="margin-top: 40px">        
 				      	<div class="col-sm-offset-<%=offset%> col-sm-<%=mywidth%>">
-				        	<button type="submit" class="btn btn-default" onclick="return checkForm();" style="background-color: white">회원 가입</button>
-				        	&nbsp;&nbsp;&nbsp;
-				        	<button type="reset" class="btn btn-default" style="background-color: white">초기화</button>				        	
+				        	<button type="submit" class="btn btn-info btn-lg" onclick="return checkForm();" >회원 가입</button>
+				        	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				        	<button type="reset" class="btn btn-info btn-lg" >초기화</button>				        	
 				      	</div>
 				    </div>
 				</form>
