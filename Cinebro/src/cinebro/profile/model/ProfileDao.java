@@ -85,7 +85,7 @@ public class ProfileDao extends SuperDao {
 		PreparedStatement pstmt = null ;
 		ResultSet rs = null ;
 		
-		String sql = " select m.email, m.nickname, m.password, m2.email, m2.nickname as following from members m inner join myfollowing mf on m.email = mf.my_email inner join members m2 on m2.email = mf.follow_email where mf.my_email = ? " ;
+		String sql = " select m.email, m.nickname, m.password, m2.email as follwingemail, m2.nickname as following from members m inner join myfollowing mf on m.email = mf.my_email inner join members m2 on m2.email = mf.follow_email where mf.my_email = ? " ;
 		
 		List<Profile> lists = new ArrayList<Profile>();
 		
@@ -100,11 +100,12 @@ public class ProfileDao extends SuperDao {
 			while( rs.next() ){
 				Profile bean = new Profile();
 								
-				bean.setEmail(rs.getString("emil"));
+				bean.setEmail(rs.getString("email"));
 				bean.setNickname(rs.getString("nickname"));				
 				bean.setPassword(rs.getString("password"));
-				bean.setF_email(rs.getString("f_email"));
-				bean.setF_nickname(rs.getString("f_nickname"));
+				bean.setFollwingemail(rs.getString("follwingemail"));
+				bean.setFollowing(rs.getString("following"));
+				
 				
 				lists.add(bean);
 			}

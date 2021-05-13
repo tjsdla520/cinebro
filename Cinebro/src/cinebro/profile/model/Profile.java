@@ -4,23 +4,24 @@ public class Profile {
 	private String email;
 	private String password;
 	private String nickname;
-	private String f_email;
-	private String f_nickname;
+	private String follwingemail;
+	private String following;
 	
 	
 	
 	
-	public String getF_email() {
-		return f_email;
+	
+	public String getFollwingemail() {
+		return follwingemail;
 	}
-	public void setF_email(String f_email) {
-		this.f_email = f_email;
+	public void setFollwingemail(String follwinemail) {
+		this.follwingemail = follwinemail;
 	}
-	public String getF_nickname() {
-		return f_nickname;
+	public String getFollowing() {
+		return following;
 	}
-	public void setF_nickname(String f_nickname) {
-		this.f_nickname = f_nickname;
+	public void setFollowing(String following) {
+		this.following = following;
 	}
 	public String getEmail() {
 		return email;
