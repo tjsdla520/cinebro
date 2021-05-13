@@ -68,11 +68,11 @@
 										${sessionScope.loginfo.nickname}님 <span
 										class="arrow_carrot-down"></span>
 										<ul class="dropdown">
-											<li><a href="<%=NoForm%>myproFile">myProfile</a></li>
+											<li><a href="<%=NoForm%>myproFile&email=${sessionScope.loginfo.email}">myProfile</a></li>
 											<li><a href="<%=NoForm%>myFilms">Films</a></li>
 											<li><a href="<%=NoForm%>myReviews">Reviews</a></li>
 											<li><a href="<%=NoForm%>myWish">myWish</a></li>
-											<li><a href="<%=NoForm%>myFollowing">myFollowing</a></li>
+											<li><a href="<%=NoForm%>myFollowing&email=${sessionScope.loginfo.email}">myFollowing</a></li>
 											<li><a
 												href="<%=NoForm%>meDelete&email=${sessionScope.loginfo.email}">회원탈퇴</a></li>
 											<c:if test="${whologin == 2}">
