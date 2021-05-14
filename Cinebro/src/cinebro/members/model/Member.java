@@ -11,7 +11,8 @@ public class Member {
 	private String favoriteGenre;   //내가 가장 좋아하는 장르
 	private int follower;           //나를 팔로우하는 사람 수 
 	private int allReviews;         //내가 쓴 총 리뷰수
-	private int subscribe;
+	private int subscribe;			//구독 여부
+
 	
 	public int getSubscribe() {
 		return subscribe;

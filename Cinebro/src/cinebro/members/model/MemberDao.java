@@ -3,8 +3,12 @@ package cinebro.members.model;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 import cinebro.common.model.SuperDao;
+import cinebro.lists.model.FilmList;
+import cinebro.profile.model.Profile;
 
 public class MemberDao extends SuperDao {
 
@@ -237,5 +241,121 @@ public class MemberDao extends SuperDao {
 			}
 		}
 		return cnt ;
+	}
+
+	public List<Member> popularMember() {
+		PreparedStatement pstmt = null ;
+		ResultSet rs = null ;
+		
+		String sql = " select ranking, email, nickname, followers from(select m.email, m.nickname, v1.followers as followers, rank() over(order by v1.followers desc) as ranking from members m inner join howmanyfollwer v1 on m.email = v1.email ) where ranking between 1 and 5 " ;
+		
+		List<Member> lists = new ArrayList<Member>();
+		
+		try {
+			if( conn == null ){ super.conn = super.getConnection() ; }
+			pstmt = super.conn.prepareStatement(sql) ;
+			rs = pstmt.executeQuery() ;	
+			
+			while( rs.next() ){
+				Member bean = new Member();				
+				
+				bean.setEmail(rs.getString("email"));
+				bean.setNickname(rs.getString("nickname"));				
+				bean.setFollower(rs.getInt("followers"));
+				
+				lists.add(bean);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally{
+			try {
+				if( rs != null ){ rs.close(); }
+				if( pstmt != null ){ pstmt.close(); }
+				super.closeConnection(); 
+			} catch (Exception e2) {
+				e2.printStackTrace(); 
+			}
+		}
+		
+		return lists ;
+	}
+
+	public List<Member> manyReviewMember() {
+		PreparedStatement pstmt = null ;
+		ResultSet rs = null ;
+		
+		String sql = " select ranking, email, nickname, reviews from(select m.email, m.nickname, v1.reviews as reviews, rank() over(order by v1.reviews desc) as ranking from members m inner join howmanyreviews v1 on m.email = v1.email ) where ranking between 1 and 5 " ;
+		
+		List<Member> lists = new ArrayList<Member>();
+		
+		try {
+			if( conn == null ){ super.conn = super.getConnection() ; }
+			pstmt = super.conn.prepareStatement(sql) ;
+			rs = pstmt.executeQuery() ;	
+			
+			while( rs.next() ){
+				Member bean = new Member();				
+				
+				bean.setEmail(rs.getString("email"));
+				bean.setNickname(rs.getString("nickname"));				
+				bean.setAllReviews(rs.getInt("reviews"));
+				
+				lists.add(bean);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally{
+			try {
+				if( rs != null ){ rs.close(); }
+				if( pstmt != null ){ pstmt.close(); }
+				super.closeConnection(); 
+			} catch (Exception e2) {
+				e2.printStackTrace(); 
+			}
+		}
+		
+		return lists ;
+	}
+
+	public List<Member> followingMember(String followingemail) {
+		PreparedStatement pstmt = null ;
+		ResultSet rs = null ;
+		
+		String sql = " select ranking, email, nickname, followers, reviews from(select m.email, m.nickname, v1.followers as followers, v2.reviews as reviews, rank() over(order by m.nickname asc) as ranking from members m left outer join howmanyfollwer v1 on m.email = v1.email left outer join howmanyreviews v2 on m.email = v2.email left outer join myfollowingview v3 on  m.email = v3.email where v3.followingemail = ? ) where ranking between 1 and 5 " ;
+		
+		List<Member> lists = new ArrayList<Member>();
+		
+		try {
+			if( conn == null ){ super.conn = super.getConnection() ; }
+			pstmt = super.conn.prepareStatement(sql) ;
+			
+			pstmt.setString(1, followingemail);
+			
+			rs = pstmt.executeQuery() ;	
+			
+			while( rs.next() ){
+				Member bean = new Member();
+								
+				bean.setEmail(rs.getString("email"));
+				bean.setNickname(rs.getString("nickname"));				
+				bean.setFollower(rs.getInt("followers"));
+				bean.setAllReviews(rs.getInt("reviews"));
+				
+				
+				lists.add(bean);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally{
+			try {
+				if( rs != null ){ rs.close(); }
+				if( pstmt != null ){ pstmt.close(); }
+				super.closeConnection(); 
+			} catch (Exception e2) {
+				e2.printStackTrace(); 
+			}
+		}
+		
+		return lists ;
 	}
 }	
