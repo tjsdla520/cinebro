@@ -16,7 +16,8 @@ public class SearchDao extends SuperDao {
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		
-		String sql = "select id, film_title, director, year, country from films where " + mode + " like '%" + keyword + "%'" ;
+		String sql = "select ranking, id, film_title, director, year, country from(select id, film_title, director, year, country, rank() over(order by year desc) as ranking"
+				+ " from films where " + mode + " like '%" + keyword + "%') where ranking between ? and ?" ;
 
 		List<Film> lists = new ArrayList<Film>();
 		try {
@@ -24,7 +25,9 @@ public class SearchDao extends SuperDao {
 				this.conn = this.getConnection();
 			}
 			pstmt = this.conn.prepareStatement(sql);
-
+			pstmt.setInt(1, beginRow);
+			pstmt.setInt(2, endRow);
+			
 			rs = pstmt.executeQuery();
 			while (rs.next()) {
 				Film bean = new Film();
@@ -58,9 +61,7 @@ public class SearchDao extends SuperDao {
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 
-		String sql = " select ranking, id, email, list_title, comments ";
-		sql += " from(select id, email, list_title, comments ";
-		sql += " rank()over(order by email asc) as ranking from lists ";
+		String sql = "select ranking, id, email, list_title, maker, comments from(select l.id, l.email, l.list_title, m.nickname as maker, l.comments, rank() over(order by l.list_title desc) as ranking from lists l inner join members m on l.email = m.email";
 		sql += " where " + mode + " like '%" + keyword + "%'";
 		sql += " ) where ranking between ? and ?";
 
@@ -80,6 +81,7 @@ public class SearchDao extends SuperDao {
 				bean.setEmail(rs.getString("email"));
 				bean.setList_title(rs.getString("list_title"));
 				bean.setComments(rs.getString("comments"));
+				bean.setNickname(rs.getString("maker"));
 				lists.add(bean);
 			}
 
@@ -167,8 +169,7 @@ public class SearchDao extends SuperDao {
 			if (this.conn == null) {
 				this.conn = this.getConnection();
 			}
-			
-			if(mode.equals("film")) {
+
 				String sql = " select count(*) as cnt from films";
 					sql += " where " + mode + " like '%" + keyword + "%'"  ;
 					pstmt = this.conn.prepareStatement(sql);
@@ -182,10 +183,37 @@ public class SearchDao extends SuperDao {
 					if (pstmt != null) {
 						pstmt.close();
 					}
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if (rs != null) {
+					rs.close();
+				}
+				if (pstmt != null) {
+					pstmt.close();
+				}
+				this.closeConnection();
+			} catch (Exception e2) {
+				e2.printStackTrace();
 			}
-			if(mode.equals("filmlist")) {
+		}
+		return cnt;
+	}
+
+	public int SelectListTotalCount(String mode, String keyword) {
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+
+		int cnt = 0;
+		try {
+			if (this.conn == null) {
+				this.conn = this.getConnection();
+			}
+
 				String sql = " select count(*) as cnt from lists";
-					sql += " where " + mode + " like '%" + keyword + "%'" ;
+					sql += " where " + mode + " like '%" + keyword + "%'"  ;
 					pstmt = this.conn.prepareStatement(sql);
 					rs = pstmt.executeQuery();
 					if (rs.next()) {
@@ -197,22 +225,6 @@ public class SearchDao extends SuperDao {
 					if (pstmt != null) {
 						pstmt.close();
 					}
-			}
-			if(mode.equals("member")) {
-				String sql = " select count(*) as cnt from members";
-					sql += " where " + mode + " like '%" + keyword + "%'" ;
-					pstmt = this.conn.prepareStatement(sql);
-					rs = pstmt.executeQuery();
-					if (rs.next()) {
-						cnt = rs.getInt("cnt");
-					}
-					if (rs != null) {
-						rs.close();
-					}
-					if (pstmt != null) {
-						pstmt.close();
-					}
-			}
 
 		} catch (SQLException e) {
 			e.printStackTrace();
