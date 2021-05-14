@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import cinebro.common.model.SuperDao;
+import cinebro.lists.model.FilmList;
 
 
 
@@ -849,6 +850,45 @@ public class FilmDao extends SuperDao {
 			}
 		} 		
 		return films  ;
+	}
+
+	public List<Film> selectWatchedFilms(String email) {
+		PreparedStatement pstmt = null ;
+		ResultSet rs = null ;
+		
+		String sql = " select r.id, f.film_title from members m inner join reviews r on m.email = r.email inner join films f on r.film_id = f.id where m.email = ? " ;
+		
+		List<Film> lists = new ArrayList<Film>();
+		
+		try {
+			if( conn == null ){ super.conn = super.getConnection() ; }
+			pstmt = super.conn.prepareStatement(sql) ;
+			
+			pstmt.setString(1, email);
+			
+			rs = pstmt.executeQuery() ;	
+			
+			while( rs.next() ){
+				Film bean = new Film();
+				
+				bean.setId(rs.getInt("id"));
+				bean.setFilm_title(rs.getString("film_title"));		
+				
+				lists.add(bean);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally{
+			try {
+				if( rs != null ){ rs.close(); }
+				if( pstmt != null ){ pstmt.close(); }
+				super.closeConnection(); 
+			} catch (Exception e2) {
+				e2.printStackTrace(); 
+			}
+		}
+		
+		return lists ;
 	}
 
 }

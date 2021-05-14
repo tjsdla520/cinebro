@@ -8,8 +8,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import cinebro.common.controller.SuperClass;
-import cinebro.lists.model.FilmList;
-import cinebro.lists.model.FilmListDao;
+import cinebro.films.model.Film;
+import cinebro.films.model.FilmDao;
+
 
 public class MyFilmsController extends SuperClass {
 	
@@ -17,35 +18,15 @@ public class MyFilmsController extends SuperClass {
 	public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		super.doGet(request, response);
 		
-		FilmListDao dao = new FilmListDao();
+		FilmDao dao = new FilmDao();
 		String email = request.getParameter("email");
 
-//////////////////////////전체필름리스트조회
-		List<FilmList> lists1 = dao.SelectDataList();
-		for (FilmList filmList : lists1) {
-			System.out.println("list1 : " + filmList);
+//////////////////////////내가본 영화 조회
+		List<Film> lists = dao.selectWatchedFilms(email);
+		for (Film filmList : lists) {
+			System.out.println("list : " + filmList);
 		}
-		request.setAttribute("lists1", lists1);
-		
-//////////////////////////내가 좋아요한	 필름리스트 조회	
-		System.out.println(email);
-				
-		List<FilmList> lists2 = dao.SelectByLike(email);
-
-		for (FilmList filmList : lists2) {
-			System.out.println("list2 : "+filmList);
-		}
-		
-		request.setAttribute("lists2", lists2);
-//		
-////////////////////////////인기많은	 필름리스트 조회		
-
-		List<FilmList> lists3 = dao.SelectByPopular();
-	
-		for (FilmList filmList : lists3) {
-			System.out.println("list3 : "+filmList);
-		}
-		request.setAttribute("lists3", lists3);
+		request.setAttribute("lists", lists);
 		
 		String gotopage = "/profile/myFilms.jsp" ;
 		super.GotoPage(gotopage);
