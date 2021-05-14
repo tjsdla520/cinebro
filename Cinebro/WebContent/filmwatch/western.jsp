@@ -85,7 +85,7 @@
 					
 					<c:forEach var="bean1" items="${requestScope.films}">
 						<tr>
-							<td><span style="color:white">${bean1.film_title}'</span> </td>
+							<td><a href="<%=NoForm %>filmDetail">${bean1.film_title}</a></td>
 							<td><span style="color:white">${bean1.name}</span> </td>
 				
 						</tr>

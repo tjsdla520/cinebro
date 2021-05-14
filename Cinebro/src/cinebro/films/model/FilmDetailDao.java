@@ -23,7 +23,7 @@ public class FilmDetailDao extends SuperDao {
 			if(conn == null) {super.conn = super.getConnection() ; }
 			
 			//영화 기본정보 가져오기 
-			String sql = "select f.id, f.film_title, f.director, f.year, f.country from films f inner join filmngenre fg on f.id = fg.film_id where f.id = ?" ;
+			String sql = " select f.id, f.film_title, f.director, f.year, f.country from films f inner join filmngenre fg on f.id = fg.film_id where f.id = ? " ;
 			pstmt = conn.prepareStatement(sql) ;
 			
 			pstmt.setString(1, id);			
@@ -40,7 +40,7 @@ public class FilmDetailDao extends SuperDao {
 			if(pstmt != null) {pstmt.close();} 
 			
 			//영화별 장르 리스트 가져오기 
-			sql = "select g.id, g.name from genres g inner join filmngenre fg on g.id = fg.genre_id where fg.film_id = ?" ;
+			sql = " select g.id, g.name from genres g inner join filmngenre fg on g.id = fg.genre_id where fg.film_id = ? " ;
 			pstmt = conn.prepareStatement(sql) ;
 			
 			pstmt.setString(1, id);			
@@ -55,7 +55,7 @@ public class FilmDetailDao extends SuperDao {
 			
 			
 			//배우 리스트 가져오기
-			sql = "select f.film_title, a.name from films f inner join filmnactor fa on f.id = fa.film_id inner join actors a on fa.actor_id = a.id where f.id = ?" ;
+			sql = " select f.film_title, a.name from films f inner join filmnactor fa on f.id = fa.film_id inner join actors a on fa.actor_id = a.id where f.id = ? " ;
 			pstmt = conn.prepareStatement(sql) ;			
 			pstmt.setString(1, id);			
 			rs = pstmt.executeQuery() ; 
