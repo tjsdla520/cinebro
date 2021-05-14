@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import cinebro.common.model.SuperDao;
+import cinebro.films.model.Film;
 
 
 public class ReviewDao extends SuperDao {
@@ -204,5 +205,46 @@ public class ReviewDao extends SuperDao {
 			}
 		}
 		return cnt ;
+	}
+
+	public List<Review> selectMyreviews(String email) {
+		PreparedStatement pstmt = null ;
+		ResultSet rs = null ;				
+
+		List<Review> reviews = new ArrayList<Review>();
+				
+		String sql = " select m.nickname, f.film_title, r.content, r.rating, r.watch_date from members m inner join reviews r on r.email = m.email inner join films f on r.film_id = f.id where m.email = 'aaa@aaa.aaa'  " ;
+		
+		Review bean = null ;
+		
+		try {
+			if( this.conn == null ){ this.conn = this.getConnection() ; }			
+			pstmt = this.conn.prepareStatement(sql) ;	
+			
+			rs = pstmt.executeQuery() ;
+		
+			
+			while ( rs.next() ) {
+				bean = new Review(); 
+				bean.setNickname(rs.getString("nickname")) ;
+			    bean.setFilmTitle(rs.getString("film_title"));
+			    bean.setContent(rs.getString("content"));
+			    bean.setRating(rs.getInt("rating"));
+			    bean.setWatchDate(rs.getDate("watch_date"));
+			    reviews.add(bean);
+			}
+			
+		} catch (SQLException e) {			
+			e.printStackTrace();
+		} finally{
+			try {
+				if( rs != null){ rs.close(); } 
+				if( pstmt != null){ pstmt.close(); } 
+				this.closeConnection() ;
+			} catch (Exception e2) {
+				e2.printStackTrace(); 
+			}
+		} 		
+		return reviews  ;
 	}
 }

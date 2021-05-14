@@ -23,33 +23,12 @@ public class GenrePlayController extends SuperClass {
 		String genre = request.getParameter("genre") ;
 		FilmDao dao = new FilmDao();
 		
-//		Film bean = dao.SelectDataByPk(genre) ;
-//////
-		String mode = request.getParameter("mode");
+		List<Film> films = dao.SelectDataByPk(genre);
 		
-		
-		if(mode==null||mode.equals("")||mode.equals("all")) {
-			List<Film> films = dao.SelectDataByPk(genre);
-		
-			request.setAttribute("films", films);
+		request.setAttribute("films", films);
 			
-		}
-//		else if(mode.equals("like")) {
-//			List<Film> films = dao.SelectDataByPk(genre);
-//			
-//			request.setAttribute("lists", lists);
-//			
-//		}else if(mode.equals("popular")) {
-//			List<FilmList> lists = dao.SelectByPopular();
-//			
-//			request.setAttribute("lists", lists);
-				
 		
-		
-		
-///////
-		
-			
+
 		String gotopage = "/filmwatch/genrePlay.jsp" ;
 		super.GotoPage(gotopage);
 	}
