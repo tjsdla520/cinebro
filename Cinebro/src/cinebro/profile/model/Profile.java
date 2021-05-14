@@ -1,12 +1,12 @@
 package cinebro.profile.model;
 
 public class Profile {
+
 	private String email;
 	private String password;
 	private String nickname;
 	private String follwingemail;
 	private String following;
-	
 	
 	
 	
