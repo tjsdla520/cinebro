@@ -4,6 +4,11 @@
 <!DOCTYPE html>
 <html lang="zxx">
 <head>
+<style type="text/css">
+	td{
+		color: white;
+	}
+</style>
 </head>
 <body>
 	<%-- <%@ include file="header.jsp" %> --%>

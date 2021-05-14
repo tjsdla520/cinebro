@@ -107,10 +107,7 @@ public class SearchDao extends SuperDao {
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 
-		String sql = " select ranking, email, password, nickname, cardnumber, enddate, name, favoriteFilm, favoriteGenre, follower, "
-				+ "Reviews ";
-		sql += " from(select email, password, nickname, cardnumber, enddate, name, favoriteFilm, favoriteGenre, follower, allReviews ";
-		sql += " rank()over(order by nickname asc) as ranking from members ";
+		String sql = "select ranking, email, nickname, followers, reviews from(select m.email, m.nickname, v1.followers as followers, v2.reviews as reviews, rank() over(order by m.nickname asc) as ranking from members m left outer join howmanyfollwer v1 on m.email = v1.email left outer join howmanyreviews v2 on m.email = v2.email";
 		sql += " where " + mode + " like '%" + keyword + "%'";
 		sql += " ) where ranking between ? and ?";
 
@@ -129,15 +126,9 @@ public class SearchDao extends SuperDao {
 				Member bean = new Member();
 				
 				bean.setEmail(rs.getString("email"));
-				bean.setPassword(rs.getString("password"));
 				bean.setNickname(rs.getString("nickname"));
-				bean.setCardnumber(rs.getString("cardnumber"));
-				bean.setEnddate(rs.getString("enddate"));
-				bean.setName(rs.getString("name"));
-				bean.setFavoriteFilm(rs.getString("favoriteFilm"));
-				bean.setFavoriteGenre(rs.getString("favoriteGenre"));
-				bean.setFollower(rs.getInt("follower"));
-				bean.setAllReviews(rs.getInt("allReviews"));
+				bean.setFollower(rs.getInt("followers"));
+				bean.setAllReviews(rs.getInt("reviews"));
 				
 				lists.add(bean);
 			}
@@ -243,4 +234,47 @@ public class SearchDao extends SuperDao {
 		}
 		return cnt;
 	}
+
+	public int SelectMemberTotalCount(String mode, String keyword) {
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+
+		int cnt = 0;
+		try {
+			if (this.conn == null) {
+				this.conn = this.getConnection();
+			}
+
+				String sql = " select count(*) as cnt from members";
+					sql += " where " + mode + " like '%" + keyword + "%'"  ;
+					pstmt = this.conn.prepareStatement(sql);
+					rs = pstmt.executeQuery();
+					if (rs.next()) {
+						cnt = rs.getInt("cnt");
+					}
+					if (rs != null) {
+						rs.close();
+					}
+					if (pstmt != null) {
+						pstmt.close();
+					}
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if (rs != null) {
+					rs.close();
+				}
+				if (pstmt != null) {
+					pstmt.close();
+				}
+				this.closeConnection();
+			} catch (Exception e2) {
+				e2.printStackTrace();
+			}
+		}
+		return cnt;
+	}
+
 }

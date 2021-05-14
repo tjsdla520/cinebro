@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+    pageEncoding="UTF-8"%>
 <%@ include file="./../common/common.jsp"%>
 <%
 	/* position for grid system */	
@@ -8,10 +8,12 @@
 	int formleft = 3 ;
 	int formright = twelve - formleft ;
 	int rightButton = 2 ;
-%>
+%>    
 <!DOCTYPE html>
-<html lang="zxx">
+<html>
 <head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
 	<script>	
 	function search(){
 		var mode = $('#mode').val();
@@ -26,7 +28,7 @@
 			return false;
 		}else{
 			location.href='<%=NoForm%>search&mode='+ mode +'&keyword='+keyword;
-		}
+		}		
 	}
 		
 		$(document).ready(function(){
@@ -43,6 +45,7 @@
 		<div class="panel panel-white">
 		 <p class="bg-danger text-white"><b>상세검색</b><p>
 			<div class="panel-heading">
+
 				<form action="" class="form-inline" role="form" name="myform"
 					method="get">
 					<div class="form-group">
@@ -62,15 +65,15 @@
 						onclick="return search();">검색</button>
 					&nbsp;&nbsp; ${pageInfo.pagingStatus}
 				</form>
+
 			</div>
 			<div class="panel-body">
 				<table class="table table-hover">
 					<thead>
 						<tr>
-							<th>제목</th>
-							<th>감독</th>
-							<th>개봉연도</th>							
-							<th>국가</th>
+							<th>닉네임</th>
+							<th>팔로워</th>
+							<th>작상한 리뷰 개수</th>							
 						</tr>
 					</thead>
 					<tbody>
@@ -80,11 +83,10 @@
 								
 								<td>
 									<%--글제목 하이퍼링크 만들기 일반적으로 넘겨줘야 할 파라미터 목록은 다음과 같다. primarykey, pagenumber, mode, keyword--%>
-									<a href="<%=NoForm%>filmDetail&id=${bean.id}&${requestScope.parameters}">${bean.film_title}</a>
+									<a href="<%=NoForm%>myproFile&email=${bean.email}&${requestScope.parameters}">${bean.nickname}</a>
 								</td>
-								<td>${bean.director}</td>	
-								<td>${bean.year}</td>
-								<td>${bean.country}</td>
+								<td>${bean.follower}</td>	
+								<td>${bean.allReviews}</td>
 							</tr>
 						</c:forEach>												
 					</tbody>
