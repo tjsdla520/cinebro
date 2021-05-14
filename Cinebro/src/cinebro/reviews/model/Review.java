@@ -16,7 +16,8 @@ public class Review {
 	private Date writeDate;       //리뷰 쓴 날짜 
 	private int getlike;          //받은 좋아요 수
 	private int rating;           //평점
-	
+	private String nickname;      //나의 닉네임
+	private String email;         //나의 이메일
 	
 	
 	public int getFilmId() {
@@ -24,17 +25,9 @@ public class Review {
 	}
 
 
-
-	public void setFilmId(int filmId) {
-		this.filmId = filmId;
-	}
-
-
-
 	public int getId() {
 		return id;
 	}
-
 
 
 	public void setId(int id) {
@@ -42,11 +35,9 @@ public class Review {
 	}
 
 
-
 	public String getWriter() {
 		return writer;
 	}
-
 
 
 	public void setWriter(String writer) {
@@ -54,11 +45,9 @@ public class Review {
 	}
 
 
-
 	public String getFilmTitle() {
 		return filmTitle;
 	}
-
 
 
 	public void setFilmTitle(String filmTitle) {
@@ -66,11 +55,9 @@ public class Review {
 	}
 
 
-
 	public String getContent() {
 		return content;
 	}
-
 
 
 	public void setContent(String content) {
@@ -78,11 +65,9 @@ public class Review {
 	}
 
 
-
 	public int getLiked() {
 		return liked;
 	}
-
 
 
 	public void setLiked(int liked) {
@@ -90,11 +75,9 @@ public class Review {
 	}
 
 
-
 	public int getWatched() {
 		return watched;
 	}
-
 
 
 	public void setWatched(int watched) {
@@ -102,11 +85,9 @@ public class Review {
 	}
 
 
-
 	public Date getWatchDate() {
 		return watchDate;
 	}
-
 
 
 	public void setWatchDate(Date watchDate) {
@@ -114,11 +95,9 @@ public class Review {
 	}
 
 
-
 	public Date getWriteDate() {
 		return writeDate;
 	}
-
 
 
 	public void setWriteDate(Date writeDate) {
@@ -126,11 +105,9 @@ public class Review {
 	}
 
 
-
 	public int getGetlike() {
 		return getlike;
 	}
-
 
 
 	public void setGetlike(int getlike) {
@@ -138,11 +115,9 @@ public class Review {
 	}
 
 
-
 	public int getRating() {
 		return rating;
 	}
-
 
 
 	public void setRating(int rating) {
@@ -150,14 +125,40 @@ public class Review {
 	}
 
 
+	public String getNickname() {
+		return nickname;
+	}
+
+
+	public void setNickname(String nickname) {
+		this.nickname = nickname;
+	}
+
+
+	public String getEmail() {
+		return email;
+	}
+
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+
+	public void setFilmId(int filmId) {
+		this.filmId = filmId;
+	}
+
 
 	@Override
 	public String toString() {
-		return "Review [id=" + id + ", writer=" + writer + ", filmTitle=" + filmTitle + ", content=" + content
-				+ ", liked=" + liked + ", watched=" + watched + ", watchDate=" + watchDate + ", writeDate=" + writeDate
-				+ ", getlike=" + getlike + ", rating=" + rating + "]";
+		return "Review [id=" + id + ", writer=" + writer + ", filmId=" + filmId + ", filmTitle=" + filmTitle
+				+ ", content=" + content + ", liked=" + liked + ", watched=" + watched + ", watchDate=" + watchDate
+				+ ", writeDate=" + writeDate + ", getlike=" + getlike + ", rating=" + rating + ", nickname=" + nickname
+				+ ", email=" + email + "]";
+	}
+
 	}
 	
 	
 	
-}
