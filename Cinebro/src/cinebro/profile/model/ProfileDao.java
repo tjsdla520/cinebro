@@ -123,4 +123,46 @@ public class ProfileDao extends SuperDao {
 		
 		return lists ;
 	}
+	@SuppressWarnings("null")
+	public List<Profile> selectMyWish(String email, String nickname) {
+		PreparedStatement pstmt = null ;
+		ResultSet rs = null ;
+		
+		String sql = "select m.nickname, f.film_title from members m inner join wishfilms wf on m.email = wf.email inner join films f on wf.film_id = f.id where m.email = ?";
+		
+		List<Profile> lists = new ArrayList<Profile>();
+		
+		try {
+			while( rs.next() ){
+				Profile bean = new Profile();
+				
+				bean.setEmail(rs.getString("email"));
+				bean.setNickname(rs.getString("nickname"));
+				
+				lists.add(bean);
+				
+						
+				try {
+					bean.setNickname(rs.getString("nickname"));
+				} catch (SQLException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}	
+				try {
+					bean.setEmail(rs.getString("email"));
+				} catch (SQLException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				
+				return lists;
+			
+}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return lists;
+		
+	}
 }
