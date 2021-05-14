@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import cinebro.common.model.SuperDao;
+import cinebro.films.model.Film;
 import cinebro.lists.model.FilmList;
 
 public class ProfileDao extends SuperDao {
@@ -123,46 +124,40 @@ public class ProfileDao extends SuperDao {
 		
 		return lists ;
 	}
-	@SuppressWarnings("null")
-	public List<Profile> selectMyWish(String email, String nickname) {
+
+	public List<Film> selectMywish(String email) {
 		PreparedStatement pstmt = null ;
 		ResultSet rs = null ;
-		
-		String sql = "select m.nickname, f.film_title from members m inner join wishfilms wf on m.email = wf.email inner join films f on wf.film_id = f.id where m.email = ?";
-		
-		List<Profile> lists = new ArrayList<Profile>();
-		
+		List<Film> lists = new ArrayList<Film>();
+		String sql = "select f.id, f.film_title from members m inner join wishfilms wf on m.email = wf.email inner join films f on wf.film_id = f.id where m.email = ? "; 
+
 		try {
+			if( conn == null ){ super.conn = super.getConnection() ; }
+			pstmt = super.conn.prepareStatement(sql) ;			
+			pstmt.setString(1, email);
+			
+			rs = pstmt.executeQuery() ;	
+			
 			while( rs.next() ){
-				Profile bean = new Profile();
-				
-				bean.setEmail(rs.getString("email"));
-				bean.setNickname(rs.getString("nickname"));
+				Film bean = new Film();
+				bean.setId(rs.getInt("id"));		
+				bean.setFilm_title(rs.getString("film_title"));
 				
 				lists.add(bean);
-				
-						
-				try {
-					bean.setNickname(rs.getString("nickname"));
-				} catch (SQLException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}	
-				try {
-					bean.setEmail(rs.getString("email"));
-				} catch (SQLException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
-				
-				return lists;
-			
-}
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
+			}
+		} catch (Exception e) {
 			e.printStackTrace();
+		} finally{
+			try {
+				if( rs != null ){ rs.close(); }
+				if( pstmt != null ){ pstmt.close(); }
+				super.closeConnection(); 
+			} catch (Exception e2) {
+				e2.printStackTrace(); 
+			}
 		}
-		return lists;
 		
+		return lists ;
 	}
+	
 }

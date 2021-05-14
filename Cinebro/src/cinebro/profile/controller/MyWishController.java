@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletResponse;
 
 
 import cinebro.common.controller.SuperClass;
+import cinebro.films.model.Film;
 import cinebro.profile.model.Profile;
 import cinebro.profile.model.ProfileDao;
 
@@ -16,27 +17,19 @@ import cinebro.profile.model.ProfileDao;
 
 public class MyWishController extends SuperClass {
 	
-    @SuppressWarnings("unused")
 	@Override
 	public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		super.doGet(request, response);
-		Profile bean = new Profile();
+		String email = request.getParameter("email");
 		ProfileDao dao = new ProfileDao();
 		
-        String email = request.getParameter("email");
-        
-        String nickname = request.getParameter("nickname");
-		
-		List<Profile> lists = dao.selectMyWish(email, nickname);
-		
+		List<Film> lists = dao.selectMywish(email);
 		request.setAttribute("lists", lists);
-		
-        request.setAttribute("bean", bean);
-		
-
+		for (Film film : lists) {
+			System.out.println(film);
+		}
 		String gotopage = "/profile/myWish.jsp" ;
-		super.GotoPage(gotopage);
-		
+		super.GotoPage(gotopage);		
 	}
     
 	
