@@ -50,8 +50,8 @@ filmListDetail=cinebro.lists.controller.FilmListDetailController
 ##likefilmList=cinebro.lists.controller.LikeFilmListController
 ##member Section
 memberList=cinebro.following.controller.MemberListController
-##memberDetail=cinebro.following.controller.MemberDetailController
-##memberFollow=cinebro.following.controller.MemberFollowController
+memberDetail=cinebro.following.controller.MemberDetailController
+memberFollow=cinebro.following.controller.MemberFollowController
 ##search Section
 search=cinebro.search.controller.SearchController
 ##profile Section
