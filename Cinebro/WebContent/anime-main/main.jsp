@@ -4,10 +4,64 @@
 <!DOCTYPE html>
 <html lang="zxx">
 <head>
+<style type="text/css"></style>
 </head>
 <body>
 	<jsp:include page="header.jsp"/>
 	<!-- Hero Section Begin -->
+	<div class="panel-heading">
+				<h1>
+				<p class="text-white">인기 영화 리스트</p>	
+				</h1>
+			</div>
+			<div class="panel-body">
+				<table class="table table-hover">
+					<thead>
+						<tr>
+							<th><p class="text-white">FILMLIST Subject</p></th>
+							<th><p class="text-white">WRITER</p></th>
+							<th><p class="text-white">FILMLIST COMMEND</p></th>
+						</tr>
+					</thead>
+					<tbody>
+					<c:forEach var="bean2" items="${requestScope.lists2}">
+						<tr>
+							<td><a href="<%=NoForm%>filmListDetail&id=${bean2.id}&${requestScope.parameters}">${bean2.list_title}</a></td>
+							<td>${bean2.nickname}</td>
+							<td>${bean2.comments}</td>
+						</tr>
+					</c:forEach>
+					</tbody>
+				</table>
+			</div>
+							<h1>
+				<p class="text-white">인기 리뷰 리스트</p>	
+				</h1>
+			</div>
+			<div class="panel-body">
+				<table class="table table-hover">
+					<thead>
+						<tr>
+							<th><p class="text-white">영화제목</p></th>
+							<th><p class="text-white">작성자</p></th>
+							<th><p class="text-white">리뷰내용</p></th>
+							<th><p class="text-white">별점</p></th>
+							<th><p class="text-white">좋아요수</p></th>
+						</tr>
+					</thead>
+					<tbody>
+					<c:forEach var="bean3" items="${requestScope.lists3}">
+						<tr>
+							<td><a href="<%=NoForm%>filmListDetail&id=${bean3.id}&${requestScope.parameters}">${bean3.filmTitle}</a></td>
+							<td>${bean3.writer}</td>
+							<td>${bean3.content}</td>
+							<td>${bean3.rating}</td>
+							<td>${bean3.getlike}</td>
+						</tr>
+					</c:forEach>
+					</tbody>
+				</table>
+			</div>
 	<section class="hero">
 		<div class="container">
 			<div class="hero__slider owl-carousel">
