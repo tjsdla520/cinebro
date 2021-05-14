@@ -20,7 +20,8 @@ int rightButton = 1;
 
 		<div class="media" align="center">
 			<div class="media-body">
-				<h4 class="media-heading" style="color: white;" align="center">나의프로필</h4>
+				
+				<h4 class="media-heading" style="color: white;" align="center">${bean.nickname}님의 프로필</h4>
 				<br><br><br>
 				<p style="color: white; margin-left: 30px">아이디 : ${bean.email}</p>
 				<p style="color: white; margin-left: 30px">비밀 번호 : ${bean.password}</p>

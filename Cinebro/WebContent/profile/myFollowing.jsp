@@ -5,12 +5,13 @@
 <!DOCTYPE html>
 <html lang="zxx">
 <head>
-<script type="text/javascript">
-
-function sendemail() {
-	var email = encodeURI(${})
+<meta charset="utf-8">
+<title>JavaScript</title>
+<style>
+body {
+	font-family: Consolas, sans-serif;
 }
-</script>
+</style>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <style>
 .dropbtn {
@@ -74,8 +75,8 @@ function sendemail() {
 					<c:forEach var="bean" items="${requestScope.lists}">
 						<tr>
 							<td><span style="color: white"> <a
-									href="<%=NoForm%>myProfile&email${email}&${requestScope.lists}"
-									onclick="sendemail(${bean.email})"> ${bean.following} </a>
+									href="<%=NoForm%>myproFile&email=${bean.email}">
+										${bean.following} </a>
 							</span></td>
 						</tr>
 					</c:forEach>
