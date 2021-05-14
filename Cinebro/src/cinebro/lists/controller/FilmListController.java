@@ -38,9 +38,8 @@ public class FilmListController extends SuperClass {
 		}
 		
 		request.setAttribute("lists2", lists2);
-//		
-////////////////////////////인기많은	 필름리스트 조회		
-
+		
+		//인기많은	 필름리스트 조회
 		List<FilmList> lists3 = dao.SelectByPopular();
 	
 		for (FilmList filmList : lists3) {

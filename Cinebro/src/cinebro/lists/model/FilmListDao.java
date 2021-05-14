@@ -97,7 +97,8 @@ public class FilmListDao extends SuperDao {
 		PreparedStatement pstmt = null ;
 		ResultSet rs = null ;
 		
-		String sql = " select l.id, l.email, l.comments, l.list_title, m.nickname, count(*) as cnt from lists l inner join likefilmlists lkf on l.id = lkf.lklistno inner join members m on l.email = m.email group by l.id, l.email, l.comments, l.list_title, m.nickname order by cnt desc " ;
+		String sql = "select ranking, id, email, comments, list_title, nickname, cnt from(select id, email, comments, list_title, nickname, cnt, rank() over(order by cnt desc) as ranking from("
+				+ "select l.id, l.email, l.comments, l.list_title, m.nickname, count(*) as cnt from lists l inner join likefilmlists lkf on l.id = lkf.lklistno inner join members m on l.email = m.email group by l.id, l.email, l.comments, l.list_title, m.nickname order by cnt desc)) where ranking between 1 and 5";
 			
 		List<FilmList> lists = new ArrayList<FilmList>();
 		
@@ -108,8 +109,7 @@ public class FilmListDao extends SuperDao {
 			
 			while( rs.next() ){
 				FilmList bean = new FilmList();
-				
-				
+								
 				bean.setId(rs.getInt("id"));
 				bean.setEmail(rs.getString("email"));				
 				bean.setList_title(rs.getString("list_title"));

@@ -29,7 +29,7 @@
 			<div class="row">
 				<div class="col-lg-1">
 					<div class="header__logo">
-						<a href="<%=contextPath%>/anime-main/main.jsp"> <img
+						<a href="<%=NoForm%>main"> <img
 							src="<%=contextPath%>/img/logo.png" alt="">
 						</a>
 					</div>
