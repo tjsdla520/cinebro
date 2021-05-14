@@ -16,7 +16,7 @@
 				<img src="img/${fbean.film_title}.jpg" class="media-object" style="width: 180px">
 			</div>
 			<div class="media-body">
-				<h4 class="media-heading">${fbean.film_title}</h4>
+				<h4 class="media-heading" style="color: white">${fbean.film_title}</h4>
 				<p></p>
 				<p style="color: white; " >감독 : ${fbean.director}</p>
 				<p style="color: white; ">개봉연도 : ${fbean.year}</p>

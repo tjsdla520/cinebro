@@ -82,9 +82,9 @@
 							<tr>
 								
 								<td>
-									${bean.list_title}
+									
 									<%--글제목 하이퍼링크 만들기 일반적으로 넘겨줘야 할 파라미터 목록은 다음과 같다. primarykey, pagenumber, mode, keyword--%>
-									<%-- <a href="<%=NoForm%>boDetailView&no=${bean.no}&${requestScope.parameters}">${bean.title}</a>--%>
+									<a href="<%=NoForm%>filmListDetail&id=${bean.id}&${requestScope.parameters}">${bean.list_title}</a>
 								</td>
 								<td>${bean.nickname}</td>	
 								<td>${bean.comments}</td>
