@@ -38,7 +38,7 @@ int rightButton = 2;
 					<tbody>
 					<c:forEach var="bean1" items="${requestScope.lists1}">
 						<tr>
-							<td> <a href="<%=NoForm%>memberDetail&email=${bean1.email}&${requestScope.parameters}">${bean1.nickname}</a> </td>
+							<td> <a href="<%=NoForm%>myproFile&email=${bean1.email}&${requestScope.parameters}">${bean1.nickname}</a> </td>
 							<td>${bean1.follower}</td>
 						</tr>
 					</c:forEach>
@@ -64,7 +64,7 @@ int rightButton = 2;
 					<tbody>
 					<c:forEach var="bean2" items="${requestScope.lists2}">
 						<tr>
-							<td><a href="<%=NoForm%>memberDetail&email=${bean2.email}&${requestScope.parameters}">${bean2.nickname}</a></td>
+							<td><a href="<%=NoForm%>myproFile&email=${bean2.email}&${requestScope.parameters}">${bean2.nickname}</a></td>
 							<td>${bean2.allReviews}</td>
 						</tr>
 					</c:forEach>
@@ -92,7 +92,7 @@ int rightButton = 2;
 					<tbody>
 					<c:forEach var="bean3" items="${requestScope.lists3}">
 						<tr>
-							<td><a href="<%=NoForm%>memberDetail&email=${bean3.email}&${requestScope.parameters}">${bean3.nickname}</a></td>
+							<td><a href="<%=NoForm%>myproFile&email=${bean3.email}&${requestScope.parameters}">${bean3.nickname}</a></td>
 							<td>${bean3.follower}</td>
 							<td>${bean3.allReviews}</td>
 						</tr>

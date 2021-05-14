@@ -57,8 +57,8 @@ search=cinebro.search.controller.SearchController
 ##profile Section
 myproFile=cinebro.profile.controller.MyproFileController
 editNickname=cinebro.profile.controller.EditNicknameController
-##myFilms=cinebro.profile.controller.MyFilmsController
-##myReviews=cinebro.profile.controller.MyReviewsController
+myFilms=cinebro.profile.controller.MyFilmsController
+myReviews=cinebro.profile.controller.MyReviewsController
 myWish=cinebro.profile.controller.MyWishController
 myFollowing=cinebro.profile.controller.MyFollowingController
 ##admin section
