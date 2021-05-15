@@ -15,24 +15,6 @@ pay=cinebro.pay.controller.PayController
 ##film Section
 filmPlay=cinebro.filmplay.controller.FilmPlayController
 genrePlay=cinebro.filmplay.controller.GenrePlayController
-performance=cinebro.filmplay.controller.performanceController
-horror=cinebro.filmplay.controller.horrorController
-documentary=cinebro.filmplay.controller.documentaryController
-drama=cinebro.filmplay.controller.dramaController
-romance=cinebro.filmplay.controller.romanceController
-musical=cinebro.filmplay.controller.musicalController
-mystery=cinebro.filmplay.controller.mysteryController
-crime=cinebro.filmplay.controller.crimeController
-historical=cinebro.filmplay.controller.historicalController
-western=cinebro.filmplay.controller.westernController
-thriller=cinebro.filmplay.controller.thrillerController
-animation=cinebro.filmplay.controller.animationController
-action=cinebro.filmplay.controller.actionController
-adventure=cinebro.filmplay.controller.adventureController
-war=cinebro.filmplay.controller.warController
-comedy=cinebro.filmplay.controller.comedyController
-fantasy=cinebro.filmplay.controller.fantasyController
-science=cinebro.filmplay.controller.scienceController
 ##review Section
 reviewList=cinebro.reviews.controller.ReviewListController
 reviewEdit=cinebro.reviews.controller.ReviewEditController
