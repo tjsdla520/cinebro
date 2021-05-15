@@ -93,4 +93,52 @@ public class FilmDao extends SuperDao {
 		return lists ;
 	}
 
+
+
+
+	public List<Film> selectByRatingUrl() {
+		PreparedStatement pstmt = null ;
+		ResultSet rs = null ;
+		
+		String sql = "select ranking, id, film_title, director, year, country, playurl, avgrate, totalrate from("
+				+ "select id, film_title, director, year, country, playurl, avgrate, totalrate, rank() over(order by avgrate desc) as ranking from("
+				+ "select f.id, f.film_title, f.director, f.year, f.country, f.playurl, ar.avgrate, ar.totalrate from films f inner join filmavgrating ar on f.id = ar.film_id  where totalrate >=5 and playurl is not null order by avgrate desc)) where ranking between 1 and 10" ;
+		
+		List<Film> lists = new ArrayList<Film>();
+		
+		try {
+			if( conn == null ){ super.conn = super.getConnection() ; }
+			pstmt = super.conn.prepareStatement(sql) ;
+
+			rs = pstmt.executeQuery() ;	
+			
+			while( rs.next() ){
+				Film bean = new Film();
+				
+				bean.setId(rs.getInt("id"));
+				bean.setYear(rs.getInt("year"));
+				bean.setTotalratings(rs.getInt("totalrate"));
+				bean.setAvgrating(rs.getDouble("avgrate"));
+				bean.setFilm_title(rs.getString("film_title"));
+				bean.setDirector(rs.getString("director"));
+				bean.setCountry(rs.getString("country"));
+				bean.setPlayUrl(rs.getString("playurl"));
+				bean.setFilm_title(rs.getString("film_title"));
+				lists.add(bean);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally{
+			try {
+				if( rs != null ){ rs.close(); }
+				if( pstmt != null ){ pstmt.close(); }
+				super.closeConnection(); 
+			} catch (Exception e2) {
+				e2.printStackTrace(); 
+			}
+		}
+		
+		return lists ;
+	}
+
 }

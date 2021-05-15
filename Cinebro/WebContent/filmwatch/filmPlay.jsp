@@ -155,22 +155,21 @@
 						<div class="row">
 							<div class="col-lg-8 col-md-8 col-sm-8">
 								<div class="section-title">
-									<h4>보고싶어요한 영화들</h4>
+									<h4>보고싶어요한 영화</h4>
 								</div>
 							</div>						
 						</div>
 						<div id="myCarousel" class="carousel slide" data-ride="carousel">
 							<!-- Indicators -->
 							<ol class="carousel-indicators">
-								<li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-								<li data-target="#myCarousel" data-slide-to="1"></li>
-								<li data-target="#myCarousel" data-slide-to="2"></li>
+								<c:forEach var="n" end="${requestScope.endpage2 }" varStatus="now" begin="1">
+									<li data-target="#myCarousel" data-slide-to="${now.index }"></li>
+								</c:forEach>
 							</ol>
 				
 							<!-- Wrapper for slides -->
 							<div class="carousel-inner">
-								<c:forEach var="i" begin="1" end="2" varStatus="now">
-									
+								<c:forEach var="i" begin="1" end="${requestScope.endpage2 }" varStatus="now">									
 									<c:choose>
 										<c:when test="${now.index==1 }">
 											<div class="item active">
@@ -178,9 +177,8 @@
 										<c:otherwise>
 											<div class="item">
 										</c:otherwise>
-									</c:choose>
-			
-										<c:forEach var="bean2" items="${requestScope.list2}" begin="1" end="5">
+									</c:choose>			
+										<c:forEach var="bean2" items="${requestScope.list2}" begin="${(now.index-1)*5+1 }" end="${now.index*5 }">
 											<div class="column">
 												<div class="container">
 													<a href="<%=NoForm%>filmDetail&id=${bean2.id}"><img
@@ -209,471 +207,183 @@
 					</div>
 				</div>
 			</div>
-					<div class="popular__product">
+			<br><br><br><br><br><br><br>
+			<div class="row">
+				<div class="col-lg-8">
+					<div class="container">
 						<div class="row">
 							<div class="col-lg-8 col-md-8 col-sm-8">
 								<div class="section-title">
-									<h4>인기있는 영화들</h4>
+									<h4>재생중인 영화</h4>
 								</div>
-							</div>							
+							</div>						
 						</div>
-						<div class="row">
-							<div class="col-lg-4 col-md-6 col-sm-6">
-								<div class="product__item">
-									<div class="product__item__pic set-bg"
-										data-setbg="<%=contextPath%>/img/popular/popular-1.jpg">
-										<div class="ep">18 / 18</div>
-										<div class="comment">
-											<i class="fa fa-comments"></i> 11
-										</div>
-										<div class="view">
-											<i class="fa fa-eye"></i> 9141
-										</div>
+						<div id="myCarousel" class="carousel slide" data-ride="carousel">
+							<!-- Indicators -->
+							<ol class="carousel-indicators">
+								<c:forEach var="n" end="${requestScope.endpage2 }" varStatus="now" begin="1">
+									<li data-target="#myCarousel" data-slide-to="${now.index }"></li>
+								</c:forEach>
+							</ol>
+				
+							<!-- Wrapper for slides -->
+							<div class="carousel-inner">
+								<c:forEach var="i" begin="1" end="${requestScope.endpage2 }" varStatus="now">									
+									<c:choose>
+										<c:when test="${now.index==1 }">
+											<div class="item active">
+										</c:when>
+										<c:otherwise>
+											<div class="item">
+										</c:otherwise>
+									</c:choose>			
+										<c:forEach var="bean2" items="${requestScope.list2}" begin="${(now.index-1)*5+1 }" end="${now.index*5 }">
+											<div class="column">
+												<div class="container">
+													<a href="<%=NoForm%>filmDetail&id=${bean2.id}"><img
+														src="img/${bean2.film_title}.jpg" alt="${bean2.film_title}"
+														style="width: 100%" class="image"></a>
+													<div class="middle">
+														<div class="text">${bean2.film_title }</div>
+													</div>
+												</div>
+											</div>
+										</c:forEach>
 									</div>
-									<div class="product__item__text">
-										<ul>
-											<li>Active</li>
-											<li>Movie</li>
-										</ul>
-										<h5>
-											<a href="#">Sen to Chihiro no Kamikakushi</a>
-										</h5>
-									</div>
-								</div>
+								</c:forEach>
 							</div>
-							<div class="col-lg-4 col-md-6 col-sm-6">
-								<div class="product__item">
-									<div class="product__item__pic set-bg"
-										data-setbg="<%=contextPath%>/img/popular/popular-2.jpg">
-										<div class="ep">18 / 18</div>
-										<div class="comment">
-											<i class="fa fa-comments"></i> 11
-										</div>
-										<div class="view">
-											<i class="fa fa-eye"></i> 9141
-										</div>
-									</div>
-									<div class="product__item__text">
-										<ul>
-											<li>Active</li>
-											<li>Movie</li>
-										</ul>
-										<h5>
-											<a href="#">Kizumonogatari III: Reiket su-hen</a>
-										</h5>
-									</div>
-								</div>
-							</div>
-							<div class="col-lg-4 col-md-6 col-sm-6">
-								<div class="product__item">
-									<div class="product__item__pic set-bg"
-										data-setbg="<%=contextPath%>/img/popular/popular-3.jpg">
-										<div class="ep">18 / 18</div>
-										<div class="comment">
-											<i class="fa fa-comments"></i> 11
-										</div>
-										<div class="view">
-											<i class="fa fa-eye"></i> 9141
-										</div>
-									</div>
-									<div class="product__item__text">
-										<ul>
-											<li>Active</li>
-											<li>Movie</li>
-										</ul>
-										<h5>
-											<a href="#">Shirogane Tamashii hen Kouhan sen</a>
-										</h5>
-									</div>
-								</div>
-							</div>
-							<div class="col-lg-4 col-md-6 col-sm-6">
-								<div class="product__item">
-									<div class="product__item__pic set-bg"
-										data-setbg="<%=contextPath%>/img/popular/popular-4.jpg">
-										<div class="ep">18 / 18</div>
-										<div class="comment">
-											<i class="fa fa-comments"></i> 11
-										</div>
-										<div class="view">
-											<i class="fa fa-eye"></i> 9141
-										</div>
-									</div>
-									<div class="product__item__text">
-										<ul>
-											<li>Active</li>
-											<li>Movie</li>
-										</ul>
-										<h5>
-											<a href="#">Rurouni Kenshin: Meiji Kenkaku Romantan</a>
-										</h5>
-									</div>
-								</div>
-							</div>
-							<div class="col-lg-4 col-md-6 col-sm-6">
-								<div class="product__item">
-									<div class="product__item__pic set-bg"
-										data-setbg="<%=contextPath%>/img/popular/popular-5.jpg">
-										<div class="ep">18 / 18</div>
-										<div class="comment">
-											<i class="fa fa-comments"></i> 11
-										</div>
-										<div class="view">
-											<i class="fa fa-eye"></i> 9141
-										</div>
-									</div>
-									<div class="product__item__text">
-										<ul>
-											<li>Active</li>
-											<li>Movie</li>
-										</ul>
-										<h5>
-											<a href="#">Mushishi Zoku Shou 2nd Season</a>
-										</h5>
-									</div>
-								</div>
-							</div>
-							<div class="col-lg-4 col-md-6 col-sm-6">
-								<div class="product__item">
-									<div class="product__item__pic set-bg"
-										data-setbg="<%=contextPath%>/img/popular/popular-6.jpg">
-										<div class="ep">18 / 18</div>
-										<div class="comment">
-											<i class="fa fa-comments"></i> 11
-										</div>
-										<div class="view">
-											<i class="fa fa-eye"></i> 9141
-										</div>
-									</div>
-									<div class="product__item__text">
-										<ul>
-											<li>Active</li>
-											<li>Movie</li>
-										</ul>
-										<h5>
-											<a href="#">Monogatari Series: Second Season</a>
-										</h5>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-					<div class="recent__product">
-						<div class="row">
-							<div class="col-lg-8 col-md-8 col-sm-8">
-								<div class="section-title">
-									<h4>내가 시청중인 영화들</h4>
-								</div>
-							</div>
-							<div class="col-lg-4 col-md-4 col-sm-4">
-								<div class="btn__all">
-									<a href="#" class="primary-btn">View All <span
-										class="arrow_right"></span></a>
-								</div>
-							</div>
-						</div>
-						<div class="row">
-							<div class="col-lg-4 col-md-6 col-sm-6">
-								<div class="product__item">
-									<div class="product__item__pic set-bg"
-										data-setbg="<%=contextPath%>/img/recent/recent-1.jpg">
-										<div class="ep">18 / 18</div>
-										<div class="comment">
-											<i class="fa fa-comments"></i> 11
-										</div>
-										<div class="view">
-											<i class="fa fa-eye"></i> 9141
-										</div>
-									</div>
-									<div class="product__item__text">
-										<ul>
-											<li>Active</li>
-											<li>Movie</li>
-										</ul>
-										<h5>
-											<a href="#">Great Teacher Onizuka</a>
-										</h5>
-									</div>
-								</div>
-							</div>
-							<div class="col-lg-4 col-md-6 col-sm-6">
-								<div class="product__item">
-									<div class="product__item__pic set-bg"
-										data-setbg="<%=contextPath%>/img/recent/recent-2.jpg">
-										<div class="ep">18 / 18</div>
-										<div class="comment">
-											<i class="fa fa-comments"></i> 11
-										</div>
-										<div class="view">
-											<i class="fa fa-eye"></i> 9141
-										</div>
-									</div>
-									<div class="product__item__text">
-										<ul>
-											<li>Active</li>
-											<li>Movie</li>
-										</ul>
-										<h5>
-											<a href="#">Fate/stay night Movie: Heaven's Feel - II.
-												Lost</a>
-										</h5>
-									</div>
-								</div>
-							</div>
-							<div class="col-lg-4 col-md-6 col-sm-6">
-								<div class="product__item">
-									<div class="product__item__pic set-bg"
-										data-setbg="<%=contextPath%>/img/recent/recent-3.jpg">
-										<div class="ep">18 / 18</div>
-										<div class="comment">
-											<i class="fa fa-comments"></i> 11
-										</div>
-										<div class="view">
-											<i class="fa fa-eye"></i> 9141
-										</div>
-									</div>
-									<div class="product__item__text">
-										<ul>
-											<li>Active</li>
-											<li>Movie</li>
-										</ul>
-										<h5>
-											<a href="#">Mushishi Zoku Shou: Suzu no Shizuku</a>
-										</h5>
-									</div>
-								</div>
-							</div>
-							<div class="col-lg-4 col-md-6 col-sm-6">
-								<div class="product__item">
-									<div class="product__item__pic set-bg"
-										data-setbg="<%=contextPath%>/img/recent/recent-4.jpg">
-										<div class="ep">18 / 18</div>
-										<div class="comment">
-											<i class="fa fa-comments"></i> 111
-										</div>
-										<div class="view">
-											<i class="fa fa-eye"></i> 9141
-										</div>
-									</div>
-									<div class="product__item__text">
-										<ul>
-											<li>Active</li>
-											<li>Movie</li>
-										</ul>
-										<h5>
-											<a href="#">Fate/Zero 2nd Season</a>
-										</h5>
-									</div>
-								</div>
-							</div>
-							<div class="col-lg-4 col-md-6 col-sm-6">
-								<div class="product__item">
-									<div class="product__item__pic set-bg"
-										data-setbg="<%=contextPath%>/img/recent/recent-5.jpg">
-										<div class="ep">18 / 18</div>
-										<div class="comment">
-											<i class="fa fa-comments"></i> 11
-										</div>
-										<div class="view">
-											<i class="fa fa-eye"></i> 9141
-										</div>
-									</div>
-									<div class="product__item__text">
-										<ul>
-											<li>Active</li>
-											<li>Movie</li>
-										</ul>
-										<h5>
-											<a href="#">Kizumonogatari II: Nekket su-hen</a>
-										</h5>
-									</div>
-								</div>
-							</div>
-							<div class="col-lg-4 col-md-6 col-sm-6">
-								<div class="product__item">
-									<div class="product__item__pic set-bg"
-										data-setbg="<%=contextPath%>/img/recent/recent-6.jpg">
-										<div class="ep">18 / 18</div>
-										<div class="comment">
-											<i class="fa fa-comments"></i> 11
-										</div>
-										<div class="view">
-											<i class="fa fa-eye"></i> 9141
-										</div>
-									</div>
-									<div class="product__item__text">
-										<ul>
-											<li>Active</li>
-											<li>Movie</li>
-										</ul>
-										<h5>
-											<a href="#">The Seven Deadly Sins: Wrath of the Gods</a>
-										</h5>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-					<div class="live__product">
-						<div class="row">
-							<div class="col-lg-8 col-md-8 col-sm-8">
-								<div class="section-title">
-									<h4>추천 영화들</h4>
-								</div>
-							</div>
-							<div class="col-lg-4 col-md-4 col-sm-4">
-								<div class="btn__all">
-									<a href="#" class="primary-btn">View All <span
-										class="arrow_right"></span></a>
-								</div>
-							</div>
-						</div>
-						<div class="row">
-							<div class="col-lg-4 col-md-6 col-sm-6">
-								<div class="product__item">
-									<div class="product__item__pic set-bg"
-										data-setbg="<%=contextPath%>/img/live/live-1.jpg">
-										<div class="ep">18 / 18</div>
-										<div class="comment">
-											<i class="fa fa-comments"></i> 11
-										</div>
-										<div class="view">
-											<i class="fa fa-eye"></i> 9141
-										</div>
-									</div>
-									<div class="product__item__text">
-										<ul>
-											<li>Active</li>
-											<li>Movie</li>
-										</ul>
-										<h5>
-											<a href="#">Shouwa Genroku Rakugo Shinjuu</a>
-										</h5>
-									</div>
-								</div>
-							</div>
-							<div class="col-lg-4 col-md-6 col-sm-6">
-								<div class="product__item">
-									<div class="product__item__pic set-bg"
-										data-setbg="<%=contextPath%>/img/live/live-2.jpg">
-										<div class="ep">18 / 18</div>
-										<div class="comment">
-											<i class="fa fa-comments"></i> 11
-										</div>
-										<div class="view">
-											<i class="fa fa-eye"></i> 9141
-										</div>
-									</div>
-									<div class="product__item__text">
-										<ul>
-											<li>Active</li>
-											<li>Movie</li>
-										</ul>
-										<h5>
-											<a href="#">Mushishi Zoku Shou 2nd Season</a>
-										</h5>
-									</div>
-								</div>
-							</div>
-							<div class="col-lg-4 col-md-6 col-sm-6">
-								<div class="product__item">
-									<div class="product__item__pic set-bg"
-										data-setbg="<%=contextPath%>/img/live/live-3.jpg">
-										<div class="ep">18 / 18</div>
-										<div class="comment">
-											<i class="fa fa-comments"></i> 11
-										</div>
-										<div class="view">
-											<i class="fa fa-eye"></i> 9141
-										</div>
-									</div>
-									<div class="product__item__text">
-										<ul>
-											<li>Active</li>
-											<li>Movie</li>
-										</ul>
-										<h5>
-											<a href="#">Mushishi Zoku Shou: Suzu no Shizuku</a>
-										</h5>
-									</div>
-								</div>
-							</div>
-							<div class="col-lg-4 col-md-6 col-sm-6">
-								<div class="product__item">
-									<div class="product__item__pic set-bg"
-										data-setbg="<%=contextPath%>/img/live/live-4.jpg">
-										<div class="ep">18 / 18</div>
-										<div class="comment">
-											<i class="fa fa-comments"></i> 11
-										</div>
-										<div class="view">
-											<i class="fa fa-eye"></i> 9141
-										</div>
-									</div>
-									<div class="product__item__text">
-										<ul>
-											<li>Active</li>
-											<li>Movie</li>
-										</ul>
-										<h5>
-											<a href="#">The Seven Deadly Sins: Wrath of the Gods</a>
-										</h5>
-									</div>
-								</div>
-							</div>
-							<div class="col-lg-4 col-md-6 col-sm-6">
-								<div class="product__item">
-									<div class="product__item__pic set-bg"
-										data-setbg="<%=contextPath%>/img/live/live-5.jpg">
-										<div class="ep">18 / 18</div>
-										<div class="comment">
-											<i class="fa fa-comments"></i> 11
-										</div>
-										<div class="view">
-											<i class="fa fa-eye"></i> 9141
-										</div>
-									</div>
-									<div class="product__item__text">
-										<ul>
-											<li>Active</li>
-											<li>Movie</li>
-										</ul>
-										<h5>
-											<a href="#">Fate/stay night Movie: Heaven's Feel - II.
-												Lost</a>
-										</h5>
-									</div>
-								</div>
-							</div>
-							<div class="col-lg-4 col-md-6 col-sm-6">
-								<div class="product__item">
-									<div class="product__item__pic set-bg"
-										data-setbg="<%=contextPath%>/img/live/live-6.jpg">
-										<div class="ep">18 / 18</div>
-										<div class="comment">
-											<i class="fa fa-comments"></i> 11
-										</div>
-										<div class="view">
-											<i class="fa fa-eye"></i> 9141
-										</div>
-									</div>
-									<div class="product__item__text">
-										<ul>
-											<li>Active</li>
-											<li>Movie</li>
-										</ul>
-										<h5>
-											<a href="#">Kizumonogatari II: Nekketsu-hen</a>
-										</h5>
-									</div>
-								</div>
-							</div>
-						</div>
+				
+							<!-- Left and right controls -->
+							<a class="left carousel-control" href="#myCarousel" data-slide="prev">
+								<span class="glyphicon glyphicon-chevron-left"></span> <span
+								class="sr-only">Previous</span>
+							</a> 
+							<a class="right carousel-control" href="#myCarousel"
+								data-slide="next"> <span
+								class="glyphicon glyphicon-chevron-right"></span> <span
+								class="sr-only">Next</span>
+							</a>
 					</div>
 				</div>
-		   </div>
-
-	
+			</div>
+				<br><br><br><br><br><br><br>
+			<div class="row">
+				<div class="col-lg-8">
+					<div class="container">
+						<div class="row">
+							<div class="col-lg-8 col-md-8 col-sm-8">
+								<div class="section-title">
+									<h4>평점 높은 영화</h4>
+								</div>
+							</div>						
+						</div>
+						<div id="myCarousel" class="carousel slide" data-ride="carousel">
+							<!-- Indicators -->
+							<ol class="carousel-indicators">
+								<c:forEach var="n" end="${requestScope.endpage3}" varStatus="now" begin="1">
+									<li data-target="#myCarousel" data-slide-to="${now.index }"></li>
+								</c:forEach>
+							</ol>
+				
+							<!-- Wrapper for slides -->
+							<div class="carousel-inner">
+								<c:forEach var="i" begin="1" end="${requestScope.endpage3}" varStatus="now">									
+									<c:choose>
+										<c:when test="${now.index==1 }">
+											<div class="item active">
+										</c:when>
+										<c:otherwise>
+											<div class="item">
+										</c:otherwise>
+									</c:choose>			
+										<c:forEach var="bean" items="${requestScope.list3}" begin="${(now.index-1)*5+1 }" end="${now.index*5 }">
+											<div class="column">
+												<div class="container">
+													<a href="<%=NoForm%>filmDetail&id=${bean.id}"><img
+														src="img/${bean.film_title}.jpg" alt="${bean.film_title}"
+														style="width: 100%" class="image"></a>
+													<div class="middle">
+														<div class="text">${bean.film_title }</div>
+													</div>
+												</div>
+											</div>
+										</c:forEach>
+									</div>
+								</c:forEach>
+							</div>
+				
+							<!-- Left and right controls -->
+							<a class="left carousel-control" href="#myCarousel" data-slide="prev">
+								<span class="glyphicon glyphicon-chevron-left"></span> <span
+								class="sr-only">Previous</span>
+							</a> 
+							<a class="right carousel-control" href="#myCarousel"
+								data-slide="next"> <span
+								class="glyphicon glyphicon-chevron-right"></span> <span
+								class="sr-only">Next</span>
+							</a>
+					</div>
+				</div>
+			</div>
+				<br><br><br><br><br><br><br>
+			<div class="row">
+				<div class="col-lg-8">
+					<div class="container">
+						<div class="row">
+							<div class="col-lg-8 col-md-8 col-sm-8">
+								<div class="section-title">
+									<h4>${sessionScope.loginfo.nickname }님에게 추천드리는 영화</h4>
+								</div>
+							</div>						
+						</div>
+						<div id="myCarousel" class="carousel slide" data-ride="carousel">
+							<!-- Indicators -->
+							<ol class="carousel-indicators">
+								<c:forEach var="n" end="${requestScope.endpage2 }" varStatus="now" begin="1">
+									<li data-target="#myCarousel" data-slide-to="${now.index }"></li>
+								</c:forEach>
+							</ol>
+				
+							<!-- Wrapper for slides -->
+							<div class="carousel-inner">
+								<c:forEach var="i" begin="1" end="${requestScope.endpage2 }" varStatus="now">									
+									<c:choose>
+										<c:when test="${now.index==1 }">
+											<div class="item active">
+										</c:when>
+										<c:otherwise>
+											<div class="item">
+										</c:otherwise>
+									</c:choose>			
+										<c:forEach var="bean2" items="${requestScope.list2}" begin="${(now.index-1)*5+1 }" end="${now.index*5 }">
+											<div class="column">
+												<div class="container">
+													<a href="<%=NoForm%>filmDetail&id=${bean2.id}"><img
+														src="img/${bean2.film_title}.jpg" alt="${bean2.film_title}"
+														style="width: 100%" class="image"></a>
+													<div class="middle">
+														<div class="text">${bean2.film_title }</div>
+													</div>
+												</div>
+											</div>
+										</c:forEach>
+									</div>
+								</c:forEach>
+							</div>
+				
+							<!-- Left and right controls -->
+							<a class="left carousel-control" href="#myCarousel" data-slide="prev">
+								<span class="glyphicon glyphicon-chevron-left"></span> <span
+								class="sr-only">Previous</span>
+							</a> 
+							<a class="right carousel-control" href="#myCarousel"
+								data-slide="next"> <span
+								class="glyphicon glyphicon-chevron-right"></span> <span
+								class="sr-only">Next</span>
+							</a>
+					</div>
+				</div>
+			</div>
 	<jsp:include page="./../anime-main/footer.jsp"/>
 </body>
 </html>

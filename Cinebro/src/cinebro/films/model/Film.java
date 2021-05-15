@@ -12,6 +12,9 @@ public class Film {
 	private String name;
 	private List<String> genres;
 	private List<String> actors;
+	private int totalratings;
+	private double avgrating;
+	private String playUrl;
 	
 	public Film() {
 		// TODO Auto-generated constructor stub
@@ -19,6 +22,42 @@ public class Film {
 	
 	
 	
+	public int getTotalratings() {
+		return totalratings;
+	}
+
+
+
+	public void setTotalratings(int totalratings) {
+		this.totalratings = totalratings;
+	}
+
+
+
+	public double getAvgrating() {
+		return avgrating;
+	}
+
+
+
+	public void setAvgrating(double avgrating) {
+		this.avgrating = avgrating;
+	}
+
+
+
+	public String getPlayUrl() {
+		return playUrl;
+	}
+
+
+
+	public void setPlayUrl(String playUrl) {
+		this.playUrl = playUrl;
+	}
+
+
+
 	public List<String> getGenres() {
 		return genres;
 	}
@@ -100,11 +139,14 @@ public class Film {
 	@Override
 	public String toString() {
 		return "Film [id=" + id + ", film_title=" + film_title + ", director=" + director + ", year=" + year
-				+ ", country=" + country + ", name=" + name + ", genres=" + genres + ", actors=" + actors + "]";
+				+ ", country=" + country + ", name=" + name + ", genres=" + genres + ", actors=" + actors
+				+ ", totalratings=" + totalratings + ", avgrating=" + avgrating + ", playUrl=" + playUrl
+				+ ", getTotalratings()=" + getTotalratings() + ", getAvgrating()=" + getAvgrating() + ", getPlayUrl()="
+				+ getPlayUrl() + ", getGenres()=" + getGenres() + ", getActors()=" + getActors() + ", getId()="
+				+ getId() + ", getFilm_title()=" + getFilm_title() + ", getDirector()=" + getDirector() + ", getYear()="
+				+ getYear() + ", getCountry()=" + getCountry() + ", getName()=" + getName() + ", getClass()="
+				+ getClass() + ", hashCode()=" + hashCode() + ", toString()=" + super.toString() + "]";
 	}
 
-
-
-	
 	
 }
