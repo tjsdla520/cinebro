@@ -8,6 +8,22 @@
 	td{
 		color: white;
 	}
+	* {
+  box-sizing: border-box;
+}
+
+.column {
+  float: left;
+  width: 20%;
+  padding: 5px;
+}
+
+/* Clearfix (clear floats) */
+.row::after {
+  content: "";
+  clear: both;
+  display: table;
+}
 </style>
 </head>
 <body>
@@ -29,16 +45,26 @@
 				</tr>
 			</thead>
 			<tbody>
-				<c:forEach var="bean" items="${requestScope.lists }">
 					<tr>
 						<td>${bean.list_title}</td>
 						<td>${bean.nickname}</td>
-						<td>${bean.comments}</td>
-						<td>${bean.film_title }
+						<td>${bean.comments}</td>	
 					</tr>
-				</c:forEach>
 			</tbody>
 		</table>
+			<div class="row">
+			<c:forEach items="${bean.film_title}" var="entry" varStatus="status">
+				<div class="column">
+				<div class="container">
+					<a href="<%=NoForm%>filmDetail&id=${entry.key}"><img src="img/${entry.value}.jpg" alt="${entry.value}"
+						style="width: 100%"></a>
+						<div class="middle">
+							<div class="text">${entry.value }</div>
+						</div>
+				</div>
+			</div>
+			</c:forEach>
+	</div>
 	</div>
 
 	<jsp:include page="./../anime-main/footer.jsp" />

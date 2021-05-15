@@ -25,9 +25,9 @@ public class FilmListDetailController extends SuperClass {
 		FilmListDetailDao dao = new FilmListDetailDao();
 		String id = request.getParameter("id");
 		
-		List<FilmList> lists = dao.SelectByOne(id);
+		FilmList bean = dao.SelectByOne(id);
 		
-		request.setAttribute("lists", lists);
+		request.setAttribute("bean", bean);
 		
 		String gotopage = "lists/filmListDetail.jsp";
 		super.GotoPage(gotopage);
