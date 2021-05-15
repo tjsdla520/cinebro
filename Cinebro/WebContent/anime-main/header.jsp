@@ -16,6 +16,11 @@
 	</c:if>
 </c:if>
 <head>
+<style>
+.header__logo{
+	width: 150;
+}
+</style>
 </head>
 <body>
 	<!-- Page Preloder -->
