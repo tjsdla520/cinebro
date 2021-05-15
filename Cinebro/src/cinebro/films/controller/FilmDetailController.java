@@ -22,17 +22,20 @@ public class FilmDetailController extends SuperClass {
 		String id = request.getParameter("id");
 		FilmDetailDao dao = new FilmDetailDao();
 		Film fbean = dao.selectFilm(id);
+		
 		List<String> f = fbean.getGenres();
 		System.out.println("장르리스트 사이즈 : "+f.size());
 		for (String genre : f) {
 			System.out.println("장르는" +genre);
 		}
+		
 		List<String> l = fbean.getActors();
 		System.out.println("배우리스트 사이즈 : "+l.size());
 		for (String actor : l) {
 			System.out.println("배우는" +actor);
 		}
-		session.setAttribute("fbean", fbean);
+		
+		request.setAttribute("fbean", fbean);
 		String gotopage = "/reviews/filmDetail.jsp";
 		super.GotoPage(gotopage);
 	}
