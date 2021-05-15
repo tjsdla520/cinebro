@@ -22,7 +22,7 @@
 						
 					<c:forEach var="bean" items="${requestScope.Review}">
 						<tr>						
-							<td><span style="color:white">${bean.filmTitle}</span></td>
+							<td><span style="color:white"><a href="<%=NoForm %>reviewDetail&id=${bean.id}">${bean.filmTitle}</a></span></td>
 							<td><span style="color:white">${bean.content}</span> </td>
 							<td><span style="color:white">${bean.rating}</span></td>
 							<td><span style="color:white">${bean.watchDate}</span> </td>											
