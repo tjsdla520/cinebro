@@ -4,14 +4,19 @@
 <!DOCTYPE html>
 <html lang="zxx">
 <head>
-<style type="text/css"></style>
+<style type="text/css">
+	td{
+		color: white; 	
+	}
+</style>
 </head>
 <body>
 	<jsp:include page="header.jsp"/>
 	<!-- Hero Section Begin -->
 	<div class="panel-heading">
+			<div>
 				<h1>
-				<p class="text-white">인기 영화 리스트</p>	
+				<p class="text-white">인기 FilmList</p>	
 				</h1>
 			</div>
 			<div class="panel-body">
@@ -34,8 +39,9 @@
 					</tbody>
 				</table>
 			</div>
-							<h1>
-				<p class="text-white">인기 리뷰 리스트</p>	
+			<div>
+				<h1>
+				<p class="text-white">인기 Review</p>	
 				</h1>
 			</div>
 			<div class="panel-body">

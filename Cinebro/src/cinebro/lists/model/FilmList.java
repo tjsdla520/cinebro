@@ -1,18 +1,23 @@
 package cinebro.lists.model;
 
+import java.util.List;
+import java.util.Map;
+
 public class FilmList {
 	private int id ;
 	private String email ;
 	private String list_title ;
 	private String comments ;
 	private String nickname ;
-	private String film_title;
+	private Map<Integer, String> film_title;
 	
-	public String getFilm_title() {
+	
+
+	public Map<Integer, String> getFilm_title() {
 		return film_title;
 	}
 
-	public void setFilm_title(String film_title) {
+	public void setFilm_title(Map<Integer, String> film_title) {
 		this.film_title = film_title;
 	}
 
