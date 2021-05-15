@@ -18,15 +18,17 @@ public class MyReviewsController extends SuperClass {
 	public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		super.doGet(request, response);
 		
-		String email = request.getParameter("email");
 		ReviewDao dao = new ReviewDao();
+		
+		String email = request.getParameter("email");
 				
 		List<Review> reviews = dao.selectMyreviews(email);
 		
 		request.setAttribute("Review", reviews);
-				
+			
         String gotopage = "/profile/myReviews.jsp" ;
-	    super.GotoPage(gotopage);
+	    
+        super.GotoPage(gotopage);
 	}
 
 	@Override

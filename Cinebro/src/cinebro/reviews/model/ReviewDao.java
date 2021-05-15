@@ -209,28 +209,31 @@ public class ReviewDao extends SuperDao {
 
 	public List<Review> selectMyreviews(String email) {
 		PreparedStatement pstmt = null ;
-		ResultSet rs = null ;				
-
+		ResultSet rs = null ;	
+			
+		String sql = " select m.nickname, f.film_title, r.content, r.rating, r.watch_date from members m inner join reviews r on r.email = m.email inner join films f on r.film_id = f.id where m.email = ?  " ;
+		
 		List<Review> reviews = new ArrayList<Review>();
-				
-		String sql = " select m.nickname, f.film_title, r.content, r.rating, r.watch_date from members m inner join reviews r on r.email = m.email inner join films f on r.film_id = f.id where m.email = 'aaa@aaa.aaa'  " ;
 		
-		Review bean = null ;
-		
+	
 		try {
-			if( this.conn == null ){ this.conn = this.getConnection() ; }			
-			pstmt = this.conn.prepareStatement(sql) ;	
+			if( conn == null ){ super.conn = super.getConnection() ; }			
+			pstmt = super.conn.prepareStatement(sql) ;	
+			
+			pstmt.setString(1, email);
 			
 			rs = pstmt.executeQuery() ;
 		
 			
 			while ( rs.next() ) {
-				bean = new Review(); 
+				Review bean = new Review(); 
+				
 				bean.setNickname(rs.getString("nickname")) ;
 			    bean.setFilmTitle(rs.getString("film_title"));
 			    bean.setContent(rs.getString("content"));
 			    bean.setRating(rs.getInt("rating"));
 			    bean.setWatchDate(rs.getDate("watch_date"));
+			    
 			    reviews.add(bean);
 			}
 			
