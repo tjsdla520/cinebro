@@ -68,13 +68,13 @@
 				    <div class="form-group" style="margin-top: 20px">
 						<label class="control-label col-sm-<%=formleft%>" for="cardpassword" style="color: white">카드비밀번호</label>
 				      	<div class="col-xs-3">          
-				        	<input type="password" class="form-control" id="cardpassword" placeholder="월년도 숫자만 입력" name="cardpassword" >
+				        	<input type="password" class="form-control" id="cardpassword" placeholder="카드비밀번호 입력" name="cardpassword" >
 				      	</div>
 				    </div>	
 				    <div class="form-group" style="margin-top: 20px">
 						<label class="control-label col-sm-<%=formleft%>" for="enddate" style="color: white">카드만료일</label>
 				      	<div class="col-xs-3">          
-				        	<input type="password" class="form-control" id="enddate" placeholder="카드비밀번호 입력" name="enddate" >
+				        	<input type="password" class="form-control" id="enddate" placeholder="월년도 숫자만 입력" name="enddate" >
 				      	</div>
 				    </div>				    		    
 				    <div class="form-group" style="margin-top: 40px">        

@@ -8,7 +8,6 @@ import java.util.List;
 
 import cinebro.common.model.SuperDao;
 import cinebro.films.model.Film;
-import cinebro.lists.model.FilmList;
 
 public class ProfileDao extends SuperDao {
 
@@ -17,7 +16,7 @@ public class ProfileDao extends SuperDao {
 		ResultSet rs = null ;
 		Profile bean = new Profile();
 		
-		String sql = " select * from members where email = ? " ;
+		String sql = " select m.email, m.password, m.nickname, m.subscribe, m.name, m.cardnumber, m.genre_id, m.film_id, f.film_title, g.name as genre_name from members m left outer join films f on m.film_id = f.id left outer join genres g on m.genre_id = g.id where m.email = ? " ;
 		
 		try {
 			if(conn == null) {super.conn = super.getConnection() ; }
@@ -27,9 +26,19 @@ public class ProfileDao extends SuperDao {
 			if(rs.next()) {
 				bean = new Profile() ;
 				
-				bean.setPassword(rs.getString("password"));				
+				
 				bean.setEmail(rs.getString("email"));
+				bean.setPassword(rs.getString("password"));				
 				bean.setNickname(rs.getString("nickname"));
+				bean.setSubscribe(rs.getInt("subscribe"));
+				bean.setName(rs.getString("name"));
+				bean.setCardnumber(rs.getString("cardnumber"));
+				
+				bean.setFilm_title(rs.getString("film_title"));				
+				bean.setGenre_name(rs.getString("genre_name"));
+				bean.setFilm_id(rs.getInt("film_id"));				
+				bean.setGenre_id(rs.getInt("genre_id"));
+				
 			}
 		} catch (Exception e) {			
 			e.printStackTrace();
