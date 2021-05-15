@@ -41,44 +41,117 @@
 .dropdown:hover .dropdown-content {display: block;}
 
 .dropdown:hover .dropbtn {background-color: red;}
+* {
+  box-sizing: border-box;
+}
+
+.column {
+  float: left;
+  width: 20%;
+  padding: 5px;
+}
+
+/* Clearfix (clear floats) */
+.row::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+.container {
+  position: relative;
+  width: 50%;
+}
+
+.image {
+  opacity: 1;
+  display: block;
+  width: 100%;
+  height: auto;
+  transition: .5s ease;
+  backface-visibility: hidden;
+}
+
+.middle {
+  transition: .5s ease;
+  opacity: 0;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  text-align: center;
+}
+
+.container:hover .image {
+  opacity: 0.3;
+}
+
+.container:hover .middle {
+  opacity: 1;
+}
+
+.text {
+  color: white;
+  font-size: 15px;
+  padding: 16px 32px;
+}
+.container {
+  position: relative;
+  width: 50%;
+}
+
+.image {
+  opacity: 1;
+  display: block;
+  width: 100%;
+  height: auto;
+  transition: .5s ease;
+  backface-visibility: hidden;
+}
+
+.middle {
+  transition: .5s ease;
+  opacity: 0;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  text-align: center;
+}
+
+.container:hover .image {
+  opacity: 0.3;
+}
+
+.container:hover .middle {
+  opacity: 1;
+}
+
+.text {
+
+  color: white;
+  font-size: 10px;
+  padding: 16px 32px;
+}
 </style>
 </head>
 <body>
-	<%-- <%@ include file="header.jsp" %> --%>
-	<%-- <jsp:include page="<%=contextPath%>/anime-main/header.jsp"/> --%>
+
 	<jsp:include page="./../anime-main/header.jsp"/>
 
-
-	
-		<div class="container">
- <div class="dropdown">
-  <button class="dropbtn"><b>장르별 보러가기</b></button>
-  <div class="dropdown-content">
-    <a href="<%=NoForm%>genrePlay">가족</a>
-    <a href="<%=NoForm%>performance">공연</a>
-    <a href="<%=NoForm%>horror">공포(호러)</a>
-    <a href="<%=NoForm%>documentary">다큐멘터리</a>
-    <a href="<%=NoForm%>drama">드라마</a>
-    <a href="<%=NoForm%>romance">멜로/로멘스</a>
-    <a href="<%=NoForm%>musical">뮤지컬</a>
-    <a href="<%=NoForm%>mystery">미스터리</a>
-    <a href="<%=NoForm%>crime">범죄</a>
-    <a href="<%=NoForm%>historical">사극</a>
-    <a href="<%=NoForm%>western">서부극(웨스턴)</a>
-    <a href="<%=NoForm%>thriller">스릴러</a>
-    <a href="<%=NoForm%>animation">애니메이션</a>
-    <a href="<%=NoForm%>action">액션</a>
-    <a href="<%=NoForm%>adventure">어드벤처</a>
-    <a href="<%=NoForm%>war">전쟁</a>
-    <a href="<%=NoForm%>comedy">코미디</a>
-    <a href="<%=NoForm%>fantasy">판타지</a>
-    <a href="<%=NoForm%>science">SF</a> 
-  </div>
-</div>
-<br><br>
+	 <div class="dropdown">
+	  <button class="dropbtn"><b>장르별 보러가기</b></button>
+		  <div class="dropdown-content">
+		  	<c:forEach var="bean" items="${requestScope.list1 }">
+		  		<a href="<%=NoForm%>genrePlay&id=${bean.id }&name=${bean.name}">${bean.name }</a>
+		  	</c:forEach>    
+		  </div>
+	</div>
+	<br><br>
 			<div class="row">
 				<div class="col-lg-8">
-					<div class="trending__product">
+					<div class="container">
 						<div class="row">
 							<div class="col-lg-8 col-md-8 col-sm-8">
 								<div class="section-title">
@@ -86,148 +159,56 @@
 								</div>
 							</div>						
 						</div>
-						<div class="row">
-							<div class="col-lg-4 col-md-6 col-sm-6">
-								<div class="product__item">
-									<div class="product__item__pic set-bg"
-										data-setbg="<%=contextPath%>/img/trending/trend-1.jpg">
+						<div id="myCarousel" class="carousel slide" data-ride="carousel">
+							<!-- Indicators -->
+							<ol class="carousel-indicators">
+								<li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+								<li data-target="#myCarousel" data-slide-to="1"></li>
+								<li data-target="#myCarousel" data-slide-to="2"></li>
+							</ol>
+				
+							<!-- Wrapper for slides -->
+							<div class="carousel-inner">
+								<c:forEach var="i" begin="1" end="2" varStatus="now">
 									
-										<div class="comment">
-											<i class="fa fa-comments"></i> 11
-										</div>
-										<div class="view">
-											<i class="fa fa-eye"></i> 9141
-										</div>
+									<c:choose>
+										<c:when test="${now.index==1 }">
+											<div class="item active">
+										</c:when>
+										<c:otherwise>
+											<div class="item">
+										</c:otherwise>
+									</c:choose>
+			
+										<c:forEach var="bean2" items="${requestScope.list2}" begin="1" end="5">
+											<div class="column">
+												<div class="container">
+													<a href="<%=NoForm%>filmDetail&id=${bean2.id}"><img
+														src="img/${bean2.film_title}.jpg" alt="${bean2.film_title}"
+														style="width: 100%" class="image"></a>
+													<div class="middle">
+														<div class="text">${bean2.film_title }</div>
+													</div>
+												</div>
+											</div>
+										</c:forEach>
 									</div>
-									<div class="product__item__text">
-										<ul>
-											<li>Active</li>
-											<li>Movie</li>
-										</ul>
-										<h5>
-											<a href="#">The Seven Deadly Sins: Wrath of the Gods</a>
-										</h5>
-									</div>
-								</div>
+								</c:forEach>
 							</div>
-							<div class="col-lg-4 col-md-6 col-sm-6">
-								<div class="product__item">
-									<div class="product__item__pic set-bg"
-										data-setbg="<%=contextPath%>/img/trending/trend-2.jpg">
-									
-										<div class="comment">
-											<i class="fa fa-comments"></i> 11
-										</div>
-										<div class="view">
-											<i class="fa fa-eye"></i> 9141
-										</div>
-									</div>
-									<div class="product__item__text">
-										<ul>
-											<li>Active</li>
-											<li>Movie</li>
-										</ul>
-										<h5>
-											<a href="#">Gintama Movie 2: Kanketsu-hen - Yorozuya yo
-												Eien</a>
-										</h5>
-									</div>
-								</div>
-							</div>
-							<div class="col-lg-4 col-md-6 col-sm-6">
-								<div class="product__item">
-									<div class="product__item__pic set-bg"
-										data-setbg="<%=contextPath%>/img/trending/trend-3.jpg">
-								
-										<div class="comment">
-											<i class="fa fa-comments"></i> 11
-										</div>
-										<div class="view">
-											<i class="fa fa-eye"></i> 9141
-										</div>
-									</div>
-									<div class="product__item__text">
-										<ul>
-											<li>Active</li>
-											<li>Movie</li>
-										</ul>
-										<h5>
-											<a href="#">Shingeki no Kyojin Season 3 Part 2</a>
-										</h5>
-									</div>
-								</div>
-							</div>
-							<div class="col-lg-4 col-md-6 col-sm-6">
-								<div class="product__item">
-									<div class="product__item__pic set-bg"
-										data-setbg="<%=contextPath%>/img/trending/trend-4.jpg">
-										
-										<div class="comment">
-											<i class="fa fa-comments"></i> 11
-										</div>
-										<div class="view">
-											<i class="fa fa-eye"></i> 9141
-										</div>
-									</div>
-									<div class="product__item__text">
-										<ul>
-											<li>Active</li>
-											<li>Movie</li>
-										</ul>
-										<h5>
-											<a href="#">Fullmetal Alchemist: Brotherhood</a>
-										</h5>
-									</div>
-								</div>
-							</div>
-							<div class="col-lg-4 col-md-6 col-sm-6">
-								<div class="product__item">
-									<div class="product__item__pic set-bg"
-										data-setbg="<%=contextPath%>/img/trending/trend-5.jpg">
-										<div class="ep">18 / 18</div>
-										<div class="comment">
-											<i class="fa fa-comments"></i> 11
-										</div>
-										<div class="view">
-											<i class="fa fa-eye"></i> 9141
-										</div>
-									</div>
-									<div class="product__item__text">
-										<ul>
-											<li>Active</li>
-											<li>Movie</li>
-										</ul>
-										<h5>
-											<a href="#">Shiratorizawa Gakuen Koukou</a>
-										</h5>
-									</div>
-								</div>
-							</div>
-							<div class="col-lg-4 col-md-6 col-sm-6">
-								<div class="product__item">
-									<div class="product__item__pic set-bg"
-										data-setbg="<%=contextPath%>/img/trending/trend-6.jpg">
-										<div class="ep">18 / 18</div>
-										<div class="comment">
-											<i class="fa fa-comments"></i> 11
-										</div>
-										<div class="view">
-											<i class="fa fa-eye"></i> 9141
-										</div>
-									</div>
-									<div class="product__item__text">
-										<ul>
-											<li>Active</li>
-											<li>Movie</li>
-										</ul>
-										<h5>
-											<a href="#">Code Geass: Hangyaku no Lelouch R2</a>
-										</h5>
-									</div>
-								</div>
-							</div>
-						</div>
+				
+							<!-- Left and right controls -->
+							<a class="left carousel-control" href="#myCarousel" data-slide="prev">
+								<span class="glyphicon glyphicon-chevron-left"></span> <span
+								class="sr-only">Previous</span>
+							</a> 
+							<a class="right carousel-control" href="#myCarousel"
+								data-slide="next"> <span
+								class="glyphicon glyphicon-chevron-right"></span> <span
+								class="sr-only">Next</span>
+							</a>
 					</div>
+				</div>
+			</div>
 					<div class="popular__product">
 						<div class="row">
 							<div class="col-lg-8 col-md-8 col-sm-8">
@@ -691,7 +672,7 @@
 					</div>
 				</div>
 		   </div>
-		</div>
+
 	
 	<jsp:include page="./../anime-main/footer.jsp"/>
 </body>

@@ -50,7 +50,7 @@
 												<a href="<%=NoForm%>bridge"> 영화n보러가기</a>
 											</c:if>
 											<c:if test="${sessionScope.loginfo.subscribe == 1}">
-												<a href="<%=NoForm%>filmPlay"> 영화n보러가기</a>
+												<a href="<%=NoForm%>filmPlay&email=${sessionScope.loginfo.email}"> 영화n보러가기</a>
 											</c:if>
 										</c:when>
 									</c:choose>

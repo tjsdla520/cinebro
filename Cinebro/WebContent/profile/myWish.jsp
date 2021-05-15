@@ -11,7 +11,7 @@
 
 .column {
   float: left;
-  width: 20%;
+  width: 10%;
   padding: 5px;
 }
 
@@ -93,7 +93,6 @@
 }
 
 .text {
-  background-color: #04AA6D;
   color: white;
   font-size: 16px;
   padding: 16px 32px;
