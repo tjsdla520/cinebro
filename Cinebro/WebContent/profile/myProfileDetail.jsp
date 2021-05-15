@@ -26,6 +26,7 @@ int rightButton = 1;
 				<p style="color: white; margin-left: 30px">아이디 : ${bean.email}</p>
 				<c:if test="${bean.nickname==sessionScope.loginfo.nickname}">
 					<p style="color: white; margin-left: 30px">비밀 번호 : ${bean.password}</p>
+				</c:if>
 				<p style="color: white; margin-left: 30px">닉네임 : ${bean.nickname}</p>
 				<c:if test="${bean.nickname==sessionScope.loginfo.nickname}">
 					<c:if test="${requestScope.bean.subscribe == 1}">
