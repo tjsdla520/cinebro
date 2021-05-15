@@ -75,7 +75,7 @@ body {
 					<c:forEach var="bean" items="${requestScope.lists}">
 						<tr>
 							<td><span style="color: white"> <a
-									href="<%=NoForm%>myproFile&email=${bean.email}">
+									href="<%=NoForm%>myproFile&email=${bean.follwingemail}">
 										${bean.following} </a>
 							</span></td>
 						</tr>
