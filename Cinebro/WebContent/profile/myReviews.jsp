@@ -10,26 +10,22 @@
 	<%-- <jsp:include page="<%=contextPath%>/anime-main/header.jsp"/> --%>
 	<jsp:include page="./../anime-main/header.jsp"/>
 	
-					   <div class="panel-body">
-			
-				<table class="table table-hover">
+			   <div class="panel-body">
+        		<table class="table table-hover">
 					<thead>
 						<tr>
-							<th><p class="text-white"><b>나의리뷰</b></p></th>				
+							<th><p class="text-white"><b>${sessionScope.loginfo.nickname}님의 리뷰</b></p></th>				
 				
 						</tr>
 					</thead>
 					<tbody>
-					
+						
 					<c:forEach var="bean" items="${requestScope.Review}">
-						<tr>
-							<td><span style="color:white">${bean.nickname}</span></td>
+						<tr>						
 							<td><span style="color:white">${bean.filmTitle}</span></td>
 							<td><span style="color:white">${bean.content}</span> </td>
 							<td><span style="color:white">${bean.rating}</span></td>
-							<td><span style="color:white">${bean.watchDate}</span> </td>
-				
-												
+							<td><span style="color:white">${bean.watchDate}</span> </td>											
 						</tr>
 					</c:forEach>
 					</tbody>
