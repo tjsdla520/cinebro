@@ -856,7 +856,7 @@ public class FilmDao extends SuperDao {
 		PreparedStatement pstmt = null ;
 		ResultSet rs = null ;
 		
-		String sql = " select r.id, f.film_title from members m inner join reviews r on m.email = r.email inner join films f on r.film_id = f.id where m.email = ? " ;
+		String sql = " select f.film_title, f.id from members m inner join reviews r on m.email = r.email inner join films f on r.film_id = f.id where m.email = ? " ;
 		
 		List<Film> lists = new ArrayList<Film>();
 		

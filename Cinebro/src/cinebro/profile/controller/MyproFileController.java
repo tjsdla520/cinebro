@@ -22,7 +22,7 @@ public class MyproFileController extends SuperClass {
 			System.out.println(email);
 			bean = dao.selectMyinfo(email);
 			
-			session.setAttribute("bean", bean);
+			request.setAttribute("bean", bean);
 			String gotopage = "/profile/myProfileDetail.jsp" ;
 			super.GotoPage(gotopage);
 	}

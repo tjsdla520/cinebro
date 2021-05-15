@@ -75,7 +75,7 @@ body {
 					<c:forEach var="bean" items="${requestScope.lists}">
 						<tr>
 							<td><span style="color: white"> 
-								<a href="<%=NoForm %>filmDetail">
+								<a href="<%=NoForm %>filmDetail&id=${bean.id}">
 										${bean.film_title}
 								</a>
 							</span></td>
