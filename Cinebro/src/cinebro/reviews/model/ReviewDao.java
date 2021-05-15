@@ -211,7 +211,7 @@ public class ReviewDao extends SuperDao {
 		PreparedStatement pstmt = null ;
 		ResultSet rs = null ;	
 			
-		String sql = " select m.nickname, f.film_title, r.id, r.content, r.rating, r.watch_date from members m inner join reviews r on r.email = m.email inner join films f on r.film_id = f.id where m.email = ?  " ;
+		String sql = " select m.nickname, f.film_title, r.content, r.rating, r.watch_date from members m inner join reviews r on r.email = m.email inner join films f on r.film_id = f.id where m.email = ?  " ;
 		
 		List<Review> reviews = new ArrayList<Review>();
 		
@@ -227,7 +227,7 @@ public class ReviewDao extends SuperDao {
 			
 			while ( rs.next() ) {
 				Review bean = new Review(); 
-				bean.setId(rs.getInt("id"));
+				
 				bean.setNickname(rs.getString("nickname")) ;
 			    bean.setFilmTitle(rs.getString("film_title"));
 			    bean.setContent(rs.getString("content"));
