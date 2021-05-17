@@ -7,4 +7,4 @@
 <body>
 	Kids 메인
 </body>
-</html>
+</html> 
