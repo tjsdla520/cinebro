@@ -139,7 +139,7 @@
 <body>
 
 	<jsp:include page="./../anime-main/header.jsp"/>
-
+<div class="container">
 	 <div class="dropdown">
 	  <button class="dropbtn"><b>장르별 보러가기</b></button>
 		  <div class="dropdown-content">
@@ -384,6 +384,7 @@
 					</div>
 				</div>
 			</div>
+		</div>	
 	<jsp:include page="./../anime-main/footer.jsp"/>
 </body>
 </html>

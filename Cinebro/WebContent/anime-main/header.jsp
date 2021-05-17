@@ -20,6 +20,12 @@
 .header__logo{
 	width: 150;
 }
+li.btn {
+    font-size: large;
+}
+.col-lg-3 {
+    padding-top: 7px;
+}
 </style>
 </head>
 <body>
@@ -32,38 +38,37 @@
 	<header class="header">
 		<div class="container">
 			<div class="row">
-				<div class="col-lg-1">
+				<div class="col-lg-1.5">
 					<div class="header__logo">
 						<a href="<%=NoForm%>main"> <img
 							src="<%=contextPath%>/img/logo.png" alt="">
 						</a>
 					</div>
 				</div>
-				<div class="col-lg-8">
+				<div class="col-lg-6.5">
 					<div class="header__nav">
 						<nav class="header__menu mobile-menu">
-							<ul>
-								
+							<ul>								
 									<li class="arrow_carrot-down">
 									<c:choose>
 										<c:when
 											test="${whologin == 0}">
-											<a href="<%=NoForm%>meLogin"> 영화n보러가기</a>
+											<a href="<%=NoForm%>meLogin">영화 보러가기</a>
 										</c:when> 
 										<c:when test="${whologin != 0}">
 											<c:if test="${sessionScope.loginfo.subscribe == 0}"> 
-												<a href="<%=NoForm%>bridge"> 영화n보러가기</a>
+												<a href="<%=NoForm%>bridge">영화 보러가기</a>
 											</c:if>
 											<c:if test="${sessionScope.loginfo.subscribe == 1}">
-												<a href="<%=NoForm%>filmPlay&email=${sessionScope.loginfo.email}"> 영화n보러가기</a>
+												<a href="<%=NoForm%>filmPlay&email=${sessionScope.loginfo.email}">영화 보러가기</a>
 											</c:if>
 										</c:when>
 									</c:choose>
 									</li>
 								
 								<li class="arrow_carrot-down"><a
-									href="<%=NoForm%>reviewList">영화&리뷰</a></li>
-								<li class="arrow_carrot-down"><a href="<%=NoForm%>filmList&email=${sessionScope.loginfo.email}">영화리스트</a></li>
+									href="<%=NoForm%>reviewList">영화 리뷰</a></li>
+								<li class="arrow_carrot-down"><a href="<%=NoForm%>filmList&email=${sessionScope.loginfo.email}">영화 리스트</a></li>
 								<li class="arrow_carrot-down"><a href="<%=NoForm%>memberList&email=${sessionScope.loginfo.email}">멤버</a></li>
 								<li class="arrow_carrot-down"><a href="<%=NoForm%>search">검색</a></li>
 								<c:if test="${whologin != 0}">
