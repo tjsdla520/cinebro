@@ -18,11 +18,14 @@ public class MyFollowingController extends SuperClass {
 		super.doGet(request, response);
 		
 		ProfileDao dao = new ProfileDao();
+		List<Profile> lists = null;
 		
 		String email = request.getParameter("email");
 		
-		List<Profile> lists = dao.selectMyfollowing(email);
+		System.out.println("email : "+ email);
 		
+		lists = dao.selectMyfollowing(email);
+				
 		request.setAttribute("lists", lists);
 		
 		String gotopage = "/profile/myFollowing.jsp" ;
