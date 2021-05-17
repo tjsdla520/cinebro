@@ -156,7 +156,7 @@
 		<c:forEach var="bean1" items="${requestScope.films}">
 			<div class="column">
 				<div class="container">
-				<a href="<%=NoForm%>filmDetail&id=${bean1.id}"><img src="img/${bean1.film_title}.jpg" alt="${bean1.film_title}"
+				<a href="<%=NoForm%>filmDetail&id=${bean1.id}&email=${loginfo.email}"><img src="img/${bean1.film_title}.jpg" alt="${bean1.film_title}"
 					style="width: 100%" class="image"></a>
 					<div class="middle">
 						<div class="text">${bean1.film_title }</div>

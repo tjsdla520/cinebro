@@ -55,7 +55,7 @@ public class FilmListDao extends SuperDao {
 		PreparedStatement pstmt = null ;
 		ResultSet rs = null ;
 		
-		String sql = "select m.nickname, l.id, l.email, l.comments, l.list_title, m2.nickname as listmaker from members m inner join likefilmlists lfl on m.email = lfl.email inner join lists l on lfl.lklistno = l.id inner join members m2 on m2.email = l.email where m.email = ? " ;
+		String sql = "select m.nickname, l.id, l.email, l.comments, l.list_title, m2.nickname as listmaker from members m inner join likefilmlists lfl on m.email = lfl.email inner join lists l on lfl.list_id = l.id inner join members m2 on m2.email = l.email where m.email = ? " ;
 		
 		List<FilmList> lists = new ArrayList<FilmList>();
 		
@@ -98,7 +98,7 @@ public class FilmListDao extends SuperDao {
 		ResultSet rs = null ;
 		
 		String sql = "select ranking, id, email, comments, list_title, nickname, cnt from(select id, email, comments, list_title, nickname, cnt, rank() over(order by cnt desc) as ranking from("
-				+ "select l.id, l.email, l.comments, l.list_title, m.nickname, count(*) as cnt from lists l inner join likefilmlists lkf on l.id = lkf.lklistno inner join members m on l.email = m.email group by l.id, l.email, l.comments, l.list_title, m.nickname order by cnt desc)) where ranking between 1 and 5";
+				+ "select l.id, l.email, l.comments, l.list_title, m.nickname, count(*) as cnt from lists l inner join likefilmlists lkf on l.id = lkf.list_id inner join members m on l.email = m.email group by l.id, l.email, l.comments, l.list_title, m.nickname order by cnt desc)) where ranking between 1 and 5";
 			
 		List<FilmList> lists = new ArrayList<FilmList>();
 		

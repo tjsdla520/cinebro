@@ -178,10 +178,10 @@
 											<div class="item">
 										</c:otherwise>
 									</c:choose>			
-										<c:forEach var="bean2" items="${requestScope.list2}" begin="${(now.index-1)*5+1 }" end="${now.index*5 }">
+										<c:forEach var="bean2" items="${requestScope.list2}" begin="${(now.index-1)*5}" end="${now.index*5-1	 }">
 											<div class="column">
 												<div class="container">
-													<a href="<%=NoForm%>filmDetail&id=${bean2.id}"><img
+													<a href="<%=NoForm%>filmDetail&id=${bean2.id}&email=${whologin.email}"><img
 														src="img/${bean2.film_title}.jpg" alt="${bean2.film_title}"
 														style="width: 100%" class="image"></a>
 													<div class="middle">
@@ -218,7 +218,7 @@
 								</div>
 							</div>						
 						</div>
-						<div id="myCarousel" class="carousel slide" data-ride="carousel">
+						<div id="myCarousel2" class="carousel slide" data-ride="carousel">
 							<!-- Indicators -->
 							<ol class="carousel-indicators">
 								<c:forEach var="n" end="${requestScope.endpage2 }" varStatus="now" begin="1">
@@ -237,7 +237,7 @@
 											<div class="item">
 										</c:otherwise>
 									</c:choose>			
-										<c:forEach var="bean2" items="${requestScope.list2}" begin="${(now.index-1)*5+1 }" end="${now.index*5 }">
+										<c:forEach var="bean2" items="${requestScope.list2}" begin="${(now.index-1)*5}" end="${now.index*5-1 }">
 											<div class="column">
 												<div class="container">
 													<a href="<%=NoForm%>filmDetail&id=${bean2.id}"><img
@@ -254,11 +254,11 @@
 							</div>
 				
 							<!-- Left and right controls -->
-							<a class="left carousel-control" href="#myCarousel" data-slide="prev">
+							<a class="left carousel-control" href="#myCarousel2" data-slide="prev">
 								<span class="glyphicon glyphicon-chevron-left"></span> <span
 								class="sr-only">Previous</span>
 							</a> 
-							<a class="right carousel-control" href="#myCarousel"
+							<a class="right carousel-control" href="#myCarousel2"
 								data-slide="next"> <span
 								class="glyphicon glyphicon-chevron-right"></span> <span
 								class="sr-only">Next</span>
@@ -277,7 +277,7 @@
 								</div>
 							</div>						
 						</div>
-						<div id="myCarousel" class="carousel slide" data-ride="carousel">
+						<div id="myCarousel3" class="carousel slide" data-ride="carousel">
 							<!-- Indicators -->
 							<ol class="carousel-indicators">
 								<c:forEach var="n" end="${requestScope.endpage3}" varStatus="now" begin="1">
@@ -296,7 +296,7 @@
 											<div class="item">
 										</c:otherwise>
 									</c:choose>			
-										<c:forEach var="bean" items="${requestScope.list3}" begin="${(now.index-1)*5+1 }" end="${now.index*5 }">
+										<c:forEach var="bean" items="${requestScope.list3}" begin="${(now.index-1)*5}" end="${now.index*5-1 }">
 											<div class="column">
 												<div class="container">
 													<a href="<%=NoForm%>filmDetail&id=${bean.id}"><img
@@ -313,11 +313,11 @@
 							</div>
 				
 							<!-- Left and right controls -->
-							<a class="left carousel-control" href="#myCarousel" data-slide="prev">
+							<a class="left carousel-control" href="#myCarousel3" data-slide="prev">
 								<span class="glyphicon glyphicon-chevron-left"></span> <span
 								class="sr-only">Previous</span>
 							</a> 
-							<a class="right carousel-control" href="#myCarousel"
+							<a class="right carousel-control" href="#myCarousel3"
 								data-slide="next"> <span
 								class="glyphicon glyphicon-chevron-right"></span> <span
 								class="sr-only">Next</span>
@@ -336,7 +336,7 @@
 								</div>
 							</div>						
 						</div>
-						<div id="myCarousel" class="carousel slide" data-ride="carousel">
+						<div id="myCarousel4" class="carousel slide" data-ride="carousel">
 							<!-- Indicators -->
 							<ol class="carousel-indicators">
 								<c:forEach var="n" end="${requestScope.endpage2 }" varStatus="now" begin="1">
@@ -355,7 +355,7 @@
 											<div class="item">
 										</c:otherwise>
 									</c:choose>			
-										<c:forEach var="bean2" items="${requestScope.list2}" begin="${(now.index-1)*5+1 }" end="${now.index*5 }">
+										<c:forEach var="bean2" items="${requestScope.list2}" begin="${(now.index-1)*5 }" end="${now.index*5-1 }">
 											<div class="column">
 												<div class="container">
 													<a href="<%=NoForm%>filmDetail&id=${bean2.id}"><img
@@ -372,11 +372,11 @@
 							</div>
 				
 							<!-- Left and right controls -->
-							<a class="left carousel-control" href="#myCarousel" data-slide="prev">
+							<a class="left carousel-control" href="#myCarousel4" data-slide="prev">
 								<span class="glyphicon glyphicon-chevron-left"></span> <span
 								class="sr-only">Previous</span>
 							</a> 
-							<a class="right carousel-control" href="#myCarousel"
+							<a class="right carousel-control" href="#myCarousel4"
 								data-slide="next"> <span
 								class="glyphicon glyphicon-chevron-right"></span> <span
 								class="sr-only">Next</span>

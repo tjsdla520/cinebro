@@ -12,7 +12,7 @@ import cinebro.films.model.Film;
 import cinebro.lists.model.FilmListDao;
 import cinebro.lists.model.LikefilmListDao;
 
-public class LikeFilmListController extends SuperClass {
+public class DeleteLikeFilmListController extends SuperClass {
 	
 
 	@Override
@@ -23,7 +23,7 @@ public class LikeFilmListController extends SuperClass {
 		String email = request.getParameter("email");
 		System.out.println(email);
 		String id = request.getParameter("id");
-		int cnt = dao.InsertLikefilmList(email, id);
+		int cnt = dao.deleteLikefilmList(email, id);
 		
 		new FilmListDetailController().doGet(request, response);
 	}

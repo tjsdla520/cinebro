@@ -15,21 +15,26 @@ pay=cinebro.pay.controller.PayController
 ##film Section
 filmPlay=cinebro.filmplay.controller.FilmPlayController
 genrePlay=cinebro.filmplay.controller.GenrePlayController
+filmRealPlay=cinebro.filmplay.controller.FilmRealPlayController
 ##review Section
 reviewList=cinebro.reviews.controller.ReviewListController
 reviewEdit=cinebro.reviews.controller.ReviewEditController
 reviewDelete=cinebro.reviews.controller.ReviewDeleteController
 reviewDetail=cinebro.reviews.controller.ReviewDetailController
-likereView=cinebro.reviews.controller.LikeReviewController
+likeReview=cinebro.reviews.controller.LikeReviewController
+deletelikeReview=cinebro.reviews.controller.DeleteLikeReviewController
 ##watchedFilm=cinebro.reviews.controller.WatchedFilmController
 ##wishFilm=cinebro.reviews.controller.WishFilmController
 reviewWrite=cinebro.reviews.controller.ReviewWriteController
 ##film Section
 filmDetail=cinebro.films.controller.FilmDetailController
+likeFilm=cinebro.films.controller.LikeFilmController
+deleteLikeFilm=cinebro.films.controller.DeleteLikeFilmController
 ##filmlist Section
 filmList=cinebro.lists.controller.FilmListController
 filmListDetail=cinebro.lists.controller.FilmListDetailController
-##likefilmList=cinebro.lists.controller.LikeFilmListController
+likefilmList=cinebro.lists.controller.LikeFilmListController
+deletelikefilmList=cinebro.lists.controller.DeleteLikeFilmListController
 ##member Section
 memberList=cinebro.following.controller.MemberListController
 memberDetail=cinebro.following.controller.MemberDetailController
@@ -44,5 +49,6 @@ myReviews=cinebro.profile.controller.MyReviewsController
 myWish=cinebro.profile.controller.MyWishController
 myFollowing=cinebro.profile.controller.MyFollowingController
 ##admin section
-##inSertfilm=cinebro.admin.controller.InsertFilmController
-##deleteFilm=cinebro.admin.controller.DeleteFilmController
+inSertfilm=cinebro.admin.controller.InsertFilmController
+deleteFilm=cinebro.admin.controller.DeleteFilmController
+updateFilm=cinebro.admin.controller.UpdateFilmController
