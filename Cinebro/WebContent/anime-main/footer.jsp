@@ -21,10 +21,27 @@
 				<div class="col-lg-6">
 					<div class="footer__nav">
 						<ul>
-							<li class="active"><a href="./main.jsp">Homepage</a></li>
-							<li><a href="<%=contextPath%>/anime-main/categories.jsp">Categories</a></li>
-							<li><a href="./blog.jsp">Our Blog</a></li>
-							<li><a href="#">Contacts</a></li>
+							<li class="arrow_carrot-down">
+									<c:choose>
+										<c:when
+											test="${whologin == 0}">
+											<a href="<%=NoForm%>meLogin"> 영화 보러가기</a>
+										</c:when> 
+										<c:when test="${whologin != 0}">
+											<c:if test="${sessionScope.loginfo.subscribe == 0}"> 
+												<a href="<%=NoForm%>bridge"> 영화 보러가기</a>
+											</c:if>
+											<c:if test="${sessionScope.loginfo.subscribe == 1}">
+												<a href="<%=NoForm%>filmPlay&email=${sessionScope.loginfo.email}"> 영화 보러가기</a>
+											</c:if>
+										</c:when>
+									</c:choose>
+									</li>
+								<li class="arrow_carrot-down"><a
+									href="<%=NoForm%>reviewList">영화 리뷰</a></li>
+								<li class="arrow_carrot-down"><a href="<%=NoForm%>filmList&email=${sessionScope.loginfo.email}">영화 리스트</a></li>
+								<li class="arrow_carrot-down"><a href="<%=NoForm%>memberList&email=${sessionScope.loginfo.email}">멤버</a></li>
+								<li class="arrow_carrot-down"><a href="<%=NoForm%>search">검색</a></li>
 						</ul>
 					</div>
 				</div>
