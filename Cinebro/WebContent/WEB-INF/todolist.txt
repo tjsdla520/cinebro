@@ -35,10 +35,15 @@ filmList=cinebro.lists.controller.FilmListController
 filmListDetail=cinebro.lists.controller.FilmListDetailController
 likefilmList=cinebro.lists.controller.LikeFilmListController
 deletelikefilmList=cinebro.lists.controller.DeleteLikeFilmListController
+makefilmList=cinebro.lists.controller.MakeFilmListController
+editFilmList=cinebro.lists.controller.EditFilmListController
+deleteFilmList=cinebro.lists.controller.DeleteFilmListController
+searchforlist=cinebro.lists.controller.SearchForFilmListController
 ##member Section
 memberList=cinebro.following.controller.MemberListController
 memberDetail=cinebro.following.controller.MemberDetailController
 memberFollow=cinebro.following.controller.MemberFollowController
+memberUnfollow=cinebro.following.controller.MemberUnfollowController
 ##search Section
 search=cinebro.search.controller.SearchController
 ##profile Section
@@ -51,4 +56,4 @@ myFollowing=cinebro.profile.controller.MyFollowingController
 ##admin section
 inSertfilm=cinebro.admin.controller.InsertFilmController
 deleteFilm=cinebro.admin.controller.DeleteFilmController
-##updateFilm=cinebro.admin.controller.UpdateFilmController
+updateFilm=cinebro.admin.controller.UpdateFilmController

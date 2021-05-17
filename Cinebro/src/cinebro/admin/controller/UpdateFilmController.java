@@ -63,8 +63,10 @@ public class UpdateFilmController extends SuperClass {
 			
 			int cnt = -99999; 
 			cnt = dao.UpdateFilm(bean);
-			
-			new FilmDetailController().doGet(request, response);
+			Film fbean = dao.selectFilm(multi.getParameter("id"));
+			session.setAttribute("fbean", fbean);
+			String gotopage = "/reviews/filmDetail.jsp";
+			super.GotoPage(gotopage);
 			
 		} else {
 			System.out.println("member insert validation check failure");
