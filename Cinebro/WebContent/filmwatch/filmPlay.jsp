@@ -95,10 +95,10 @@
   font-size: 15px;
   padding: 16px 32px;
 }
-.container {
+/* .container {
   position: relative;
   width: 50%;
-}
+} */
 
 .image {
   opacity: 1;
@@ -134,6 +134,21 @@
   font-size: 10px;
   padding: 16px 32px;
 }
+.section-title h4:after, .section-title h5:after {
+    position: absolute;
+    left: -15;
+    top: -6px;
+    height: 32px;
+    width: 4px;
+    background: #e53637;
+    content: "";
+    }
+    .footer {
+    background: #070720;
+    padding-top: 60px;
+    padding-bottom: 40px;
+    position: relative;
+}
 </style>
 </head>
 <body>
@@ -149,9 +164,9 @@
 		  </div>
 	</div>
 	<br><br>
-			<div class="row">
-				<div class="col-lg-8">
-					<div class="container">
+			<!-- <div class="row"> -->
+				<!-- <div class="col-lg-8"> -->
+					<!-- <div class="container"> -->
 						<div class="row">
 							<div class="col-lg-8 col-md-8 col-sm-8">
 								<div class="section-title">
@@ -208,8 +223,8 @@
 				</div>
 			</div>
 			<br><br><br><br><br><br><br>
-			<div class="row">
-				<div class="col-lg-8">
+			<!-- <div class="row">
+				<div class="col-lg-8"> -->
 					<div class="container">
 						<div class="row">
 							<div class="col-lg-8 col-md-8 col-sm-8">
@@ -267,8 +282,8 @@
 				</div>
 			</div>
 				<br><br><br><br><br><br><br>
-			<div class="row">
-				<div class="col-lg-8">
+			<!-- <div class="row">
+				<div class="col-lg-8"> -->
 					<div class="container">
 						<div class="row">
 							<div class="col-lg-8 col-md-8 col-sm-8">
@@ -326,8 +341,8 @@
 				</div>
 			</div>
 				<br><br><br><br><br><br><br>
-			<div class="row">
-				<div class="col-lg-8">
+			<!-- <div class="row">
+				<div class="col-lg-8"> -->
 					<div class="container">
 						<div class="row">
 							<div class="col-lg-8 col-md-8 col-sm-8">
