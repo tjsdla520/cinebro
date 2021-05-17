@@ -28,8 +28,8 @@
 					<c:forEach var="bean2" items="${requestScope.lists2}">
 						<tr>
 							<td><a href="<%=NoForm%>filmListDetail&id=${bean2.id}&${requestScope.parameters}">${bean2.list_title}</a></td>
-							<td>${bean2.nickname}</td>
-							<td>${bean2.comments}</td>
+							<td><p class="text-white">${bean2.nickname}</p></td>
+							<td><p class="text-white">${bean2.comments}</p></td>
 						</tr>
 					</c:forEach>
 					</tbody>
@@ -55,10 +55,10 @@
 					<c:forEach var="bean3" items="${requestScope.lists3}">
 						<tr>
 							<td><a href="<%=NoForm%>filmListDetail&id=${bean3.id}&${requestScope.parameters}">${bean3.filmTitle}</a></td>
-							<td>${bean3.writer}</td>
-							<td>${bean3.content}</td>
-							<td>${bean3.rating}</td>
-							<td>${bean3.getlike}</td>
+							<td><p class="text-white">${bean3.writer}</p></td>
+							<td><p class="text-white">${bean3.content}</p></td>
+							<td><p class="text-white">${bean3.rating}</p></td>
+							<td><p class="text-white">${bean3.getlike}</p></td>
 						</tr>
 					</c:forEach>
 					</tbody>
