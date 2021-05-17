@@ -51,4 +51,4 @@ myFollowing=cinebro.profile.controller.MyFollowingController
 ##admin section
 inSertfilm=cinebro.admin.controller.InsertFilmController
 deleteFilm=cinebro.admin.controller.DeleteFilmController
-updateFilm=cinebro.admin.controller.UpdateFilmController
+##updateFilm=cinebro.admin.controller.UpdateFilmController
