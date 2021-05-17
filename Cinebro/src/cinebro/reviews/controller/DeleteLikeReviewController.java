@@ -1,31 +1,26 @@
-package cinebro.lists.controller;
+
+package cinebro.reviews.controller;
 
 import java.io.IOException;
-import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import cinebro.common.controller.SuperClass;
-import cinebro.films.model.Film;
-import cinebro.lists.model.FilmListDao;
-import cinebro.lists.model.LikefilmListDao;
+import cinebro.reviews.model.LikeReviewDao;
 
-public class LikeFilmListController extends SuperClass {
+public class DeleteLikeReviewController extends SuperClass {
 	
-
 	@Override
 	public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		super.doGet(request, response);
-		
-		LikefilmListDao dao = new LikefilmListDao();
-		String email = request.getParameter("email");
-		System.out.println(email);
+		LikeReviewDao dao = new LikeReviewDao();
 		String id = request.getParameter("id");
-		int cnt = dao.InsertLikefilmList(email, id);
+		String email = request.getParameter("email");
+		int cnt = dao.deleteLikeReview(email,id);
 		
-		new FilmListDetailController().doGet(request, response);
+		new ReviewDetailController().doGet(request, response);
 	}
 
 	@Override

@@ -39,7 +39,7 @@ int rightButton = 2;
 					<tbody>
 					<c:forEach var="bean1" items="${requestScope.lists1}">
 						<tr>
-							<td> <a href="<%=NoForm%>filmListDetail&id=${bean1.id}&${requestScope.parameters}">${bean1.list_title}</a> </td>
+							<td> <a href="<%=NoForm%>filmListDetail&id=${bean1.id}&${requestScope.parameters}&email=${loginfo.email}">${bean1.list_title}</a> </td>
 							<td>${bean1.nickname}</td>
 							<td>${bean1.comments}</td>
 						</tr>

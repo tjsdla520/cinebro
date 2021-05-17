@@ -13,6 +13,7 @@ import cinebro.films.model.FilmDetailDao;
 import cinebro.lists.model.FilmList;
 import cinebro.lists.model.FilmListDao;
 import cinebro.lists.model.FilmListDetailDao;
+import cinebro.lists.model.LikefilmListDao;
 
 
 public class FilmListDetailController extends SuperClass {
@@ -23,12 +24,16 @@ public class FilmListDetailController extends SuperClass {
 		super.doGet(request, response);
 		
 		FilmListDetailDao dao = new FilmListDetailDao();
+		LikefilmListDao dao2 = new LikefilmListDao();
 		String id = request.getParameter("id");
+		String email = request.getParameter("email");
+		FilmList bean1 = dao.SelectByOne(id);
+		FilmList bean2 = dao2.findLike(id,email);
 		
-		FilmList bean = dao.SelectByOne(id);
-		
-		request.setAttribute("bean", bean);
-		
+		request.setAttribute("bean1", bean1);
+		request.setAttribute("bean2", bean2);
+		System.out.println("bean2 : "+bean2);
+		System.out.println(bean2);
 		String gotopage = "lists/filmListDetail.jsp";
 		super.GotoPage(gotopage);
 	}

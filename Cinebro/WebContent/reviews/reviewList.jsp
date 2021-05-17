@@ -19,7 +19,7 @@
 				<img src="img/${bean.filmTitle}.jpg" class="media-object" style="width: 180px">
 			</div>
 			<div class="media-body">
-				<h4 class="media-heading"><a href="<%=NoForm%>reviewDetail&id=${bean.id}">${bean.filmTitle}</a> </h4>
+				<h4 class="media-heading"><a href="<%=NoForm%>reviewDetail&id=${bean.id}&email=${sessionScope.whologin.email}">${bean.filmTitle}</a> </h4>
 				<p></p>
 				<p style="color: white; margin-left: 30px" >작성자 : ${bean.writer}</p>
 				<p style="color: white; margin-left: 30px">리뷰 내용 : ${bean.content}</p>

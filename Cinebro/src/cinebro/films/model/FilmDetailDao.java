@@ -23,7 +23,7 @@ public class FilmDetailDao extends SuperDao {
 			if(conn == null) {super.conn = super.getConnection() ; }
 			
 			//영화 기본정보 가져오기 
-			String sql = " select f.id, f.film_title, f.director, f.year, f.country from films f inner join filmngenre fg on f.id = fg.film_id where f.id = ? " ;
+			String sql = "select f.id, f.film_title, f.director, f.year, f.country, f.playurl, ar.avgrate, ar.totalrate from films f left outer join filmavgrating ar on f.id = ar.film_id where f.id = ?";
 			pstmt = conn.prepareStatement(sql) ;
 			
 			pstmt.setString(1, id);			
@@ -35,6 +35,9 @@ public class FilmDetailDao extends SuperDao {
 				bean.setDirector(rs.getString("director"));
 				bean.setYear(rs.getInt("year"));
 				bean.setCountry(rs.getString("country"));
+				bean.setPlayUrl(rs.getString("playurl"));
+				bean.setTotalratings(rs.getInt("totalrate"));
+				bean.setAvgrating(rs.getDouble("avgrate"));
 			}
 			if(rs != null) {rs.close();}
 			if(pstmt != null) {pstmt.close();} 
@@ -83,7 +86,4 @@ public class FilmDetailDao extends SuperDao {
 		}
 		return bean ;
 	}
-
-
-	
 }

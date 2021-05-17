@@ -46,17 +46,27 @@
 			</thead>
 			<tbody>
 					<tr>
-						<td>${bean.list_title}</td>
-						<td>${bean.nickname}</td>
-						<td>${bean.comments}</td>	
+						<td>${bean1.list_title}</td>
+						<td>${bean1.nickname}</td>
+						<td>${bean1.comments}</td>	
 					</tr>
 			</tbody>
 		</table>
+			<c:if test="${bean1.nickname!=sessionScope.loginfo.nickname}">
+				<c:choose>
+					<c:when test="${bean2==null}">
+						<a href="<%=NoForm%>likefilmList&id=${bean1.id}&email=${loginfo.email}"><button class="btn-info btn-lg">좋아요</button></a>
+					</c:when>
+					<c:otherwise>
+						<a href="<%=NoForm%>deletelikefilmList&id=${bean1.id}&email=${loginfo.email}"><button class="btn-warning btn-lg">좋아요 취소</button></a>
+					</c:otherwise>
+				</c:choose>				
+			</c:if>	
 			<div class="row">
-			<c:forEach items="${bean.film_title}" var="entry" varStatus="status">
+			<c:forEach items="${bean1.film_title}" var="entry" varStatus="status">
 				<div class="column">
 				<div class="container">
-					<a href="<%=NoForm%>filmDetail&id=${entry.key}"><img src="img/${entry.value}.jpg" alt="${entry.value}"
+					<a href="<%=NoForm%>filmDetail&id=${entry.key}&email=${loginfo.email}"><img src="img/${entry.value}.jpg" alt="${entry.value}"
 						style="width: 100%"></a>
 						<div class="middle">
 							<div class="text">${entry.value }</div>
