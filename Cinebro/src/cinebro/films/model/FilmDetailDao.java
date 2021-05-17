@@ -3,6 +3,7 @@ package cinebro.films.model;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -85,5 +86,125 @@ public class FilmDetailDao extends SuperDao {
 			}
 		}
 		return bean ;
+	}
+	
+
+	public int InsertFilm(Film bean) {
+		String sql = " insert into films(id, film_title, director, year, country, playurl, image) values(films_SEQ.nextval, ?, ?, ?, ?, ?, ?) " ;
+		
+		PreparedStatement pstmt = null ;
+		int cnt = -99999 ;
+		try {
+			if( conn == null ){ super.conn = super.getConnection() ; }
+			conn.setAutoCommit( false );
+			pstmt = super.conn.prepareStatement(sql) ;
+			
+			pstmt.setString(1, bean.getFilm_title());
+			pstmt.setString(2, bean.getDirector());
+			pstmt.setInt(3, bean.getYear());
+			pstmt.setString(4, bean.getCountry());
+			pstmt.setString(5, bean.getPlayUrl());
+			pstmt.setString(6, bean.getImage());
+			cnt = pstmt.executeUpdate() ; 
+			conn.commit(); 
+		} catch (Exception e) {
+			SQLException err = (SQLException)e ;
+			cnt = - err.getErrorCode() ;			
+			e.printStackTrace();
+			try {
+				conn.rollback(); 
+			} catch (Exception e2) {
+				e2.printStackTrace();
+			}
+		} finally{
+			try {
+				if( pstmt != null ){ pstmt.close(); }
+				super.closeConnection(); 
+			} catch (Exception e2) {
+				e2.printStackTrace();
+			}
+		}
+		return cnt ;
+	}
+	
+
+	public int DeleteFilm(int id) {
+		System.out.println(id + "2차확인");
+		String sql = " delete from films where id = ? " ;
+		PreparedStatement pstmt = null ;
+		int cnt = -99999 ;
+		
+		try {
+			if( conn == null ){ super.conn = super.getConnection() ; }
+			conn.setAutoCommit( false );
+			pstmt = super.conn.prepareStatement(sql) ;
+			pstmt.setInt(1, id);
+			
+			cnt = pstmt.executeUpdate() ;
+			
+			conn.commit(); 
+		} catch (Exception e) {
+			SQLException err = (SQLException)e ;			
+			cnt = - err.getErrorCode() ;			
+			e.printStackTrace();
+			try {
+				conn.rollback(); 
+			} catch (Exception e2) {
+				e2.printStackTrace();
+			}
+		} finally{
+			try {
+				if( pstmt != null ){ pstmt.close(); }
+				super.closeConnection(); 
+			} catch (Exception e2) {
+				e2.printStackTrace();
+			}
+		}
+		return cnt ;
+	}
+
+
+	public int UpdateFilm(Film bean) {
+		String sql = "update films set film_title = ?, director = ?, year = ?, country = ?, playurl = ?, image = ? where id = ? ";
+		
+		PreparedStatement pstmt = null ;
+		int cnt = -99999 ;
+		
+		try {
+			if( conn == null ){ super.conn = super.getConnection() ; }
+			conn.setAutoCommit( false );
+			pstmt = super.conn.prepareStatement(sql) ;
+			
+			pstmt.setString(1, bean.getFilm_title());
+			pstmt.setString(2, bean.getDirector());
+			pstmt.setInt(3, bean.getYear());
+			pstmt.setString(4, bean.getCountry());
+			pstmt.setString(5, bean.getPlayUrl());
+			pstmt.setString(6, bean.getImage());
+			pstmt.setInt(7, bean.getId());
+			
+			System.out.println(bean.getId() + "sql실행문 확인");
+			
+			cnt = pstmt.executeUpdate(); 
+			conn.commit(); 
+			
+		} catch (Exception e) {
+			SQLException err = (SQLException)e ;
+			cnt = - err.getErrorCode() ;			
+			e.printStackTrace();
+			try {
+				conn.rollback(); 
+			} catch (Exception e2) {
+				e2.printStackTrace();
+			}
+		} finally{
+			try {
+				if( pstmt != null ){ pstmt.close(); }
+				super.closeConnection(); 
+			} catch (Exception e2) {
+				e2.printStackTrace();
+			}
+		}
+		return cnt ;
 	}
 }
