@@ -15,6 +15,7 @@ public class Film {
 	private int totalratings;
 	private double avgrating;
 	private String playUrl;
+	private String image;
 	
 	public Film() {
 		// TODO Auto-generated constructor stub
@@ -22,6 +23,18 @@ public class Film {
 	
 	
 	
+	public String getImage() {
+		return image;
+	}
+
+
+
+	public void setImage(String image) {
+		this.image = image;
+	}
+
+
+
 	public int getTotalratings() {
 		return totalratings;
 	}

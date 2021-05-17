@@ -29,7 +29,7 @@ int rightButton = 1;
 	<div class="container" align="center">
 		<div>
 			<div style="margin-top: 50px">
-				<h4 align="center" style="color: white">영화 등록</h4>
+				<h4 align="center" style="color: white">영화 정보 수정</h4>
 			</div>
 			<br>
 			<br>
@@ -39,7 +39,7 @@ int rightButton = 1;
 					method="post" enctype="multipart/form-data">
 
 					<%--command 값 지정--%>
-					<input type="hidden" name="command" value="inSertfilm">
+					<input type="hidden" name="command" value="updateFilm">
 					
 					<%--isCheck 변수. 값이 false이면 영화등록이 안된다. 모든 체크를 통과했을 경우에만 true로 변경 --%>
 
@@ -101,7 +101,7 @@ int rightButton = 1;
 					</div>
 					<div class="form-group" style="margin-top: 40px">
 						<div class="col-sm-offset-<%=offset%> col-sm-<%=mywidth%>">
-							<button type="submit" class="btn btn-info btn-lg">영화 등록 하기</button>
+							<button type="submit" class="btn btn-info btn-lg">영화 수정 하기</button>
 							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 							<button type="reset" class="btn btn-info btn-lg">초기화</button>
 						</div>

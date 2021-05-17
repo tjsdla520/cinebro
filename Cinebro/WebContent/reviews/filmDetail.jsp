@@ -4,6 +4,18 @@
 <%@ include file="./../common/common.jsp"%>
 <!DOCTYPE html>
 <html>
+<c:set var="whologin" value="0" />
+<c:if test="${ empty sessionScope.loginfo}">
+	<c:set var="whologin" value="0" />
+</c:if>
+<c:if test="${ not empty sessionScope.loginfo}">
+	<c:if test="${ sessionScope.loginfo.email == 'admin'}">
+		<c:set var="whologin" value="2" />
+	</c:if>
+	<c:if test="${ sessionScope.loginfo.email != 'admin'}">
+		<c:set var="whologin" value="1" />
+	</c:if>
+</c:if>
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
@@ -44,6 +56,11 @@
 			<c:if test="${bean.writer!=sessionScope.loginfo.nickname}">
 				<a href="<%=NoForm%>likereView&id=${bean.id}&email=${loginfo.email}"><button class="btn-like btn-lg">👍</button></a>
 			</c:if>	
+			<c:if test="${whologin == 2}">
+				<a href="<%=NoForm%>updateFilm&id=${fbean.id}"><button type="button" class="btn btn-warning">영화 수정</button></a> 
+				&nbsp;&nbsp;&nbsp;&nbsp; 
+				<a href="<%=NoForm%>deleteFilm&id=${fbean.id}"><button type="button" class="btn btn-warning">영화 삭제</button></a> 
+			</c:if>
 		<script src="//code.jquery.com/jquery.min.js"></script>
 		<script>
 			$(".btn-like").click(function() {

@@ -10,31 +10,31 @@ import com.oreilly.servlet.MultipartRequest;
 
 import cinebro.common.controller.SuperClass;
 import cinebro.films.model.Film;
-import cinebro.films.model.FilmDao;
 import cinebro.films.model.FilmDetailDao;
-import cinebro.search.controller.SearchController;
 
-public class InsertFilmController extends SuperClass {
-	private Film bean = null;
+public class UpdateFilmController extends SuperClass {
+	Film bean = null;
 	
 	@Override
 	public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		super.doGet(request, response);
-		
-		String gotopage = "/profile/InsertFilmForm.jsp";
+		request.setAttribute("fbean",bean);
+		String gotopage = "/profile/UpdateFilmForm.jsp";
 		super.GotoPage(gotopage);
 	}
-	
+
 	@Override
 	public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		MultipartRequest multi = (MultipartRequest)request.getAttribute("multi");
 		bean = new Film();
-		//영화제목, url은 의무작성
-		System.out.println(multi.getParameter("film_title")+"테스트");
+		
+		System.out.println(multi.getParameter("id")+"수정시 넘어오는 id값");
+		
 		bean.setFilm_title(multi.getParameter("film_title"));
-		bean.setPlayUrl(multi.getParameter("playUrl")); 
+		bean.setPlayUrl(multi.getParameter("playUrl"));
 		bean.setImage(multi.getFilesystemName("image"));
+		
 		if (multi.getParameter("director") == null || multi.getParameter("director").equals("")) {
 			bean.setDirector("");	
 		}else {
@@ -53,24 +53,26 @@ public class InsertFilmController extends SuperClass {
 			bean.setCountry(multi.getParameter("country"));
 		}
 		
-		
-		
 		if (this.validate(request) == true) { 
 			System.out.println("member insert validation check success");
 			FilmDetailDao dao = new FilmDetailDao();
 			
-			int cnt = -99999 ; 
-			cnt = dao.InsertFilm(bean) ;
+			int cnt = -99999; 
+			cnt = dao.UpdateFilm(bean);
 			
-			new SearchController().doGet(request, response);		
+			session.setAttribute("fbean", bean);
+			
+			String gotopage = "/reviews/filmDetail.jsp";
+			super.GotoPage(gotopage);		
 			
 		} else {
 			System.out.println("member insert validation check failure");
 			super.doPost(request, response);
 			request.setAttribute("bean", bean);
-			String gotopage = "/profile/InsertFilmForm.jsp" ;
+			String gotopage = "/profile/UpdateFilmForm.jsp" ;
 			super.GotoPage(gotopage);
 		}
+		
 	}	
 	
 	@Override
@@ -101,8 +103,4 @@ public class InsertFilmController extends SuperClass {
 		
 		return isCheck;
 	}
-	
-	
-
-	
 }
