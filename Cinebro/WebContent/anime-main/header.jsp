@@ -82,8 +82,10 @@ li.btn {
 											<li><a href="<%=NoForm%>myReviews&email=${sessionScope.loginfo.email}">Reviews</a></li>
 											<li><a href="<%=NoForm%>myWish&email=${sessionScope.loginfo.email}">myWish</a></li>
 											<li><a href="<%=NoForm%>myFollowing&email=${sessionScope.loginfo.email}">myFollowing</a></li>
+											<c:if test="${whologin != 2}">
 											<li><a
 												href="<%=NoForm%>meDelete&email=${sessionScope.loginfo.email}">회원탈퇴</a></li>
+											</c:if>
 											<c:if test="${whologin == 2}">
 												<li><a href="<%=NoForm%>inSertfilm">영화 등록</a></li>
 											</c:if>

@@ -12,8 +12,16 @@ public class Member {
 	private int follower;           //나를 팔로우하는 사람 수 
 	private int allReviews;         //내가 쓴 총 리뷰수
 	private int subscribe;			//구독 여부
-
+	private String cardpassword; 	//결제 카드 비밀번호
 	
+	
+	
+	public String getCardpassword() {
+		return cardpassword;
+	}
+	public void setCardpassword(String cardpassword) {
+		this.cardpassword = cardpassword;
+	}
 	public int getSubscribe() {
 		return subscribe;
 	}

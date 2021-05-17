@@ -205,7 +205,7 @@ public class MemberDao extends SuperDao {
 	}
 
 	public int insertPayInfo(Member bean) {
-		String sql = "update members set subscribe = 1, cardnumber = ?, name = ?, enddate = ? where email = ?";
+		String sql = "update members set subscribe = 1, cardnumber = ?, name = ?, enddate = ?, cardpassword = ? where email = ?";
 		
 		PreparedStatement pstmt = null ;
 		int cnt = -99999 ;
@@ -218,8 +218,8 @@ public class MemberDao extends SuperDao {
 			pstmt.setString(1, bean.getCardnumber());
 			pstmt.setString(2, bean.getName());
 			pstmt.setString(3, bean.getEnddate());
-			pstmt.setString(4, bean.getEmail());
-			
+			pstmt.setString(4, bean.getCardpassword());
+			pstmt.setString(5, bean.getEmail());
 			cnt = pstmt.executeUpdate(); 
 			conn.commit(); 
 			

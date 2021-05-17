@@ -57,24 +57,28 @@
 				      	<div class="col-xs-3">
 				        	<input type="text" class="form-control" id="name" placeholder="카드에 명시된 이름 입력" 
 				        		name="name" value="${bean.name}">
+				        	<span class="err form-control-static">${errname}</span>
 				      	</div>
 				    </div>
 					<div class="form-group" style="margin-top: 20px">
 				      	<label class="control-label col-sm-<%=formleft%>" for="cardnumber" style="color: white">카드번호</label>
 				      	<div class="col-xs-3">
 				        	<input type="text" class="form-control" id="cardnumber" name="cardnumber" value="${bean.cardnumber }" placeholder="카드번호 -제외하고 16자리 입력">
+				      		<span class="err form-control-static">${errcardnumber}</span>
 				      	</div>
 				    </div>				    
 				    <div class="form-group" style="margin-top: 20px">
 						<label class="control-label col-sm-<%=formleft%>" for="cardpassword" style="color: white">카드비밀번호</label>
 				      	<div class="col-xs-3">          
 				        	<input type="password" class="form-control" id="cardpassword" placeholder="카드비밀번호 입력" name="cardpassword" >
+				      		<span class="err form-control-static">${errcardpassword}</span>
 				      	</div>
 				    </div>	
 				    <div class="form-group" style="margin-top: 20px">
 						<label class="control-label col-sm-<%=formleft%>" for="enddate" style="color: white">카드만료일</label>
 				      	<div class="col-xs-3">          
 				        	<input type="password" class="form-control" id="enddate" placeholder="월년도 숫자만 입력" name="enddate" >
+				      		<span class="err form-control-static">${errenddate}</span>
 				      	</div>
 				    </div>				    		    
 				    <div class="form-group" style="margin-top: 40px">        
