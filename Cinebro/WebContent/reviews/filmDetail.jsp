@@ -24,11 +24,8 @@
 <title>Insert title here</title>
 <script>
 	function filmplay(){
-		var url = "<%=NoForm%>
-	filmRealPlay&url=${fbean.playUrl}"
-		window
-				.open(url, 'mywin',
-						'channelmode=yes, location=no, scrollbars=no, status=no, top=50, left=10');
+		var url = "<%=NoForm%>filmRealPlay&url=${fbean.playUrl}"
+		window.open(url,'mywin','channelmode=yes, location=no, scrollbars=no, status=no');
 	}
 </script>
 </head>
@@ -40,8 +37,10 @@
 			<img src="upload/${fbean.film_title}.jpg" class="media-object"
 				style="width: 180px"> <br>
 			<br>
-			<c:if test="${fbean.playUrl!=null}">
-				<button class="btn-lg btn-danger" onclick="filmplay()">영화보러가기</button>
+			<c:if test="${loginfo.subscribe==1 }">
+				<c:if test="${fbean.playUrl!=null}">
+					<button class="btn-lg btn-danger" onclick="filmplay()">영화보러가기</button>
+				</c:if>
 			</c:if>
 		</div>
 		<div class="media-body">
@@ -63,6 +62,7 @@
 				</c:forEach>
 			</p>
 			<div>
+			
 				<a href="<%=NoForm%>reviewWrite&id=${fbean.id}"><button
 						type="button" class="btn-lg btn-warning">리뷰 쓰기</button></a>
 				&nbsp;&nbsp;&nbsp;&nbsp;

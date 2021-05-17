@@ -21,7 +21,8 @@ int rightButton = 2;
 	<%-- <%@ include file="header.jsp" %> --%>
 	<%-- <jsp:include page="<%=contextPath%>/anime-main/header.jsp"/> --%>
 	<jsp:include page="./../anime-main/header.jsp" />
-
+		<div class="container">
+			<a href="<%=NoForm%>makefilmList&email=${loginfo.email}"><button class="btn-lg btn-info">나만의 FilmList 만들기</button></a>
 			<div class="panel-heading">
 				<h1>
 				<p class="text-white">전체 영화 리스트</p>	
@@ -103,7 +104,7 @@ int rightButton = 2;
 					</tbody>
 				</table>
 			</div>
-			
+		</div>	
 			<br><br><br>
 		
 	

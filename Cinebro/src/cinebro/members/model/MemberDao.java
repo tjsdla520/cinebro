@@ -317,11 +317,11 @@ public class MemberDao extends SuperDao {
 		return lists ;
 	}
 
-	public List<Member> followingMember(String followingemail) {
+	public List<Member> followingMember(String email) {
 		PreparedStatement pstmt = null ;
 		ResultSet rs = null ;
 		
-		String sql = " select ranking, email, nickname, followers, reviews from(select m.email, m.nickname, v1.followers as followers, v2.reviews as reviews, rank() over(order by m.nickname asc) as ranking from members m left outer join howmanyfollwer v1 on m.email = v1.email left outer join howmanyreviews v2 on m.email = v2.email left outer join myfollowingview v3 on  m.email = v3.email where v3.followingemail = ? ) where ranking between 1 and 5 " ;
+		String sql = "select v3.followingemail, v3.following, v1.followers as followers, v2.reviews as reviews from myfollowingview v3 left outer join howmanyfollwer v1 on v3.followingemail = v1.email left outer join howmanyreviews v2 on v3.following = v2.email where v3.email = ?";
 		
 		List<Member> lists = new ArrayList<Member>();
 		
@@ -329,19 +329,18 @@ public class MemberDao extends SuperDao {
 			if( conn == null ){ super.conn = super.getConnection() ; }
 			pstmt = super.conn.prepareStatement(sql) ;
 			
-			pstmt.setString(1, followingemail);
+			pstmt.setString(1, email);
 			
 			rs = pstmt.executeQuery() ;	
 			
 			while( rs.next() ){
 				Member bean = new Member();
 								
-				bean.setEmail(rs.getString("email"));
-				bean.setNickname(rs.getString("nickname"));				
+				bean.setEmail(rs.getString("followingemail"));
+				bean.setNickname(rs.getString("following"));				
 				bean.setFollower(rs.getInt("followers"));
 				bean.setAllReviews(rs.getInt("reviews"));
-				
-				
+
 				lists.add(bean);
 			}
 		} catch (Exception e) {

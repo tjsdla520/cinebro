@@ -62,6 +62,10 @@
 					</c:otherwise>
 				</c:choose>				
 			</c:if>	
+			<c:if test="${bean1.nickname==sessionScope.loginfo.nickname }">
+				<a href="<%=NoForm%>editFilmList&id=${bean1.id}&email=${loginfo.email}"><button class="btn-info btn-lg">FilmList 수정</button></a>
+				<a href="<%=NoForm%>deleteFilmList&id=${bean1.id}&email=${loginfo.email}"><button class="btn-info btn-lg">FilmLIst 삭제</button></a>
+			</c:if>
 			<div class="row">
 			<c:forEach items="${bean1.film_title}" var="entry" varStatus="status">
 				<div class="column">

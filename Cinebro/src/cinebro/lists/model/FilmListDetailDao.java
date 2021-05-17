@@ -63,4 +63,42 @@ public class FilmListDetailDao extends SuperDao {
 		}		
 		return bean ;
 	}
+
+	public FilmList SelectListByTitleAndEmail(String title, String email) {
+		PreparedStatement pstmt = null ;
+		ResultSet rs = null ;
+		FilmList bean = new FilmList();
+		
+		try {
+			if( conn == null ){ super.conn = super.getConnection() ; }
+			
+			//필름리스트 기본정보 가져오기
+			String sql = "select l.id, l.email, l.list_title, l.comments, m.nickname from lists l inner join members m on l.email = m.email where l.email = ? and l.list_title = ?";
+			pstmt = super.conn.prepareStatement(sql) ;
+			pstmt.setString(1, email);
+			pstmt.setString(2, title);
+			rs = pstmt.executeQuery() ;	
+			
+			while( rs.next() ){		
+				
+				bean.setId(rs.getInt("id"));
+				bean.setEmail(rs.getString("email"));
+				bean.setList_title(rs.getString("list_title"));
+				bean.setComments(rs.getString("comments"));
+				bean.setNickname(rs.getString("nickname"));				
+			}
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally{
+			try {
+				if( rs != null ){ rs.close(); }
+				if( pstmt != null ){ pstmt.close(); }
+				super.closeConnection(); 
+			} catch (Exception e2) {
+				e2.printStackTrace(); 
+			}
+		}		
+		return bean ;
+	}
 }

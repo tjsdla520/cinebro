@@ -30,7 +30,7 @@ public class FilmListDetailController extends SuperClass {
 		FilmList bean1 = dao.SelectByOne(id);
 		FilmList bean2 = dao2.findLike(id,email);
 		
-		request.setAttribute("bean1", bean1);
+		session.setAttribute("bean1", bean1);
 		request.setAttribute("bean2", bean2);
 		System.out.println("bean2 : "+bean2);
 		System.out.println(bean2);
