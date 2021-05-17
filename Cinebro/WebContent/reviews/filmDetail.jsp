@@ -8,6 +8,18 @@
 %>
 <!DOCTYPE html>
 <html>
+<c:set var="whologin" value="0" />
+<c:if test="${ empty sessionScope.loginfo}">
+	<c:set var="whologin" value="0" />
+</c:if>
+<c:if test="${ not empty sessionScope.loginfo}">
+	<c:if test="${ sessionScope.loginfo.email == 'admin'}">
+		<c:set var="whologin" value="2" />
+	</c:if>
+	<c:if test="${ sessionScope.loginfo.email != 'admin'}">
+		<c:set var="whologin" value="1" />
+	</c:if>
+</c:if>
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>

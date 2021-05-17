@@ -4,15 +4,11 @@
 <!DOCTYPE html>
 <html lang="zxx">
 <head>
-<style type="text/css">
-	td{
-		color: white; 	
-	}
-</style>
 </head>
 <body>
 	<jsp:include page="header.jsp"/>
 	<!-- Hero Section Begin -->
+	<div class="container">
 	<div class="panel-heading">
 			<div>
 				<h1>
@@ -879,6 +875,7 @@
 				</div>
 			</div>
 		</div>
+	</div>	
 	</section>
 	<!-- Product Section End -->
 	<%-- <%@ include file="footer.jsp" %> --%>

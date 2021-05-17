@@ -8,6 +8,7 @@ import java.util.List;
 
 import cinebro.common.model.SuperDao;
 import cinebro.films.model.Film;
+import cinebro.reviews.model.Review;
 
 public class ProfileDao extends SuperDao {
 
@@ -173,17 +174,23 @@ public class ProfileDao extends SuperDao {
 		String sql = " insert into myfollowing values(?,?) " ;
 		
 		PreparedStatement pstmt = null ;
-		int cnt = -99999 ;
+		int cnt = -99999;
+
 		try {
 			if( conn == null ){ super.conn = super.getConnection() ; }
-			conn.setAutoCommit( false );
 			pstmt = super.conn.prepareStatement(sql) ;
 			
 			pstmt.setString(1, myemail);
 			pstmt.setString(2, followemail);
-			System.out.println(myemail + followemail + "확인");
 			
-			cnt = pstmt.executeUpdate() ; 
+			System.out.println(myemail + followemail + "2차확인");
+			
+			cnt = pstmt.executeUpdate() ;		
+			if(cnt == 0) {
+				
+				System.out.println("cnt값이 없습니다.");
+			}else {
+			System.out.println(cnt);}
 			conn.commit(); 
 		} catch (Exception e) {
 			SQLException err = (SQLException)e ;
