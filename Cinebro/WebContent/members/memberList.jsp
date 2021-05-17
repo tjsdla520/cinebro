@@ -34,7 +34,7 @@ int rightButton = 2;
 
 table {
   border-collapse: collapse;
-  border-spacing: 0;
+  border-spacing: 0px;
   width: 100%;
  /*  border: 1px solid #ddd; */
 }
@@ -120,6 +120,7 @@ th, td {
                      <td>${bean3.follower}</td>
                      <td>${bean3.allReviews}</td>
                   </tr>
+                  
                </c:forEach>
                </tbody>         
     </table>

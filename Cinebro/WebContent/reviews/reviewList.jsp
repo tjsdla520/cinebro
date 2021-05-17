@@ -11,9 +11,10 @@
 	<%-- <%@ include file="header.jsp" %> --%>
 	<%-- <jsp:include page="<%=contextPath%>/anime-main/header.jsp"/> --%>
 	<jsp:include page="./../anime-main/header.jsp"/>
-	<h3 style="color: white;">인기있는 영화리뷰</h3>
-	<c:forEach var="bean" items="${requestScope.reviewlists}">
-	
+	<div class="container">
+		<h3 style="color: white;">인기있는 영화리뷰</h3>
+		<c:forEach var="bean" items="${requestScope.reviewlists}">
+		
 		<div class="media">
 			<div class="media-left media-top">
 				<img src="img/${bean.filmTitle}.jpg" class="media-object" style="width: 180px">
@@ -29,6 +30,7 @@
 			</div>
 		</div>
 	</c:forEach>
+	</div>	
 	<jsp:include page="./../anime-main/footer.jsp"/>
 </body>
 </html>
