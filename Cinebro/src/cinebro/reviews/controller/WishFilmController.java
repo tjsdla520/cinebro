@@ -15,7 +15,7 @@ public class WishFilmController extends SuperClass {
 	public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		super.doGet(request, response);
 		WishFilmDao dao = new WishFilmDao();
-		dao.wishFilm(email,id);
+
 	}
 
 	@Override

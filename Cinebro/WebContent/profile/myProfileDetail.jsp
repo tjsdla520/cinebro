@@ -55,22 +55,24 @@ int rightButton = 1;
 						</a>
 					</p>
 				</c:if>
+				<br><br><br><br>
 				<c:if test="${bean.nickname!=sessionScope.loginfo.nickname}">
-					<p>
-						<!-- 팔로우 하기 버튼하나로 줄이고 한번더 클릭하면 
-							c:if로 requestScope에 있는 팔로우 값을 바인딩해서 
-							팔로우 취소하기로 변경하기 -->
-						<a href="<%=NoForm%>memberFollow&email2=${bean.email}&email1=${sessionScope.loginfo.email}">
-							<button type="button" class="btn btn-primary">팔로우 하기</button>
-						</a>
-						&nbsp;&nbsp;&nbsp;
-						<a href="<%=NoForm%>memberFollow">
-							<button type="button" class="btn btn-primary">팔로우 취소하기</button>
-						</a>
-					</p>
-					
+				<c:choose>
+					<c:when test="${bean2==null}">
+						<a
+							href="<%=NoForm%>memberFollow&followemail=${bean.email}&myemail=${loginfo.email}"><button
+								class="btn-info btn-lg">팔로우 하기</button></a>
+					</c:when>
+					<c:otherwise>
+						<a
+							href="<%=NoForm%>memberUnfollow&followemail=${bean.email}&myemail=${loginfo.email}"><button
+								class="btn-warning btn-lg">팔로우 취소</button></a>
+						<br><br><br><br><br><br><br>
+					</c:otherwise>
+				</c:choose>
 				</c:if>
 			</div>
+
 		</div>
 	<jsp:include page="./../anime-main/footer.jsp" />
 </body>

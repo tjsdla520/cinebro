@@ -26,8 +26,11 @@ public class MemberListController extends SuperClass {
 		request.setAttribute("lists2", lists2);
 		///////////////////내가 팔로우한 멤버 추출
 		List<Member> lists3 = dao.followingMember(email);
+		for (Member member : lists3) {
+			System.out.println(member);
+		}
 		request.setAttribute("lists3", lists3);
-
+		
 		String gotopage = "/members/memberList.jsp" ;
 		super.GotoPage(gotopage);
 	}

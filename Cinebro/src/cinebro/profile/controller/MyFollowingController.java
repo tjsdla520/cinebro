@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import cinebro.common.controller.SuperClass;
+import cinebro.members.model.Member;
 import cinebro.profile.model.Profile;
 import cinebro.profile.model.ProfileDao;
 
@@ -20,7 +21,8 @@ public class MyFollowingController extends SuperClass {
 		ProfileDao dao = new ProfileDao();
 		List<Profile> lists = null;
 		
-		String email = request.getParameter("email");
+		Member myprofile = (Member)super.session.getAttribute("loginfo");
+		String email = myprofile.getEmail();
 		
 		System.out.println("email : "+ email);
 		
