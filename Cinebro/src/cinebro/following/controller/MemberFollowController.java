@@ -7,11 +7,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import cinebro.common.controller.SuperClass;
+import cinebro.following.model.MemberFollowDao;
 import cinebro.profile.controller.MyFollowingController;
 import cinebro.profile.controller.MyproFileController;
-import cinebro.profile.model.Profile;
-import cinebro.profile.model.ProfileDao;
-import cinebro.reviews.controller.ReviewDetailController;
+
 
 public class MemberFollowController extends SuperClass {
 	
@@ -20,20 +19,13 @@ public class MemberFollowController extends SuperClass {
 		super.doGet(request, response);
 //		Profile follow = new Profile();
 		
-		ProfileDao dao = new ProfileDao();
-		String myemail = request.getParameter("email1");
-		String followemail = request.getParameter("email2");
+		MemberFollowDao dao = new MemberFollowDao();
+		String myemail = request.getParameter("myemail");
+		String followemail = request.getParameter("followemail");
 		System.out.println(myemail +followemail+"1차확인");
 		int cnt = dao.followMember(myemail,followemail);
+
 		
-//		follow = dao.followMember(myemail, followemail);
-//		request.setAttribute("follow", follow);
-//		System.out.println(follow.getName() + follow.getFollwingemail()+"3차확인");
-	
-		//follow에 있는 follwingemail가 
-		//new MyproFileController().doGet(request, response); 여기로 가야함	
-		
-		request.setAttribute("email", myemail);
 		new MyFollowingController().doGet(request, response);
 	}
 

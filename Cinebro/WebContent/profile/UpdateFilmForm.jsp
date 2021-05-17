@@ -40,6 +40,7 @@ int rightButton = 1;
 
 					<%--command 값 지정--%>
 					<input type="hidden" name="command" value="updateFilm">
+					<input type="hidden" name="id" value="${fbean.id }">
 					
 					<%--isCheck 변수. 값이 false이면 영화등록이 안된다. 모든 체크를 통과했을 경우에만 true로 변경 --%>
 
@@ -49,7 +50,7 @@ int rightButton = 1;
 						<div class="col-xs-3">
 							<input type="text" class="form-control" id="film_title"
 								placeholder="영화제목을 입력해주세요" name="film_title"
-								value="${bean.film_title}">
+								value="${fbean.film_title}">
 							<span class="err form-control-static">${errfilm_title}</span>
 						</div>
 					</div>
@@ -58,7 +59,7 @@ int rightButton = 1;
 							style="color: white">포스터</label>
 						<div class="col-xs-3">
 							<input type="file" class="form-control" id="image"
-								name="image" value="${bean.image}">
+								name="image" value="${fbean.image}">
 						</div>
 					</div>
 					<div class="form-group" style="margin-top: 20px">
@@ -66,7 +67,7 @@ int rightButton = 1;
 							style="color: white">감독명</label>
 						<div class="col-xs-3">
 							<input type="text" class="form-control" id="director"
-								name="director" value="${bean.director}"
+								name="director" value="${fbean.director}"
 								placeholder="감독 이름을 입력해주세요">
 							<span class="err form-control-static">${errdirector}</span>
 						</div>
@@ -76,7 +77,7 @@ int rightButton = 1;
 							style="color: white">개봉 연도</label>
 						<div class="col-xs-3">
 							<input type="number" class="form-control" id="year" name="year"
-								value="${bean.year}" placeholder="개봉연도를 입력해주세요">
+								value="${fbean.year}" placeholder="개봉연도를 입력해주세요">
 							<span class="err form-control-static">${erryear}</span>
 						</div>
 					</div>
@@ -85,7 +86,7 @@ int rightButton = 1;
 							style="color: white">개봉 국가</label>
 						<div class="col-xs-3">
 							<input type="text" class="form-control" id="country"
-								name="country" value="${bean.country}" placeholder="국가를 입력해주세요">
+								name="country" value="${fbean.country}" placeholder="국가를 입력해주세요">
 							<span class="err form-control-static">${errcountry}</span>
 						</div>
 					</div>
@@ -94,7 +95,7 @@ int rightButton = 1;
 							style="color: white">영화 주소</label>
 						<div class="col-xs-3">
 							<input type="text" class="form-control" id="playUrl"
-								name="playUrl" value="${bean.playUrl}" 
+								name="playUrl" value="${fbean.playUrl}" 
 								placeholder="영화 주소를 입력해주세요">
 							<span class="err form-control-static">${errplayUrl}</span>
 						</div>

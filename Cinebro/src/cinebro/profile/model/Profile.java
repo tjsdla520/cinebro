@@ -16,8 +16,6 @@ public class Profile {
 	private int genre_id;
 	
 	
-	
-	
 	public int getFilm_id() {
 		return film_id;
 	}
@@ -89,6 +87,13 @@ public class Profile {
 	}
 	public void setNickname(String nickname) {
 		this.nickname = nickname;
+	}
+	@Override
+	public String toString() {
+		return "Profile [email=" + email + ", password=" + password + ", nickname=" + nickname + ", follwingemail="
+				+ follwingemail + ", following=" + following + ", subscribe=" + subscribe + ", film_title=" + film_title
+				+ ", genre_name=" + genre_name + ", name=" + name + ", cardnumber=" + cardnumber + ", film_id="
+				+ film_id + ", genre_id=" + genre_id + "]";
 	}
 	
 	

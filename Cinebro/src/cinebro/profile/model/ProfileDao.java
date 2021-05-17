@@ -168,51 +168,5 @@ public class ProfileDao extends SuperDao {
 		}
 		
 		return lists ;
-	}
-
-	public int followMember(String myemail, String followemail) {
-		String sql = " insert into myfollowing values(?,?) " ;
-		
-		PreparedStatement pstmt = null ;
-		int cnt = -99999;
-
-		try {
-			if( conn == null ){ super.conn = super.getConnection() ; }
-			pstmt = super.conn.prepareStatement(sql) ;
-			
-			pstmt.setString(1, myemail);
-			pstmt.setString(2, followemail);
-			
-			System.out.println(myemail + followemail + "2차확인");
-			
-			cnt = pstmt.executeUpdate() ;		
-			if(cnt == 0) {
-				
-				System.out.println("cnt값이 없습니다.");
-			}else {
-			System.out.println(cnt);}
-			conn.commit(); 
-		} catch (Exception e) {
-			SQLException err = (SQLException)e ;
-			cnt = - err.getErrorCode() ;			
-			e.printStackTrace();
-			try {
-				conn.rollback(); 
-			} catch (Exception e2) {
-				e2.printStackTrace();
-			}
-		} finally{
-			try {
-				if( pstmt != null ){ pstmt.close(); }
-				super.closeConnection(); 
-			} catch (Exception e2) {
-				e2.printStackTrace();
-			}
-		}
-		return cnt ;
-	}
-
-	
-	
-	
+	}	
 }

@@ -1,4 +1,4 @@
-package cinebro.reviews.controller;
+package cinebro.following.controller;
 
 import java.io.IOException;
 
@@ -7,19 +7,31 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import cinebro.common.controller.SuperClass;
-import cinebro.films.model.FilmDetailDao;
+import cinebro.following.model.MemberFollowDao;
+import cinebro.profile.controller.MyFollowingController;
+import cinebro.profile.controller.MyproFileController;
 
-public class WatchedFilmController extends SuperClass {
+
+public class MemberUnfollowController extends SuperClass {
 	
 	@Override
 	public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		super.doGet(request, response);
-		FilmDetailDao dao = new FilmDetailDao();
 
+		MemberFollowDao dao = new MemberFollowDao();
+		
+		String myemail = request.getParameter("myemail");
+		String followemail = request.getParameter("followemail");
+		int cnt = dao.unfollowMember(myemail, followemail);
+		
+		new MyFollowingController().doGet(request, response);
+		
 	}
 
 	@Override
 	public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		super.doPost(request, response);
+		
+		
 	}	
 }

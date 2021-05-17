@@ -9,16 +9,20 @@ import javax.servlet.http.HttpServletResponse;
 import com.oreilly.servlet.MultipartRequest;
 
 import cinebro.common.controller.SuperClass;
+import cinebro.films.controller.FilmDetailController;
 import cinebro.films.model.Film;
 import cinebro.films.model.FilmDetailDao;
 
 public class UpdateFilmController extends SuperClass {
-	Film bean = null;
+	private Film bean = null;
 	
 	@Override
 	public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		super.doGet(request, response);
-		request.setAttribute("fbean",bean);
+		String id = request.getParameter("id");
+		FilmDetailDao dao = new FilmDetailDao();
+		Film fbean = dao.selectFilm(id);
+		request.setAttribute("fbean", fbean);
 		String gotopage = "/profile/UpdateFilmForm.jsp";
 		super.GotoPage(gotopage);
 	}
@@ -30,7 +34,7 @@ public class UpdateFilmController extends SuperClass {
 		bean = new Film();
 		
 		System.out.println(multi.getParameter("id")+"수정시 넘어오는 id값");
-		
+		bean.setId(Integer.parseInt(multi.getParameter("id")));
 		bean.setFilm_title(multi.getParameter("film_title"));
 		bean.setPlayUrl(multi.getParameter("playUrl"));
 		bean.setImage(multi.getFilesystemName("image"));
@@ -60,10 +64,7 @@ public class UpdateFilmController extends SuperClass {
 			int cnt = -99999; 
 			cnt = dao.UpdateFilm(bean);
 			
-			session.setAttribute("fbean", bean);
-			
-			String gotopage = "/reviews/filmDetail.jsp";
-			super.GotoPage(gotopage);		
+			new FilmDetailController().doGet(request, response);
 			
 		} else {
 			System.out.println("member insert validation check failure");

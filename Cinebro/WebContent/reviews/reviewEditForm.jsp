@@ -28,12 +28,12 @@
 
 					<%--command 값 지정--%>
 					<input type="hidden" name="command" value="reviewEdit">
-					<input type="hidden" name="id" value="${bean.id }">
+					<input type="hidden" name="id" value="${bean1.id }">
 					<div class="form-group">
 						<label class="control-label col-sm-<%=formleft%>" for="email"
 							style="color: white">리뷰 내용</label>
 						<div class="col-xs-3">
-							<input type="text" id="content" placeholder="리뷰내용 입력" name="content" value="${bean.content}" style="width: 400px; height: 100px">
+							<input type="text" id="content" placeholder="리뷰내용 입력" name="content" value="${bean1.content}" style="width: 400px; height: 100px">
 						</div>
 					</div>
 					<div class="form-group" style="margin-top: 20px">
@@ -42,10 +42,13 @@
 						<div class="col-xs-3">
 							<select name="rating" id="rating">
 								<c:forEach var="i" begin="1" end="5" step="1">
-									<c:if test="${i==bean.rating}">
+									<c:if test="${i==bean1.rating}">
 										<option value="${i}" selected="selected">${i}
 									</c:if>
-									<option value="${i }">${i }
+									<c:if test="${i!=bean1.rating}">
+										<option value="${i}">${i}
+									</c:if>
+									
 								</c:forEach>
 							</select>
 						</div>

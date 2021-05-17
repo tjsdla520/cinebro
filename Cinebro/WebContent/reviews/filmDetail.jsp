@@ -37,7 +37,7 @@
 
 	<div class="media">
 		<div class="media-left media-top col-sm-3">
-			<img src="img/${fbean.film_title}.jpg" class="media-object"
+			<img src="upload/${fbean.film_title}.jpg" class="media-object"
 				style="width: 180px"> <br>
 			<br>
 			<c:if test="${fbean.playUrl!=null}">
@@ -80,14 +80,14 @@
 								class="btn-warning btn-lg">좋아요 취소</button></a>
 					</c:otherwise>
 				</c:choose>
+				&nbsp;&nbsp;&nbsp;&nbsp; 
 				<c:if test="${whologin == 2}">
 					<a href="<%=NoForm%>updateFilm&id=${fbean.id}"><button
 							type="button" class="btn btn-warning">영화 수정</button></a> 
 				&nbsp;&nbsp;&nbsp;&nbsp; 
 				<a href="<%=NoForm%>deleteFilm&id=${fbean.id}"><button
-							type="button" class="btn btn-warning">영화 삭제</button></a>
+							type="button" class="btn btn-danger">영화 삭제</button></a>
 				</c:if>
-				<script src="//code.jquery.com/jquery.min.js"></script>
 
 			</div>
 		</div>
