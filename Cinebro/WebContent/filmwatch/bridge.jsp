@@ -4,6 +4,13 @@
 <!DOCTYPE html>
 <html lang="zxx">
 <head>
+<style type="text/css">
+#wrapper{
+   width:500px;
+   margin: auto;
+ 
+}
+</style>
 </head>
 <body>
 	<%-- <%@ include file="header.jsp" %> --%>
@@ -14,14 +21,16 @@
 	<section class="normal-breadcrumb set-bg"
 		data-setbg="<%=contextPath%>img/normal-breadcrumb.jpg">
 		<div class="container">
+		   <div id="wrapper">
 			<div class="row">
-				<div class="text-center">
+				
 					<div class="normal__breadcrumb__text">
 						<h2>단돈 만원으로 제공되는</h2>
-						<h2>한달간의 무제한 스트리밍 서비스</h2>
-						<p>Welcome to the CINEBRO</p>
+						<h2> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;한달간의 무제한 </h2>
+						<h2> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;스트리밍 서비스</h2>
+						<p> &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Welcome to the CINEBRO</p>
 					</div>
-				</div>
+			 	</div>
 			</div>
 		</div>
 	</section>
@@ -39,7 +48,6 @@
 			</div>
 		</div>
 	</section>
-
 	<jsp:include page="./../anime-main/footer.jsp" />
 </body>
 </html>
