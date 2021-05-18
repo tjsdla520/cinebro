@@ -35,7 +35,7 @@ function filmfind(){
 
 				<%--command 값 지정--%>
 				<input type="hidden" name="command" value="editNickname"> 
-				<input type="hidden" name="email" value="${requestScope.email}">
+				<input type="text" name="email" value="${requestScope.bean.email}">
 				<div class="form-group">
 					<label class="control-label col-sm-<%=formleft%>" for="email"
 						style="color: white">변경할 닉네임</label>
@@ -43,6 +43,7 @@ function filmfind(){
 						<input type="text" id="nickname" placeholder="변경할 닉네임 입력하세요"
 							name="nickname" value="${bean.nickname}"
 							style="width: 100px; height: 25px">
+						<span class="err">${errnickname }</span>
 					</div>
 				</div>
 				
@@ -52,9 +53,9 @@ function filmfind(){
 					<div class="col-xs-3">
 						<input type="text" class="form-control" 
 							disabled="disabled" placeholder="영화를 검색하세요"
-							id="fakefilmtitle1" name="fakefilmtitle1"> 
+							id="fakefilmtitle1" name="fakefilmtitle1" value="${bean.film_title }"> 
 						<input type="hidden" name="filmtitle1"> 
-						<input type="hidden" name="filmid1">
+						<input type="hidden" name="filmid1" value="${bean.film_id }">
 					</div>
 					<div class="col-sm-<%=rightButton%>">
 						<input type="button" value="영화 검색" 
