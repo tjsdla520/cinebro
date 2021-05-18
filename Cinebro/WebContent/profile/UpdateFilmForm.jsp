@@ -19,6 +19,27 @@ int rightButton = 1;
 	background: orange;
 	color: red
 }
+input#film_title {
+    font-size: initial;
+}
+input#image {
+    font-size: initial;
+}
+input#director {
+    font-size: initial;
+}
+input#country {
+    font-size: initial;
+}
+input#year {
+    font-size: initial;
+}
+input#playUrl {
+    font-size: initial;
+}
+button.btn.btn-info.btn-lg {
+    font-size: initial;
+}
 </style>
 </head>
 <body>
@@ -29,7 +50,7 @@ int rightButton = 1;
 	<div class="container" align="center">
 		<div>
 			<div style="margin-top: 50px">
-				<h4 align="center" style="color: white">영화 정보 수정</h4>
+				<h2 align="center" style="color: white">영화 정보 수정</h2>
 			</div>
 			<br>
 			<br>
@@ -45,8 +66,8 @@ int rightButton = 1;
 					<%--isCheck 변수. 값이 false이면 영화등록이 안된다. 모든 체크를 통과했을 경우에만 true로 변경 --%>
 
 					<div class="form-group">
-						<label class="control-label col-sm-<%=formleft%>" for="film_title"
-							style="color: white">영화 제목</label>
+						<h5><label class="control-label col-sm-<%=formleft%>" for="film_title"
+							style="color: white">영화 제목</label></h5>
 						<div class="col-xs-3">
 							<input type="text" class="form-control" id="film_title"
 								placeholder="영화제목을 입력해주세요" name="film_title"
@@ -55,16 +76,16 @@ int rightButton = 1;
 						</div>
 					</div>
 					<div class="form-group" style="margin-top: 20px">
-						<label class="control-label col-sm-<%=formleft%>" for="image"
-							style="color: white">포스터</label>
+						<h5><label class="control-label col-sm-<%=formleft%>" for="image"
+							style="color: white">포스터</label></h5>
 						<div class="col-xs-3">
 							<input type="file" class="form-control" id="image"
 								name="image" value="${fbean.image}">
 						</div>
 					</div>
 					<div class="form-group" style="margin-top: 20px">
-						<label class="control-label col-sm-<%=formleft%>" for="director"
-							style="color: white">감독명</label>
+						<h5><label class="control-label col-sm-<%=formleft%>" for="director"
+							style="color: white">감독명</label></h5>
 						<div class="col-xs-3">
 							<input type="text" class="form-control" id="director"
 								name="director" value="${fbean.director}"
@@ -73,8 +94,8 @@ int rightButton = 1;
 						</div>
 					</div>
 					<div class="form-group" style="margin-top: 20px">
-						<label class="control-label col-sm-<%=formleft%>" for="year"
-							style="color: white">개봉 연도</label>
+						<h5><label class="control-label col-sm-<%=formleft%>" for="year"
+							style="color: white">개봉 연도</label></h5>
 						<div class="col-xs-3">
 							<input type="number" class="form-control" id="year" name="year"
 								value="${fbean.year}" placeholder="개봉연도를 입력해주세요">
@@ -82,8 +103,8 @@ int rightButton = 1;
 						</div>
 					</div>
 					<div class="form-group" style="margin-top: 20px">
-						<label class="control-label col-sm-<%=formleft%>" for="country"
-							style="color: white">개봉 국가</label>
+						<h5><label class="control-label col-sm-<%=formleft%>" for="country"
+							style="color: white">개봉 국가</label></h5>
 						<div class="col-xs-3">
 							<input type="text" class="form-control" id="country"
 								name="country" value="${fbean.country}" placeholder="국가를 입력해주세요">
@@ -91,8 +112,8 @@ int rightButton = 1;
 						</div>
 					</div>
 					<div class="form-group" style="margin-top: 20px">
-						<label class="control-label col-sm-<%=formleft%>" for="playUrl"
-							style="color: white">영화 주소</label>
+						<h5><label class="control-label col-sm-<%=formleft%>" for="playUrl"
+							style="color: white">영화 주소</label></h5>
 						<div class="col-xs-3">
 							<input type="text" class="form-control" id="playUrl"
 								name="playUrl" value="${fbean.playUrl}" 
@@ -101,7 +122,7 @@ int rightButton = 1;
 						</div>
 					</div>
 					<div class="form-group" style="margin-top: 40px">
-						<div class="col-sm-offset-<%=offset%> col-sm-<%=mywidth%>">
+						<div class="col-sm-offset-<%=offset%> col-sm-<%=mywidth%>">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 							<button type="submit" class="btn btn-info btn-lg">영화 수정 하기</button>
 							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 							<button type="reset" class="btn btn-info btn-lg">초기화</button>

@@ -60,7 +60,8 @@
 			</c:if>	
 		<script src="//code.jquery.com/jquery.min.js"></script>
  </div>
-		</div>
+</div>
 	<jsp:include page="./../anime-main/footer.jsp" />
+	
 </body>
 </html>
