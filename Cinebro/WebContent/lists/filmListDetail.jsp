@@ -30,6 +30,7 @@
 	<%-- <%@ include file="header.jsp" %> --%>
 	<%-- <jsp:include page="<%=contextPath%>/anime-main/header.jsp"/> --%>
 	<jsp:include page="./../anime-main/header.jsp" />
+<div class="container">	
 	<div class="panel-heading">
 		<h1>
 			<p class="text-white">상세 영화리스트</p>
@@ -80,7 +81,7 @@
 			</c:forEach>
 	</div>
 	</div>
-
+</div>
 	<jsp:include page="./../anime-main/footer.jsp" />
 </body>
 </html>
