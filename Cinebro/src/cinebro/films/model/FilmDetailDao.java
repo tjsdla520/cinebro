@@ -24,7 +24,7 @@ public class FilmDetailDao extends SuperDao {
 			if(conn == null) {super.conn = super.getConnection() ; }
 			
 			//영화 기본정보 가져오기 
-			String sql = "select f.id, f.film_title, f.director, f.year, f.country, f.playurl, ar.avgrate, ar.totalrate from films f left outer join filmavgrating ar on f.id = ar.film_id where f.id = ?";
+			String sql = "select f.id, f.film_title, f.director, f.year, f.country, f.playurl, f.image, ar.avgrate, ar.totalrate from films f left outer join filmavgrating ar on f.id = ar.film_id where f.id = ?";
 			pstmt = conn.prepareStatement(sql) ;
 			
 			pstmt.setString(1, id);			
@@ -39,6 +39,7 @@ public class FilmDetailDao extends SuperDao {
 				bean.setPlayUrl(rs.getString("playurl"));
 				bean.setTotalratings(rs.getInt("totalrate"));
 				bean.setAvgrating(rs.getDouble("avgrate"));
+				bean.setImage(rs.getString("image"));
 			}
 			if(rs != null) {rs.close();}
 			if(pstmt != null) {pstmt.close();} 
@@ -89,43 +90,6 @@ public class FilmDetailDao extends SuperDao {
 	}
 	
 
-	public int InsertFilm(Film bean) {
-		String sql = " insert into films(id, film_title, director, year, country, playurl, image) values(films_SEQ.nextval, ?, ?, ?, ?, ?, ?) " ;
-		
-		PreparedStatement pstmt = null ;
-		int cnt = -99999 ;
-		try {
-			if( conn == null ){ super.conn = super.getConnection() ; }
-			conn.setAutoCommit( false );
-			pstmt = super.conn.prepareStatement(sql) ;
-			
-			pstmt.setString(1, bean.getFilm_title());
-			pstmt.setString(2, bean.getDirector());
-			pstmt.setInt(3, bean.getYear());
-			pstmt.setString(4, bean.getCountry());
-			pstmt.setString(5, bean.getPlayUrl());
-			pstmt.setString(6, bean.getImage());
-			cnt = pstmt.executeUpdate() ; 
-			conn.commit(); 
-		} catch (Exception e) {
-			SQLException err = (SQLException)e ;
-			cnt = - err.getErrorCode() ;			
-			e.printStackTrace();
-			try {
-				conn.rollback(); 
-			} catch (Exception e2) {
-				e2.printStackTrace();
-			}
-		} finally{
-			try {
-				if( pstmt != null ){ pstmt.close(); }
-				super.closeConnection(); 
-			} catch (Exception e2) {
-				e2.printStackTrace();
-			}
-		}
-		return cnt ;
-	}
 	
 
 	public int DeleteFilm(int id) {
@@ -206,5 +170,152 @@ public class FilmDetailDao extends SuperDao {
 			}
 		}
 		return cnt ;
+	}
+
+
+
+
+	public int InsertFilm(Film bean) {
+		PreparedStatement pstmt = null ;
+		int cnt = -99999;
+		int id = -9999999;				
+		try {
+			if(conn == null) {super.conn = super.getConnection() ; }
+			conn.setAutoCommit( false );
+			
+			//영화 기본정보 넣기
+			String sql = "insert into films values(films_seq.nextval, ?, ?, ?, ?, ?, ?)";
+			pstmt = conn.prepareStatement(sql) ;
+			
+			pstmt.setString(1, bean.getFilm_title());
+			pstmt.setString(2, bean.getDirector());
+			pstmt.setInt(3, bean.getYear());
+			pstmt.setString(4, bean.getCountry());
+			pstmt.setString(5, bean.getPlayUrl());
+			pstmt.setString(6, bean.getImage());
+			
+			cnt = pstmt.executeUpdate(); 
+			
+			conn.commit();
+			
+		} catch (Exception e) {			
+			e.printStackTrace();
+			bean = null ; 
+		}finally {
+			try {
+				if(pstmt != null) {pstmt.close();} 
+				super.closeConnection();
+			} catch (Exception e2) {
+				e2.printStackTrace();
+			}
+		}
+		return id;
+	}
+
+
+
+
+	public int selectFilmByTitlenDirector(String title, String director) {
+		int id = -9999;
+		PreparedStatement pstmt = null ;
+		ResultSet rs = null ;
+				
+		try {
+			if(conn == null) {super.conn = super.getConnection() ; }
+			
+			//영화 기본정보 가져오기 
+			String sql = "select id from films where film_title = ? and director = ?";
+			pstmt = conn.prepareStatement(sql) ;
+			
+			pstmt.setString(1, title);
+			pstmt.setString(2, director);
+			rs = pstmt.executeQuery() ; 
+			
+			while(rs.next()) {				
+				id = rs.getInt("id");
+			}
+
+		} catch (Exception e) {			
+			e.printStackTrace();
+		}finally {
+			try {
+				if(rs != null) {rs.close();}
+				if(pstmt != null) {pstmt.close();} 
+				
+			} catch (Exception e2) {
+				e2.printStackTrace();
+			}
+		}
+		return id;
+	}
+
+
+
+
+	public int insertFilmnGenre(int filmid, String genre) {
+		PreparedStatement pstmt = null ;
+		int cnt = -99999;
+
+		try {
+			if(conn == null) {super.conn = super.getConnection() ; }
+			conn.setAutoCommit( false );
+			
+			//영화 기본정보 넣기
+			String sql = "insert into filmngenre values(?, ?)";
+			pstmt = conn.prepareStatement(sql) ;
+			pstmt.setInt(1, filmid);
+			pstmt.setString(2, genre);
+	
+			cnt = pstmt.executeUpdate(); 
+			
+			conn.commit();
+			
+		} catch (Exception e) {			
+			e.printStackTrace();
+
+		}finally {
+			try {
+				if(pstmt != null) {pstmt.close();} 
+				super.closeConnection();
+			} catch (Exception e2) {
+				e2.printStackTrace();
+			}
+		}
+		return cnt;
+	}
+
+
+
+
+	public int insertFilmnActor(int filmid, String actorid) {
+		PreparedStatement pstmt = null ;
+		int cnt = -99999;
+
+		try {
+			if(conn == null) {super.conn = super.getConnection() ; }
+			conn.setAutoCommit( false );
+			
+			//영화 기본정보 넣기
+			String sql = "insert into filmnactor values(?, ?)";
+			pstmt = conn.prepareStatement(sql) ;
+			pstmt.setInt(1, filmid);
+			pstmt.setString(2, actorid);
+	
+			cnt = pstmt.executeUpdate(); 
+			
+			conn.commit();
+			
+		} catch (Exception e) {			
+			e.printStackTrace();
+
+		}finally {
+			try {
+				if(pstmt != null) {pstmt.close();} 
+				super.closeConnection();
+			} catch (Exception e2) {
+				e2.printStackTrace();
+			}
+		}
+		return cnt;
 	}
 }
