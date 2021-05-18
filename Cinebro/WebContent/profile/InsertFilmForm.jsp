@@ -19,6 +19,42 @@ int rightButton = 1;
 	background: orange;
 	color: red
 }
+input#film_title {
+ font-size:initial;
+}
+input[type=file] {
+    display: block;
+    font-size:initial;
+}
+input#director {
+font-size:initial;
+}
+input#year {
+font-size:initial;
+}
+input#country {
+font-size:initial;
+}
+input#playUrl {
+font-size:initial;
+}
+input#actorname1 {
+font-size:initial;
+}
+input#actorname2 {
+font-size:initial;
+}
+.form-control:disabled, .form-control[readonly] {
+    background-color: #e9ecef;
+    opacity: 1;
+    font-size: initial;
+}
+input.btn.btn-info {
+    font-size: initial;
+}
+button.btn.btn-info.btn-lg {
+    font-size: initial;
+}
 </style>
 <script type="text/javascript">
 function actorfind(){
@@ -39,7 +75,7 @@ function actorfind2(){
 	<div class="container" align="center">
 		<div>
 			<div style="margin-top: 50px">
-				<h4 align="center" style="color: white">영화 등록</h4>
+				<h2 align="center" style="color: white">영화 등록</h2>
 			</div>
 			<br> <br> <br>
 			<div>
@@ -52,8 +88,8 @@ function actorfind2(){
 					<%--isCheck 변수. 값이 false이면 영화등록이 안된다. 모든 체크를 통과했을 경우에만 true로 변경 --%>
 
 					<div class="form-group">
-						<label class="control-label col-sm-<%=formleft%>" for="film_title"
-							style="color: white">영화 제목</label>
+						<h5><label class="control-label col-sm-<%=formleft%>" for="film_title"
+							style="color: white">영화 제목</label></h5>
 						<div class="col-xs-3">
 							<input type="text" class="form-control" id="film_title"
 								placeholder="영화제목을 입력해주세요" name="film_title"
@@ -62,16 +98,16 @@ function actorfind2(){
 						</div>
 					</div>
 					<div class="form-group" style="margin-top: 20px">
-						<label class="control-label col-sm-<%=formleft%>" for="image"
-							style="color: white">포스터</label>
+						<h5><label class="control-label col-sm-<%=formleft%>" for="image"
+							style="color: white">포스터</label></h5>
 						<div class="col-xs-3">
 							<input type="file" class="form-control" id="image" name="image"
 								value="${bean.image}">
 						</div>
 					</div>
 					<div class="form-group" style="margin-top: 20px">
-						<label class="control-label col-sm-<%=formleft%>" for="director"
-							style="color: white">감독명</label>
+						<h5><label class="control-label col-sm-<%=formleft%>" for="director"
+							style="color: white">감독명</label></h5>
 						<div class="col-xs-3">
 							<input type="text" class="form-control" id="director"
 								name="director" value="${bean.director}"
@@ -80,8 +116,8 @@ function actorfind2(){
 						</div>
 					</div>
 					<div class="form-group" style="margin-top: 20px">
-						<label class="control-label col-sm-<%=formleft%>" for="year"
-							style="color: white">개봉 연도</label>
+						<h5><label class="control-label col-sm-<%=formleft%>" for="year"
+							style="color: white">개봉 연도</label></h5>
 						<div class="col-xs-3">
 							<input type="number" class="form-control" id="year" name="year"
 								value="${bean.year}" placeholder="개봉연도를 입력해주세요"> <span
@@ -89,8 +125,8 @@ function actorfind2(){
 						</div>
 					</div>
 					<div class="form-group" style="margin-top: 20px">
-						<label class="control-label col-sm-<%=formleft%>" for="country"
-							style="color: white">개봉 국가</label>
+						<h5><label class="control-label col-sm-<%=formleft%>" for="country"
+							style="color: white">개봉 국가</label></h5>
 						<div class="col-xs-3">
 							<input type="text" class="form-control" id="country"
 								name="country" value="${bean.country}" placeholder="국가를 입력해주세요">
@@ -98,8 +134,8 @@ function actorfind2(){
 						</div>
 					</div>
 					<div class="form-group" style="margin-top: 20px">
-						<label class="control-label col-sm-<%=formleft%>" for="playUrl"
-							style="color: white">영화 주소</label>
+						<h5><label class="control-label col-sm-<%=formleft%>" for="playUrl"
+							style="color: white">영화 주소</label></h5>
 						<div class="col-xs-3">
 							<input type="text" class="form-control" id="playUrl"
 								name="playUrl" value="${bean.playUrl}"
@@ -108,8 +144,8 @@ function actorfind2(){
 						</div>
 					</div>
 					<div class="form-group" style="margin-top: 20px">
-						<label class="control-label col-sm-<%=formleft%>" for="genre"
-							style="color: white">영화 장르</label>
+						<h5><label class="control-label col-sm-<%=formleft%>" for="genre"
+							style="color: white">영화 장르</label></h5>
 						<div class="col-xs-3">
 							<select id="genre" name="genre">
 								<option value="1">가족
@@ -133,10 +169,11 @@ function actorfind2(){
 								<option value="19">SF
 							</select>
 						</div>
+						</div>
 						 <span class="err form-control-static">${errgenre}</span>
-					<<div class="form-group" style="margin-top: 20px">
-						<label class="control-label col-sm-<%=formleft%>" for="actorname1"
-							style="color: white">영화 배우1</label>
+					<div class="form-group" style="margin-top: 20px">
+						<h5><label class="control-label col-sm-<%=formleft%>" for="actorname1"
+							style="color: white">영화 배우1</label></h5>
 						<div class="col-xs-3">
 							<input type="text" class="form-control" disabled="disabled" id="fakeactorname1" name="fakeactorname1">
 							<input type="hidden" name="actorname1" >
@@ -148,8 +185,8 @@ function actorfind2(){
 				      	</div>
 					</div>
 					<div class="form-group" style="margin-top: 20px">
-						<label class="control-label col-sm-<%=formleft%>" for="actorname2"
-							style="color: white">영화 배우2</label>
+						<h5><<label class="control-label col-sm-<%=formleft%>" for="actorname2"
+							style="color: white">영화 배우2</label></h5>
 						<div class="col-xs-3">
 							<input type="text" class="form-control" disabled="disabled" id="fakeactorname2" name="fakeactorname2">
 							<input type="hidden" name="actorname2" >
@@ -161,16 +198,25 @@ function actorfind2(){
 				      	</div>
 					</div>
 					<div class="form-group" style="margin-top: 40px">
-						<div class="col-sm-offset-<%=offset%> col-sm-<%=mywidth%>">
+						<div class="col-sm-offset-<%=offset%> col-sm-<%=mywidth%>">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 							<button type="submit" class="btn btn-info btn-lg">영화 등록하기</button>
 							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 							<button type="reset" class="btn btn-info btn-lg">초기화</button>
 						</div>
-					</div>
+					</div>					
 				</form>
 			</div>
 		</div>
 	</div>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
 	<br>
 	<br>
 	<br>
