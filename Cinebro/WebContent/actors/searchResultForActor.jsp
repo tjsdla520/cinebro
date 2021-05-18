@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8"%>
 <%@ include file="./../common/common.jsp"%>
 <%
 	/* position for grid system */	
@@ -8,12 +8,10 @@
 	int formleft = 3 ;
 	int formright = twelve - formleft ;
 	int rightButton = 2 ;
-%>    
+%>
 <!DOCTYPE html>
-<html>
+<html lang="zxx">
 <head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
 	<script>	
 	function search(){
 		var mode = $('#mode').val();
@@ -28,12 +26,28 @@
 			return false;
 		}else{
 			location.href='<%=NoForm%>search&mode='+ mode +'&keyword='+keyword;
-		}		
+		}
 	}
 		
 		$(document).ready(function(){
 			
 		});
+	function sendActorInfo(id,name,num){
+		switch(num){
+		case '1':
+			opener.myform.fakeactorname1.value=name;
+			opener.myform.actorname1.value=name;
+			opener.myform.actorid1.value=id;
+			break;
+		case '2':
+			opener.myform.fakeactorname2.value=name;
+			opener.myform.actorname2.value=name;
+			opener.myform.actorid2.value=id;
+			break;
+		}
+
+		self.close();
+	}
 	</script>
 	<style type="text/css">
 		.badge{background: orange; color: red}
@@ -43,17 +57,13 @@
 	<jsp:include page="./../anime-main/header.jsp"/>
 	<div class="container">
 		<div class="panel panel-white">
-		 <p class="bg-danger text-white"><b>상세검색</b><p>
+		 <p class="bg-danger text-white"><b>영화배우 검색</b><p>
 			<div class="panel-heading">
-
 				<form action="" class="form-inline" role="form" name="myform"
 					method="get">
 					<div class="form-group">
 						<select id="mode" name="mode" class="form-control">
 							<option value="none" selected="selected">-- 선택하세요.
-							<option value="film_title">영화
-							<option value="list_title">리스트
-							<option value="nickname">회원명
 							<option value="name">배우명
 						</select>
 					</div>
@@ -66,15 +76,12 @@
 						onclick="return search();">검색</button>
 					&nbsp;&nbsp; ${pageInfo.pagingStatus}
 				</form>
-
 			</div>
 			<div class="panel-body">
 				<table class="table table-hover">
 					<thead>
 						<tr>
-							<th>리스트 제목</th>
-							<th>작성자</th>
-							<th>리스트 설명</th>							
+							<th>이름</th>		
 						</tr>
 					</thead>
 					<tbody>
@@ -83,12 +90,9 @@
 							<tr>
 								
 								<td>
-									
 									<%--글제목 하이퍼링크 만들기 일반적으로 넘겨줘야 할 파라미터 목록은 다음과 같다. primarykey, pagenumber, mode, keyword--%>
-									<a href="<%=NoForm%>filmListDetail&id=${bean.id}&${requestScope.parameters}">${bean.list_title}</a>
+									<a href="#" onclick="sendActorInfo('${bean.id}','${bean.name }','${requestScope.num }')">${bean.name}</a>
 								</td>
-								<td>${bean.nickname}</td>	
-								<td>${bean.comments}</td>
 							</tr>
 						</c:forEach>												
 					</tbody>

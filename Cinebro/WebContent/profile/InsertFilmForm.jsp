@@ -20,6 +20,16 @@ int rightButton = 1;
 	color: red
 }
 </style>
+<script type="text/javascript">
+function actorfind(){
+	var url = "<%=NoForm%>searchforactor&num=1";
+	window.open(url,'mywin','height=600, width=720, scrollbars=yes');
+}
+function actorfind2(){
+	var url = "<%=NoForm%>searchforactor&num=2";
+	window.open(url,'mywin','height=600, width=720, scrollbars=yes');
+}
+</script>
 </head>
 <body>
 	<%-- <%@ include file="header.jsp" %> --%>
@@ -123,31 +133,36 @@ int rightButton = 1;
 								<option value="19">SF
 							</select>
 						</div>
+						 <span class="err form-control-static">${errgenre}</span>
+					<<div class="form-group" style="margin-top: 20px">
+						<label class="control-label col-sm-<%=formleft%>" for="actorname1"
+							style="color: white">영화 배우1</label>
+						<div class="col-xs-3">
+							<input type="text" class="form-control" disabled="disabled" id="fakeactorname1" name="fakeactorname1">
+							<input type="hidden" name="actorname1" >
+							<input type="hidden" name="actorid1">
+						</div>
+						<div class="col-sm-<%=rightButton%>">
+				        	<input type="button" value="배우 검색" class="btn btn-info"
+				        		onclick="actorfind();">
+				      	</div>
 					</div>
 					<div class="form-group" style="margin-top: 20px">
-						<label class="control-label col-sm-<%=formleft%>" for="actor1"
-							style="color: white">영화배우1</label>
+						<label class="control-label col-sm-<%=formleft%>" for="actorname2"
+							style="color: white">영화 배우2</label>
 						<div class="col-xs-3">
-							<input type="text" class="form-control" id="actor1"
-								name="actor1" value="${bean.playUrl}"
-								placeholder="영화 배우 이름을 입력해주세요"> <span
-								class="err form-control-static">${errplayUrl}</span>
+							<input type="text" class="form-control" disabled="disabled" id="fakeactorname2" name="fakeactorname2">
+							<input type="hidden" name="actorname2" >
+							<input type="hidden" name="actorid2">
 						</div>
-					</div>
-					<div class="form-group" style="margin-top: 20px">
-						<label class="control-label col-sm-<%=formleft%>" for="actor2"
-							style="color: white">영화배우2</label>
-						<div class="col-xs-3">
-							<input type="text" class="form-control" id="actor2"
-								name="actor2" value="${bean.playUrl}"
-								placeholder="영화 배우 이름을 입력해주세요"> <span
-								class="err form-control-static">${errplayUrl}</span>
-						</div>
+						<div class="col-sm-<%=rightButton%>">
+				        	<input type="button" value="영화 검색" class="btn btn-info"
+				        		onclick="actorfind2();">
+				      	</div>
 					</div>
 					<div class="form-group" style="margin-top: 40px">
 						<div class="col-sm-offset-<%=offset%> col-sm-<%=mywidth%>">
-							<button type="submit" class="btn btn-info btn-lg">영화 등록
-								하기</button>
+							<button type="submit" class="btn btn-info btn-lg">영화 등록하기</button>
 							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 							<button type="reset" class="btn btn-info btn-lg">초기화</button>
 						</div>

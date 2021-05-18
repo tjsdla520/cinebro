@@ -80,8 +80,6 @@
 						<select id="mode" name="mode" class="form-control">
 							<option value="none" selected="selected">-- 선택하세요.
 							<option value="film_title">영화
-							<option value="list_title">리스트
-							<option value="nickname">회원명
 						</select>
 					</div>
 					<div class="form-group">
