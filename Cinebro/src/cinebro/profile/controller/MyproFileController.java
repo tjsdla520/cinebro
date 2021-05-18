@@ -17,7 +17,7 @@ public class MyproFileController extends SuperClass {
 	@Override
 	public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		super.doGet(request, response);
-		
+			
 			Profile bean = new Profile();
 			ProfileDao dao = new ProfileDao();
 			String email = request.getParameter("email") ;
