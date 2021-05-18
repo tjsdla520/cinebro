@@ -26,7 +26,7 @@
 </head>
 <body>
 	<jsp:include page="./../anime-main/header.jsp" />
-
+	<div class="container">
 		<div class="media">
 			<div class="media-left media-top col-sm-3">
 				<img src="img/${bean1.filmTitle}.jpg" class="media-object" style="width: 180px">
@@ -59,7 +59,7 @@
 				</c:choose>				
 			</c:if>	
 		<script src="//code.jquery.com/jquery.min.js"></script>
-
+ </div>
 		</div>
 	<jsp:include page="./../anime-main/footer.jsp" />
 </body>

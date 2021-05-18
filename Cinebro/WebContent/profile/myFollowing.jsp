@@ -54,6 +54,13 @@ body {
 .dropdown:hover .dropbtn {
 	background-color: red;
 }
+.avatar {
+  vertical-align: middle;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+}
+
 </style>
 </head>
 <body>
@@ -65,16 +72,16 @@ body {
 			<table class="table table-hover">
 				<thead>
 					<tr>
-						<th><p class="text-white">
+						<p class="text-white">
 								<b>멤버 닉네임</b>
-							</p></th>
+							</p>
 						<th></th>
 					</tr>
 				</thead>
 				<tbody>
 					<c:forEach var="bean" items="${requestScope.lists}">
 						<tr>
-							<td><span style="color: white"> <a
+							<td><span style="color: white"><img src="<%=contextPath%>/img/img.png" alt="Avatar" class="avatar">  <a
 									href="<%=NoForm%>myproFile&email=${bean.follwingemail}">
 										${bean.following} </a>
 							</span></td>
@@ -83,8 +90,9 @@ body {
 				</tbody>
 			</table>
 		</div>
-		<br> <br> <br>
 	</div>
+		<br> <br> <br>	<br> <br> <br>	<br> <br> <br>	<br> <br> <br>
+			<br> <br> <br>	<br> <br> <br>	<br> <br> 
 	<jsp:include page="./../anime-main/footer.jsp" />
 </body>
 </html>
