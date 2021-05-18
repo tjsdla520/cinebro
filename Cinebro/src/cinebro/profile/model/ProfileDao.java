@@ -56,7 +56,7 @@ public class ProfileDao extends SuperDao {
 	}
 
 	public int editNickname(Profile bean) {
-		String sql = "update members set nickname = ? where email = ?";
+		String sql = "update members set nickname = ?, film_id = ?, genre_id = ?  where email = ?";
 		
 		PreparedStatement pstmt = null ;
 		int cnt = -99999 ;
@@ -67,7 +67,9 @@ public class ProfileDao extends SuperDao {
 			pstmt = super.conn.prepareStatement(sql) ;
 			
 			pstmt.setString(1, bean.getNickname());
-			pstmt.setString(2, bean.getEmail());
+			pstmt.setInt(2, bean.getFilm_id());
+			pstmt.setInt(3, bean.getGenre_id());
+			pstmt.setString(4, bean.getEmail());
 			
 			cnt = pstmt.executeUpdate(); 
 			conn.commit(); 
