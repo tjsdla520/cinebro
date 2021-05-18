@@ -32,11 +32,35 @@
 		$(document).ready(function(){
 			
 		});
-	function sendfilmInfo(id,filmtitle){
-		opener.myform.fakefilmtitle1.value=filmtitle;
-		opener.myform.filmtitle1.value=filmtitle;
-		opener.myform.filmid1.value=id;
-		
+	function sendfilmInfo(id,filmtitle,num){
+		switch(num){
+		case '1':
+			opener.myform.fakefilmtitle1.value=filmtitle;
+			opener.myform.filmtitle1.value=filmtitle;
+			opener.myform.filmid1.value=id;
+			break;
+		case '2':
+			opener.myform.fakefilmtitle2.value=filmtitle;
+			opener.myform.filmtitle2.value=filmtitle;
+			opener.myform.filmid2.value=id;
+			break;
+		case '3':
+			opener.myform.fakefilmtitle3.value=filmtitle;
+			opener.myform.filmtitle3.value=filmtitle;
+			opener.myform.filmid3.value=id;
+			break;
+		case '4':
+			opener.myform.fakefilmtitle4.value=filmtitle;
+			opener.myform.filmtitle4.value=filmtitle;
+			opener.myform.filmid4.value=id;
+			break;
+		case '5':
+			opener.myform.fakefilmtitle5.value=filmtitle;
+			opener.myform.filmtitle5.value=filmtitle;
+			opener.myform.filmid5.value=id;
+			break;
+		}
+
 		self.close();
 	}
 	</script>
@@ -48,7 +72,7 @@
 	<jsp:include page="./../anime-main/header.jsp"/>
 	<div class="container">
 		<div class="panel panel-white">
-		 <p class="bg-danger text-white"><b>상세검색</b><p>
+		 <p class="bg-danger text-white"><b>FilmList 영화 검색</b><p>
 			<div class="panel-heading">
 				<form action="" class="form-inline" role="form" name="myform"
 					method="get">
@@ -87,7 +111,7 @@
 								
 								<td>
 									<%--글제목 하이퍼링크 만들기 일반적으로 넘겨줘야 할 파라미터 목록은 다음과 같다. primarykey, pagenumber, mode, keyword--%>
-									<a href="#" onclick="sendfilmInfo('${bean.id}','${bean.film_title }')">${bean.film_title}</a>
+									<a href="#" onclick="sendfilmInfo('${bean.id}','${bean.film_title }','${requestScope.num }')">${bean.film_title}</a>
 								</td>
 								<td>${bean.director}</td>	
 								<td>${bean.year}</td>
