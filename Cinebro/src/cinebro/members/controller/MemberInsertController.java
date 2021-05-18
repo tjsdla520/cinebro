@@ -21,6 +21,8 @@ public class MemberInsertController<PopularMember> extends SuperClass {
 		boolean isCheck = true ;
 		// 유효성 검사 수행 예정
 		
+		
+		
 		if (bean.getNickname().length() < 2 || bean.getNickname().length() > 8
 			|| bean.getNickname()==null || bean.getNickname()=="") {
 			request.setAttribute(super.PREFIX + "nickname", "닉네임은 2자리 이상 8자리 이하이어야 합니다.");
