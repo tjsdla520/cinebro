@@ -83,7 +83,7 @@ button.btn.btn-primary {
 		  <div class="panel-body" style="color: black;" align="center" >좋아하는 영화 제목 : <a href="<%=NoForm%>filmDetail&id=${bean.film_id}">${bean.film_title}</a></div>					
 		 <div class="panel-body" style="color: black;" align="center" >좋아하는 영화 장르 : ${bean.genre_name}</div>
 		 <c:if test="${bean.nickname==sessionScope.loginfo.nickname}">
-		 	<a href="<%=NoForm%>editNickname&email=${loginfo.email}">
+		 	<a href="<%=NoForm%>editNickname&email=${loginfo.email}&nickname=${loginfo.nickname}&film_title=${bean.film_title}&genre_name=${bean.genre_name}&film_id=${bean.film_id}">
 		 			   <br><br>
 							<button type="button" class="btn btn-primary" >회원 정보 수정하기</button>
 						</a>
