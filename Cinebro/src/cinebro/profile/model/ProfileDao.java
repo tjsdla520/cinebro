@@ -37,7 +37,7 @@ public class ProfileDao extends SuperDao {
 				
 				bean.setFilm_title(rs.getString("film_title"));				
 				bean.setGenre_name(rs.getString("genre_name"));
-				bean.setFilm_id(rs.getInt("film_id"));				
+				bean.setFilm_id(rs.getString("film_id"));				
 				bean.setGenre_id(rs.getInt("genre_id"));
 				
 			}
@@ -67,7 +67,7 @@ public class ProfileDao extends SuperDao {
 			pstmt = super.conn.prepareStatement(sql) ;
 			
 			pstmt.setString(1, bean.getNickname());
-			pstmt.setInt(2, bean.getFilm_id());
+			pstmt.setString(2, bean.getFilm_id());
 			pstmt.setInt(3, bean.getGenre_id());
 			pstmt.setString(4, bean.getEmail());
 			

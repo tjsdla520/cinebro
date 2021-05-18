@@ -23,7 +23,7 @@ public class EditNicknameController extends SuperClass {
 		String film_title = request.getParameter("film_title");
 		String genre_name = request.getParameter("genre_name");
 		
-		bean.setFilm_id(Integer.parseInt(request.getParameter("film_id")));
+		bean.setFilm_id(request.getParameter("film_id"));
 		bean.setEmail(email);
 		bean.setNickname(nickname);
 		bean.setFilm_title(film_title);
@@ -42,7 +42,7 @@ public class EditNicknameController extends SuperClass {
 		String email = request.getParameter("email");
 		bean.setEmail(email);
 		bean.setNickname(request.getParameter("nickname"));
-		bean.setFilm_id(Integer.parseInt(request.getParameter("filmid1")));
+		bean.setFilm_id((request.getParameter("filmid1")));
 		bean.setGenre_id(Integer.parseInt(request.getParameter("genre")));
 		System.out.println(bean);
 		ProfileDao dao = new ProfileDao();
@@ -70,12 +70,12 @@ public class EditNicknameController extends SuperClass {
 	@Override
 	public boolean validate(HttpServletRequest request) {
 		boolean isCheck = true ;
-//		// 유효성 검사 수행 예정
-//		if (bean.getNickname().length() < 2 || bean.getNickname().length() > 8
-//				|| bean.getNickname()==null || bean.getNickname()=="") {
-//				request.setAttribute(super.PREFIX + "nickname", "닉네임은 2자리 이상 8자리 이하이어야 합니다.");
-//				isCheck = false ;
-//			}
+		// 유효성 검사 수행 예정
+		if (bean.getNickname().length() < 2 || bean.getNickname().length() > 8
+				|| bean.getNickname()==null || bean.getNickname()=="") {
+				request.setAttribute(super.PREFIX + "nickname", "닉네임은 2자리 이상 8자리 이하이어야 합니다.");
+				isCheck = false ;
+			}
 		return isCheck ;
 	}
 }

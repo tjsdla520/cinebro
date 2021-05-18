@@ -35,7 +35,7 @@ function filmfind(){
 
 				<%--command 값 지정--%>
 				<input type="hidden" name="command" value="editNickname"> 
-				<input type="text" name="email" value="${requestScope.bean.email}">
+				<input type="hidden" name="email" value="${requestScope.bean.email}">
 				<div class="form-group">
 					<label class="control-label col-sm-<%=formleft%>" for="email"
 						style="color: white">변경할 닉네임</label>
