@@ -8,6 +8,7 @@
 	int formleft = 3 ;
 	int formright = twelve - formleft ;
 	int rightButton = 2 ;
+	
 %>   
 <!DOCTYPE html>
 <html>
@@ -18,6 +19,7 @@
 		function search(){
 			var mode = $('#mode').val();
 			var keyword = $('#keyword').val();
+			var num = $('#num').val();
 			alert(mode+'/'+keyword);
 			
 			if(mode=='none'){
@@ -27,7 +29,7 @@
 				alert("검색어를 입력하시오")	
 				return false;
 			}else{
-				location.href='<%=NoForm%>searchforlist&mode='+ mode +'&keyword='+keyword;
+				location.href='<%=NoForm%>searchforlist&mode='+ mode +'&keyword='+keyword+'&num='+num;
 			}
 		}
 		
@@ -99,6 +101,7 @@ button, input, optgroup, select, textarea {
 			</div>
 			<div class="form-group" >
 				<input type="text" class="form-control" name="keyword" id="keyword"  >
+				<input type="hidden" class="form=control" name="num" id="num" value="${requestScope.num }">
 			</div>			
 			<button class="btn btn-info" type="button" onclick="return search();" >검색</button> 			
 		</form>

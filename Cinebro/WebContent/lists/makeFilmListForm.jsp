@@ -22,7 +22,23 @@ int rightButton = 1;
 </style>
 <script type="text/javascript">
 function filmfind(){
-	var url = "<%=NoForm%>searchforlist";
+	var url = "<%=NoForm%>searchforlist&num=1";
+	window.open(url,'mywin','height=600, width=720, scrollbars=yes');
+}
+function filmfind2(){
+	var url = "<%=NoForm%>searchforlist&num=2";
+	window.open(url,'mywin','height=600, width=720, scrollbars=yes');
+}
+function filmfind3(){
+	var url = "<%=NoForm%>searchforlist&num=3";
+	window.open(url,'mywin','height=600, width=720, scrollbars=yes');
+}
+function filmfind4(){
+	var url = "<%=NoForm%>searchforlist&num=4";
+	window.open(url,'mywin','height=600, width=720, scrollbars=yes');
+}
+function filmfind5(){
+	var url = "<%=NoForm%>searchforlist&num=5";
 	window.open(url,'mywin','height=600, width=720, scrollbars=yes');
 }
 </script>
@@ -68,7 +84,7 @@ function filmfind(){
 						</div>
 					</div>
 					<div class="form-group" style="margin-top: 20px">
-						<label class="control-label col-sm-<%=formleft%>" for="playUrl"
+						<label class="control-label col-sm-<%=formleft%>" for="filmtitle1"
 							style="color: white">담을 영화1</label>
 						<div class="col-xs-3">
 							<input type="text" class="form-control" disabled="disabled" id="fakefilmtitle1" name="fakefilmtitle1">
@@ -78,6 +94,58 @@ function filmfind(){
 						<div class="col-sm-<%=rightButton%>">
 				        	<input type="button" value="영화 검색" class="btn btn-info"
 				        		onclick="filmfind();">
+				      	</div>
+					</div>
+					<div class="form-group" style="margin-top: 20px">
+						<label class="control-label col-sm-<%=formleft%>" for="filmtitle2"
+							style="color: white">담을 영화2</label>
+						<div class="col-xs-3">
+							<input type="text" class="form-control" disabled="disabled" id="fakefilmtitle2" name="fakefilmtitle2">
+							<input type="hidden" name="filmtitle2" >
+							<input type="hidden" name="filmid2">
+						</div>
+						<div class="col-sm-<%=rightButton%>">
+				        	<input type="button" value="영화 검색" class="btn btn-info"
+				        		onclick="filmfind2();">
+				      	</div>
+					</div>
+					<div class="form-group" style="margin-top: 20px">
+						<label class="control-label col-sm-<%=formleft%>" for="filmtitle3"
+							style="color: white">담을 영화3</label>
+						<div class="col-xs-3">
+							<input type="text" class="form-control" disabled="disabled" id="fakefilmtitle3" name="fakefilmtitle3">
+							<input type="hidden" name="filmtitle3" >
+							<input type="hidden" name="filmid3">
+						</div>
+						<div class="col-sm-<%=rightButton%>">
+				        	<input type="button" value="영화 검색" class="btn btn-info"
+				        		onclick="filmfind3();">
+				      	</div>
+					</div>
+					<div class="form-group" style="margin-top: 20px">
+						<label class="control-label col-sm-<%=formleft%>" for="filmtitle4"
+							style="color: white">담을 영화4</label>
+						<div class="col-xs-3">
+							<input type="text" class="form-control" disabled="disabled" id="fakefilmtitle4" name="fakefilmtitle4">
+							<input type="hidden" name="filmtitle4" >
+							<input type="hidden" name="filmid4">
+						</div>
+						<div class="col-sm-<%=rightButton%>">
+				        	<input type="button" value="영화 검색" class="btn btn-info"
+				        		onclick="filmfind4();">
+				      	</div>
+					</div>
+					<div class="form-group" style="margin-top: 20px">
+						<label class="control-label col-sm-<%=formleft%>" for="filmtitle5"
+							style="color: white">담을 영화5</label>
+						<div class="col-xs-3">
+							<input type="text" class="form-control" disabled="disabled" id="fakefilmtitle5" name="fakefilmtitle5">
+							<input type="hidden" name="filmtitle5" >
+							<input type="hidden" name="filmid5">
+						</div>
+						<div class="col-sm-<%=rightButton%>">
+				        	<input type="button" value="영화 검색" class="btn btn-info"
+				        		onclick="filmfind5();">
 				      	</div>
 					</div>
 					<div class="form-group" style="margin-top: 40px">

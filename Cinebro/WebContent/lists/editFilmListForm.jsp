@@ -22,7 +22,23 @@ int rightButton = 1;
 </style>
 <script type="text/javascript">
 function filmfind(){
-	var url = "<%=NoForm%>searchforlist";
+	var url = "<%=NoForm%>searchforlist&num=1";
+	window.open(url,'mywin','height=600, width=720, scrollbars=yes');
+}
+function filmfind2(){
+	var url = "<%=NoForm%>searchforlist&num=2";
+	window.open(url,'mywin','height=600, width=720, scrollbars=yes');
+}
+function filmfind3(){
+	var url = "<%=NoForm%>searchforlist&num=3";
+	window.open(url,'mywin','height=600, width=720, scrollbars=yes');
+}
+function filmfind4(){
+	var url = "<%=NoForm%>searchforlist&num=4";
+	window.open(url,'mywin','height=600, width=720, scrollbars=yes');
+}
+function filmfind5(){
+	var url = "<%=NoForm%>searchforlist&num=5";
 	window.open(url,'mywin','height=600, width=720, scrollbars=yes');
 }
 </script>
@@ -55,7 +71,7 @@ function filmfind(){
 							style="color: white">FilmList 제목</label>
 						<div class="col-xs-3">
 							<input type="text" class="form-control" id="filmilst_title"
-								placeholder="FilmList 제목을 입력해주세요" name="filmlist_title" value="${bean1.list_title} }">
+								placeholder="FilmList 제목을 입력해주세요" name="filmlist_title" value="${bean1.list_title}">
 						</div>
 					</div>
 					<div class="form-group" style="margin-top: 20px">
@@ -69,11 +85,11 @@ function filmfind(){
 					<c:forEach var="entry" items="${bean1.film_title }" varStatus="status">
 					<div class="form-group" style="margin-top: 20px">					
 						<label class="control-label col-sm-<%=formleft%>" for="playUrl"
-							style="color: white">담을 영화1</label>
+							style="color: white">담을 영화	</label>
 						<div class="col-xs-3">
-							<input type="text" class="form-control" disabled="disabled" id="fakefilmtitle1" name="fakefilmtitle1" value="${entry.value }">
-							<input type="hidden" name="filmtitle1" value="${entry.value }">
-							<input type="hidden" name="filmid1" value="${entry.key }">
+							<input type="text" class="form-control" disabled="disabled" id="fakefilmtitle${status.count}" name="fakefilmtitle${status.count}" value="${entry.value }">
+							<input type="hidden" name="filmtitle${status.count}" value="${entry.value }">
+							<input type="hidden" name="filmid${status.count}" value="${entry.key }">
 						</div>
 						<div class="col-sm-<%=rightButton%>">
 				        	<input type="button" value="영화 검색" class="btn btn-info"
