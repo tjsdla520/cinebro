@@ -12,14 +12,15 @@ public class Profile {
 	private String genre_name;	// 내가 좋아아흔 영화 장르
 	private String name;	// 카드이름
 	private String cardnumber; //내카드정보
-	private int film_id;
+	private String film_id;
 	private int genre_id;
 	
 	
-	public int getFilm_id() {
+	
+	public String getFilm_id() {
 		return film_id;
 	}
-	public void setFilm_id(int film_id) {
+	public void setFilm_id(String film_id) {
 		this.film_id = film_id;
 	}
 	public int getGenre_id() {
