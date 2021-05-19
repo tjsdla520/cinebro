@@ -30,6 +30,7 @@ public class ReviewListController extends SuperClass {
 		}
 		
 		Member member = (Member)session.getAttribute("loginfo");
+		if(member!=null) {
 		String email = member.getEmail();
 		System.out.println(email);
 		List<Review> mylikeReviews = dao.selectLikeReview(email);
@@ -38,7 +39,7 @@ public class ReviewListController extends SuperClass {
 		for (Review review : mylikeReviews) {
 			System.out.println(review);
 		}
-		
+		}
 		String gotopage = "/reviews/reviewList.jsp" ;
 		super.GotoPage(gotopage);
 	}

@@ -48,7 +48,7 @@
 			<tbody>
 					<tr>
 						<td>${bean1.list_title}</td>
-						<td>${bean1.nickname}</td>
+						<td><a href="<%=NoForm%>myproFile&email=${bean1.email}&${requestScope.parameters}">${bean1.nickname}</a></td>
 						<td>${bean1.comments}</td>	
 					</tr>
 			</tbody>
@@ -68,18 +68,21 @@
 				<a href="<%=NoForm%>deleteFilmList&id=${bean1.id}&email=${loginfo.email}"><button class="btn-info btn-lg">FilmLIst 삭제</button></a>
 			</c:if>
 			<div class="row">
-			<c:forEach items="${bean1.film_title}" var="entry" varStatus="status">
-				<div class="column">
-				<div class="container">
-					<a href="<%=NoForm%>filmDetail&id=${entry.key}&email=${loginfo.email}"><img src="img/${entry.value}.jpg" alt="${entry.value}"
-						style="width: 100%"></a>
-						<div class="middle">
-							<div class="text">${entry.value }</div>
+				<c:forEach items="${bean1.film_title}" var="entry"
+					varStatus="status">
+					<div class="column">
+						<div class="container">
+							<a
+								href="<%=NoForm%>filmDetail&id=${entry.key}&email=${loginfo.email}"><img
+								src="img/${entry.value}.jpg" alt="${entry.value}"
+								style="width: 100%"></a>
+							<div class="middle">
+								<div class="text">${entry.value }</div>
+							</div>
 						</div>
-				</div>
+					</div>
+				</c:forEach>
 			</div>
-			</c:forEach>
-	</div>
 	</div>
 </div>
 	<jsp:include page="./../anime-main/footer.jsp" />

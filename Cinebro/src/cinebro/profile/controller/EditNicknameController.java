@@ -53,6 +53,7 @@ public class EditNicknameController extends SuperClass {
 			
 			bean = dao.selectMyinfo(email);
 			request.setAttribute("bean", bean);
+			session.setAttribute("loginfo", bean);
 			String gotopage = "/profile/myProfileDetail.jsp" ;
 			super.GotoPage(gotopage);
 		}else {
@@ -62,9 +63,6 @@ public class EditNicknameController extends SuperClass {
 			String gotopage = "/profile/myProfileUpdateForm.jsp" ;
 			super.GotoPage(gotopage);
 		}
-			
-			
-			
 	}	
 	
 	@Override

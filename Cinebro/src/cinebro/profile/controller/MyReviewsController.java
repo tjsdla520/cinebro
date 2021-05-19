@@ -23,7 +23,12 @@ public class MyReviewsController extends SuperClass {
 		String email = request.getParameter("email");
 				
 		List<Review> reviews = dao.selectMyreviews(email);
-		
+
+		for (Review review : reviews) {
+			String nickname = review.getNickname();
+			request.setAttribute("nickname", nickname);
+		}
+
 		request.setAttribute("Review", reviews);
 			
         String gotopage = "/profile/myReviews.jsp" ;

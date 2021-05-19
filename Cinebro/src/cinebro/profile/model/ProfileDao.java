@@ -17,7 +17,7 @@ public class ProfileDao extends SuperDao {
 		ResultSet rs = null ;
 		Profile bean = new Profile();
 		
-		String sql = " select m.email, m.password, m.nickname, m.subscribe, m.name, m.cardnumber, m.genre_id, m.film_id, f.film_title, g.name as genre_name from members m left outer join films f on m.film_id = f.id left outer join genres g on m.genre_id = g.id where m.email = ? " ;
+		String sql = "select m.email, m.password, m.nickname, m.subscribe, m.name, m.cardnumber, m.genre_id, m.film_id, f.film_title, g.name as genre_name, v2.reviews as myreviews, v1.followers as myfollowers from members m left outer join films f on m.film_id = f.id left outer join genres g on m.genre_id = g.id left outer join howmanyreviews v2 on m.email = v2.email left outer join howmanyfollwer v1 on v1.email = m.email where m.email = ?" ;
 		
 		try {
 			if(conn == null) {super.conn = super.getConnection() ; }
@@ -26,20 +26,18 @@ public class ProfileDao extends SuperDao {
 			rs = pstmt.executeQuery() ; 
 			if(rs.next()) {
 				bean = new Profile() ;
-				
-				
 				bean.setEmail(rs.getString("email"));
 				bean.setPassword(rs.getString("password"));				
 				bean.setNickname(rs.getString("nickname"));
 				bean.setSubscribe(rs.getInt("subscribe"));
 				bean.setName(rs.getString("name"));
-				bean.setCardnumber(rs.getString("cardnumber"));
-				
+				bean.setCardnumber(rs.getString("cardnumber"));				
 				bean.setFilm_title(rs.getString("film_title"));				
 				bean.setGenre_name(rs.getString("genre_name"));
 				bean.setFilm_id(rs.getString("film_id"));				
 				bean.setGenre_id(rs.getInt("genre_id"));
-				
+				bean.setAllReviews(rs.getInt("myreviews"));
+				bean.setFollower(rs.getInt("myfollowers"));
 			}
 		} catch (Exception e) {			
 			e.printStackTrace();
@@ -141,7 +139,7 @@ public class ProfileDao extends SuperDao {
 		PreparedStatement pstmt = null ;
 		ResultSet rs = null ;
 		List<Film> lists = new ArrayList<Film>();
-		String sql = "select f.id, f.film_title from members m inner join wishfilms wf on m.email = wf.email inner join films f on wf.film_id = f.id where m.email = ? "; 
+		String sql = "select f.id, f.film_title, f.image from members m inner join wishfilms wf on m.email = wf.email inner join films f on wf.film_id = f.id where m.email = ? "; 
 
 		try {
 			if( conn == null ){ super.conn = super.getConnection() ; }
@@ -154,6 +152,7 @@ public class ProfileDao extends SuperDao {
 				Film bean = new Film();
 				bean.setId(rs.getInt("id"));		
 				bean.setFilm_title(rs.getString("film_title"));
+				bean.setImage(rs.getString("image"));
 				
 				lists.add(bean);
 			}
