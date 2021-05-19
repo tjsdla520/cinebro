@@ -90,7 +90,7 @@ th, td {
       
         <th></th> 
         <th>멤버 닉네임</th>
-        <th>팔로우수</th>     
+        <th>리뷰수</th>     
       </tr>
       <tr>
        <tbody>          

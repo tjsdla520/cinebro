@@ -8,6 +8,25 @@
 <meta charset="utf-8">
 <title>JavaScript</title>
 <style>
+	td{
+		color: white;
+	}
+	* {
+  box-sizing: border-box;
+}
+
+.column {
+  float: left;
+  width: 20%;
+  padding: 5px;
+}
+
+/* Clearfix (clear floats) */
+.row::after {
+  content: "";
+  clear: both;
+  display: table;
+}
 body {
 	font-family: Consolas, sans-serif;
 }
@@ -62,6 +81,18 @@ body {
 	<jsp:include page="./../anime-main/header.jsp" />
 	<div class="container">
 		<div class="panel-body">
+			<div class="row">
+				<h3>${sessionScope.loginfo.nickname}님이 시청한 영화</h3>
+				<c:forEach items="${requestScope.lists}" var="bean" varStatus="status">
+					<div class="column">
+						<div class="container">
+							<a href="<%=NoForm%>filmDetail&id=${bean.id}&email=${loginfo.email}">
+								<img src="upload/${bean.image}" alt="${bean.film_title}" style="width: 100%">
+							</a>
+						</div>
+					</div>
+				</c:forEach>
+			</div>
 			<table class="table table-hover">
 				<thead>
 					<tr>

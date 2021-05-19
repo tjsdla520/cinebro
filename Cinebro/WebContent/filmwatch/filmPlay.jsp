@@ -197,7 +197,7 @@
 											<div class="column">
 												<div class="container">
 													<a href="<%=NoForm%>filmDetail&id=${bean2.id}&email=${whologin.email}"><img
-														src="img/${bean2.film_title}.jpg" alt="${bean2.film_title}"
+														src="upload/${bean2.image}" alt="${bean2.film_title}"
 														style="width: 100%" class="image"></a>
 													<div class="middle">
 														<div class="text">${bean2.film_title }</div>
@@ -256,7 +256,7 @@
 											<div class="column">
 												<div class="container">
 													<a href="<%=NoForm%>filmDetail&id=${bean2.id}"><img
-														src="img/${bean2.film_title}.jpg" alt="${bean2.film_title}"
+														src="upload/${bean2.image}" alt="${bean2.film_title}"
 														style="width: 100%" class="image"></a>
 													<div class="middle">
 														<div class="text">${bean2.film_title }</div>
@@ -315,7 +315,7 @@
 											<div class="column">
 												<div class="container">
 													<a href="<%=NoForm%>filmDetail&id=${bean.id}"><img
-														src="img/${bean.film_title}.jpg" alt="${bean.film_title}"
+														src="upload/${bean.image}" alt="${bean.film_title}"
 														style="width: 100%" class="image"></a>
 													<div class="middle">
 														<div class="text">${bean.film_title }</div>

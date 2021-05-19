@@ -20,7 +20,7 @@ public class FilmDao extends SuperDao {
 		List<Film> films = new ArrayList<Film>();
 			
 
-		String sql = "select f.id as filmid, f.film_title, g.id as gernreid, g.name as genrename, v.cnt as popular from films f inner join filmngenre fg on f.id = fg.film_id inner join genres g on fg.genre_id = g.id inner join popularmovie v on f.id = v.id where g.id = ? order by popular desc";
+		String sql = "select f.id as filmid, f.film_title, f.image, g.id as gernreid, g.name as genrename, v.cnt as popular from films f inner join filmngenre fg on f.id = fg.film_id inner join genres g on fg.genre_id = g.id inner join popularmovie v on f.id = v.id where g.id = ? order by popular desc";
 
 		
 		try {
@@ -33,7 +33,8 @@ public class FilmDao extends SuperDao {
 			while ( rs.next() ) {
 				Film bean = new Film(); 
 				bean.setId(rs.getInt("filmid"));
-				bean.setFilm_title(rs.getString("film_title")) ;				
+				bean.setFilm_title(rs.getString("film_title")) ;		
+				bean.setImage(rs.getString("image"));
 			    films.add(bean);
 			}
 			
@@ -58,7 +59,7 @@ public class FilmDao extends SuperDao {
 		PreparedStatement pstmt = null ;
 		ResultSet rs = null ;
 		
-		String sql = " select f.film_title, f.id from members m inner join reviews r on m.email = r.email inner join films f on r.film_id = f.id where m.email = ? " ;
+		String sql = " select f.film_title, f.id, f.image from members m inner join reviews r on m.email = r.email inner join films f on r.film_id = f.id where m.email = ? " ;
 		
 		List<Film> lists = new ArrayList<Film>();
 		
@@ -75,6 +76,7 @@ public class FilmDao extends SuperDao {
 				
 				bean.setId(rs.getInt("id"));
 				bean.setFilm_title(rs.getString("film_title"));		
+				bean.setImage(rs.getString("image"));
 				
 				lists.add(bean);
 			}
@@ -100,9 +102,9 @@ public class FilmDao extends SuperDao {
 		PreparedStatement pstmt = null ;
 		ResultSet rs = null ;
 		
-		String sql = "select ranking, id, film_title, director, year, country, playurl, avgrate, totalrate from("
-				+ "select id, film_title, director, year, country, playurl, avgrate, totalrate, rank() over(order by avgrate desc) as ranking from("
-				+ "select f.id, f.film_title, f.director, f.year, f.country, f.playurl, ar.avgrate, ar.totalrate from films f inner join filmavgrating ar on f.id = ar.film_id  where totalrate >=5 and playurl is not null order by avgrate desc)) where ranking between 1 and 10" ;
+		String sql = "select ranking, id, film_title, image, director, year, country, playurl, avgrate, totalrate from("
+				+ "select id, film_title, image, director, year, country, playurl, avgrate, totalrate, rank() over(order by avgrate desc) as ranking from("
+				+ "select f.id, f.film_title, f.image, f.director, f.year, f.country, f.playurl, ar.avgrate, ar.totalrate from films f inner join filmavgrating ar on f.id = ar.film_id  where totalrate >=5 and playurl is not null order by avgrate desc)) where ranking between 1 and 10" ;
 		
 		List<Film> lists = new ArrayList<Film>();
 		
@@ -124,6 +126,7 @@ public class FilmDao extends SuperDao {
 				bean.setCountry(rs.getString("country"));
 				bean.setPlayUrl(rs.getString("playurl"));
 				bean.setFilm_title(rs.getString("film_title"));
+				bean.setImage(rs.getString("image"));
 				lists.add(bean);
 			}
 		} catch (Exception e) {
