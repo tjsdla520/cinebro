@@ -21,7 +21,7 @@ public class MyproFileController extends SuperClass {
 			Profile bean = new Profile();
 			ProfileDao dao = new ProfileDao();
 			String email = request.getParameter("email") ;
-			System.out.println(email);
+			System.out.println("이메일은 : "+email);
 			bean = dao.selectMyinfo(email);
 			request.setAttribute("bean", bean);
 			

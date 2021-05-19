@@ -11,6 +11,17 @@ int rightButton = 1;
 %>
 <!DOCTYPE html>
 <html lang="en">
+<c:if test="${ empty sessionScope.loginfo}">
+	<c:set var="whologin" value="0" />
+</c:if>
+<c:if test="${ not empty sessionScope.loginfo}">
+	<c:if test="${ sessionScope.loginfo.email == 'admin'}">
+		<c:set var="whologin" value="2" />
+	</c:if>
+	<c:if test="${ sessionScope.loginfo.email != 'admin'}">
+		<c:set var="whologin" value="1" />
+	</c:if>
+</c:if>
 <head>
   <title>Bootstrap Example</title>
   <meta charset="utf-8">
@@ -98,6 +109,7 @@ button.btn.btn-primary {
 				<br>
 				<br>
 				<br>
+				<c:if test="${whologin!=0 }">
 				<c:if test="${bean.email!=sessionScope.loginfo.email}">
 					<c:choose>
 						<c:when test="${bean2==null}">
@@ -118,6 +130,7 @@ button.btn.btn-primary {
 							<br>
 						</c:otherwise>
 					</c:choose>
+				</c:if>
 				</c:if>
 			</div>
 		</div>

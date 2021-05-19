@@ -95,10 +95,6 @@
   font-size: 15px;
   padding: 16px 32px;
 }
-/* .container {
-  position: relative;
-  width: 50%;
-} */
 
 .image {
   opacity: 1;
