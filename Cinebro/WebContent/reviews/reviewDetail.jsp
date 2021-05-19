@@ -34,7 +34,7 @@
 			<div class="media-body">
 				<h4 class="media-heading"><a href="<%=NoForm%>filmDetail&id=${bean1.filmId}&email=${loginfo.email}">${bean1.filmTitle}</a> </h4>
 				<p></p>
-				<p style="color: white; " >작성자 : ${bean1.writer}</p>
+				<p style="color: white; " >작성자 : <a href="<%=NoForm%>myproFile&email=${bean1.email}&${requestScope.parameters}">${bean1.writer}</a></p>
 				<p style="color: white; ">리뷰 내용 : ${bean1.content}</p>
 				<p style="color: white; ">별점 : ${bean1.rating}</p>
 				<p style="color: white; ">좋아요 수 : ${bean1.getlike}</p>

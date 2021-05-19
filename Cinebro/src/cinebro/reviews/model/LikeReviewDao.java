@@ -51,7 +51,7 @@ public class LikeReviewDao extends SuperDao {
 		ResultSet rs = null ;	
 		Review bean = null;
 		
-		String sql = "select * from likereviews where email = ? and review_id = ?" ;
+		String sql = " select lr.email, lr.review_id, r.email as find from reviews r inner join likereviews lr on r.id = lr.review_id where lr.email = ? and lr.review_id = ? ";
 		
 		try {
 			if( conn == null ){ super.conn = super.getConnection() ; }			
@@ -64,6 +64,7 @@ public class LikeReviewDao extends SuperDao {
 					
 			while ( rs.next() ) {
 				bean = new Review();
+				bean.setEmail("email");
 				bean.setId(rs.getInt("review_id"));
 				bean.setEmail(rs.getString("email"));
 			}

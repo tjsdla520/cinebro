@@ -48,7 +48,7 @@
 								<small> <i>${bean.writeDate}</i>
 								</small>
 							</h5>
-							<h5 style="color: white;">${bean.writer}
+							<h5 style="color: white;"><a href="<%=NoForm%>myproFile&email=${bean.email}&${requestScope.parameters}">${bean.writer}</a>
 								<small> <i style="color: white;">${bean.rating}점</i>
 								</small>
 							</h5>
@@ -76,7 +76,8 @@
 								<small> <i>${bean.writeDate}</i>
 								</small>
 							</h5>
-							<h5 style="color: white;">${bean.writer}
+							<h5 style="color: white;">
+							<a href="<%=NoForm%>myproFile&email=${bean.email}&${requestScope.parameters}">${bean.writer}</a>
 								<small> <i style="color: white;">${bean.rating}점</i>
 								</small>
 							</h5>

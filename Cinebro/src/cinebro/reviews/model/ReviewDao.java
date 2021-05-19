@@ -17,9 +17,9 @@ public class ReviewDao extends SuperDao {
 		PreparedStatement pstmt = null ;
 		ResultSet rs = null ;
 		
-		String sql = "select ranking, id, film_id, nickname, film_title, content, rating, watch_date, write_date, getlike from("
-				+ "select id, film_id, nickname, film_title, content, rating, watch_date, write_date, getlike, rank() over(order by getlike desc) as ranking from("
-				+ "select r.id, r.film_id, m.nickname, f.film_title, r.content, r.rating, r.watch_date, r.write_date, v.getlike from reviews r inner join members m on r.email = m.email inner join films f on r.film_id = f.id inner join view05 v on r.id=v.id order by getlike desc)) where ranking between 1 and 5" ; ;
+		String sql = "select ranking, email, id, film_id, nickname, film_title, content, rating, watch_date, write_date, getlike from("
+				+ "select email, id, film_id, nickname, film_title, content, rating, watch_date, write_date, getlike, rank() over(order by getlike desc) as ranking from("
+				+ "select m.email, r.id, r.film_id, m.nickname, f.film_title, r.content, r.rating, r.watch_date, r.write_date, v.getlike from reviews r inner join members m on r.email = m.email inner join films f on r.film_id = f.id inner join view05 v on r.id=v.id order by getlike desc)) where ranking between 1 and 5" ; ;
 
 		List<Review> lists = new ArrayList<Review>();
 		
@@ -31,6 +31,7 @@ public class ReviewDao extends SuperDao {
 			while( rs.next() ){
 				Review bean = new Review();
 				
+				bean.setEmail(rs.getString("email"));
 				bean.setId(rs.getInt("id"));
 				bean.setWriter(rs.getString("nickname"));
 				bean.setFilmTitle(rs.getString("film_title"));
@@ -62,7 +63,7 @@ public class ReviewDao extends SuperDao {
 		ResultSet rs = null ;
 		Review bean = new Review();
 		
-		String sql = "select r.id, r.film_id, m.nickname, f.film_title, r.content, r.rating, r.watch_date, r.write_date, v.getlike from reviews r inner join members m on r.email = m.email inner join films f on r.film_id = f.id inner join view05 v on r.id=v.id where r.id = ?" ;
+		String sql = "select r.id, r.film_id, m.email, m.nickname, f.film_title, r.content, r.rating, r.watch_date, r.write_date, v.getlike from reviews r inner join members m on r.email = m.email inner join films f on r.film_id = f.id inner join view05 v on r.id=v.id where r.id = ?" ;
 
 		try {
 			if( conn == null ){ super.conn = super.getConnection() ; }
@@ -70,7 +71,7 @@ public class ReviewDao extends SuperDao {
 			pstmt.setString(1, id);
 			rs = pstmt.executeQuery() ;		
 			while( rs.next() ){
-						
+				bean.setEmail(rs.getString("email"));
 				bean.setId(rs.getInt("id"));
 				bean.setWriter(rs.getString("nickname"));
 				bean.setFilmTitle(rs.getString("film_title"));
@@ -257,7 +258,7 @@ public class ReviewDao extends SuperDao {
 		PreparedStatement pstmt = null ;
 		ResultSet rs = null ;	
 			
-		String sql = "select lr.review_id, r.film_id, m.nickname, f.film_title, r.content, r.rating, r.watch_date, r.write_date, v.getlike from likereviews lr inner join reviews r on lr.review_id = r.id inner join members m on r.email = m.email inner join films f on r.film_id = f.id inner join view05 v on r.id = v.id where lr.email = ?";
+		String sql = "select lr.review_id, r.film_id, m.email, m.nickname, f.film_title, r.content, r.rating, r.watch_date, r.write_date, v.getlike from likereviews lr inner join reviews r on lr.review_id = r.id inner join members m on r.email = m.email inner join films f on r.film_id = f.id inner join view05 v on r.id = v.id where lr.email = ?";
 		
 		List<Review> reviews = new ArrayList<Review>();
 
@@ -271,6 +272,7 @@ public class ReviewDao extends SuperDao {
 
 			while ( rs.next() ) {
 				Review bean = new Review(); 
+				bean.setEmail(rs.getString("email"));
 				bean.setId(rs.getInt("review_id"));
 				bean.setWriter(rs.getString("nickname"));
 				bean.setFilmTitle(rs.getString("film_title"));
