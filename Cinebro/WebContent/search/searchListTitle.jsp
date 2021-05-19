@@ -87,7 +87,7 @@
 									<%--글제목 하이퍼링크 만들기 일반적으로 넘겨줘야 할 파라미터 목록은 다음과 같다. primarykey, pagenumber, mode, keyword--%>
 									<a href="<%=NoForm%>filmListDetail&id=${bean.id}&${requestScope.parameters}">${bean.list_title}</a>
 								</td>
-								<td>${bean.nickname}</td>	
+								<td><a href="<%=NoForm%>myproFile&email=${bean.email}&${requestScope.parameters}">${bean.nickname}</a></td>	
 								<td>${bean.comments}</td>
 							</tr>
 						</c:forEach>												
