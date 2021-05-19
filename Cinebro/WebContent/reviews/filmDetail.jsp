@@ -61,12 +61,11 @@
 					</c:forEach>
 				</p>
 				<div>
-
+				<c:if test="${whologin!=0 }">
 					<a href="<%=NoForm%>reviewWrite&id=${fbean.id}"><button
 							type="button" class="btn-lg btn-warning">리뷰 쓰기</button></a>
 					&nbsp;&nbsp;&nbsp;&nbsp;
-
-
+					
 					<c:choose>
 						<c:when test="${fbean2==null}">
 							<a
@@ -79,6 +78,7 @@
 									class="btn-warning btn-lg">좋아요 취소</button></a>
 						</c:otherwise>
 					</c:choose>
+				</c:if>
 					&nbsp;&nbsp;&nbsp;&nbsp;
 					<c:if test="${whologin == 2}">
 						<a href="<%=NoForm%>updateFilm&id=${fbean.id}"><button

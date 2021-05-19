@@ -318,41 +318,40 @@ public class FilmListDao extends SuperDao {
 		}
 		return cnt ;
 	}
+
+	public List<String> findFilmListImage(int id) {
+		PreparedStatement pstmt = null ;
+		ResultSet rs = null ;
+		
+		String sql = "select ml.film_id, f.image from makelist ml inner join films f on ml.film_id = f.id where ml.list_id = ?" ;
+		
+		List<String> lists = new ArrayList<String>();
+		
+		try {
+			if( conn == null ){ super.conn = super.getConnection() ; }
+			pstmt = super.conn.prepareStatement(sql) ;
+			
+			pstmt.setInt(1, id);
+			
+			rs = pstmt.executeQuery() ;	
+			
+			while( rs.next() ){
+				lists.add(rs.getString("image"));
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally{
+			try {
+				if( rs != null ){ rs.close(); }
+				if( pstmt != null ){ pstmt.close(); }
+				super.closeConnection(); 
+			} catch (Exception e2) {
+				e2.printStackTrace(); 
+			}
+		}		
+		return lists ;
+	}
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 

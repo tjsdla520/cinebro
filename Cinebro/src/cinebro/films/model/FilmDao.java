@@ -125,6 +125,43 @@ public class FilmDao extends SuperDao {
 				bean.setDirector(rs.getString("director"));
 				bean.setCountry(rs.getString("country"));
 				bean.setPlayUrl(rs.getString("playurl"));
+				bean.setImage(rs.getString("image"));
+				lists.add(bean);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally{
+			try {
+				if( rs != null ){ rs.close(); }
+				if( pstmt != null ){ pstmt.close(); }
+				super.closeConnection(); 
+			} catch (Exception e2) {
+				e2.printStackTrace(); 
+			}
+		}		
+		return lists ;
+	}
+
+	public List<Film> selectFamousFilms() {
+		PreparedStatement pstmt = null ;
+		ResultSet rs = null ;
+		
+		String sql ="select ranking, id, film_title, image, cnt from("
+				+ "select id, film_title, image, cnt, rank() over(order by cnt desc) as ranking from("
+				+ "select f.id, f.film_title, f.image, count(*) as cnt from films f inner join reviews r on f.id = r.film_id group by f.id, f.film_title, f.image order by cnt desc)) where ranking between 1 and 10"; 
+		
+		List<Film> lists = new ArrayList<Film>();
+		
+		try {
+			if( conn == null ){ super.conn = super.getConnection() ; }
+			pstmt = super.conn.prepareStatement(sql) ;
+
+			rs = pstmt.executeQuery() ;	
+			
+			while( rs.next() ){
+				Film bean = new Film();
+				
+				bean.setId(rs.getInt("id"));
 				bean.setFilm_title(rs.getString("film_title"));
 				bean.setImage(rs.getString("image"));
 				lists.add(bean);
@@ -139,8 +176,54 @@ public class FilmDao extends SuperDao {
 			} catch (Exception e2) {
 				e2.printStackTrace(); 
 			}
-		}
+		}		
+		return lists ;
+	}
+
+
+
+
+	public List<Film> selectByRatingFilm() {
+		PreparedStatement pstmt = null ;
+		ResultSet rs = null ;
 		
+		String sql = "select ranking, id, film_title, image, director, year, country, playurl, avgrate, totalrate from("
+				+ "select id, film_title, image, director, year, country, playurl, avgrate, totalrate, rank() over(order by avgrate desc) as ranking from("
+				+ "select f.id, f.film_title, f.image, f.director, f.year, f.country, f.playurl, ar.avgrate, ar.totalrate from films f inner join filmavgrating ar on f.id = ar.film_id  where totalrate >=5 order by avgrate desc)) where ranking between 1 and 10" ;
+		
+		List<Film> lists = new ArrayList<Film>();
+		
+		try {
+			if( conn == null ){ super.conn = super.getConnection() ; }
+			pstmt = super.conn.prepareStatement(sql) ;
+
+			rs = pstmt.executeQuery() ;	
+			
+			while( rs.next() ){
+				Film bean = new Film();
+				
+				bean.setId(rs.getInt("id"));
+				bean.setYear(rs.getInt("year"));
+				bean.setTotalratings(rs.getInt("totalrate"));
+				bean.setAvgrating(rs.getDouble("avgrate"));
+				bean.setFilm_title(rs.getString("film_title"));
+				bean.setDirector(rs.getString("director"));
+				bean.setCountry(rs.getString("country"));
+				bean.setPlayUrl(rs.getString("playurl"));
+				bean.setImage(rs.getString("image"));
+				lists.add(bean);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally{
+			try {
+				if( rs != null ){ rs.close(); }
+				if( pstmt != null ){ pstmt.close(); }
+				super.closeConnection(); 
+			} catch (Exception e2) {
+				e2.printStackTrace(); 
+			}
+		}		
 		return lists ;
 	}
 

@@ -4,6 +4,17 @@
 <%@ include file="./../common/common.jsp"%>
 <!DOCTYPE html>
 <html lang="zxx">
+<c:if test="${ empty sessionScope.loginfo}">
+	<c:set var="whologin" value="0" />
+</c:if>
+<c:if test="${ not empty sessionScope.loginfo}">
+	<c:if test="${ sessionScope.loginfo.email == 'admin'}">
+		<c:set var="whologin" value="2" />
+	</c:if>
+	<c:if test="${ sessionScope.loginfo.email != 'admin'}">
+		<c:set var="whologin" value="1" />
+	</c:if>
+</c:if>
 <head>
 <style>
 .btn-like {
@@ -43,6 +54,7 @@
 		</div>
 		<div class="col-sm-3"></div>
 		<div>
+			<c:if test="${whologin != 0}">
 			<c:if test="${bean1.writer==sessionScope.loginfo.nickname}">
 				<a href="<%=NoForm%>reviewEdit"><button type="button" class="btn btn-warning">리뷰 수정하기</button></a> 
 				&nbsp;&nbsp;&nbsp;&nbsp;
@@ -58,6 +70,7 @@
 					</c:otherwise>
 				</c:choose>				
 			</c:if>	
+			</c:if>
 		<script src="//code.jquery.com/jquery.min.js"></script>
  </div>
 </div>

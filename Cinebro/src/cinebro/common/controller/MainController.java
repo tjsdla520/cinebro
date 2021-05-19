@@ -19,14 +19,33 @@ public class MainController extends SuperClass {
 	public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		super.doGet(request, response);
 		
-		//리뷰수 많은 영화 5개
-//		FilmDao dao = new FilmDao();
-//		List<Film> lists1 = dao.SelectDataList();
-//		for (Film film : lists1) {
-//		System.out.println("list1 : " + film);
-//		}
-//		request.setAttribute("lists1", lists1);
-//		
+		//리뷰수 많은 영화 10개
+		FilmDao dao = new FilmDao();
+		List<Film> list1 = dao.selectFamousFilms();
+		int list1size = list1.size();
+		System.out.println("인기많은 영화 10개 개수 : "+list1size);
+		int endpage = (int)Math.ceil((double)list1size/5);
+		System.out.println("list1 총 페이지 : "+endpage);
+		request.setAttribute("endpage1", endpage);
+		request.setAttribute("list1", list1);
+		for (Film film : list1) {
+			System.out.println("인기영화 : " + film);
+		}
+		request.setAttribute("lists1", list1);
+		
+		//평점 총 개수 5개 이상인 것 중에서 평점순으로 상위 10개 가져오기 
+		FilmDao dao4 = new FilmDao();
+		List<Film> list4 = dao4.selectByRatingFilm();
+		int list4size = list4.size();
+		System.out.println("평점 높은 영화 개수 : "+list4size);
+		int endpage4 = (int)Math.ceil((double)list4size/5);
+		System.out.println("list4 총 페이지 : "+endpage4);
+		request.setAttribute("endpage4", endpage4);
+		request.setAttribute("list4", list4);
+		for (Film film : list4) {
+			System.out.println("평점 높은 영화 : "+film);
+		}
+		
 		//좋아요 많은 필름리스트 5개
 		FilmListDao dao2 = new FilmListDao();
 		List<FilmList> lists2 = dao2.SelectByPopular();

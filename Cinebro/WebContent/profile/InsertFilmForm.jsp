@@ -193,7 +193,7 @@ function actorfind2(){
 							<input type="hidden" name="actorid2">
 						</div>
 						<div class="col-sm-<%=rightButton%>">
-				        	<input type="button" value="영화 검색" class="btn btn-info"
+				        	<input type="button" value="배우 검색" class="btn btn-info"
 				        		onclick="actorfind2();">
 				      	</div>
 					</div>

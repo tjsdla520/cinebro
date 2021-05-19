@@ -93,10 +93,7 @@ button, input, optgroup, select, textarea {
 			<div class="form-group">
 			    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 				<select id="mode" name="mode" class="form-inline" >
-					<option value="none" selected="selected">-- 선택하세요.
 					<option value="film_title">영화
-					<option value="list_title">리스트
-					<option value="nickname">멤버
 				</select>
 			</div>
 			<div class="form-group" >
