@@ -44,7 +44,7 @@ a {
 				<div class="column">
 					<div class="media">
 						<div class="media-left media-top">
-							<img src="img/${bean.filmTitle}.jpg" class="media-object"
+							<img src="upload/${bean.image}" class="media-object"
 								style="width: 100px">
 						</div>
 						<div class="media-body">
@@ -72,7 +72,7 @@ a {
 				<div class="column">
 					<div class="media">
 						<div class="media-left media-top">
-							<img src="img/${bean.filmTitle}.jpg" class="media-object"
+							<img src="upload/${bean.image}" class="media-object"
 								style="width: 100px">
 						</div>
 						<div class="media-body">

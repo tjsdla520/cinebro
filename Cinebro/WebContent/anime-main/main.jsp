@@ -166,7 +166,7 @@ h3 {
 				<h3 style="color: white;"><b>평점 높은 영화</b></h3>
 			</div>
 			<div class="panel-body">
-				<div id="myCarousel" class="carousel slide" data-ride="carousel">
+				<div id="myCarousel2" class="carousel slide" data-ride="carousel">
 					<!-- Indicators -->
 					<ol class="carousel-indicators">
 						<c:forEach var="n" end="${requestScope.endpage4}" varStatus="now"
@@ -202,11 +202,11 @@ h3 {
 							</c:forEach>
 						</div>
 			<!-- Left and right controls -->
-			<a class="left carousel-control" href="#myCarousel" data-slide="prev">
+			<a class="left carousel-control" href="#myCarousel2" data-slide="prev">
 				<span class="glyphicon glyphicon-chevron-left"></span> 
 				<span class="sr-only">Previous</span>
 			</a> 
-			<a class="right carousel-control" href="#myCarousel"data-slide="next"> 
+			<a class="right carousel-control" href="#myCarousel2"data-slide="next"> 
 				<span class="glyphicon glyphicon-chevron-right"></span> 
 				<span class="sr-only">Next</span>
 			</a>
