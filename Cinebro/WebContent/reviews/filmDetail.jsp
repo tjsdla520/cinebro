@@ -19,6 +19,7 @@
 		<c:set var="whologin" value="1" />
 	</c:if>
 </c:if>
+
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
@@ -28,6 +29,15 @@
 		window.open(url,'mywin','channelmode=yes, location=no, scrollbars=no, status=no');
 	}
 </script>
+<style type="text/css">
+.btn-warning:hover {
+    font-size: medium;
+    color: #212529;
+    background-color: #e0a800;
+    border-color: #d39e00;
+}
+
+</style>
 </head>
 <body>
 	<jsp:include page="./../anime-main/header.jsp" />
@@ -90,9 +100,10 @@
 
 				</div>
 			</div>
-
+   
 		</div>
 	</div>
+	 <br><br><br><br><br><br><br><br><br><br><br><br><br><br> <br><br><br><br><br><br><br><br><br><br>
 	<jsp:include page="./../anime-main/footer.jsp" />
 </body>
 </html>

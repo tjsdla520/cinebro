@@ -56,6 +56,7 @@ b, strong {
 }
 a {
     font-size: larger;
+
 }
 [type=button]:not(:disabled), [type=reset]:not(:disabled), [type=submit]:not(:disabled), button:not(:disabled) {
     font-size: large;
@@ -63,12 +64,23 @@ a {
 }
 i {
     font-size: large;
-        text-decoration: none;
+    text-decoration: none;
+    font-style: initial;
 }
-:hover, a:focus {
+a:hover, a:focus {
     text-decoration: none;
     outline: none;
-    color: #ffffff;
+    color: white;
+}
+a:hover {
+    color: white;
+    text-decoration: underline;
+}
+a {
+    color: white;
+}
+b, strong {
+    font-weight: bolder;
     font-size: larger;
 }
 </style>
@@ -79,7 +91,7 @@ i {
 	<jsp:include page="./../anime-main/header.jsp" />
 	<div class="container">
 		<c:if test="${whologin != 0}">
-			<a href="<%=NoForm%>makefilmList&email=${loginfo.email}">
+			<a  href="<%=NoForm%>makefilmList&email=${loginfo.email}">
 				<button class="btn-lg btn-info">나만의 FilmList 만들기</button></a>
 		</c:if>
 		<div class="row">
@@ -105,11 +117,11 @@ i {
 										</c:if>
 									</c:forEach>
 									<br> 
-									<a href="<%=NoForm%>filmListDetail&id=${bean1.id}&${requestScope.parameters}&email=${loginfo.email}">${bean1.list_title}</a>
+									<a  style="color: white;" href="<%=NoForm%>filmListDetail&id=${bean1.id}&${requestScope.parameters}&email=${loginfo.email}">${bean1.list_title}</a>
 									<br> 
 									<small> 
 									<i> 작성자 : 
-										<a href="<%=NoForm%>myproFile&email=${bean1.email}&${requestScope.parameters}">${bean1.nickname}</a>
+										<a style="color: white;" href="<%=NoForm%>myproFile&email=${bean1.email}&${requestScope.parameters}">${bean1.nickname}</a>
 									</i>
 									</small>
 							</tr>
@@ -141,8 +153,8 @@ i {
 										</c:if>
 									</c:forEach>
 									<br> 
-									<a href="<%=NoForm%>filmListDetail&id=${bean3.id}&${requestScope.parameters}">${bean3.list_title}</a>
-									<br> <small> <i>작성자 : <a
+									<a style="color: white;" href="<%=NoForm%>filmListDetail&id=${bean3.id}&${requestScope.parameters}">${bean3.list_title}</a>
+									<br> <small> <i>작성자 : <a style="color: white;"
 											href="<%=NoForm%>myproFile&email=${bean3.email}&${requestScope.parameters}">${bean3.nickname}</a></i>
 								</small>
 							</tr>
@@ -175,8 +187,8 @@ i {
 										</c:if>
 									</c:forEach>
 									<br> 
-									<a href="<%=NoForm%>filmListDetail&id=${bean2.id}&${requestScope.parameters}">${bean2.list_title}</a>
-									<br> <small> <i>작성자 : <a
+									<a style="color: white;" href="<%=NoForm%>filmListDetail&id=${bean2.id}&${requestScope.parameters}">${bean2.list_title}</a>
+									<br> <small> <i>작성자 : <a style="color: white;"
 											href="<%=NoForm%>myproFile&email=${bean2.email}&${requestScope.parameters}">${bean2.nickname}</a></i>
 								</small>
 							</tr>

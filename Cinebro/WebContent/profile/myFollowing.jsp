@@ -82,7 +82,7 @@ body {
 					<c:forEach var="bean" items="${requestScope.lists}">
 						<tr>
 							<td><span style="color: white"><img src="<%=contextPath%>/img/img.png" alt="Avatar" class="avatar">  <a
-									href="<%=NoForm%>myproFile&email=${bean.follwingemail}">
+									class="text-white" href="<%=NoForm%>myproFile&email=${bean.follwingemail}">
 										${bean.following} </a>
 							</span></td>
 						</tr>

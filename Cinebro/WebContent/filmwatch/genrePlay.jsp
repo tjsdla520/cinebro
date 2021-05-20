@@ -145,7 +145,7 @@
 			</button>
 			<div class="dropdown-content">
 				<c:forEach var="bean" items="${requestScope.list1 }">
-					<a href="<%=NoForm%>genrePlay&id=${bean.id }&name=${bean.name}">${bean.name }</a>
+					<a class="text-white" href="<%=NoForm%>genrePlay&id=${bean.id }&name=${bean.name}">${bean.name }</a>
 				</c:forEach>
 			</div>
 		</div>
@@ -156,7 +156,7 @@
 		<c:forEach var="bean1" items="${requestScope.films}">
 			<div class="column">
 				<div class="container">
-				<a href="<%=NoForm%>filmDetail&id=${bean1.id}&email=${loginfo.email}">
+				<a class="text-white" href="<%=NoForm%>filmDetail&id=${bean1.id}&email=${loginfo.email}">
 					<img src="upload/${bean1.image}" alt="${bean1.film_title}" style="width: 100%" class="image">
 				</a>
 					<div class="middle">
