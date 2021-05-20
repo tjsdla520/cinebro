@@ -31,6 +31,7 @@ h3 {
 a {
     color: white;
 }
+
 </style>
 </head>
 <body>
@@ -48,7 +49,7 @@ a {
 						</div>
 						<div class="media-body">
 							<h5 class="media-heading" >
-								<a style="color: white;"
+								<a style="color: peachpuff;"
 									href="<%=NoForm%>reviewDetail&id=${bean.id}&email=${sessionScope.whologin.email}">${bean.filmTitle}</a>
 								<small> <i style="color: white;">${bean.writeDate}</i>
 								</small>
@@ -76,7 +77,7 @@ a {
 						</div>
 						<div class="media-body">
 							<h5 class="media-heading">
-								<a  style="color: white;"
+								<a  style="color: peachpuff;"
 									href="<%=NoForm%>reviewDetail&id=${bean.id}&email=${sessionScope.whologin.email}">${bean.filmTitle}</a>
 								<small> <i>${bean.writeDate}</i>
 								</small>
