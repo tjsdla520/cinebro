@@ -22,6 +22,8 @@ public class UpdateFilmController extends SuperClass {
 		String id = request.getParameter("id");
 		FilmDetailDao dao = new FilmDetailDao();
 		Film fbean = dao.selectFilm(id);
+		int actorsize = fbean.getActors().size();
+		request.setAttribute("actorsize", actorsize);
 		request.setAttribute("fbean", fbean);
 		String gotopage = "/profile/UpdateFilmForm.jsp";
 		super.GotoPage(gotopage);

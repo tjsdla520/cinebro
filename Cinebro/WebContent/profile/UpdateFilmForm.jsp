@@ -41,6 +41,16 @@ button.btn.btn-info.btn-lg {
     font-size: initial;
 }
 </style>
+<script type="text/javascript">
+function actorfind(){
+	var url = "<%=NoForm%>searchforactor&num=1";
+	window.open(url,'mywin','height=600, width=720, scrollbars=yes');
+}
+function actorfind2(){
+	var url = "<%=NoForm%>searchforactor&num=2";
+	window.open(url,'mywin','height=600, width=720, scrollbars=yes');
+}
+</script>
 </head>
 <body>
 	<%-- <%@ include file="header.jsp" %> --%>
@@ -121,6 +131,38 @@ button.btn.btn-info.btn-lg {
 							<span class="err form-control-static">${errplayUrl}</span>
 						</div>
 					</div>
+						<div class="form-group" style="margin-top: 20px">
+							<h5>
+								<label class="control-label col-sm-<%=formleft%>"
+									for="actorname1" style="color: white">영화 배우1</label>
+							</h5>
+							<div class="col-xs-3">
+								<input type="text" class="form-control" disabled="disabled"
+									id="fakeactorname1" name="fakeactorname1"> <input
+									type="hidden" name="actorname1"> <input type="hidden"
+									name="actorid1">
+							</div>
+							<div class="col-sm-<%=rightButton%>">
+								<input type="button" value="배우 검색" class="btn btn-info"
+									onclick="actorfind();">
+							</div>
+						</div>
+						<div class="form-group" style="margin-top: 20px">
+							<h5>
+								<<label class="control-label col-sm-<%=formleft%>"
+									for="actorname2" style="color: white">영화 배우2</label>
+							</h5>
+							<div class="col-xs-3">
+								<input type="text" class="form-control" disabled="disabled"
+									id="fakeactorname2" name="fakeactorname2"> <input
+									type="hidden" name="actorname2"> <input type="hidden"
+									name="actorid2">
+							</div>
+							<div class="col-sm-<%=rightButton%>">
+								<input type="button" value="배우 검색" class="btn btn-info"
+									onclick="actorfind2();">
+							</div>
+						</div>
 					<div class="form-group" style="margin-top: 40px">
 						<div class="col-sm-offset-<%=offset%> col-sm-<%=mywidth%>">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 							<button type="submit" class="btn btn-info btn-lg">영화 수정 하기</button>

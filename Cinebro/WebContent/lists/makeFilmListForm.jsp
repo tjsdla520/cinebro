@@ -143,7 +143,17 @@ function filmfind5(){
                         name="comments" placeholder="설명을 입력해주세요">
                   </div>
                </div>
-               <div class="form-group" style="margin-top: 20px">
+					<div class="form-group" style="margin-top: 20px">
+						<h5>
+							<label class="control-label col-sm-<%=formleft%>"
+								for="filmtitle1" style="color: white"></label>
+						</h5>
+						<div class="col-sm-<%=rightButton%>">
+							<input type="button" value="영화 검색" class="btn btn-info"
+								onclick="filmfind();">
+						</div>
+					</div>
+					<div class="form-group" style="margin-top: 20px">
                   <h5><label class="control-label col-sm-<%=formleft%>" for="filmtitle1"
                      style="color: white">담을 영화1</label></h5>
                   <div class="col-xs-3">

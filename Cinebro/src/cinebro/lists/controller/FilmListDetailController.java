@@ -29,8 +29,10 @@ public class FilmListDetailController extends SuperClass {
 		String email = request.getParameter("email");
 		FilmList bean1 = dao.SelectByOne(id);
 		FilmList bean2 = dao2.findLike(id,email);
-		
+		int listfilmsize = 5-bean1.getFilm_title().size();
+		System.out.println(listfilmsize);
 		session.setAttribute("bean1", bean1);
+		session.setAttribute("listfilmsize", listfilmsize);
 		request.setAttribute("bean2", bean2);
 		System.out.println("bean2 : "+bean2);
 		System.out.println(bean2);

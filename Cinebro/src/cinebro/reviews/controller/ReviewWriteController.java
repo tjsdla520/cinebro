@@ -16,7 +16,8 @@ public class ReviewWriteController extends SuperClass {
 	public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		super.doGet(request, response);
 		String filmid = request.getParameter("id");
-		String gotopage = "/reviews/reviewWriteForm.jsp?id="+filmid;
+		request.setAttribute("filmid", filmid);
+		String gotopage = "/reviews/reviewWriteForm.jsp";
 		super.GotoPage(gotopage);
 	}
 
@@ -27,6 +28,7 @@ public class ReviewWriteController extends SuperClass {
 		ReviewDao dao = new ReviewDao();
 		
 		int id = Integer.parseInt(request.getParameter("filmid"));
+		
 		String email = request.getParameter("email");
 		String content = request.getParameter("content");
 		int rating = Integer.parseInt(request.getParameter("rating"));

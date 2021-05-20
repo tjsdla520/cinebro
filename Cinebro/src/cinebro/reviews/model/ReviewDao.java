@@ -63,7 +63,7 @@ public class ReviewDao extends SuperDao {
 		ResultSet rs = null ;
 		Review bean = new Review();
 		
-		String sql = "select r.id, r.film_id, m.email, m.nickname, f.film_title, r.content, r.rating, r.watch_date, r.write_date, v.getlike from reviews r inner join members m on r.email = m.email inner join films f on r.film_id = f.id inner join view05 v on r.id=v.id where r.id = ?" ;
+		String sql = "select r.id, r.film_id, m.email, m.nickname, f.film_title, f.image, r.content, r.rating, r.watch_date, r.write_date, v.getlike from reviews r inner join members m on r.email = m.email inner join films f on r.film_id = f.id inner join view05 v on r.id=v.id where r.id = ?" ;
 
 		try {
 			if( conn == null ){ super.conn = super.getConnection() ; }
@@ -81,6 +81,7 @@ public class ReviewDao extends SuperDao {
 				bean.setWriteDate(rs.getDate("write_date"));
 				bean.setGetlike(rs.getInt("getlike"));
 				bean.setFilmId(rs.getInt("film_id"));
+				bean.setImage(rs.getString("image"));
 			}
 		} catch (Exception e) {
 			e.printStackTrace();

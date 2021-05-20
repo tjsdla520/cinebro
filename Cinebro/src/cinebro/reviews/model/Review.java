@@ -18,8 +18,18 @@ public class Review {
 	private int rating;           //평점
 	private String nickname;      //나의 닉네임
 	private String email;         //나의 이메일
+	private String image;         //영화 포스터
 	
-	
+	public String getImage() {
+		return image;
+	}
+
+
+	public void setImage(String image) {
+		this.image = image;
+	}
+
+
 	public int getFilmId() {
 		return filmId;
 	}
