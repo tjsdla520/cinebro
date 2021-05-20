@@ -107,6 +107,7 @@ function filmfind5(){
 				      	</div>
 					</div>
 					</c:forEach>
+
 					<div class="form-group" style="margin-top: 40px">
 						<div class="col-sm-offset-<%=offset%> col-sm-<%=mywidth%>">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 							<button type="submit" class="btn btn-info btn-lg">FilmList 수정하기</button>
