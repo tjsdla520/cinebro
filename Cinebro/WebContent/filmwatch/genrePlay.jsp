@@ -166,9 +166,8 @@
 			</div>
 		</c:forEach>
 	</div>
-
 	</div>
-
+<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
 	<jsp:include page="./../anime-main/footer.jsp"/>
 </body>
 </html>

@@ -103,8 +103,9 @@
 	<%-- <%@ include file="header.jsp" %> --%>
 	<%-- <jsp:include page="<%=contextPath%>/anime-main/header.jsp"/> --%>
 	<jsp:include page="./../anime-main/header.jsp"/>
-	<div class="container">
+	<div class="container"><br>
 	<h2 style="color: white">My Wish Films</h2>
+	<br>
 	<div class="row">
 		<c:forEach var="bean" items="${requestScope.lists}">
 			<div class="column">
@@ -120,7 +121,12 @@
 			</div>
 		</c:forEach>
 	</div>
+	
 	</div>
+	<br><br><br><br><br><br><br><br>
+	<br><br><br><br><br><br><br><br>
+	<br><br><br><br><br><br><br><br>
+	<br><br><br><br><br><br><br><br><br><br>
 	<jsp:include page="./../anime-main/footer.jsp"/>
 </body>
 </html>
