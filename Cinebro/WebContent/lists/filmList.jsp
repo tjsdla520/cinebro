@@ -117,10 +117,10 @@ b, strong {
 										</c:if>
 									</c:forEach>
 									<br> 
-									<a  style="color: white;" href="<%=NoForm%>filmListDetail&id=${bean1.id}&${requestScope.parameters}&email=${loginfo.email}">${bean1.list_title}</a>
+									<a  style="color: peachpuff;" href="<%=NoForm%>filmListDetail&id=${bean1.id}&${requestScope.parameters}&email=${loginfo.email}">${bean1.list_title}</a>
 									<br> 
 									<small> 
-									<i> 작성자 : 
+									<i>  
 										<a style="color: white;" href="<%=NoForm%>myproFile&email=${bean1.email}&${requestScope.parameters}">${bean1.nickname}</a>
 									</i>
 									</small>
@@ -153,8 +153,8 @@ b, strong {
 										</c:if>
 									</c:forEach>
 									<br> 
-									<a style="color: white;" href="<%=NoForm%>filmListDetail&id=${bean3.id}&${requestScope.parameters}">${bean3.list_title}</a>
-									<br> <small> <i>작성자 : <a style="color: white;"
+									<a style="color: peachpuff;" href="<%=NoForm%>filmListDetail&id=${bean3.id}&${requestScope.parameters}">${bean3.list_title}</a>
+									<br> <small> <i> <a style="color: white;"
 											href="<%=NoForm%>myproFile&email=${bean3.email}&${requestScope.parameters}">${bean3.nickname}</a></i>
 								</small>
 							</tr>
@@ -187,8 +187,8 @@ b, strong {
 										</c:if>
 									</c:forEach>
 									<br> 
-									<a style="color: white;" href="<%=NoForm%>filmListDetail&id=${bean2.id}&${requestScope.parameters}">${bean2.list_title}</a>
-									<br> <small> <i>작성자 : <a style="color: white;"
+									<a style="color: peachpuff;" href="<%=NoForm%>filmListDetail&id=${bean2.id}&${requestScope.parameters}">${bean2.list_title}</a>
+									<br> <small> <i> <a style="color: white;"
 											href="<%=NoForm%>myproFile&email=${bean2.email}&${requestScope.parameters}">${bean2.nickname}</a></i>
 								</small>
 							</tr>

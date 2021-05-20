@@ -24,7 +24,7 @@
 				<c:forEach var="bean" items="${requestScope.Review}">
 					<tr>
 						<td><span style="color: white">
-							<a class="text-white" href="<%=NoForm %>reviewDetail&id=${bean.id}">${bean.filmTitle}
+							<a style="color: peachpuff;" href="<%=NoForm %>reviewDetail&id=${bean.id}">${bean.filmTitle}
 							</a></span>
 						</td>
 						<td><span style="color: white">${bean.content}</span></td>

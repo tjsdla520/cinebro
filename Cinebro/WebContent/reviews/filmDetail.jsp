@@ -36,14 +36,28 @@
     background-color: #e0a800;
     border-color: #d39e00;
 }
-
+.media-heading {
+    margin-top: 20;
+    margin-bottom: 5px;
+    font-size: xx-large;
+}
+p {
+    font-size: 20;
+    font-family: "Mulish", sans-serif;
+    color: #3d3d3d;
+    font-weight: 400;
+    line-height: 25px;
+    margin: 0;
+}
 </style>
 </head>
 <body>
 	<jsp:include page="./../anime-main/header.jsp" />
 	<div class="container">
 		<div class="media">
+		<br><br>
 			<div class="media-left media-top col-sm-3">
+			<br> <br>
 				<img src="upload/${fbean.image}" class="media-object" alt="${fbean.image }"
 					style="width: 180px"> <br> <br>
 				<c:if test="${loginfo.subscribe==1 }">
@@ -52,25 +66,28 @@
 					</c:if>
 				</c:if>
 			</div>
+		
 			<div class="media-body">
-				<h4 class="media-heading" style="color: white">${fbean.film_title}</h4>
-				<p style="color: white;">${fbean.director}</p>
-				<p style="color: white;">${fbean.year}</p>
-				<p style="color: white;">${fbean.country}</p>
-				<p style="color: white;">${fbean.avgrating}</p>
-				<p style="color: white;">
+			<br> <br>
+				<h4 class="media-heading" style="color: peachpuff">${fbean.film_title}</h4>
+				<h4 class="text-white">${fbean.director}</h4>
+				<h4 class="text-white">${fbean.year}</h4>
+				<h4 class="text-white">${fbean.country}</h4>
+				<h4 class="text-white">${fbean.avgrating}</h4>
+				<h4 class="text-white">
 					<c:forEach var="genre" items="${fbean.genres}">
 						<c:out value="${genre}"></c:out>
 					</c:forEach>
-				</p>
+				</h4>
 
-				<p style="color: white;">
+				<h4 class="text-white">
 					배우 :
 					<c:forEach var="actor" items="${fbean.actors}">
 						<c:out value="${actor}"></c:out>
 					</c:forEach>
-				</p>
+				</h4>
 				<div>
+				<br> <br>
 				<c:if test="${whologin!=0 }">
 					<a href="<%=NoForm%>reviewWrite&id=${fbean.id}"><button
 							type="button" class="btn-lg btn-warning">리뷰 쓰기</button></a>
