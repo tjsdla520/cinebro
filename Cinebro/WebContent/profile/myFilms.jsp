@@ -73,6 +73,11 @@ body {
 .dropdown:hover .dropbtn {
 	background-color: red;
 }
+h3 {
+    color: w;
+    font-size: 30px;
+    color: white;
+    font-size: x-large;
 </style>
 </head>
 <body>
@@ -82,11 +87,12 @@ body {
 	<div class="container">
 		<div class="panel-body">
 			<div class="row">
-				<h3>${sessionScope.loginfo.nickname}님이 시청한 영화</h3>
+			<br><br>
+				<h3 class="text-white"><b>${sessionScope.loginfo.nickname}님이 시청한 영화</b></h3>
 				<c:forEach items="${requestScope.lists}" var="bean" varStatus="status">
 					<div class="column">
 						<div class="container">
-							<a href="<%=NoForm%>filmDetail&id=${bean.id}&email=${loginfo.email}">
+							<a class="text-white" href="<%=NoForm%>filmDetail&id=${bean.id}&email=${loginfo.email}">
 								<img src="upload/${bean.image}" alt="${bean.film_title}" style="width: 100%">
 							</a>
 						</div>
@@ -106,7 +112,7 @@ body {
 					<c:forEach var="bean" items="${requestScope.lists}">
 						<tr>
 							<td><span style="color: white"> 
-								<a href="<%=NoForm %>filmDetail&id=${bean.id}&email=${loginfo.email}">
+								<a  class="text-white" href="<%=NoForm %>filmDetail&id=${bean.id}&email=${loginfo.email}">
 										${bean.film_title}
 								</a>
 							</span></td>
