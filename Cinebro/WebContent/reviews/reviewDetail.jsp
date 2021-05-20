@@ -59,7 +59,7 @@ button.btn.btn-danger {
 		<div class="media">
 			<div class="media-left media-top col-sm-3">
 			<br><br>
-				<img src="img/${bean1.filmTitle}.jpg" class="media-object" style="width: 180px">
+				<img src="upload/${bean1.image}" class="media-object" style="width: 180px">
 			</div>
 			<div class="media-body">
 			<br><br>
@@ -95,7 +95,7 @@ button.btn.btn-danger {
 		<script src="//code.jquery.com/jquery.min.js"></script>
  </div>
 </div>
-<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
 	<jsp:include page="./../anime-main/footer.jsp" />
 	
 </body>
