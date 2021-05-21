@@ -42,7 +42,7 @@ button.btn.btn-info.btn-lg {
 				<form name="myform" class="form-horizontal" action="<%=YesForm%>" method="post">
 					<%--command 값 지정--%>
 					<input type="hidden" name="command" value="reviewWrite">
-					<input type="text" name="filmid" value="${requestScope.filmid}">
+					<input type="hidden" name="filmid" value="${requestScope.filmid}">
 					<input type="hidden" name="email" value="${sessionScope.loginfo.email }">
 					<div class="form-group">
 						<h5><label class="control-label col-sm-<%=formleft%>" for="email"

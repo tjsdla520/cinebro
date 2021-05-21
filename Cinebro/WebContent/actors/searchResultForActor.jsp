@@ -91,7 +91,7 @@
 								
 								<td>
 									<%--글제목 하이퍼링크 만들기 일반적으로 넘겨줘야 할 파라미터 목록은 다음과 같다. primarykey, pagenumber, mode, keyword--%>
-									<a href="#" onclick="sendActorInfo('${bean.id}','${bean.name }','${requestScope.num }')">${bean.name}</a>
+									<a href="#" onclick="sendActorInfo('${bean.id}','${bean.name }','${num}')">${bean.name}</a>
 								</td>
 							</tr>
 						</c:forEach>												

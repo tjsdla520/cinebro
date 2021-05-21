@@ -33,7 +33,7 @@ public class SearchForFilmListController extends SuperClass {
 			//request로 넘어온 페이징 정보들을 가지고 객체 생성해줌. 이제 아래서 tostring 하면 문자열이 만들어짐.
 			FlowParameters prm = new FlowParameters(mode, keyword, pageNumber);
 			String contextPath = request.getContextPath();
-			String url = contextPath + "/Cinebro?command=search";
+			String url = contextPath + "/Cinebro?command=searchforlist";
 
 			SearchDao dao = new SearchDao();
 			//행 row 총 개수 

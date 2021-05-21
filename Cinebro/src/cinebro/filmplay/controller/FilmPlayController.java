@@ -52,7 +52,19 @@ public class FilmPlayController extends SuperClass {
 		for (Film film : list3) {
 			System.out.println("평점 높은 영화 : "+film);
 		}
-				
+		
+		//재생URL있는 영화 중에서 like 많은 순으로 상위 10개 가져오기 
+		FilmDao dao4 = new FilmDao();
+		List<Film> list4 = dao4.selectByLike();
+		int list4size = list4.size();
+		System.out.println("평점 높은 영화 개수 : "+list4size);
+		int endpage4 = (int)Math.ceil((double)list4size/5);
+		System.out.println("list4 총 페이지 : "+endpage4);
+		request.setAttribute("endpage4", endpage4);
+		request.setAttribute("list4", list4);
+		for (Film film : list4) {
+			System.out.println("인기영화 : "+film);
+		}
 		String gotopage = "/filmwatch/filmPlay.jsp" ;
 		super.GotoPage(gotopage);
 	}

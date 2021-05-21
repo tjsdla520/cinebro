@@ -210,7 +210,7 @@ function actorfind2(){
 							</div>			 
 						 </c:if>
 						 <c:forEach var="entry" items="${fbean.actors}" varStatus="status">
-						<div class="form-group" style="margin-top: 20px">
+							<div class="form-group" style="margin-top: 20px">
 							<h5>
 								<label class="control-label col-sm-<%=formleft%>"
 									for="actorname1" style="color: white">영화 배우</label>
@@ -218,8 +218,8 @@ function actorfind2(){
 							<div class="col-xs-3">
 								<input type="text" class="form-control" disabled="disabled"
 									id="fakeactorname1" name="fakeactorname${status.count }" value="${entry.value}"> 
-								<input type="hidden" name="actorname${status.count }" value="${entry.value}"> 
-								<input type="hidden" name="actorid${status.count }" value="${entry.key }">
+								<input type="hidden" name="actorname${status.count}" value="${entry.value}"> 
+								<input type="hidden" name="actorid${status.count}" value="${entry.key}">
 							</div>
 							<div class="col-sm-<%=rightButton%>">
 								<input type="button" value="배우 검색" class="btn btn-info"

@@ -97,13 +97,14 @@ p.text-white {
 	<%-- <jsp:include page="<%=contextPath%>/anime-main/header.jsp"/> --%>
 	<jsp:include page="./../anime-main/header.jsp" />
 	<div class="container">
+		<h3 class="text-white">
+			<b>${sessionScope.loginfo.nickname}님이 시청한 영화</b>
+		</h3>
 		<div class="panel-body">
 			<div class="row">
 				<br>
 				<br>
-				<h3 class="text-white">
-					<b>${sessionScope.loginfo.nickname}님이 시청한 영화</b>
-				</h3>
+				
 				<br><br>
 				<c:forEach items="${requestScope.lists}" var="bean"
 					varStatus="status">
