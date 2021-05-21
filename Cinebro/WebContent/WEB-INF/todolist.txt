@@ -25,8 +25,8 @@ reviewDelete=cinebro.reviews.controller.ReviewDeleteController
 reviewDetail=cinebro.reviews.controller.ReviewDetailController
 likeReview=cinebro.reviews.controller.LikeReviewController
 deletelikeReview=cinebro.reviews.controller.DeleteLikeReviewController
-##watchedFilm=cinebro.reviews.controller.WatchedFilmController
-##wishFilm=cinebro.reviews.controller.WishFilmController
+wishFilm=cinebro.reviews.controller.WishFilmController
+deleteWishFilm=cinebro.reviews.controller.DeleteWishFilmController
 reviewWrite=cinebro.reviews.controller.ReviewWriteController
 ##film Section
 filmDetail=cinebro.films.controller.FilmDetailController

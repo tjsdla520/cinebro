@@ -110,10 +110,10 @@
 		<c:forEach var="bean" items="${requestScope.lists}">
 			<div class="column">
 				<div class="container2">
-				<a href="<%=NoForm%>filmDetail&id=${bean.id}"><img src="upload/${bean.image}" alt="${bean.film_title}"
+				<a href="<%=NoForm%>filmDetail&id=${bean.id}&email=${loginfo.email}"><img src="upload/${bean.image}" alt="${bean.film_title}"
 					style="width: 100%" class="image"></a>
 					<div class="middle">
-						<a href="<%=NoForm%>filmDetail&id=${bean.id}"> 
+						<a href="<%=NoForm%>filmDetail&id=${bean.id}&email=${loginfo.email}"> 
 							<div class="text">${bean.film_title }</div>
 						</a>
 					</div>

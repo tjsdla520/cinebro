@@ -2,6 +2,7 @@
 package cinebro.films.model;
 
 import java.util.List;
+import java.util.Map;
 
 public class Film {
 	private int id;
@@ -11,7 +12,7 @@ public class Film {
 	private String country;
 	private String name;
 	private List<String> genres;
-	private List<String> actors;
+	private Map<Integer, String> actors;
 	private int totalratings;
 	private double avgrating;
 	private String playUrl;
@@ -82,14 +83,17 @@ public class Film {
 	}
 
 
+	
 
-	public List<String> getActors() {
+
+
+	public Map<Integer, String> getActors() {
 		return actors;
 	}
 
 
 
-	public void setActors(List<String> actors) {
+	public void setActors(Map<Integer, String> actors) {
 		this.actors = actors;
 	}
 

@@ -82,8 +82,8 @@ p {
 
 				<h4 class="text-white">
 					배우 :
-					<c:forEach var="actor" items="${fbean.actors}">
-						<c:out value="${actor}"></c:out>
+					<c:forEach var="entry" items="${fbean.actors}">
+						<c:out value="${entry.value}"></c:out>
 					</c:forEach>
 				</h4>
 				<div>
@@ -92,7 +92,8 @@ p {
 					<a href="<%=NoForm%>reviewWrite&id=${fbean.id}"><button
 							type="button" class="btn-lg btn-warning">리뷰 쓰기</button></a>
 					&nbsp;&nbsp;&nbsp;&nbsp;
-					
+				</c:if>
+				<c:if test="${whologin!=0 }">	
 					<c:choose>
 						<c:when test="${fbean2==null}">
 							<a
@@ -105,6 +106,20 @@ p {
 									class="btn-warning btn-lg">좋아요 취소</button></a>
 						</c:otherwise>
 					</c:choose>
+				</c:if>	
+				<c:if test="${whologin!=0 }">	
+					<c:choose>
+						<c:when test="${fbean3==null}">
+							<a href="<%=NoForm%>wishFilm&id=${fbean.id}&email=${loginfo.email}"><button
+							type="button" class="btn-lg btn-warning">보고싶어요</button></a>
+						</c:when>
+						<c:otherwise>
+							<a href="<%=NoForm%>deleteWishFilm&id=${fbean.id}&email=${loginfo.email}"><button
+									class="btn-warning btn-lg">보고싶어요 취소</button></a>
+						</c:otherwise>
+					</c:choose>
+					
+					&nbsp;&nbsp;&nbsp;&nbsp;
 				</c:if>
 					&nbsp;&nbsp;&nbsp;&nbsp;
 					<c:if test="${whologin == 2}">

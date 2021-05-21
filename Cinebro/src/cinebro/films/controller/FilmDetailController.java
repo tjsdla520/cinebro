@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import cinebro.common.controller.SuperClass;
 import cinebro.films.model.Film;
+import cinebro.films.model.FilmDao;
 import cinebro.films.model.FilmDetailDao;
 import cinebro.films.model.LikeFilmDao;
 
@@ -34,20 +35,23 @@ public class FilmDetailController extends SuperClass {
 			System.out.println("장르는" +genre);
 		}
 		
-		List<String> l = fbean.getActors();
+		Map<Integer, String> l = fbean.getActors();
 		System.out.println("배우리스트 사이즈 : "+l.size());
-		for (String actor : l) {
-			System.out.println("배우는" +actor);
-		}
 		
 		//해당 영화 좋아요 눌렀는지 여부 확인하는 매서드
 		Film fbean2 = dao2.findLike(id, email);
-		System.out.println("bean2 : "+fbean2);
-		System.out.println(fbean2);
 		request.setAttribute("fbean2", fbean2);
 		request.setAttribute("fbean", fbean);
+		
+		//보고싶어요 눌렀는지 여부 확인하는 메서드
+		FilmDao dao3 = new FilmDao();
+		Film fbean3 = dao3.findwish(id, email);
+		request.setAttribute("fbean3", fbean3);
+		
 		String gotopage = "/reviews/filmDetail.jsp";
 		super.GotoPage(gotopage);
+		
+		
 	}
 
 	@Override
