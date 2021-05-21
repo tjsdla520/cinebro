@@ -192,7 +192,7 @@
 										<c:forEach var="bean2" items="${requestScope.list2}" begin="${(now.index-1)*5}" end="${now.index*5-1	 }">
 											<div class="column">
 												<div class="container">
-													<a href="<%=NoForm%>filmDetail&id=${bean2.id}&email=${whologin.email}"><img
+													<a href="<%=NoForm%>filmDetail&id=${bean2.id}&email=${loginfo.email}"><img
 														src="upload/${bean2.image}" alt="${bean2.film_title}"
 														style="width: 100%" class="image"></a>
 													<div class="middle">
@@ -219,64 +219,7 @@
 				</div>
 			</div>
 			<br><br><br><br><br><br><br>
-			<!-- <div class="row">
-				<div class="col-lg-8"> -->
-					<div class="container">
-						<div class="row">
-							<div class="col-lg-8 col-md-8 col-sm-8">
-								<div class="section-title">
-									<h4>재생중인 영화</h4>
-								</div>
-							</div>						
-						</div>
-						<div id="myCarousel2" class="carousel slide" data-ride="carousel">
-							<!-- Indicators -->
-							<ol class="carousel-indicators">
-								<c:forEach var="n" end="${requestScope.endpage2 }" varStatus="now" begin="1">
-									<li data-target="#myCarousel" data-slide-to="${now.index }"></li>
-								</c:forEach>
-							</ol>
-				
-							<!-- Wrapper for slides -->
-							<div class="carousel-inner">
-								<c:forEach var="i" begin="1" end="${requestScope.endpage2 }" varStatus="now">									
-									<c:choose>
-										<c:when test="${now.index==1 }">
-											<div class="item active">
-										</c:when>
-										<c:otherwise>
-											<div class="item">
-										</c:otherwise>
-									</c:choose>			
-										<c:forEach var="bean2" items="${requestScope.list2}" begin="${(now.index-1)*5}" end="${now.index*5-1 }">
-											<div class="column">
-												<div class="container">
-													<a href="<%=NoForm%>filmDetail&id=${bean2.id}"><img
-														src="upload/${bean2.image}" alt="${bean2.film_title}"
-														style="width: 100%" class="image"></a>
-													<div class="middle">
-														<div class="text">${bean2.film_title }</div>
-													</div>
-												</div>
-											</div>
-										</c:forEach>
-									</div>
-								</c:forEach>
-							</div>
-				
-							<!-- Left and right controls -->
-							<a class="left carousel-control" href="#myCarousel2" data-slide="prev">
-								<span class="glyphicon glyphicon-chevron-left"></span> <span
-								class="sr-only">Previous</span>
-							</a> 
-							<a class="right carousel-control" href="#myCarousel2"
-								data-slide="next"> <span
-								class="glyphicon glyphicon-chevron-right"></span> <span
-								class="sr-only">Next</span>
-							</a>
-					</div>
-				</div>
-			</div>
+
 				<br><br><br><br><br><br><br>
 			<!-- <div class="row">
 				<div class="col-lg-8"> -->
@@ -310,7 +253,7 @@
 										<c:forEach var="bean" items="${requestScope.list3}" begin="${(now.index-1)*5}" end="${now.index*5-1 }">
 											<div class="column">
 												<div class="container">
-													<a href="<%=NoForm%>filmDetail&id=${bean.id}"><img
+													<a href="<%=NoForm%>filmDetail&id=${bean.id}&email=${loginfo.email}"><img
 														src="upload/${bean.image}" alt="${bean.film_title}"
 														style="width: 100%" class="image"></a>
 													<div class="middle">
@@ -370,7 +313,7 @@
 											<div class="column">
 												<div class="container">
 													<a href="<%=NoForm%>filmDetail&id=${bean2.id}"><img
-														src="img/${bean2.film_title}.jpg" alt="${bean2.film_title}"
+														src="upload/${bean2.image}&id=${bean2.id}&email=${loginfo.email}" alt="${bean2.film_title}"
 														style="width: 100%" class="image"></a>
 													<div class="middle">
 														<div class="text">${bean2.film_title }</div>

@@ -110,14 +110,14 @@ b, strong {
 											<div class="avatars">
 												<c:forEach var="image" items="${entry.value}">
 													<span class="avatar">
-														<img src="upload/${image}" width="140" height="140" />
+														<a href="<%=NoForm%>filmListDetail&id=${bean1.id}&${requestScope.parameters}&email=${loginfo.email}"><img src="upload/${image}" width="140" height="140" /></a>
 													</span>
 												</c:forEach>
 											</div>
 										</c:if>
 									</c:forEach>
 									<br> 
-									<a  style="color: peachpuff;" href="<%=NoForm%>filmListDetail&id=${bean1.id}&${requestScope.parameters}&email=${loginfo.email}">${bean1.list_title}</a>
+									<a style="color: peachpuff;" href="<%=NoForm%>filmListDetail&id=${bean1.id}&${requestScope.parameters}&email=${loginfo.email}">${bean1.list_title}</a>
 									<br> 
 									<small> 
 									<i>  
@@ -146,7 +146,7 @@ b, strong {
 											<div class="avatars">
 												<c:forEach var="image" items="${entry.value}">
 													<span class="avatar">
-														<img src="upload/${image}" width="140" height="140" />
+														<a href="<%=NoForm%>filmListDetail&id=${bean3.id}&${requestScope.parameters}"><img src="upload/${image}" width="140" height="140" /></a>
 													</span>
 												</c:forEach>
 											</div>

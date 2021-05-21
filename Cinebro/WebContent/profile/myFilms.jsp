@@ -99,38 +99,25 @@ p.text-white {
 	<div class="container">
 		<div class="panel-body">
 			<div class="row">
-			<br><br>
-				<h3 class="text-white"><b>${sessionScope.loginfo.nickname}님이 시청한 영화</b></h3>
-				<c:forEach items="${requestScope.lists}" var="bean" varStatus="status">
+				<br>
+				<br>
+				<h3 class="text-white">
+					<b>${sessionScope.loginfo.nickname}님이 시청한 영화</b>
+				</h3>
+				<br><br>
+				<c:forEach items="${requestScope.lists}" var="bean"
+					varStatus="status">
 					<div class="column">
 						<div class="container">
-							<a style="color: peachpuff;" href="<%=NoForm%>filmDetail&id=${bean.id}&email=${loginfo.email}">
-								<img src="upload/${bean.image}" alt="${bean.film_title}" style="width: 100%">
+							<a style="color: peachpuff;"
+								href="<%=NoForm%>filmDetail&id=${bean.id}&email=${loginfo.email}">
+								<img src="upload/${bean.image}" alt="${bean.film_title}"
+								style="width: 100%">
 							</a>
 						</div>
 					</div>
 				</c:forEach>
 			</div>
-			<table class="table table-hover">
-			
-					<p class="text-white">
-								<b>${sessionScope.loginfo.nickname}님이 시청한 영화</b>
-							
-						
-					
-				
-				<tbody>
-					<c:forEach var="bean" items="${requestScope.lists}">
-						<tr>
-							<td><span style="color: white"> 
-								<a style="color: peachpuff;" href="<%=NoForm %>filmDetail&id=${bean.id}&email=${loginfo.email}">
-										${bean.film_title}
-								</a>
-							</span></td>
-						</tr>
-					</c:forEach>
-				</tbody>
-			</table>
 		</div>
 	</div>
 	<br> <br> <br><br> <br> <br><br> <br>

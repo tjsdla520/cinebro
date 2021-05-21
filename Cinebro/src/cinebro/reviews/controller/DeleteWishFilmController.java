@@ -11,7 +11,7 @@ import cinebro.films.controller.FilmDetailController;
 import cinebro.films.model.FilmDao;
 import cinebro.reviews.model.WishFilmDao;
 
-public class WishFilmController extends SuperClass {
+public class DeleteWishFilmController extends SuperClass {
 	
 	@Override
 	public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -19,7 +19,7 @@ public class WishFilmController extends SuperClass {
 		String id = request.getParameter("id");
 		String email = request.getParameter("email");
 		FilmDao dao = new FilmDao();
-		int cnt = dao.insertWishFilm(id, email);
+		int cnt = dao.deleteWishFilm(id, email);
 		
 		new FilmDetailController().doGet(request, response);
 	}

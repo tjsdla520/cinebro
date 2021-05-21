@@ -5,6 +5,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -16,7 +17,7 @@ public class FilmDetailDao extends SuperDao {
 	public Film selectFilm(String id) {
 		Film bean = new Film() ;
 		List<String> genreList = new ArrayList<String>();
-		List<String> actorList = new ArrayList<String>();
+		Map<Integer, String> actorList = new HashMap<Integer, String>();
 		PreparedStatement pstmt = null ;
 		ResultSet rs = null ;
 				
@@ -60,14 +61,13 @@ public class FilmDetailDao extends SuperDao {
 			
 			
 			//배우 리스트 가져오기
-			sql = " select f.film_title, a.name from films f inner join filmnactor fa on f.id = fa.film_id inner join actors a on fa.actor_id = a.id where f.id = ? " ;
+			sql = " select f.film_title, a.id, a.name from films f inner join filmnactor fa on f.id = fa.film_id inner join actors a on fa.actor_id = a.id where f.id = ? " ;
 			pstmt = conn.prepareStatement(sql) ;			
 			pstmt.setString(1, id);			
 			rs = pstmt.executeQuery() ; 
 			
 			while(rs.next()) {				
-				actorList.add(rs.getString("name"));
-				System.out.println(rs.getString("name"));
+				actorList.put(rs.getInt("id"), rs.getString("name"));
 			}
 			
 			bean.setActors(actorList);
@@ -318,4 +318,7 @@ public class FilmDetailDao extends SuperDao {
 		}
 		return cnt;
 	}
+
+
+
 }

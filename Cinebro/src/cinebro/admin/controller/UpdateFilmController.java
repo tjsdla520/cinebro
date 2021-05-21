@@ -23,6 +23,7 @@ public class UpdateFilmController extends SuperClass {
 		FilmDetailDao dao = new FilmDetailDao();
 		Film fbean = dao.selectFilm(id);
 		int actorsize = fbean.getActors().size();
+		System.out.println("배우사이즈 : " + actorsize);
 		request.setAttribute("actorsize", actorsize);
 		request.setAttribute("fbean", fbean);
 		String gotopage = "/profile/UpdateFilmForm.jsp";
@@ -40,7 +41,8 @@ public class UpdateFilmController extends SuperClass {
 		bean.setFilm_title(multi.getParameter("film_title"));
 		bean.setPlayUrl(multi.getParameter("playUrl"));
 		bean.setImage(multi.getFilesystemName("image"));
-		
+		String actor1 = multi.getParameter("actorid1");
+		String actor2 = multi.getParameter("actorid2");
 		if (multi.getParameter("director") == null || multi.getParameter("director").equals("")) {
 			bean.setDirector("");	
 		}else {
@@ -65,6 +67,8 @@ public class UpdateFilmController extends SuperClass {
 			
 			int cnt = -99999; 
 			cnt = dao.UpdateFilm(bean);
+			int cnt2 = dao.insertFilmnActor(bean.getId(), actor1);
+			int cnt3 = dao.insertFilmnActor(bean.getId(), actor2);
 			Film fbean = dao.selectFilm(multi.getParameter("id"));
 			session.setAttribute("fbean", fbean);
 			String gotopage = "/reviews/filmDetail.jsp";
@@ -79,7 +83,7 @@ public class UpdateFilmController extends SuperClass {
 		}
 		
 	}	
-	
+
 	@Override
 	public boolean validate(HttpServletRequest request) {
 		boolean isCheck = true;
