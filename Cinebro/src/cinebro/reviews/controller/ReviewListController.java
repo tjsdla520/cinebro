@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import cinebro.common.controller.SuperClass;
+import cinebro.members.model.Member;
 import cinebro.reviews.model.Review;
 import cinebro.reviews.model.ReviewDao;
 
@@ -21,18 +22,24 @@ public class ReviewListController extends SuperClass {
 		ReviewDao dao = new ReviewDao();
 		List<Review> popularReviews = dao.selectPopularReview();
 		
-		
-		
-		request.setAttribute("reviewlists", popularReviews);
+		request.setAttribute("popularReviews", popularReviews);
 		
 		System.out.println("리스트값 보기");
 		for (Review review : popularReviews) {
 			System.out.println(review);
 		}
 		
-		
-		System.out.println("이동직전");
-		
+		Member member = (Member)session.getAttribute("loginfo");
+		if(member!=null) {
+		String email = member.getEmail();
+		System.out.println(email);
+		List<Review> mylikeReviews = dao.selectLikeReview(email);
+		request.setAttribute("mylikeReviews", mylikeReviews);
+		System.out.println("리스트값 보기");
+		for (Review review : mylikeReviews) {
+			System.out.println(review);
+		}
+		}
 		String gotopage = "/reviews/reviewList.jsp" ;
 		super.GotoPage(gotopage);
 	}

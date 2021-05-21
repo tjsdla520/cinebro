@@ -9,6 +9,15 @@
 			$('[data-toggle="tooltip"]').tooltip();	
 		});
 	</script>
+<style type="text/css">
+
+section.normal-breadcrumb.set-bg {
+    height: revertinitial;
+    vertical-align: middle;
+    width: auto;
+    height: 550;
+}
+</style>	
 </head>
 <body>
 	<%-- <%@ include file="header.jsp" %> --%>
@@ -16,7 +25,7 @@
 	<jsp:include page="./../anime-main/header.jsp"/>
 	
 	  <!-- Normal Breadcrumb Begin -->
-    <section class="normal-breadcrumb set-bg" data-setbg="img/로그인사진.png">
+    <section class="normal-breadcrumb set-bg" data-setbg="img/로그인사진3.jpeg">
         <div class="container">
             <div class="row">
                 <div class="col-lg-12 text-center">

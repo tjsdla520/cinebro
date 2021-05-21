@@ -321,7 +321,7 @@ public class MemberDao extends SuperDao {
 		PreparedStatement pstmt = null ;
 		ResultSet rs = null ;
 		
-		String sql = "select v3.followingemail, v3.following, v1.followers as followers, v2.reviews as reviews from myfollowingview v3 left outer join howmanyfollwer v1 on v3.followingemail = v1.email left outer join howmanyreviews v2 on v3.following = v2.email where v3.email = ?";
+		String sql = "select v3.followingemail, v3.following, v1.followers as followers, v2.reviews as reviews from myfollowingview v3 left outer join howmanyfollwer v1 on v3.followingemail = v1.email left outer join howmanyreviews v2 on v3.followingemail = v2.email where v3.email = ?";
 		
 		List<Member> lists = new ArrayList<Member>();
 		

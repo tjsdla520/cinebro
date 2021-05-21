@@ -7,6 +7,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import cinebro.common.controller.SuperClass;
+import cinebro.films.controller.FilmDetailController;
+import cinebro.films.model.FilmDao;
 import cinebro.reviews.model.WishFilmDao;
 
 public class WishFilmController extends SuperClass {
@@ -14,8 +16,12 @@ public class WishFilmController extends SuperClass {
 	@Override
 	public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		super.doGet(request, response);
-		WishFilmDao dao = new WishFilmDao();
-
+		String id = request.getParameter("id");
+		String email = request.getParameter("email");
+		FilmDao dao = new FilmDao();
+		int cnt = dao.insertWishFilm(id, email);
+		
+		new FilmDetailController().doGet(request, response);
 	}
 
 	@Override

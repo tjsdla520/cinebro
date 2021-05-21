@@ -12,7 +12,7 @@
 <!DOCTYPE html>
 <html lang="zxx">
 <head>
- <title>카드 결제 내역</title>
+<!--  <title>카드 결제 내역</title>
     <style>
         #wrap{
             margin-left:auto; 
@@ -34,14 +34,82 @@
         #title{
             background-color:#080837;
         }
-    </style>
+    </style> -->
+      <title>Bootstrap Example</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+<style>
+.panel-default>.panel-heading {
+    color: #333;
+    font-size: xx-large;
+    background-color: #f5f5f5;
+    border-color: #ddd;
+}
+
+element.style {
+    color: black;
+    FONT-SIZE: x-large;
+}
+
+.panel-body {
+    font-size: large;
+    padding: 15px;
+}
+.panel-default {
+    margin: 0 auto; 
+    border-color: #ddd;
+    max-width: 500px;
+}
+button.btn.btn-primary {
+    font-size: large;
+}
+
+
+
+.panel-default>.panel-heading {
+    color: black;
+    font-size: x-large;
+    background-color: #f5f5f5;
+    border-color: #ddd;
+}
+
+
+input[type="button"] {
+    font-size: large;
+     align-items: center;
+    color: #fff;
+    background-color: #138496;
+    border-color: #117a8b;
+}
+
+
+[type=button]:not(:disabled), [type=reset]:not(:disabled), [type=submit]:not(:disabled), button:not(:disabled) {
+    font-size: large;
+    cursor: pointer;
+    color: #fff;
+    background-color: #138496;
+    border-color: #117a8b;
+}
+</style>
 </head>
 
 <body>
 	<jsp:include page="./../anime-main/header.jsp"/>
-
-    
-    <div id="wrap">
+<div class="container">
+  <div class="panel panel-default">
+    <div class="panel-heading" style="color: black;" align="center">카드 정보를 확인하세요.</div>
+    <div class="panel-body" style="color: black;" align="center" >이름 : ${bean.name}</div>
+    <div class="panel-body" style="color: black;" align="center">카드번호 : ${bean.cardnumber}</div>
+    <div class="panel-body" style="color: black;" align="center">카드만료일 : ${bean.enddate}</div>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    <div class="panel-body" style="color: black;" align="center"><button  onclick="location.href='<%=NoForm%>filmPlay'">영화보러가기</button >
+        <input type="button" value="뒤로가기" onclick="history.back(-1);"></div>
+  </div>   
+</div>     
+  <%--   <div id="wrap">
         <br><br>
         <b><font size="5" color="white">카드 정보를 확인하세요.</font></b>
         <br><br>
@@ -66,7 +134,8 @@
         <br>
         <button onclick="location.href='<%=NoForm%>filmPlay'">영화보러가기</button >
         <input type="button" value="뒤로가기" onclick="history.back(-1);">
-    </div>
+    </div> --%>
+    <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
     <jsp:include page="./../anime-main/footer.jsp"/>
 </body>
 </body>

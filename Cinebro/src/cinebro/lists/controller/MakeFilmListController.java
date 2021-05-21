@@ -33,6 +33,10 @@ public class MakeFilmListController extends SuperClass {
 		String title = request.getParameter("filmlist_title");
 		String comments = request.getParameter("comments");
 		int filmid1 = Integer.parseInt(request.getParameter("filmid1"));
+		int filmid2 = Integer.parseInt(request.getParameter("filmid2"));
+		int filmid3 = Integer.parseInt(request.getParameter("filmid3"));
+		int filmid4 = Integer.parseInt(request.getParameter("filmid4"));
+		int filmid5 = Integer.parseInt(request.getParameter("filmid5"));
 		
 		FilmListDao dao = new FilmListDao();
 		FilmListDetailDao dao2 = new FilmListDetailDao();
@@ -42,6 +46,10 @@ public class MakeFilmListController extends SuperClass {
 		int listid = bean.getId();
 		
 		int cnt2 = dao.insertMakeList(listid, filmid1);
+		int cnt3 = dao.insertMakeList(listid, filmid2);
+		int cnt4 = dao.insertMakeList(listid, filmid3);
+		int cnt5 = dao.insertMakeList(listid, filmid4);
+		int cnt6 = dao.insertMakeList(listid, filmid5);
 		
 		new FilmListController().doGet(request, response);
 	}	

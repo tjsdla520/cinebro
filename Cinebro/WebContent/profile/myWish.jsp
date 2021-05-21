@@ -11,7 +11,7 @@
 
 .column {
   float: left;
-  width: 10%;
+  width: 20%;
   padding: 5px;
 }
 
@@ -21,7 +21,7 @@
   clear: both;
   display: table;
 }
-.container {
+.container2 {
   position: relative;
   width: 50%;
 }
@@ -46,11 +46,11 @@
   text-align: center;
 }
 
-.container:hover .image {
+.container2:hover .image {
   opacity: 0.3;
 }
 
-.container:hover .middle {
+.container2:hover .middle {
   opacity: 1;
 }
 
@@ -59,7 +59,7 @@
   font-size: 15px;
   padding: 16px 32px;
 }
-.container {
+.container2 {
   position: relative;
   width: 50%;
 }
@@ -84,11 +84,11 @@
   text-align: center;
 }
 
-.container:hover .image {
+.container2:hover .image {
   opacity: 0.3;
 }
 
-.container:hover .middle {
+.container2:hover .middle {
   opacity: 1;
 }
 
@@ -103,22 +103,30 @@
 	<%-- <%@ include file="header.jsp" %> --%>
 	<%-- <jsp:include page="<%=contextPath%>/anime-main/header.jsp"/> --%>
 	<jsp:include page="./../anime-main/header.jsp"/>
-	<h2>My Wish Films</h2>
-	<p style="color: white">내가 보고싶어요 누른 영화</p>
-
+	<div class="container"><br>
+	<h2 style="color: white">My Wish Films</h2>
+	<br>
 	<div class="row">
 		<c:forEach var="bean" items="${requestScope.lists}">
 			<div class="column">
-				<div class="container">
-				<a href="<%=NoForm%>filmDetail&id=${bean.id}"><img src="img/${bean.film_title}.jpg" alt="${bean.film_title}"
+				<div class="container2">
+				<a href="<%=NoForm%>filmDetail&id=${bean.id}&email=${loginfo.email}"><img src="upload/${bean.image}" alt="${bean.film_title}"
 					style="width: 100%" class="image"></a>
 					<div class="middle">
-						<div class="text">${bean.film_title }</div>
+						<a href="<%=NoForm%>filmDetail&id=${bean.id}&email=${loginfo.email}"> 
+							<div class="text">${bean.film_title }</div>
+						</a>
 					</div>
 				</div>
 			</div>
 		</c:forEach>
 	</div>
+	
+	</div>
+	<br><br><br><br><br><br><br><br>
+	<br><br><br><br><br><br><br><br>
+	<br><br><br><br><br><br><br><br>
+	<br><br><br><br><br><br><br><br><br><br>
 	<jsp:include page="./../anime-main/footer.jsp"/>
 </body>
 </html>

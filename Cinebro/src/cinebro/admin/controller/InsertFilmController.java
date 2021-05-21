@@ -1,6 +1,8 @@
 package cinebro.admin.controller;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -27,41 +29,43 @@ public class InsertFilmController extends SuperClass {
 	
 	@Override
 	public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		int cnt = -99999 ; 
 		
 		MultipartRequest multi = (MultipartRequest)request.getAttribute("multi");
 		bean = new Film();
-		//영화제목, url은 의무작성
+		
 		System.out.println(multi.getParameter("film_title")+"테스트");
 		bean.setFilm_title(multi.getParameter("film_title"));
-		bean.setPlayUrl(multi.getParameter("playUrl")); 
 		bean.setImage(multi.getFilesystemName("image"));
-		if (multi.getParameter("director") == null || multi.getParameter("director").equals("")) {
-			bean.setDirector("");	
+		bean.setDirector(multi.getParameter("director"));
+		bean.setYear(Integer.parseInt(multi.getParameter("year")));
+		bean.setCountry(multi.getParameter("country"));
+				
+		String genre = multi.getParameter("genre");
+		String actorid1 = multi.getParameter("actorid1");
+		String actorid2 = multi.getParameter("actorid2");
+		
+		if (multi.getParameter("playUrl") == null || multi.getParameter("playUrl").equals("")) {
+			bean.setPlayUrl("");	
 		}else {
-			bean.setDirector(multi.getParameter("director"));
+			bean.setPlayUrl(multi.getParameter("playUrl"));
 		}
-		
-		if (multi.getParameter("year") == null || multi.getParameter("year").equals("")) {
-			bean.setYear(0);	
-		}else {
-			bean.setYear(Integer.parseInt(multi.getParameter("year")));
-		}
-		
-		if (multi.getParameter("country") == null || multi.getParameter("country").equals("")) {
-			bean.setCountry("");	
-		}else {
-			bean.setCountry(multi.getParameter("country"));
-		}
-		
-		
-		
+				
 		if (this.validate(request) == true) { 
 			System.out.println("member insert validation check success");
+			//새로운 영화 값 넣기
 			FilmDetailDao dao = new FilmDetailDao();
+			cnt = dao.InsertFilm(bean);
 			
-			int cnt = -99999 ; 
-			cnt = dao.InsertFilm(bean) ;
+			//방금 추가한 영화의 id 값 가져오기
+			int filmid = dao.selectFilmByTitlenDirector(multi.getParameter("film_title"), multi.getParameter("director"));
 			
+			//장르 값 넣기
+			cnt = dao.insertFilmnGenre(filmid, genre);
+			//영화배우1 값 넣기
+			cnt = dao.insertFilmnActor(filmid, actorid1);
+			//영화배우2 값 넣기
+			cnt = dao.insertFilmnActor(filmid, actorid2);
 			new SearchController().doGet(request, response);		
 			
 		} else {
@@ -82,10 +86,6 @@ public class InsertFilmController extends SuperClass {
 			isCheck = false;
 		}
 		
-		if(bean.getPlayUrl()==null || bean.getFilm_title().equals("")) {
-			request.setAttribute(super.PREFIX + "playUrl", "영화 url은 필수입력 사항입니다.");
-			isCheck = false;
-		}
 		if(bean.getDirector()==null || bean.getDirector().equals("")) {
 			request.setAttribute(super.PREFIX + "director", "영화 감독은 필수입력 사항입니다.");
 			isCheck = false;
@@ -98,11 +98,7 @@ public class InsertFilmController extends SuperClass {
 			request.setAttribute(super.PREFIX + "country", "개봉국가는 필수입력 사항입니다.");
 			isCheck = false;
 		}
-		
 		return isCheck;
 	}
-	
-	
 
-	
 }

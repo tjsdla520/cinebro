@@ -17,22 +17,24 @@ public class MyproFileController extends SuperClass {
 	@Override
 	public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		super.doGet(request, response);
-		
+			
 			Profile bean = new Profile();
 			ProfileDao dao = new ProfileDao();
 			String email = request.getParameter("email") ;
-			System.out.println(email);
+			System.out.println("이메일은 : "+email);
 			bean = dao.selectMyinfo(email);
+			request.setAttribute("bean", bean);
 			
 			//해당 멤버 팔로우 여부 확인하는 메서드
 			MemberFollowDao dao2 = new MemberFollowDao();
 			Member member = (Member)super.session.getAttribute("loginfo");
-			String myemail = member.getEmail();
-			Profile bean2 = dao2.findFollow(myemail, email);
-			System.out.println("bean2 : "+bean2);
-			System.out.println(bean2);
-			request.setAttribute("bean", bean);
-			request.setAttribute("bean2", bean2);
+			if(member!=null) {
+				String myemail = member.getEmail();
+				Profile bean2 = dao2.findFollow(myemail, email);
+				System.out.println("bean2 : "+bean2);
+				System.out.println(bean2);
+				request.setAttribute("bean2", bean2);
+			}
 			String gotopage = "/profile/myProfileDetail.jsp" ;
 			super.GotoPage(gotopage);
 	}

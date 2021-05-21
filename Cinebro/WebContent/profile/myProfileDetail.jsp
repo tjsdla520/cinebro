@@ -11,6 +11,17 @@ int rightButton = 1;
 %>
 <!DOCTYPE html>
 <html lang="en">
+<c:if test="${ empty sessionScope.loginfo}">
+	<c:set var="whologin" value="0" />
+</c:if>
+<c:if test="${ not empty sessionScope.loginfo}">
+	<c:if test="${ sessionScope.loginfo.email == 'admin'}">
+		<c:set var="whologin" value="2" />
+	</c:if>
+	<c:if test="${ sessionScope.loginfo.email != 'admin'}">
+		<c:set var="whologin" value="1" />
+	</c:if>
+</c:if>
 <head>
   <title>Bootstrap Example</title>
   <meta charset="utf-8">
@@ -35,6 +46,7 @@ element.style {
     font-size: large;
     padding: 15px;
 }
+
 .panel-default {
     margin: 0 auto; 
     border-color: #ddd;
@@ -45,64 +57,80 @@ button.btn.btn-primary {
 }
 
 </style>
-
 </head>
-
 <body>
-	<%-- <%@ include file="header.jsp" %> --%>
-	<%-- <jsp:include page="<%=contextPath%>/anime-main/header.jsp"/> --%>
 	<jsp:include page="./../anime-main/header.jsp" />
-	
 	<div class="container">
-  <div class="panel panel-default">
-    <div class="panel-heading" style="color: black;" align="center">${bean.nickname}님의 프로필</div>
-    <div class="panel-body" style="color: black;" align="center" >아이디 : ${bean.email}
-    	<c:if test="${bean.nickname==sessionScope.loginfo.nickname}">
-       <div class="panel-body" style="color: black;" align="center" >비밀 번호 : ${bean.password}</div>
-    </c:if></div>
-  
-    <div class="panel-body" style="color: black;" align="center">닉네임 : ${bean.nickname}
-				<c:if test="${bean.nickname==sessionScope.loginfo.nickname}">
+		<div class="panel panel-default">
+			<div class="panel-heading" style="color: black;" align="center">${bean.nickname}</div>
+			<c:if test="${bean.email==sessionScope.loginfo.email}">
+				<div class="panel-body" style="color: black;" align="center">아이디 : ${bean.email}</div>
+				<div class="panel-body" style="color: black;" align="center">비밀번호 : ${bean.password}</div>	
+			</c:if>
+			<div class="panel-body" style="color: black;" align="center">
+				닉네임 : ${bean.nickname}
+				<c:if test="${bean.email==sessionScope.loginfo.email}">
 					<c:if test="${requestScope.bean.subscribe == 1}">
-
-    <div class="panel-body" style="color: black;" align="center" >구독 여부 : 구독중
-    <div class="panel-body" style="color: black;" align="center" >카드사 : ${bean.name}
-     <div class="panel-body" style="color: black;" align="center" >카드 번호 : ${bean.cardnumber}</div></div></div>
-     </c:if>
-     <c:if test="${requestScope.bean.subscribe == 0}">
-     <div class="panel-body" style="color: black;" align="center" >구독 여부 : 
-     	<a href="<%=NoForm%>bridge">
-								<button type="button" class="btn btn-warning">
-									구독 하러 가기
-								</button>
-							</a> </div>
-							 <div class="panel-body" style="color: black;" align="center" >카드사 : </div>
-							  <div class="panel-body" style="color: black;" align="center" >카드 번호 :</div>
-							</c:if>
-							</c:if>
-		  <div class="panel-body" style="color: black;" align="center" >좋아하는 영화 제목 : <a href="<%=NoForm%>filmDetail&id=${bean.film_id}">${bean.film_title}</a></div>					
-		 <div class="panel-body" style="color: black;" align="center" >좋아하는 영화 장르 : ${bean.genre_name}</div>
-		 <c:if test="${bean.nickname==sessionScope.loginfo.nickname}">
-		 	<a href="<%=NoForm%>editNickname">
-		 			   <br><br>
-							<button type="button" class="btn btn-primary" >닉네임 수정하기</button>
-						</a>
-		   </c:if>
-		   <br><br><br><br>
-				<c:if test="${bean.nickname!=sessionScope.loginfo.nickname}">
-				<c:choose>
-					<c:when test="${bean2==null}">
-						<a
-							href="<%=NoForm%>memberFollow&followemail=${bean.email}&myemail=${loginfo.email}"><button
-								class="btn-info btn-lg">팔로우 하기</button></a>
-					</c:when>
-					<c:otherwise>
-						<a
-							href="<%=NoForm%>memberUnfollow&followemail=${bean.email}&myemail=${loginfo.email}"><button
-								class="btn-warning btn-lg">팔로우 취소</button></a>
-						<br><br><br><br><br><br><br>
-					</c:otherwise>
-				</c:choose>
+						<div class="panel-body" style="color: black;" align="center">
+							구독 여부 : 구독중
+							<div class="panel-body" style="color: black;" align="center">
+								이름 : ${bean.name}
+								<div class="panel-body" style="color: black;" align="center">카드번호 : ${bean.cardnumber}</div>
+							</div>
+						</div>
+					</c:if>
+					<c:if test="${requestScope.bean.subscribe == 0}">
+						<div class="panel-body" style="color: black;" align="center">
+							구독 여부 : 
+							<a href="<%=NoForm%>bridge">
+								<button type="button" class="btn btn-warning">구독 하러 가기</button>
+							</a>
+						</div>
+						<div class="panel-body" style="color: black;" align="center">이름 :</div>
+						<div class="panel-body" style="color: black;" align="center">카드번호 :</div>
+					</c:if>
+				</c:if>
+				<div class="panel-body" style="color: black;" align="center">
+					Favorite Film : <a href="<%=NoForm%>filmDetail&id=${bean.film_id}">${bean.film_title}</a>
+				</div>
+				<div class="panel-body" style="color: black;" align="center">Favorite Genre : ${bean.genre_name}</div>
+				<a href="<%=NoForm%>myReviews&email=${bean.email}">
+					<div class="panel-body" style="color: black;" align="center">Reviews : ${bean.allReviews}</div>
+				</a>
+				<div class="panel-body" style="color: black;" align="center">Followers : ${bean.follower}</div>
+				<c:if test="${bean.email==sessionScope.loginfo.email}">
+					<a href="<%=NoForm%>editNickname&email=${loginfo.email}&nickname=${loginfo.nickname}&film_title=${bean.film_title}&genre_name=${bean.genre_name}&film_id=${bean.film_id}">
+					<br>
+					<br>
+						<button type="button" class="btn btn-primary">회원 정보 수정하기</button>
+					</a>
+				</c:if>
+				<br>
+				<br>
+				<br>
+				<br>
+				<c:if test="${whologin!=0 }">
+				<c:if test="${bean.email!=sessionScope.loginfo.email}">
+					<c:choose>
+						<c:when test="${bean2==null}">
+							<a href="<%=NoForm%>memberFollow&followemail=${bean.email}&myemail=${loginfo.email}">
+								<button class="btn-info btn-lg">팔로우 하기</button>
+							</a>
+						</c:when>
+						<c:otherwise>
+							<a href="<%=NoForm%>memberUnfollow&followemail=${bean.email}&myemail=${loginfo.email}">
+								<button class="btn-warning btn-lg">팔로우 취소</button>
+							</a>
+							<br>
+							<br>
+							<br>
+							<br>
+							<br>
+							<br>
+							<br>
+						</c:otherwise>
+					</c:choose>
+				</c:if>
 				</c:if>
 			</div>
 		</div>

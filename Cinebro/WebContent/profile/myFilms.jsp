@@ -8,6 +8,25 @@
 <meta charset="utf-8">
 <title>JavaScript</title>
 <style>
+	td{
+		color: white;
+	}
+	* {
+  box-sizing: border-box;
+}
+
+.column {
+  float: left;
+  width: 20%;
+  padding: 5px;
+}
+
+/* Clearfix (clear floats) */
+.row::after {
+  content: "";
+  clear: both;
+  display: table;
+}
 body {
 	font-family: Consolas, sans-serif;
 }
@@ -54,6 +73,23 @@ body {
 .dropdown:hover .dropbtn {
 	background-color: red;
 }
+h3 {
+    color: w;
+    font-size: 30px;
+    color: white;
+    font-size: x-large;
+    }
+    .table>tbody>tr>td, .table>tbody>tr>th, .table>tfoot>tr>td, .table>tfoot>tr>th, .table>thead>tr>td, .table>thead>tr>th {
+    padding: 8px;
+    line-height: 1.42857143;
+    vertical-align: top;
+    border-top: 1px solid #ddd;
+    font-size: larger;
+}
+
+p.text-white {
+    font-size: x-large;
+}
 </style>
 </head>
 <body>
@@ -61,31 +97,31 @@ body {
 	<%-- <jsp:include page="<%=contextPath%>/anime-main/header.jsp"/> --%>
 	<jsp:include page="./../anime-main/header.jsp" />
 	<div class="container">
+		<h3 class="text-white">
+			<b>${sessionScope.loginfo.nickname}님이 시청한 영화</b>
+		</h3>
 		<div class="panel-body">
-			<table class="table table-hover">
-				<thead>
-					<tr>
-						<th><p class="text-white">
-								<b>${sessionScope.loginfo.nickname}님이 시청한 영화</b>
-							</p></th>
-						<th></th>
-					</tr>
-				</thead>
-				<tbody>
-					<c:forEach var="bean" items="${requestScope.lists}">
-						<tr>
-							<td><span style="color: white"> 
-								<a href="<%=NoForm %>filmDetail&id=${bean.id}&email=${loginfo.email}">
-										${bean.film_title}
-								</a>
-							</span></td>
-						</tr>
-					</c:forEach>
-				</tbody>
-			</table>
+			<div class="row">
+				<br>
+				<br>
+				
+				<br><br>
+				<c:forEach items="${requestScope.lists}" var="bean"
+					varStatus="status">
+					<div class="column">
+						<div class="container">
+							<a style="color: peachpuff;"
+								href="<%=NoForm%>filmDetail&id=${bean.id}&email=${loginfo.email}">
+								<img src="upload/${bean.image}" alt="${bean.film_title}"
+								style="width: 100%">
+							</a>
+						</div>
+					</div>
+				</c:forEach>
+			</div>
 		</div>
-		<br> <br> <br>
 	</div>
+	<br> <br> <br><br> <br> <br><br> <br>
 	<jsp:include page="./../anime-main/footer.jsp" />
 </body>
 </html>

@@ -1,6 +1,8 @@
 package cinebro.profile.model;
 
-public class Profile {
+import cinebro.members.model.Member;
+
+public class Profile extends Member{
 
 	private String email; //로그인한사람 이메일
 	private String password;  //로그인한사람 비밀번호
@@ -12,14 +14,29 @@ public class Profile {
 	private String genre_name;	// 내가 좋아아흔 영화 장르
 	private String name;	// 카드이름
 	private String cardnumber; //내카드정보
-	private int film_id;
+	private String film_id;
 	private int genre_id;
+	private int follower;           //나를 팔로우하는 사람 수 
+	private int allReviews;         //내가 쓴 총 리뷰수
 	
 	
-	public int getFilm_id() {
+	
+	public String getFilm_id() {
 		return film_id;
 	}
-	public void setFilm_id(int film_id) {
+	public int getFollower() {
+		return follower;
+	}
+	public void setFollower(int follower) {
+		this.follower = follower;
+	}
+	public int getAllReviews() {
+		return allReviews;
+	}
+	public void setAllReviews(int allReviews) {
+		this.allReviews = allReviews;
+	}
+	public void setFilm_id(String film_id) {
 		this.film_id = film_id;
 	}
 	public int getGenre_id() {
@@ -93,9 +110,7 @@ public class Profile {
 		return "Profile [email=" + email + ", password=" + password + ", nickname=" + nickname + ", follwingemail="
 				+ follwingemail + ", following=" + following + ", subscribe=" + subscribe + ", film_title=" + film_title
 				+ ", genre_name=" + genre_name + ", name=" + name + ", cardnumber=" + cardnumber + ", film_id="
-				+ film_id + ", genre_id=" + genre_id + "]";
+				+ film_id + ", genre_id=" + genre_id + ", follower=" + follower + ", allReviews=" + allReviews + "]";
 	}
-	
-	
-	
+
 }

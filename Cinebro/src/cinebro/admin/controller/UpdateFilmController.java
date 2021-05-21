@@ -12,6 +12,7 @@ import cinebro.common.controller.SuperClass;
 import cinebro.films.controller.FilmDetailController;
 import cinebro.films.model.Film;
 import cinebro.films.model.FilmDetailDao;
+import cinebro.genres.model.GenreDao;
 
 public class UpdateFilmController extends SuperClass {
 	private Film bean = null;
@@ -22,6 +23,9 @@ public class UpdateFilmController extends SuperClass {
 		String id = request.getParameter("id");
 		FilmDetailDao dao = new FilmDetailDao();
 		Film fbean = dao.selectFilm(id);
+		int actorsize = fbean.getActors().size();
+		System.out.println("배우사이즈 : " + actorsize);
+		request.setAttribute("actorsize", actorsize);
 		request.setAttribute("fbean", fbean);
 		String gotopage = "/profile/UpdateFilmForm.jsp";
 		super.GotoPage(gotopage);
@@ -38,7 +42,13 @@ public class UpdateFilmController extends SuperClass {
 		bean.setFilm_title(multi.getParameter("film_title"));
 		bean.setPlayUrl(multi.getParameter("playUrl"));
 		bean.setImage(multi.getFilesystemName("image"));
+		String actor1 = multi.getParameter("actorid1");
+		System.out.println("actor1 : "+ actor1);
 		
+		String actor2 = multi.getParameter("actorid2");
+		System.out.println("actor2 : "+actor2);
+		
+		int genreid = Integer.parseInt(multi.getParameter("genre"));
 		if (multi.getParameter("director") == null || multi.getParameter("director").equals("")) {
 			bean.setDirector("");	
 		}else {
@@ -63,6 +73,13 @@ public class UpdateFilmController extends SuperClass {
 			
 			int cnt = -99999; 
 			cnt = dao.UpdateFilm(bean);
+			cnt=dao.deleteFilmnActor(bean.getId());
+			int cnt2 = dao.insertFilmnActor(bean.getId(), actor1);
+			int cnt3 = dao.insertFilmnActor(bean.getId(), actor2);
+			GenreDao dao2 = new GenreDao();
+			
+			int cnt4 = dao2.deleteFilmnGenre(bean.getId());
+			int cnt5 = dao2.insertFilmnGenre(bean.getId(), genreid);
 			Film fbean = dao.selectFilm(multi.getParameter("id"));
 			session.setAttribute("fbean", fbean);
 			String gotopage = "/reviews/filmDetail.jsp";
@@ -77,7 +94,7 @@ public class UpdateFilmController extends SuperClass {
 		}
 		
 	}	
-	
+
 	@Override
 	public boolean validate(HttpServletRequest request) {
 		boolean isCheck = true;
