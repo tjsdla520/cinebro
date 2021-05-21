@@ -338,4 +338,49 @@ public class FilmDao extends SuperDao {
 		}
 		return cnt ;
 	}
+
+
+
+
+	public List<Film> selectByLike() {
+		PreparedStatement pstmt = null ;
+		ResultSet rs = null ;
+		
+		String sql = "select ranking, id, film_title, image, director, year, country, playurl, likes from("
+				+ "select id, film_title, image, director, year, country, playurl, likes, rank() over(order by likes desc) as ranking from("
+				+ "select f.id, f.film_title, f.image, f.director, f.year, f.country, f.playurl,count(*) as likes from films f inner join likefilms lf on lf.film_id = f.id group by f.id, f.film_title, f.image, f.director, f.year, f.country, f.playurl)) where ranking between 1 and 10";
+		
+		List<Film> lists = new ArrayList<Film>();
+		
+		try {
+			if( conn == null ){ super.conn = super.getConnection() ; }
+			pstmt = super.conn.prepareStatement(sql) ;
+
+			rs = pstmt.executeQuery() ;	
+			
+			while( rs.next() ){
+				Film bean = new Film();
+				
+				bean.setId(rs.getInt("id"));
+				bean.setYear(rs.getInt("year"));
+				bean.setFilm_title(rs.getString("film_title"));
+				bean.setDirector(rs.getString("director"));
+				bean.setCountry(rs.getString("country"));
+				bean.setPlayUrl(rs.getString("playurl"));
+				bean.setImage(rs.getString("image"));
+				lists.add(bean);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally{
+			try {
+				if( rs != null ){ rs.close(); }
+				if( pstmt != null ){ pstmt.close(); }
+				super.closeConnection(); 
+			} catch (Exception e2) {
+				e2.printStackTrace(); 
+			}
+		}		
+		return lists ;
+	}
 }

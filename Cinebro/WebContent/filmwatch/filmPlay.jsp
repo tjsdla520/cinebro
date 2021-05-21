@@ -286,21 +286,21 @@
 						<div class="row">
 							<div class="col-lg-8 col-md-8 col-sm-8">
 								<div class="section-title">
-									<h4>${sessionScope.loginfo.nickname }님에게 추천드리는 영화</h4>
+									<h4>인기 영화</h4>
 								</div>
 							</div>						
 						</div>
 						<div id="myCarousel4" class="carousel slide" data-ride="carousel">
 							<!-- Indicators -->
 							<ol class="carousel-indicators">
-								<c:forEach var="n" end="${requestScope.endpage2 }" varStatus="now" begin="1">
+								<c:forEach var="n" end="${requestScope.endpage4 }" varStatus="now" begin="1">
 									<li data-target="#myCarousel" data-slide-to="${now.index }"></li>
 								</c:forEach>
 							</ol>
 				
 							<!-- Wrapper for slides -->
 							<div class="carousel-inner">
-								<c:forEach var="i" begin="1" end="${requestScope.endpage2 }" varStatus="now">									
+								<c:forEach var="i" begin="1" end="${requestScope.endpage4 }" varStatus="now">									
 									<c:choose>
 										<c:when test="${now.index==1 }">
 											<div class="item active">
@@ -309,11 +309,11 @@
 											<div class="item">
 										</c:otherwise>
 									</c:choose>			
-										<c:forEach var="bean2" items="${requestScope.list2}" begin="${(now.index-1)*5 }" end="${now.index*5-1 }">
+										<c:forEach var="bean2" items="${requestScope.list4}" begin="${(now.index-1)*5 }" end="${now.index*5-1 }">
 											<div class="column">
 												<div class="container">
-													<a href="<%=NoForm%>filmDetail&id=${bean2.id}"><img
-														src="upload/${bean2.image}&id=${bean2.id}&email=${loginfo.email}" alt="${bean2.film_title}"
+													<a href="<%=NoForm%>filmDetail&email=${loginfo.email}&id=${bean2.id}"><img
+														src="upload/${bean2.image}" alt="${bean2.film_title}"
 														style="width: 100%" class="image"></a>
 													<div class="middle">
 														<div class="text">${bean2.film_title }</div>
